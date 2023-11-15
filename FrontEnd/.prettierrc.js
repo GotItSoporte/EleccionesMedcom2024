@@ -1,6 +1,8 @@
-{
-    "semi": false,
-    "singleQuote": true,
-    "tabWidth": 2,
-    "printWidth": 80
-  }
+module.exports = {
+  "trailingComma": "all",
+  "tabWidth": 2,
+  "semi": true,
+  "singleQuote": true,
+  "printWidth": 120,
+  "bracketSpacing": true
+}
