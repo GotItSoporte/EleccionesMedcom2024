@@ -1,1 +1,1 @@
-export { HomeLoad as Home } from './HomeLoad'
+export { HomeLoad as Home } from './HomeLoad';
