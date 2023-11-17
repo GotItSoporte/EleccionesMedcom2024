@@ -2,7 +2,10 @@ import PropTypes from 'prop-types';
 export const Verificacion = ({ setMostrarVerificacion, nameValidacion, setNameValidacion, checkValidacion, Error }) => {
   return (
     <>
-      <form className="w-full max-w-lg bg-gray-950 p-20 rounded-xl">
+      <form className="w-full max-w-lg bg-gray-900 p-20 rounded-xl border-2">
+        <h1 className="max-w-sm mx-auto p-2 md:text-lg lg:text-xl font-normal text-center tracking-tight text-white  rounded-b-lg  focus:ring-4 focus:outline-none ">
+          OPERADOR
+        </h1>
         {Error ? <div className="text-red-600">Clave mal digitada*</div> : <></>}
         <div className=" items-center border-b border-teal-500 py-2 my-5">
           <input

@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Verificacion } from './Verificacion';
 
-
 export const VerificacionLoad = ({ setMostrarVerificacion, rol }) => {
   const [nameValidacion, setNameValidacion] = useState('');
   const [Error, setError] = useState(false);
