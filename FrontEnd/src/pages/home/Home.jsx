@@ -26,7 +26,7 @@ export const Home = ({ mostrarVerificacion, setMostrarVerificacion, setRol, rol 
           <div
             className="col-span-2 md:col-span-2"
             onClick={() => {
-              setMostrarVerificacion(true), setRol('operador');
+              setMostrarVerificacion(true), setRol('presentador');
             }}
           >
             <Card name="PRESENTADOR" image={Presentador} />
@@ -34,7 +34,7 @@ export const Home = ({ mostrarVerificacion, setMostrarVerificacion, setRol, rol 
           <div
             className="col-span-2 md:col-span-2"
             onClick={() => {
-              setMostrarVerificacion(true), setRol('operador');
+              setMostrarVerificacion(true), setRol('programador');
             }}
           >
             <Card name="PROGRAMADOR" image={Programador} />
