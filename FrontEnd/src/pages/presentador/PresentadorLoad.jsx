@@ -1,5 +1,16 @@
+import { useState } from 'react';
 import { Presentador } from './Presentador';
 
 export const PresentadorLoad = () => {
-  return <Presentador />;
+  const [mostrarNavbar, setMostrarNavbar] = useState(true);
+  const [graficoSeleccionado, setGraficoSeleccionado] = useState('');
+
+  return (
+    <Presentador
+      mostrarNavbar={mostrarNavbar}
+      setMostrarNavbar={setMostrarNavbar}
+      graficoSeleccionado={graficoSeleccionado}
+      setGraficoSeleccionado={setGraficoSeleccionado}
+    />
+  );
 };

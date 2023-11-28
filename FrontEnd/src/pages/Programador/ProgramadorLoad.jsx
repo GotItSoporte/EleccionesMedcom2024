@@ -1,5 +1,8 @@
+import { useState } from 'react';
 import { Programador } from './Programador';
 
 export const ProgramadorLoad = () => {
-  return <Programador />;
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
+
+  return <Programador mostrarFormulario={mostrarFormulario} setMostrarFormulario={setMostrarFormulario} />;
 };

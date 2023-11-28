@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Home, Operador, Programador } from '../pages';
+import { Home, Operador, Presentador, Programador } from '../pages';
 
 export const router = createBrowserRouter([
   {
@@ -9,6 +9,10 @@ export const router = createBrowserRouter([
   {
     path: '/Operador',
     element: <Operador />,
+  },
+  {
+    path: '/Presentador',
+    element: <Presentador />,
   },
   {
     path: '/Programador',

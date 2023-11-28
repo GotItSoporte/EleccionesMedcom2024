@@ -3,11 +3,18 @@ import PropTypes from 'prop-types';
 
 const ContextData = React.createContext();
 
-export function UseData() {
+// eslint-disable-next-line react-refresh/only-export-components
+export function useData() {
   return useContext(ContextData);
 }
 
 export function DataProvider({ children }) {
+  //Graficos Existentes
+  const listaGraficos = {
+    Operador: ['Ticker', 'Fullscreen', 'Wall'],
+    Presentador: ['Wall', 'RA'],
+  };
+
   const [listCorporacion, setListCorporacion] = useState(['PRESIDENTE', 'ALCALDES', 'DIPUTADOS']);
 
   const [listProvincia, setListProvincia] = useState([
@@ -59,6 +66,7 @@ export function DataProvider({ children }) {
   });
 
   const value = {
+    listaGraficos,
     listCorporacion,
     setListCorporacion,
     listProvincia,
