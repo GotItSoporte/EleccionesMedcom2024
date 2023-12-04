@@ -14,12 +14,12 @@ app.use(
   );
 
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    res.send("Hello or  World!");
 });
-console.log('entro')
 
 
-//app.use("/ReadData", require("./routes/ReadData"));
+
+app.use("/ReadData", require("./routes/ReadData"));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

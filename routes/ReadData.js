@@ -1,52 +1,41 @@
 const express = require("express");
 const router = express.Router();
-const mysql = require("mysql2/promise");
-const dbconfig = require('../config/config')
-
+const { dbConfig } = require('../config/config')
 
 
 router.get("/PRESIDENTE", async function (req, res) {
-  try {
-    // Ejecutar la consulta y obtener los resultados
-    const [rows, fields] = await dbconfig.query(
-      "SELECT * FROM presidente ORDER BY provincia,posicion ASC,partido"
-    );
+    try {
+      const result = await dbConfig("SELECT * FROM VOTO2024.PRESIDENTE");
+      res.json(result);
 
-    const result = dbconfig("SELECT * FROM presidente ORDER BY provincia,posicion ASC,partido")
-    
-    res.json(result);
-  } catch (error) {
-    //console.error(error);
-    //res.status(500).json({ error: "Database error" });
-  }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Error en la consulta de la base de datos" });
+    }
 });
 
-/*router.get("/ALCALDE", async function (req, res) {
+router.get("/ALCALDE", async function (req, res) {
   try {
-    // Ejecutar la consulta y obtener los resultados
-    const [rows, fields] = await dbconfig.query(
-      "SELECT * FROM alcalde ORDER BY provincia,partido,posicion ASC"
-    );
+    const result = await dbConfig("SELECT * FROM VOTO2024.ALCALDE");
+    res.json(result);
 
-    res.json(rows);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Database error" });
+      console.error(error);
+      res.status(500).json({ error: "Error en la consulta de la base de datos" });
   }
 });
 
 router.get("/DIPUTADO", async function (req, res) {
   try {
-    // Ejecutar la consulta y obtener los resultados
-    const [rows, fields] = await dbconfig.query(
-      "SELECT * FROM diputado ORDER BY provincia,partido, posicion ASC"
-    );
+    const result = await dbConfig("SELECT * FROM VOTO2024.DIPUTADO");
+    res.json(result);
 
-    res.json(rows);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Database error" });
+      console.error(error);
+      res.status(500).json({ error: "Error en la consulta de la base de datos" });
   }
-});*/
+});
 
 module.exports = router;
+
+

@@ -1,19 +1,17 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { NavbarOnly } from './NavbarOnly';
 import { NavbarHorizontal } from './NavbarHorizontal';
+import { NavbarMulti } from './NavbarMulti';
 
 export const NavbarLoad = ({
-  data,
   type,
   mostrarNavbar,
   setMostrarNavbar,
   rol,
   graficoSeleccionado,
   setGraficoSeleccionado,
+  setDataSelect,
 }) => {
-  const [setDataSelect] = useState([]);
-
   if (type === 'navbarHorizontal')
     return (
       <NavbarHorizontal
@@ -27,12 +25,12 @@ export const NavbarLoad = ({
     );
   if (type === 'navbarOnly')
     return (
-      <NavbarOnly
-        setDataSelect={setDataSelect}
-        mostrarNavbar={mostrarNavbar}
-        setMostrarNavbar={setMostrarNavbar}
-        data={data}
-      />
+      <NavbarOnly setDataSelect={setDataSelect} mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} />
+    );
+
+  if (type === 'navbarMulti')
+    return (
+      <NavbarMulti setDataSelect={setDataSelect} mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} />
     );
 };
 
@@ -43,6 +41,5 @@ NavbarLoad.propTypes = {
   rol: PropTypes.string.isRequired,
   graficoSeleccionado: PropTypes.string.isRequired,
   setGraficoSeleccionado: PropTypes.func.isRequired,
-
-  data: PropTypes.array.isRequired,
+  setDataSelect: PropTypes.func.isRequired,
 };

@@ -2,13 +2,17 @@ import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import fetchReadData from '../../apis/ReadData';
 
-export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar }) => {
+export const NavbarMulti = ({ setDataSelect, mostrarNavbar, setMostrarNavbar }) => {
   const [nameCorporacion] = useState(['PRESIDENTE', 'ALCALDE', 'DIPUTADO']);
   const [open, setOpen] = useState({});
   const [openProvincia, setOpenProvincia] = useState({});
   const [openCircuito, setOpenCircuito] = useState({});
   const [data, setData] = useState({});
   const [corporacion, setCorporacion] = useState({});
+
+  //checked
+  const [isChecked, setIsChecked] = useState({});
+  console.log({ isChecked });
 
   const toggleOpen = (el) => {
     setOpen({
@@ -61,7 +65,11 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar }) =
       }
       miObjeto[provincia][corporacion] = {};
     });
-  }, [corporacion, data]);
+  }, [corporacion, data, miObjeto]);
+
+
+  console.log({data})
+
 
   return (
     <>
@@ -75,14 +83,6 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar }) =
             <div className="px-4 pb-6">
               <h3 className="mb-2 text-xs uppercase text-gray-500 font-medium">SELECCIONA UNA SOLA OPCION</h3>
 
-              <a
-                className="flex items-center pl-3 py-3 pr-4 text-sm text-gray-50 bg-red-900 hover:bg-blue-500 rounded mb-5 w-fit mx-auto"
-                href="#"
-                onClick={() => setDataSelect([])}
-              >
-                <span>ULTIMO XML GENERADO</span>
-              </a>
-
               <ul className="mb-8 text-sm font-medium">
                 {nameCorporacion.map((corporacion, idx) => {
                   return (
@@ -91,11 +91,26 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar }) =
                         className="flex items-center pl-3 py-3 pr-4 text-gray-50 bg-gray-900 hover:bg-blue-500 rounded"
                         href="#"
                         onClick={() => {
-                          toggleOpen(corporacion), setCorporacion(corporacion);
+                          toggleOpen(corporacion),
+                            setCorporacion(corporacion),
+                            setIsChecked((prevState) => ({
+                              ...prevState,
+                              [corporacion]: prevState[corporacion] ? undefined : {},
+                            }));
                         }}
                       >
-                        <span>{corporacion}</span>
+                        <span>
+                          <label>{corporacion}</label>
+                        </span>
+
                         <span className="inline-block ml-auto">
+                          <input
+                            type="checkbox"
+                            id={corporacion}
+                            name={corporacion}
+                            checked={isChecked[corporacion] || false}
+                            onChange={() => {}}
+                          />
                           <svg className="text-gray-400 w-3 h-3" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                               d="M9.08329 0.666626C8.74996 0.333293 8.24996 0.333293 7.91663 0.666626L4.99996 3.58329L2.08329 0.666626C1.74996 0.333293 1.24996 0.333293 0.916626 0.666626C0.583293 0.999959 0.583293 1.49996 0.916626 1.83329L4.41663 5.33329C4.58329 5.49996 4.74996 5.58329 4.99996 5.58329C5.24996 5.58329 5.41663 5.49996 5.58329 5.33329L9.08329 1.83329C9.41663 1.49996 9.41663 0.999959 9.08329 0.666626Z"
@@ -118,6 +133,7 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar }) =
                                     corporacion === 'PRESIDENTE' ? 'bg-gray-600' : 'bg-gray-800'
                                   }  hover:bg-blue-500 `}
                                   href="#"
+                                 
                                   onClick={() => {
                                     corporacion === 'PRESIDENTE'
                                       ? setDataSelect(
@@ -127,11 +143,25 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar }) =
                                     corporacion === 'PRESIDENTE' && toggleOpenProvincia(el.provincia);
                                     corporacion === 'ALCALDE' ? toggleOpenProvincia(el.provincia) : null;
                                     corporacion === 'DIPUTADO' ? toggleOpenCircuito(el.provincia) : null;
+                                    setIsChecked((prevState) => ({
+                                      ...prevState,
+                                      [corporacion]: {
+                                        ...prevState[corporacion],
+                                        [el.provincia]: prevState[corporacion]?.[el.provincia] ? undefined : {},
+                                      },
+                                    }));
                                   }}
                                 >
                                   <span>{el.provincia}</span>
                                   {corporacion !== 'PRESIDENTE' ? (
                                     <span className="inline-block ml-auto">
+                                      <input
+                                        type="checkbox"
+                                        id={corporacion}
+                                        name={corporacion}
+                                        checked={isChecked[corporacion][el.provincia] || false}
+                                        onChange={() => {}}
+                                      />
                                       <svg
                                         className="text-gray-400 w-3 h-3"
                                         fill="none"
@@ -148,7 +178,6 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar }) =
                                   )}
                                 </a>
                                 {/*ALCALDE*/}
-
                                 {openProvincia[el.provincia] &&
                                   corporacion === 'ALCALDE' &&
                                   data[corporacion]
@@ -157,22 +186,58 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar }) =
                                     ?.map((el2, idx2) => {
                                       if (!miObjeto[el.provincia][corporacion][el2.distrito]) {
                                         miObjeto[el.provincia][corporacion][el2.distrito] = true;
+                                        console.log('nombre',el2.distrito)
+                                        console.log('valor',isChecked[corporacion][el.provincia][el2.distrito])
                                         return (
                                           <div key={idx2}>
                                             <a
                                               className="flex items-center pl-3 py-3 pr-4 text-gray-50 bg-gray-600 hover:bg-blue-500 "
                                               href="#"
+                                              
                                               onClick={() => {
-                                                setDataSelect(
-                                                  data[corporacion].filter(
+                                                isChecked[corporacion][el.provincia][el2.distrito]?
+                                                setDataSelect(prevState =>
+                                                    prevState.filter(
+                                                      item =>
+                                                        !(
+                                                          item.provincia === el.provincia &&
+                                                          item.distrito === el2.distrito
+                                                        )
+                                                    )
+                                                  ):
+                                                setDataSelect(  prevState =>[...prevState,
+                                                  ...data[corporacion].filter(
                                                     (item) =>
                                                       item.provincia === el.provincia && item.distrito === el2.distrito,
-                                                  ),
+                                                  )]
                                                 ),
-                                                  setMostrarNavbar;
+                                                setIsChecked((prevState) => ({
+                                                    ...prevState,
+                                                    [corporacion]: {
+                                                      ...prevState[corporacion],
+                                                      [el.provincia]: {
+                                                        ...prevState[corporacion]?.[el.provincia],
+                                                        [el2.distrito]: !prevState[corporacion]?.[el.provincia]?.[
+                                                          el2.distrito
+                                                        ]
+                                                          ,
+                                                      },
+                                                    },
+                                                  }))
                                               }}
                                             >
                                               <span>{el2.distrito}</span>
+                                              <span className="inline-block ml-auto">
+                                                <input
+                                                  type="checkbox"
+                                                  id={corporacion}
+                                                  name={corporacion}
+                                                  checked={isChecked[corporacion][el.provincia][el2.distrito] || false}
+                                                  onChange={() => {}
+                                             
+                                                  }
+                                                />
+                                              </span>
                                             </a>
                                           </div>
                                         );
@@ -198,8 +263,7 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar }) =
                                                     (item) =>
                                                       item.provincia === el.provincia && item.circuito === el3.circuito,
                                                   ),
-                                                ),
-                                                  setMostrarNavbar(false);
+                                                );
                                               }}
                                             >
                                               <span>CIRCUITO {el3.circuito}</span>
@@ -226,7 +290,7 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar }) =
   );
 };
 
-NavbarOnly.propTypes = {
+NavbarMulti.propTypes = {
   mostrarNavbar: PropTypes.bool.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,
   setDataSelect: PropTypes.func.isRequired,

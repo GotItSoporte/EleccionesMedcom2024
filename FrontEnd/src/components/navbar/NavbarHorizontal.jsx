@@ -9,11 +9,10 @@ export const NavbarHorizontal = ({
   setGraficoSeleccionado,
 }) => {
   const { listaGraficos } = useData();
-  console.log({ listaGraficos });
 
   return (
     <>
-      <div className=" w-screen">
+      <div className=" ">
         <nav>
           <div className="flex justify-between bg-gray-900 p-2 md:pr-10 md:py-4 items-center">
             <div className="md:flex items-center ">

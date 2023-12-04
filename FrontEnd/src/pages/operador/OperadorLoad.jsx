@@ -3,7 +3,8 @@ import { Operador } from './Operador';
 
 export const OperadorLoad = () => {
   const [mostrarNavbar, setMostrarNavbar] = useState(true);
-  const [graficoSeleccionado, setGraficoSeleccionado] = useState('');
+  const [graficoSeleccionado, setGraficoSeleccionado] = useState('Ticker');
+  const [dataSelect, setDataSelect] = useState([]);
 
   return (
     <Operador
@@ -11,6 +12,8 @@ export const OperadorLoad = () => {
       setMostrarNavbar={setMostrarNavbar}
       graficoSeleccionado={graficoSeleccionado}
       setGraficoSeleccionado={setGraficoSeleccionado}
+      dataSelect={dataSelect}
+      setDataSelect={setDataSelect}
     />
   );
 };

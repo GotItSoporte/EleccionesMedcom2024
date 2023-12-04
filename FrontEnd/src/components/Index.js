@@ -3,7 +3,5 @@ export { Verificacion } from './verificacion';
 export { Navbar } from './navbar';
 export { Table } from './table';
 export { Button } from './button';
-export { WindowDelete } from './windowdelete';
-export { WindowEdit } from './windowedit';
 export { Dropdown } from './dropdown';
 export { Form } from './form';
