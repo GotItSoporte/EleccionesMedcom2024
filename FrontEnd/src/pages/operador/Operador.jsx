@@ -8,7 +8,6 @@ export const Operador = ({
   dataSelect,
   setDataSelect,
 }) => {
-  console.log({ dataSelect });
   return (
     <>
       <Navbar

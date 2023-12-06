@@ -9,11 +9,11 @@ import CentroComercial from '../../assets/profiles/CentroCOmercial.jpg';
 export const Home = ({ mostrarVerificacion, setMostrarVerificacion, setRol, rol }) => {
   return (
     <>
-      <div className="w-screen h-32 fixed bg-gray-700  flex justify-center items-center ">
+      <div className="w-screen h-32 fixed bg-gray-900  flex justify-center items-center ">
         <img className="h-12" src={Logo} alt="" />
       </div>
 
-      <div className="h-screen flex items-center ">
+      <div className=" h-screen flex items-center ">
         <div className="w-screen lg:w-1/2 h-2/3 mx-auto p-5 md:p-10 items-center grid grid-cols-4 md:grid-cols-6 gap-4 ">
           <div
             className="col-span-2 md:col-span-2"

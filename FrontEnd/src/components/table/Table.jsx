@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
 export const Table = ({ data }) => {
-  console.log({ data });
   return (
     <>
       <div className="relative overflow-x-auto     max-h-[70vh] overflow-y-auto   md:px-5   ">
@@ -55,7 +54,6 @@ export const Table = ({ data }) => {
           <tbody>
             {data.length > 0 ? (
               data.map((data, idx) => {
-                console.log(data);
                 return (
                   <tr
                     key={idx}
