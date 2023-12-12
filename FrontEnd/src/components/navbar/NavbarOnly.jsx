@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
+import { useFunctions } from '../../context';
 import PropTypes from 'prop-types';
-import fetchReadData from '../../apis/ReadData';
 
-export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar }) => {
+export const NavbarOnly = ({ setDataSelect, mostrarNavbar, data }) => {
   const [nameCorporacion] = useState(['PRESIDENTE', 'ALCALDE', 'DIPUTADO']);
   const [open, setOpen] = useState({});
   const [openProvincia, setOpenProvincia] = useState({});
+  const [openDistrito, setOpenDistrito] = useState({});
   const [openCircuito, setOpenCircuito] = useState({});
-  const [data, setData] = useState({});
   const [corporacion, setCorporacion] = useState({});
+  const [isChecked, setIsChecked] = useState({});
+
+  const { mostrarInformacion } = useFunctions();
 
   const toggleOpen = (el) => {
     setOpen({
@@ -17,10 +20,12 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar }) =
     });
   };
 
-  const toggleOpenProvincia = (el) => {
-    setOpenProvincia({
-      ...openProvincia,
-      [el]: !openProvincia[el],
+
+
+  const toggleOpenDistrito = (el) => {
+    setOpenDistrito({
+      ...openDistrito,
+      [el]: !openDistrito[el],
     });
   };
 
@@ -31,24 +36,17 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar }) =
     });
   };
 
-  useEffect(() => {
-    const fetchMultipleData = async () => {
-      const newData = {};
-      for (const corporacion in open) {
-        if (open[corporacion]) {
-          const apiData = await fetchReadData(corporacion);
-          newData[corporacion] = apiData;
-        }
-      }
-      setData(newData);
-    };
-    fetchMultipleData();
-  }, [open]);
-
+  console.log({openProvincia})
+  console.log({openDistrito})
+  //------------------- OBJETO CONTENEDOR PARA EVITAR DATOS REPETIDOS -------------------
   const miObjeto = {};
 
-  // Tu código actual para obtener provincias únicas y asignar true a cada una
+  //------------------- ACTUALIZA EL FILTRO RESPECTO A DATA -------------------
+  useEffect(() => {
+    setDataSelect(mostrarInformacion(isChecked, data));
+  }, [isChecked, data]);
 
+  //------------------- EJECUCION PARA OBTENER PROVINCIAS, CIRCUITOS Y DISTRITOS UNICOS -------------------
   useEffect(() => {
     const provinciasUnicas = data[corporacion]
       ? data[corporacion]
@@ -120,12 +118,14 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar }) =
                                   href="#"
                                   onClick={() => {
                                     corporacion === 'PRESIDENTE'
-                                      ? setDataSelect(
-                                          data[corporacion].filter((item) => item.corporacion === 'PRESIDENTE'),
-                                        )
+                                      ? setIsChecked({
+                                          [corporacion]: {
+                                            [el.provincia]: true,
+                                          },
+                                        })
                                       : null;
-                                    corporacion === 'PRESIDENTE' && toggleOpenProvincia(el.provincia);
-                                    corporacion === 'ALCALDE' ? toggleOpenProvincia(el.provincia) : null;
+                  
+                                    corporacion === 'ALCALDE' ? toggleOpenDistrito(el.provincia) : null;
                                     corporacion === 'DIPUTADO' ? toggleOpenCircuito(el.provincia) : null;
                                   }}
                                 >
@@ -149,7 +149,7 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar }) =
                                 </a>
                                 {/*ALCALDE*/}
 
-                                {openProvincia[el.provincia] &&
+                                {openDistrito[el.provincia] &&
                                   corporacion === 'ALCALDE' &&
                                   data[corporacion]
                                     .filter((item) => item.provincia === el.provincia)
@@ -162,15 +162,15 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar }) =
                                             <a
                                               className="flex items-center pl-3 py-3 pr-4 text-gray-50 bg-gray-600 hover:bg-blue-500 "
                                               href="#"
-                                              onClick={() => {
-                                                setDataSelect(
-                                                  data[corporacion].filter(
-                                                    (item) =>
-                                                      item.provincia === el.provincia && item.distrito === el2.distrito,
-                                                  ),
-                                                ),
-                                                  setMostrarNavbar;
-                                              }}
+                                              onClick={() =>
+                                                setIsChecked({
+                                                  [corporacion]: {
+                                                    [el.provincia]: {
+                                                      [el2.distrito]: true,
+                                                    },
+                                                  },
+                                                })
+                                              }
                                             >
                                               <span>{el2.distrito}</span>
                                             </a>
@@ -192,15 +192,15 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar }) =
                                             <a
                                               className="flex items-center pl-3 py-3 pr-4 text-gray-50 bg-gray-700 hover:bg-blue-500 "
                                               href="#"
-                                              onClick={() => {
-                                                setDataSelect(
-                                                  data[corporacion].filter(
-                                                    (item) =>
-                                                      item.provincia === el.provincia && item.circuito === el3.circuito,
-                                                  ),
-                                                ),
-                                                  setMostrarNavbar(false);
-                                              }}
+                                              onClick={() =>
+                                                setIsChecked({
+                                                  [corporacion]: {
+                                                    [el.provincia]: {
+                                                      [el3.circuito]: true,
+                                                    },
+                                                  },
+                                                })
+                                              }
                                             >
                                               <span>CIRCUITO {el3.circuito}</span>
                                             </a>
@@ -228,6 +228,6 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar }) =
 
 NavbarOnly.propTypes = {
   mostrarNavbar: PropTypes.bool.isRequired,
-  setMostrarNavbar: PropTypes.func.isRequired,
   setDataSelect: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
 };

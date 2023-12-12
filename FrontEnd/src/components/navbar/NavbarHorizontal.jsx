@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types';
 import logoMedcom from '../../assets/logoMedcom.svg';
-import { useData } from '../../context';
 export const NavbarHorizontal = ({
   mostrarNavbar,
   setMostrarNavbar,
   rol,
   graficoSeleccionado,
   setGraficoSeleccionado,
+  listaGraficos,
 }) => {
-  const { listaGraficos } = useData();
 
   return (
     <>
@@ -81,4 +80,5 @@ NavbarHorizontal.propTypes = {
   graficoSeleccionado: PropTypes.string.isRequired,
   setGraficoSeleccionado: PropTypes.func.isRequired,
   rol: PropTypes.string.isRequired,
+  listaGraficos: PropTypes.object.isRequired,
 };

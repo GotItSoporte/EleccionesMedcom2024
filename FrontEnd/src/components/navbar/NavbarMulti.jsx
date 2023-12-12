@@ -1,18 +1,21 @@
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import fetchReadData from '../../apis/ReadData';
 import { Button } from '../../components';
+import { useFunctions } from '../../context';
+import PropTypes from 'prop-types';
 import iconResetData from '../../assets/icons/resetData.svg';
 
-export const NavbarMulti = ({ setDataSelect, mostrarNavbar }) => {
+export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data }) => {
   const [nameCorporacion] = useState(['PRESIDENTE', 'ALCALDE', 'DIPUTADO']);
   const [open, setOpen] = useState({});
   const [openProvincia, setOpenProvincia] = useState({});
+  const [openDistrito, setOpenDistrito] = useState({});
   const [openCircuito, setOpenCircuito] = useState({});
-  const [data, setData] = useState({});
   const [corporacion, setCorporacion] = useState({});
   const [isChecked, setIsChecked] = useState({});
 
+  const { mostrarInformacion } = useFunctions();
+
+  //------------------- CONDICIONALES PARA LOS DESPLEGABLES -------------------
   const toggleOpen = (el) => {
     setOpen({
       ...open,
@@ -20,10 +23,12 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar }) => {
     });
   };
 
-  const toggleOpenProvincia = (el) => {
-    setOpenProvincia({
-      ...openProvincia,
-      [el]: !openProvincia[el],
+
+
+  const toggleOpenDistrito = (el) => {
+    setOpenDistrito({
+      ...openDistrito,
+      [el]: !openDistrito[el],
     });
   };
 
@@ -34,23 +39,15 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar }) => {
     });
   };
 
+  //------------------- OBJETO CONTENEDOR PARA EVITAR DATOS REPETIDOS -------------------
   const miObjeto = {};
 
+  //------------------- ACTUALIZA EL FILTRO RESPECTO A DATA -------------------
   useEffect(() => {
-    const fetchMultipleData = async () => {
-      const newData = {};
-      for (const corporacion in open) {
-        if (open[corporacion]) {
-          const apiData = await fetchReadData(corporacion);
-          newData[corporacion] = apiData;
-        }
-      }
-      setData(newData);
-    };
-    fetchMultipleData();
-  }, [open]);
+    setDataSelect(mostrarInformacion(isChecked, data));
+  }, [isChecked, data]);
 
-  // Tu código actual para obtener provincias únicas y asignar true a cada una
+  //------------------- EJECUCION PARA OBTENER PROVINCIAS, CIRCUITOS Y DISTRITOS UNICOS -------------------
   useEffect(() => {
     const provinciasUnicas = data[corporacion]
       ? data[corporacion]
@@ -64,6 +61,8 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar }) => {
       miObjeto[provincia][corporacion] = {};
     });
   }, [corporacion, data]);
+
+  console.log({isChecked})
 
   return (
     <>
@@ -116,15 +115,12 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar }) => {
                                 {idx === 0 && (
                                   <div
                                     className={`flex items-center justify-end rounded mb-1  text-white opacity-80 cursor-pointer hover:opacity-100`}
-                                    onClick={() => {
-                                      setDataSelect((prevState) =>
-                                        prevState.filter((item) => !(item.corporacion === corporacion)),
-                                      ),
-                                        setIsChecked({
-                                          ...isChecked,
-                                          [corporacion]: {},
-                                        });
-                                    }}
+                                    onClick={() =>
+                                      setIsChecked({
+                                        ...isChecked,
+                                        [corporacion]: {},
+                                      })
+                                    }
                                   >
                                     <Button type="Principal" name="" icon={iconResetData} rute="#" />
                                   </div>
@@ -140,13 +136,18 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar }) => {
                                     className={`flex w-full`}
                                     href="#"
                                     onClick={() => {
-                                      corporacion === 'PRESIDENTE'
-                                        ? setDataSelect(
-                                            data[corporacion].filter((item) => item.corporacion === 'PRESIDENTE'),
-                                          )
-                                        : null;
-                                      corporacion === 'PRESIDENTE' && toggleOpenProvincia(el.provincia);
-                                      corporacion === 'ALCALDE' ? toggleOpenProvincia(el.provincia) : null;
+                                      corporacion === 'PRESIDENTE' &&
+                                      setIsChecked((prevState) => ({
+                                        ...prevState,
+                                        [corporacion]: {
+                                          ...prevState?.[corporacion],
+                                          [el.provincia]: 
+                                            !prevState?.[corporacion]?.[el.provincia]
+                                        
+                                        },
+                                      }));
+                                      
+                                      corporacion === 'ALCALDE' ? toggleOpenDistrito(el.provincia) : null;
                                       corporacion === 'DIPUTADO' ? toggleOpenCircuito(el.provincia) : null;
                                     }}
                                   >
@@ -165,13 +166,22 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar }) => {
                                         </svg>
                                       </span>
                                     ) : (
-                                      <></>
+                                      <span className="inline-block ml-auto">
+                                      <input
+                                      type="checkbox"
+                                      id={corporacion}
+                                      name={corporacion}
+                                      checked={
+                                        isChecked[corporacion]?.[el.provincia] || false
+                                      }
+                                      onChange={() => {}}
+                                    /></span>
                                     )}
                                   </a>
                                 </div>
 
                                 {/*------------------- ABRIR DISTRITOS DE ALCALDE -------------------*/}
-                                {openProvincia[el.provincia] &&
+                                {openDistrito[el.provincia] &&
                                   corporacion === 'ALCALDE' &&
                                   data[corporacion]
                                     .filter((item) => item.provincia === el.provincia)
@@ -184,7 +194,7 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar }) => {
                                             <a
                                               className="flex items-center pl-3 py-3 pr-4 text-gray-50 bg-gray-600 hover:bg-blue-500 cursor-pointer "
                                               href="#"
-                                              onClick={() => {
+                                              onClick={() =>
                                                 setIsChecked((prevState) => ({
                                                   ...prevState,
                                                   [corporacion]: {
@@ -195,26 +205,8 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar }) => {
                                                         !prevState?.[corporacion]?.[el.provincia]?.[el2.distrito],
                                                     },
                                                   },
-                                                })),
-                                                  isChecked[corporacion]?.[el.provincia]?.[el2.distrito]
-                                                    ? setDataSelect((prevState) =>
-                                                        prevState.filter(
-                                                          (item) =>
-                                                            !(
-                                                              item.provincia === el.provincia &&
-                                                              item.distrito === el2.distrito
-                                                            ),
-                                                        ),
-                                                      )
-                                                    : setDataSelect((prevState) => [
-                                                        ...prevState,
-                                                        ...data[corporacion].filter(
-                                                          (item) =>
-                                                            item.provincia === el.provincia &&
-                                                            item.distrito === el2.distrito,
-                                                        ),
-                                                      ]);
-                                              }}
+                                                }))
+                                              }
                                             >
                                               <span>{el2.distrito}</span>
                                               <span className="inline-block ml-auto">
@@ -247,7 +239,7 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar }) => {
                                             <a
                                               className="flex items-center pl-3 py-3 pr-4 text-gray-50 bg-gray-700 hover:bg-blue-500 "
                                               href="#"
-                                              onClick={() => {
+                                              onClick={() =>
                                                 setIsChecked((prevState) => ({
                                                   ...prevState,
                                                   [corporacion]: {
@@ -258,26 +250,8 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar }) => {
                                                         !prevState?.[corporacion]?.[el.provincia]?.[el3.circuito],
                                                     },
                                                   },
-                                                })),
-                                                  isChecked[corporacion]?.[el.provincia]?.[el3.circuito]
-                                                    ? setDataSelect((prevState) =>
-                                                        prevState.filter(
-                                                          (item) =>
-                                                            !(
-                                                              item.provincia === el.provincia &&
-                                                              item.circuito === el3.circuito
-                                                            ),
-                                                        ),
-                                                      )
-                                                    : setDataSelect((prevState) => [
-                                                        ...prevState,
-                                                        ...data[corporacion].filter(
-                                                          (item) =>
-                                                            item.provincia === el.provincia &&
-                                                            item.circuito === el3.circuito,
-                                                        ),
-                                                      ]);
-                                              }}
+                                                }))
+                                              }
                                             >
                                               <span>CIRCUITO {el3.circuito}</span>
                                               <span className="inline-block ml-auto">
@@ -317,4 +291,5 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar }) => {
 NavbarMulti.propTypes = {
   mostrarNavbar: PropTypes.bool.isRequired,
   setDataSelect: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
 };

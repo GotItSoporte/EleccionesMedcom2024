@@ -5,7 +5,7 @@ const { dbConfig } = require('../config/config')
 
 router.get("/PRESIDENTE", async function (req, res) {
     try {
-      const result = await dbConfig("SELECT * FROM VOTO2024.PRESIDENTE");
+      const result = await dbConfig("SELECT * FROM VOTO2024.PRESIDENTE_GOTIT");
       res.json(result);
 
     } catch (error) {
@@ -16,7 +16,7 @@ router.get("/PRESIDENTE", async function (req, res) {
 
 router.get("/ALCALDE", async function (req, res) {
   try {
-    const result = await dbConfig("SELECT * FROM VOTO2024.ALCALDE");
+    const result = await dbConfig("SELECT * FROM VOTO2024.ALCALDE_GOTIT");
     res.json(result);
 
   } catch (error) {
@@ -27,7 +27,7 @@ router.get("/ALCALDE", async function (req, res) {
 
 router.get("/DIPUTADO", async function (req, res) {
   try {
-    const result = await dbConfig("SELECT * FROM VOTO2024.DIPUTADO");
+    const result = await dbConfig("SELECT * FROM VOTO2024.DIPUTADO_GOTIT");
     res.json(result);
 
   } catch (error) {

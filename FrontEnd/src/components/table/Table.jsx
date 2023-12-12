@@ -70,7 +70,7 @@ export const Table = ({ data }) => {
                       <td className="px-1 py-2 lg:px-6 lg:py-4 text-center">{data.circuito}</td>
                     ) : null}
 
-                    <td className="px-1 py-2 lg:px-6 lg:py-4 text-center">FALTA</td>
+                    <td className="px-1 py-2 lg:px-6 lg:py-4 text-center">{data.corporacion}</td>
                   </tr>
                 );
               })

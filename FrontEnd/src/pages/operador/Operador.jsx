@@ -21,7 +21,7 @@ export const Operador = ({
       />
       <div className={`float-left w-0 ${mostrarNavbar ? 'lg:w-auto' : 'lg:w-0'}`}>
         <Navbar
-          type="navbarMulti"
+          type="navbarOnly"
           mostrarNavbar={mostrarNavbar}
           setMostrarNavbar={setMostrarNavbar}
           setDataSelect={setDataSelect}

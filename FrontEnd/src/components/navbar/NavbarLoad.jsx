@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { NavbarOnly } from './NavbarOnly';
 import { NavbarHorizontal } from './NavbarHorizontal';
 import { NavbarMulti } from './NavbarMulti';
+import { useData } from '../../context';
 
 export const NavbarLoad = ({
   type,
@@ -12,6 +13,8 @@ export const NavbarLoad = ({
   setGraficoSeleccionado,
   setDataSelect,
 }) => {
+  const { data, listaGraficos } = useData();
+
   if (type === 'navbarHorizontal')
     return (
       <NavbarHorizontal
@@ -21,16 +24,27 @@ export const NavbarLoad = ({
         rol={rol}
         graficoSeleccionado={graficoSeleccionado}
         setGraficoSeleccionado={setGraficoSeleccionado}
+        listaGraficos={listaGraficos}
       />
     );
   if (type === 'navbarOnly')
     return (
-      <NavbarOnly setDataSelect={setDataSelect} mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} />
+      <NavbarOnly
+        setDataSelect={setDataSelect}
+        mostrarNavbar={mostrarNavbar}
+        setMostrarNavbar={setMostrarNavbar}
+        data={data}
+      />
     );
 
   if (type === 'navbarMulti')
     return (
-      <NavbarMulti setDataSelect={setDataSelect} mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} />
+      <NavbarMulti
+        setDataSelect={setDataSelect}
+        mostrarNavbar={mostrarNavbar}
+        setMostrarNavbar={setMostrarNavbar}
+        data={data}
+      />
     );
 };
 

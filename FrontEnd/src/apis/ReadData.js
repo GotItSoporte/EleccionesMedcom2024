@@ -4,8 +4,8 @@ async function fetchReadData(selectTable) {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error fetching API data:', error);
-    return error;
+    console.error('Error fetching API data:', error, selectTable);
+    return [];
   }
 }
 
