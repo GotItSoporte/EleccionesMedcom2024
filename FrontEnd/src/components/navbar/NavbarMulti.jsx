@@ -7,7 +7,7 @@ import iconResetData from '../../assets/icons/resetData.svg';
 export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data }) => {
   const [nameCorporacion] = useState(['PRESIDENTE', 'ALCALDE', 'DIPUTADO']);
   const [open, setOpen] = useState({});
-  const [openProvincia, setOpenProvincia] = useState({});
+
   const [openDistrito, setOpenDistrito] = useState({});
   const [openCircuito, setOpenCircuito] = useState({});
   const [corporacion, setCorporacion] = useState({});
@@ -23,8 +23,6 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data }) => {
     });
   };
 
-
-
   const toggleOpenDistrito = (el) => {
     setOpenDistrito({
       ...openDistrito,
@@ -38,7 +36,7 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data }) => {
       [el]: !openCircuito[el],
     });
   };
-
+  console.log({ isChecked });
   //------------------- OBJETO CONTENEDOR PARA EVITAR DATOS REPETIDOS -------------------
   const miObjeto = {};
 
@@ -62,7 +60,7 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data }) => {
     });
   }, [corporacion, data]);
 
-  console.log({isChecked})
+  console.log({ isChecked });
 
   return (
     <>
@@ -80,14 +78,13 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data }) => {
                 {nameCorporacion.map((corporacion, idx) => {
                   return (
                     <li key={idx}>
-                      <div className="flex items-center hover:bg-blue-500 rounded pl-3 py-3 pr-4 text-white  ">
-                        <a
-                          className="flex w-full"
-                          href="#"
-                          onClick={() => {
-                            toggleOpen(corporacion), setCorporacion(corporacion);
-                          }}
-                        >
+                      <div
+                        className="flex items-center hover:bg-blue-500 rounded pl-3 py-3 pr-4 text-white cursor-pointer"
+                        onClick={() => {
+                          toggleOpen(corporacion), setCorporacion(corporacion);
+                        }}
+                      >
+                        <a className="flex w-full" href="#">
                           <span>
                             <label>{corporacion}</label>
                           </span>
@@ -131,26 +128,21 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data }) => {
                                   className={`flex items-center hover:bg-blue-500 rounded pl-3 py-3 pr-4 cursor-pointer text-white ${
                                     corporacion === 'PRESIDENTE' ? 'bg-gray-600' : 'bg-gray-800'
                                   }`}
-                                >
-                                  <a
-                                    className={`flex w-full`}
-                                    href="#"
-                                    onClick={() => {
-                                      corporacion === 'PRESIDENTE' &&
+                                  onClick={() => {
+                                    corporacion === 'PRESIDENTE' &&
                                       setIsChecked((prevState) => ({
                                         ...prevState,
                                         [corporacion]: {
                                           ...prevState?.[corporacion],
-                                          [el.provincia]: 
-                                            !prevState?.[corporacion]?.[el.provincia]
-                                        
+                                          [el.provincia]: !prevState?.[corporacion]?.[el.provincia],
                                         },
                                       }));
-                                      
-                                      corporacion === 'ALCALDE' ? toggleOpenDistrito(el.provincia) : null;
-                                      corporacion === 'DIPUTADO' ? toggleOpenCircuito(el.provincia) : null;
-                                    }}
-                                  >
+
+                                    corporacion === 'ALCALDE' ? toggleOpenDistrito(el.provincia) : null;
+                                    corporacion === 'DIPUTADO' ? toggleOpenCircuito(el.provincia) : null;
+                                  }}
+                                >
+                                  <a className={`flex w-full`} href="#">
                                     <span>{el.provincia}</span>
                                     {corporacion !== 'PRESIDENTE' ? (
                                       <span className="inline-block ml-auto mt-2">
@@ -167,15 +159,14 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data }) => {
                                       </span>
                                     ) : (
                                       <span className="inline-block ml-auto">
-                                      <input
-                                      type="checkbox"
-                                      id={corporacion}
-                                      name={corporacion}
-                                      checked={
-                                        isChecked[corporacion]?.[el.provincia] || false
-                                      }
-                                      onChange={() => {}}
-                                    /></span>
+                                        <input
+                                          type="checkbox"
+                                          id={corporacion}
+                                          name={corporacion}
+                                          checked={isChecked[corporacion]?.[el.provincia] || false}
+                                          onChange={() => {}}
+                                        />
+                                      </span>
                                     )}
                                   </a>
                                 </div>

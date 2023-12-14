@@ -8,7 +8,6 @@ export const NavbarHorizontal = ({
   setGraficoSeleccionado,
   listaGraficos,
 }) => {
-
   return (
     <>
       <div className=" ">

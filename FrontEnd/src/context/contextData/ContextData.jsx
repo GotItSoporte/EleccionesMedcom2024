@@ -12,7 +12,7 @@ export function useData() {
 export function DataProvider({ children }) {
   //------------------- GRAFICOS EXISTENTES -------------------
   const listaGraficos = {
-    Operador: ['Ticker', 'Fullscreen', 'Wall'],
+    Operador: ['Ticker', 'FullScreen', 'Wall'],
     Presentador: ['Wall', 'RA'],
   };
 

@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 export const NavbarOnly = ({ setDataSelect, mostrarNavbar, data }) => {
   const [nameCorporacion] = useState(['PRESIDENTE', 'ALCALDE', 'DIPUTADO']);
   const [open, setOpen] = useState({});
-  const [openProvincia, setOpenProvincia] = useState({});
   const [openDistrito, setOpenDistrito] = useState({});
   const [openCircuito, setOpenCircuito] = useState({});
   const [corporacion, setCorporacion] = useState({});
@@ -19,8 +18,6 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, data }) => {
       [el]: !open[el],
     });
   };
-
-
 
   const toggleOpenDistrito = (el) => {
     setOpenDistrito({
@@ -36,8 +33,6 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, data }) => {
     });
   };
 
-  console.log({openProvincia})
-  console.log({openDistrito})
   //------------------- OBJETO CONTENEDOR PARA EVITAR DATOS REPETIDOS -------------------
   const miObjeto = {};
 
@@ -124,7 +119,7 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, data }) => {
                                           },
                                         })
                                       : null;
-                  
+
                                     corporacion === 'ALCALDE' ? toggleOpenDistrito(el.provincia) : null;
                                     corporacion === 'DIPUTADO' ? toggleOpenCircuito(el.provincia) : null;
                                   }}

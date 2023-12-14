@@ -27,12 +27,14 @@ function mostrarInformacion(distritosTrue, datos) {
   }
   // Ordenar el array resultante primero por corporacion, luego por provincias y secundario por distritos o circuitos
   const datosOrdenados = datosFiltradosTotales.sort((a, b) => {
-    /*if (a.corporacion !== b.corporacion) {
-        return a.corporacion.localeCompare(b.corporacion);
-      }*/
+    const ordenDeseado = ['PRESIDENTE', 'ALCALDE', 'DIPUTADO'];
+
+    if (a.corporacion !== b.corporacion) {
+      return ordenDeseado.indexOf(a.corporacion) - ordenDeseado.indexOf(b.corporacion);
+    }
     if (a.provincia === b.provincia) {
       // Comparar distritos para ALCALDE o circuitos para DIPUTADO
-      console.log('entro');
+
       return (a.distrito || a.circuito).localeCompare(b.distrito || b.circuito);
     }
     return a.provincia.localeCompare(b.provincia);
