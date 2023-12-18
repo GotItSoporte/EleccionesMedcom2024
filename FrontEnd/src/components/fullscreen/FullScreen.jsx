@@ -11,8 +11,12 @@ export const FullScreen = ({ mostrarNavbar, setMostrarNavbar, dataSelect, setDat
           setMostrarNavbar={setMostrarNavbar}
           setDataSelect={setDataSelect}
           rol="Operador"
+          activePresentador={false}
+
+          //NO APLICA
           graficoSeleccionado={''}
           setGraficoSeleccionado={() => {}}
+          
         />
       </div>
       {children}

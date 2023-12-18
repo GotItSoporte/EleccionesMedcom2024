@@ -36,7 +36,7 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data }) => {
       [el]: !openCircuito[el],
     });
   };
-  console.log({ isChecked });
+
   //------------------- OBJETO CONTENEDOR PARA EVITAR DATOS REPETIDOS -------------------
   const miObjeto = {};
 
@@ -59,9 +59,7 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data }) => {
       miObjeto[provincia][corporacion] = {};
     });
   }, [corporacion, data]);
-
   console.log({ isChecked });
-
   return (
     <>
       <div className={`block navbar-menu relative  ${mostrarNavbar ? 'z-50' : ''}  `}>
@@ -127,6 +125,14 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data }) => {
                                 <div
                                   className={`flex items-center hover:bg-blue-500 rounded pl-3 py-3 pr-4 cursor-pointer text-white ${
                                     corporacion === 'PRESIDENTE' ? 'bg-gray-600' : 'bg-gray-800'
+                                  } ${
+                                    corporacion !== 'PRESIDENTE' ?
+                                      isChecked?.[corporacion]?.[el.provincia] && Object.values(isChecked[corporacion][el.provincia]).includes(true) ?
+                                        'bg-green-700' : ''
+                                      : corporacion === 'PRESIDENTE' ?
+                                        isChecked?.[corporacion]?.[el.provincia] ? 
+                                          'bg-green-600' : ''
+                                      : ''
                                   }`}
                                   onClick={() => {
                                     corporacion === 'PRESIDENTE' &&
@@ -183,7 +189,11 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data }) => {
                                         return (
                                           <div key={idx2}>
                                             <a
-                                              className="flex items-center pl-3 py-3 pr-4 text-gray-50 bg-gray-600 hover:bg-blue-500 cursor-pointer "
+                                              className={`flex items-center pl-3 py-3 pr-4 text-gray-50 bg-gray-600 hover:bg-blue-500 cursor-pointer ${
+                                                isChecked[corporacion]?.[el.provincia]?.[el2.distrito]
+                                                  ? 'bg-green-600'
+                                                  : ''
+                                              }`}
                                               href="#"
                                               onClick={() =>
                                                 setIsChecked((prevState) => ({
@@ -228,7 +238,11 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data }) => {
                                         return (
                                           <div key={idx3}>
                                             <a
-                                              className="flex items-center pl-3 py-3 pr-4 text-gray-50 bg-gray-700 hover:bg-blue-500 "
+                                              className={`flex items-center pl-3 py-3 pr-4 text-gray-50 bg-gray-700 hover:bg-blue-500 ${
+                                                isChecked[corporacion]?.[el.provincia]?.[el3.circuito]
+                                                  ? 'bg-green-600'
+                                                  : ''
+                                              } `}
                                               href="#"
                                               onClick={() =>
                                                 setIsChecked((prevState) => ({

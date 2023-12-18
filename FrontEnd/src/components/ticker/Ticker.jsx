@@ -11,8 +11,11 @@ export const Ticker = ({ mostrarNavbar, setMostrarNavbar, dataSelect, setDataSel
           setMostrarNavbar={setMostrarNavbar}
           setDataSelect={setDataSelect}
           rol="Operador"
+          
+          //NO APLICA
           graficoSeleccionado={''}
           setGraficoSeleccionado={() => {}}
+          activePresentador={false}
         />
       </div>
       {children}

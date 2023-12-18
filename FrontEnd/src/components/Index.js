@@ -8,4 +8,4 @@ export { Form } from './form';
 
 //------------------- TICKER -------------------
 export { Ticker } from './ticker';
-export {FullScreen} from './fullscreen'
+export { FullScreen } from './fullscreen';

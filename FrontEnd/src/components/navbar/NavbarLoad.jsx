@@ -12,6 +12,7 @@ export const NavbarLoad = ({
   graficoSeleccionado,
   setGraficoSeleccionado,
   setDataSelect,
+  activePresentador
 }) => {
   const { data, listaGraficos } = useData();
 
@@ -28,21 +29,14 @@ export const NavbarLoad = ({
       />
     );
   if (type === 'navbarOnly')
-    return (
-      <NavbarOnly
-        setDataSelect={setDataSelect}
-        mostrarNavbar={mostrarNavbar}
-        setMostrarNavbar={setMostrarNavbar}
-        data={data}
-      />
-    );
+    return <NavbarOnly setDataSelect={setDataSelect} mostrarNavbar={mostrarNavbar} data={data}         setMostrarNavbar={setMostrarNavbar}
+    activePresentador={activePresentador} />;
 
   if (type === 'navbarMulti')
     return (
       <NavbarMulti
         setDataSelect={setDataSelect}
         mostrarNavbar={mostrarNavbar}
-        setMostrarNavbar={setMostrarNavbar}
         data={data}
       />
     );
@@ -56,4 +50,5 @@ NavbarLoad.propTypes = {
   graficoSeleccionado: PropTypes.string.isRequired,
   setGraficoSeleccionado: PropTypes.func.isRequired,
   setDataSelect: PropTypes.func.isRequired,
+  activePresentador: PropTypes.bool.isRequired,
 };

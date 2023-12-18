@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 export const Table = ({ data }) => {
   return (
     <>
-      <div className="relative overflow-x-auto     max-h-[70vh] overflow-y-auto   md:px-5   ">
+      <div className="relative overflow-x-auto     max-h-[70vh] overflow-y-auto      ">
         <table className="  text-xs lg:text-sm text-center  text-gray-300 ">
           <thead className="text-xs  uppercase  bg-blue-500 text-white  ">
             {data.length > 0 ? (

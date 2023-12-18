@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useFunctions } from '../../context';
 import PropTypes from 'prop-types';
 
-export const NavbarOnly = ({ setDataSelect, mostrarNavbar, data }) => {
+export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar,activePresentador, data }) => {
   const [nameCorporacion] = useState(['PRESIDENTE', 'ALCALDE', 'DIPUTADO']);
   const [open, setOpen] = useState({});
   const [openDistrito, setOpenDistrito] = useState({});
@@ -41,6 +41,7 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, data }) => {
     setDataSelect(mostrarInformacion(isChecked, data));
   }, [isChecked, data]);
 
+  
   //------------------- EJECUCION PARA OBTENER PROVINCIAS, CIRCUITOS Y DISTRITOS UNICOS -------------------
   useEffect(() => {
     const provinciasUnicas = data[corporacion]
@@ -56,6 +57,7 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, data }) => {
     });
   }, [corporacion, data]);
 
+
   return (
     <>
       <div className={`block navbar-menu relative  ${mostrarNavbar ? 'z-50' : ''}  `}>
@@ -67,14 +69,14 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, data }) => {
           <div className={`${mostrarNavbar ? '' : 'w-0 -translate-x-56 '}`}>
             <div className="px-4 pb-6">
               <h3 className="mb-2 text-xs uppercase text-gray-500 font-medium">SELECCIONA UNA SOLA OPCION</h3>
-
+              {!activePresentador &&
               <a
                 className="flex items-center pl-3 py-3 pr-4 text-sm text-gray-50 bg-red-900 hover:bg-blue-500 rounded mb-5 w-fit mx-auto"
                 href="#"
                 onClick={() => setDataSelect([])}
               >
                 <span>ULTIMO XML GENERADO</span>
-              </a>
+              </a>}
 
               <ul className="mb-8 text-sm font-medium">
                 {nameCorporacion.map((corporacion, idx) => {
@@ -109,15 +111,21 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, data }) => {
                                 <a
                                   className={`flex items-center pl-3 py-3 pr-4 text-gray-50 ${
                                     corporacion === 'PRESIDENTE' ? 'bg-gray-600' : 'bg-gray-800'
-                                  }  hover:bg-blue-500 `}
+                                  }  hover:bg-blue-500 ${
+                                    isChecked[corporacion]?.[el.provincia]
+                                      ? corporacion === 'PRESIDENTE'
+                                        ? 'bg-green-600'
+                                        : 'bg-green-700'
+                                      : ''
+                                  }  `}
                                   href="#"
                                   onClick={() => {
                                     corporacion === 'PRESIDENTE'
-                                      ? setIsChecked({
+                                      ? (setIsChecked({
                                           [corporacion]: {
                                             [el.provincia]: true,
                                           },
-                                        })
+                                        }),activePresentador && setMostrarNavbar(false))
                                       : null;
 
                                     corporacion === 'ALCALDE' ? toggleOpenDistrito(el.provincia) : null;
@@ -155,16 +163,20 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, data }) => {
                                         return (
                                           <div key={idx2}>
                                             <a
-                                              className="flex items-center pl-3 py-3 pr-4 text-gray-50 bg-gray-600 hover:bg-blue-500 "
+                                              className={`flex items-center pl-3 py-3 pr-4 text-gray-50 bg-gray-600 hover:bg-blue-500 ${
+                                                isChecked[corporacion]?.[el.provincia]?.[el2.distrito]
+                                                  ? 'bg-green-600'
+                                                  : ''
+                                              } `}
                                               href="#"
-                                              onClick={() =>
+                                              onClick={() =>{
                                                 setIsChecked({
                                                   [corporacion]: {
                                                     [el.provincia]: {
                                                       [el2.distrito]: true,
                                                     },
                                                   },
-                                                })
+                                                }),activePresentador && setMostrarNavbar(false)}
                                               }
                                             >
                                               <span>{el2.distrito}</span>
@@ -185,16 +197,20 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, data }) => {
                                         return (
                                           <div key={idx3}>
                                             <a
-                                              className="flex items-center pl-3 py-3 pr-4 text-gray-50 bg-gray-700 hover:bg-blue-500 "
+                                              className={`flex items-center pl-3 py-3 pr-4 text-gray-50 bg-gray-700 hover:bg-blue-500 ${
+                                                isChecked[corporacion]?.[el.provincia]?.[el3.circuito]
+                                                  ? 'bg-green-600'
+                                                  : ''
+                                              } `}
                                               href="#"
-                                              onClick={() =>
+                                              onClick={() =>{
                                                 setIsChecked({
                                                   [corporacion]: {
                                                     [el.provincia]: {
                                                       [el3.circuito]: true,
                                                     },
                                                   },
-                                                })
+                                                }),activePresentador && setMostrarNavbar(false)}
                                               }
                                             >
                                               <span>CIRCUITO {el3.circuito}</span>
@@ -223,6 +239,8 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, data }) => {
 
 NavbarOnly.propTypes = {
   mostrarNavbar: PropTypes.bool.isRequired,
+  setMostrarNavbar: PropTypes.func.isRequired,
+  activePresentador: PropTypes.bool.isRequired,
   setDataSelect: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
 };
