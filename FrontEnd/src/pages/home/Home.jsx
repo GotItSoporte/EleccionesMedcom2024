@@ -3,67 +3,82 @@ import { Card, Verificacion } from '../../components';
 import Logo from '../../assets/logoMedcom.svg';
 import Operador from '../../assets/profiles/Operador.jpg';
 import Presentador from '../../assets/profiles/Presentador.jpg';
-import Programador from '../../assets/profiles/Programador.jpg';
+//import Programador from '../../assets/profiles/Programador.jpg';
 import CentroComercial from '../../assets/profiles/CentroCOmercial.jpg';
 
 export const Home = ({ mostrarVerificacion, setMostrarVerificacion, setRol, rol }) => {
   return (
     <>
-      <div className="w-screen h-32 fixed bg-gray-900  flex justify-center items-center ">
-        <img className="h-12" src={Logo} alt="" />
+      <div className="area">
+        <ul className="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
-
-      <div className=" h-screen flex items-center ">
-        <div className="w-screen lg:w-1/2 h-2/3 mx-auto p-5 md:p-10 items-center grid grid-cols-4 md:grid-cols-6 gap-4 ">
-          <div
-            className="col-span-2 md:col-span-2"
-            onClick={() => {
-              setMostrarVerificacion(true), setRol('operador');
-            }}
-          >
-            <Card name="OPERADOR" image={Operador} />
+      <img className="h-12 m-5 lg:fixed opacity-70" src={Logo} alt="" />
+      <div className="flex items-center lg:h-screen">
+                <div className="gap-16 items-center py-8 px-2 mx-auto max-w-screen-xl  lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+            <div className="font-light  sm:text-lg text-gray-400">
+            
+            <h2 className="mb-4 md:mb-4 text-2xl md:text-4xl tracking-tight font-extrabold text-white text-center lg:text-left">
+              Elecciones presidenciales Telemetro Reporta 2024
+            </h2>
+            <p className="mb-4 md:mb-4 text-center lg:text-left">
+              Aplicativo web de control de datos para crear gráficos de noticias.{' '}
+            </p>
           </div>
-          <div
-            className="col-span-2 md:col-span-2"
-            onClick={() => {
-              setMostrarVerificacion(true), setRol('presentador');
-            }}
-          >
-            <Card name="PRESENTADOR" image={Presentador} />
+          <div className="grid grid-cols-2 gap-2 md:gap-4">
+            <div
+              className=""
+              onClick={() => {
+                setMostrarVerificacion(true), setRol('Operador');
+              }}
+            >
+              <Card name="Operador" image={Operador} />
+            </div>
+            <div
+              className=""
+              onClick={() => {
+                setMostrarVerificacion(true), setRol('Presentador');
+              }}
+            >
+              <Card name="Presentador" image={Presentador} />
+            </div>
+            <div
+              className=""
+              onClick={() => {
+                setMostrarVerificacion(true), setRol('Follower');
+              }}
+            >
+              <Card name="Follower" image={Operador} />
+            </div>
+            <div
+              className=""
+              onClick={() => {
+                setMostrarVerificacion(true), setRol('Metromall');
+              }}
+            >
+              <Card name="Metromall" image={CentroComercial} />
+            </div>
+            
           </div>
-          <div
-            className="col-span-2 md:col-span-2"
-            onClick={() => {
-              setMostrarVerificacion(true), setRol('programador');
-            }}
-          >
-            <Card name="PROGRAMADOR" image={Programador} />
-          </div>
-          <div
-            className="col-span-2 md:col-start-2 md:col-span-2"
-            onClick={() => {
-              setMostrarVerificacion(true), setRol('operador');
-            }}
-          >
-            <Card name="METROMOL" image={CentroComercial} />
-          </div>
-          <div
-            className="col-start-2 col-span-2 md:col-start-4 md:col-span-2"
-            onClick={() => {
-              setMostrarVerificacion(true), setRol('operador');
-            }}
-          >
-            <Card name="OPERADOR" image={Operador} />
-          </div>
+          {mostrarVerificacion ? (
+            <div className="fixed inset-0 flex items-center justify-center">
+              <Verificacion setMostrarVerificacion={setMostrarVerificacion} rol={rol} />
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
-      {mostrarVerificacion ? (
-        <div className="fixed inset-0 flex items-center justify-center">
-          <Verificacion setMostrarVerificacion={setMostrarVerificacion} rol={rol} />
-        </div>
-      ) : (
-        <></>
-      )}
     </>
   );
 };

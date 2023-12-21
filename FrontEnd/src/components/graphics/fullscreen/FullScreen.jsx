@@ -1,7 +1,7 @@
-import { Navbar, Table } from '..';
+import { Navbar, Table } from '../../../components';
 import PropTypes from 'prop-types';
 
-export const FullScreen = ({ mostrarNavbar, setMostrarNavbar, dataSelect, setDataSelect, children }) => {
+export const FullScreen = ({ mostrarNavbar, rol,setMostrarNavbar, dataSelect, setDataSelect, children }) => {
   return (
     <>
       <div className={`float-left w-0 ${mostrarNavbar ? 'lg:w-auto' : 'lg:w-0'}`}>
@@ -10,13 +10,11 @@ export const FullScreen = ({ mostrarNavbar, setMostrarNavbar, dataSelect, setDat
           mostrarNavbar={mostrarNavbar}
           setMostrarNavbar={setMostrarNavbar}
           setDataSelect={setDataSelect}
-          rol="Operador"
+          rol={rol}
           activePresentador={false}
-
           //NO APLICA
           graficoSeleccionado={''}
           setGraficoSeleccionado={() => {}}
-          
         />
       </div>
       {children}
@@ -29,6 +27,7 @@ export const FullScreen = ({ mostrarNavbar, setMostrarNavbar, dataSelect, setDat
 };
 
 FullScreen.propTypes = {
+  rol: PropTypes.string.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,
   dataSelect: PropTypes.array.isRequired,

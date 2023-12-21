@@ -18,8 +18,11 @@ app.get("/", (req, res) => {
 });
 
 
-
+// Salen Datos  
 app.use("/ReadData", require("./routes/ReadData"));
+
+//LLegan Datos
+app.use("/SendInfoFollower", require("./routes/SendDataFollower"));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

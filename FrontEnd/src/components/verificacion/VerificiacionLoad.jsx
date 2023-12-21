@@ -9,17 +9,25 @@ export const VerificacionLoad = ({ setMostrarVerificacion, rol }) => {
   const navigate = useNavigate();
 
   const credentials = {
-    operador: {
+    Operador: {
       password: 'medcom1',
       route: '/Operador',
     },
-    presentador: {
+    Presentador: {
       password: 'medcom2',
       route: '/Presentador',
     },
-    programador: {
-      password: 'medcom3',
+    Programador: {
+      password: 'medcom5',
       route: '/Programador',
+    },
+    Follower: {
+      password: 'medcom3',
+      route: '/Follower',
+    },
+    Metromall: {
+      password: 'medcom4',
+      route: '/Metromall',
     },
   };
 
@@ -40,6 +48,7 @@ export const VerificacionLoad = ({ setMostrarVerificacion, rol }) => {
       nameValidacion={nameValidacion}
       setNameValidacion={setNameValidacion}
       Error={Error}
+      rol={ rol}
     />
   );
 };

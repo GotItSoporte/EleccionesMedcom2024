@@ -117,7 +117,7 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data }) => {
                                       })
                                     }
                                   >
-                                    <Button type="Principal" name="" icon={iconResetData} rute="#" />
+                                    <Button type="Principal" name="" icon={iconResetData} rute="#" color="bg-red" />
                                   </div>
                                 )}
                                 {/*------------------- FIN DE RESETEAR DATA CORPORACION -------------------*/}
@@ -126,13 +126,16 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data }) => {
                                   className={`flex items-center hover:bg-blue-500 rounded pl-3 py-3 pr-4 cursor-pointer text-white ${
                                     corporacion === 'PRESIDENTE' ? 'bg-gray-600' : 'bg-gray-800'
                                   } ${
-                                    corporacion !== 'PRESIDENTE' ?
-                                      isChecked?.[corporacion]?.[el.provincia] && Object.values(isChecked[corporacion][el.provincia]).includes(true) ?
-                                        'bg-green-700' : ''
-                                      : corporacion === 'PRESIDENTE' ?
-                                        isChecked?.[corporacion]?.[el.provincia] ? 
-                                          'bg-green-600' : ''
-                                      : ''
+                                    corporacion !== 'PRESIDENTE'
+                                      ? isChecked?.[corporacion]?.[el.provincia] &&
+                                        Object.values(isChecked[corporacion][el.provincia]).includes(true)
+                                        ? 'bg-green-700'
+                                        : ''
+                                      : corporacion === 'PRESIDENTE'
+                                        ? isChecked?.[corporacion]?.[el.provincia]
+                                          ? 'bg-green-600'
+                                          : ''
+                                        : ''
                                   }`}
                                   onClick={() => {
                                     corporacion === 'PRESIDENTE' &&

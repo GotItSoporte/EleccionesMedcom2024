@@ -1,3 +1,5 @@
+export * from './graphics'
+
 export { Card } from './card';
 export { Verificacion } from './verificacion';
 export { Navbar } from './navbar';
@@ -6,6 +8,5 @@ export { Button } from './button';
 export { Dropdown } from './dropdown';
 export { Form } from './form';
 
-//------------------- TICKER -------------------
-export { Ticker } from './ticker';
-export { FullScreen } from './fullscreen';
+
+
