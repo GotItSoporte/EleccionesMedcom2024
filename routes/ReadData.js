@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { dbConfig } = require('../config/config')
 
-
+//------------------- PRESIDENTE -------------------
 router.get("/PRESIDENTE", async function (req, res) {
     try {
       const result = await dbConfig("SELECT * FROM VOTO2024.PRESIDENTE_GOTIT");
@@ -14,6 +14,7 @@ router.get("/PRESIDENTE", async function (req, res) {
     }
 });
 
+//------------------- ALCALDE -------------------
 router.get("/ALCALDE", async function (req, res) {
   try {
     const result = await dbConfig("SELECT * FROM VOTO2024.ALCALDE_GOTIT");
@@ -25,6 +26,7 @@ router.get("/ALCALDE", async function (req, res) {
   }
 });
 
+//------------------- DIPUTADO -------------------
 router.get("/DIPUTADO", async function (req, res) {
   try {
     const result = await dbConfig("SELECT * FROM VOTO2024.DIPUTADO_GOTIT");

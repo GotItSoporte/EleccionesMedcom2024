@@ -1,7 +1,7 @@
-import { Navbar, Table } from '../../../components';
+import { Navbar, Table, FormatTickerXml } from '../../../components';
 import PropTypes from 'prop-types';
 
-export const Ticker = ({ mostrarNavbar,rol, setMostrarNavbar, dataSelect, setDataSelect, children }) => {
+export const Ticker = ({ mostrarNavbar, rol, setMostrarNavbar, dataSelect, setDataSelect, children }) => {
   return (
     <>
       <div className={`float-left w-0 ${mostrarNavbar ? 'lg:w-auto' : 'lg:w-0'}`}>
@@ -21,6 +21,7 @@ export const Ticker = ({ mostrarNavbar,rol, setMostrarNavbar, dataSelect, setDat
 
       <div className="w-auto px-2 overflow-x-auto ">
         <Table data={dataSelect} />
+        <FormatTickerXml data={dataSelect}/>
       </div>
     </>
   );

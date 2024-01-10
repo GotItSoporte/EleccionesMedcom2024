@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import iconCheck from '../../assets/icons/check.svg';
 import iconXmark from '../../assets/icons/xmark.svg';
 
-export const Verificacion = ({ setMostrarVerificacion, nameValidacion, setNameValidacion, checkValidacion, Error, rol }) => {
+export const Verificacion = ({
+  setMostrarVerificacion,
+  nameValidacion,
+  setNameValidacion,
+  checkValidacion,
+  Error,
+  rol,
+}) => {
   return (
     <>
       <form className="w-full max-w-lg bg-gray-900 p-20 rounded-xl border-2">
@@ -21,17 +28,14 @@ export const Verificacion = ({ setMostrarVerificacion, nameValidacion, setNameVa
             aria-label="Full name"
           />
         </div>
-        <div className='flex space-x-2'>
-        <button type="submit" onClick={(e) => checkValidacion(e)}>
-        <Button type="Principal" rute="" name="Si" icon={iconCheck} color="bg-green"/>
-        </button>
-        <button type="submit" data-modal-hide="popup-modal"  onClick={() => setMostrarVerificacion(false)}>
-        <Button type="Principal" rute="" name="No, cancelar" icon={iconXmark} color="bg-red"/>
-        </button>
+        <div className="flex space-x-2">
+          <button type="submit" onClick={(e) => checkValidacion(e)}>
+            <Button type="Principal" rute="" name="Si" icon={iconCheck} color="bg-green" />
+          </button>
+          <button type="submit" data-modal-hide="popup-modal" onClick={() => setMostrarVerificacion(false)}>
+            <Button type="Principal" rute="" name="No, cancelar" icon={iconXmark} color="bg-red" />
+          </button>
         </div>
-
-       
-
       </form>
     </>
   );

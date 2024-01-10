@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { Navbar, Ticker, FullScreen, Follower } from '../../components';
 export const Operador = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, setGraficoSeleccionado }) => {
-
   let rol = 'Operador';
 
   return (
@@ -42,8 +41,8 @@ export const Operador = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado,
         </FullScreen>
       </div>
 
-            {/*------------------- FOLLOWER -------------------*/}
-            <div className={`${graficoSeleccionado === 'Follower' ? 'block' : 'hidden'}`}>
+      {/*------------------- FOLLOWER -------------------*/}
+      <div className={`${graficoSeleccionado === 'Follower' ? 'block' : 'hidden'}`}>
         <Follower mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol={rol}>
           <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
             Operador -

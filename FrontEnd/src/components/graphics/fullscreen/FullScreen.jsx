@@ -1,7 +1,7 @@
-import { Navbar, Table } from '../../../components';
+import { Navbar, Table, FormatFullscreenXml } from '../../../components';
 import PropTypes from 'prop-types';
 
-export const FullScreen = ({ mostrarNavbar, rol,setMostrarNavbar, dataSelect, setDataSelect, children }) => {
+export const FullScreen = ({ mostrarNavbar, rol, setMostrarNavbar, dataSelect, setDataSelect, children }) => {
   return (
     <>
       <div className={`float-left w-0 ${mostrarNavbar ? 'lg:w-auto' : 'lg:w-0'}`}>
@@ -21,6 +21,10 @@ export const FullScreen = ({ mostrarNavbar, rol,setMostrarNavbar, dataSelect, se
 
       <div className="w-auto px-2 overflow-x-auto ">
         <Table data={dataSelect} />
+        <div className='w-fit mx-auto mt-2 p-1'>
+        <FormatFullscreenXml data={dataSelect}/>
+        </div>
+   
       </div>
     </>
   );

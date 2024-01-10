@@ -27,8 +27,6 @@ export const Follower = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado,
           </h1>
         </Follower>
       </section>
-
-
     </>
   );
 };

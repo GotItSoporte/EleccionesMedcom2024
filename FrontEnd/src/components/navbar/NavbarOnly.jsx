@@ -70,9 +70,9 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar, act
             <div className="px-4 pb-6">
               <h3 className="mb-2 text-xs uppercase text-gray-500 font-medium">SELECCIONA UNA SOLA OPCION</h3>
               {!activePresentador && (
-                <div className='flex items-center mx-auto w-fit p-1' onClick={() => setDataSelect([])}>
-                <Button type="Principal" name="ULTIMO XML GENERADO" icon={iconLastData} rute="#" color="bg-red"/>
-                </div>                         
+                <div className="flex items-center mx-auto w-fit p-1" onClick={() => setDataSelect([])}>
+                  <Button type="Principal" name="ULTIMO XML GENERADO" icon={iconLastData} rute="#" color="bg-red" />
+                </div>
               )}
 
               <ul className="mb-8 text-sm font-medium">

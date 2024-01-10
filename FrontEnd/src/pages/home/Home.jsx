@@ -25,9 +25,8 @@ export const Home = ({ mostrarVerificacion, setMostrarVerificacion, setRol, rol 
       </div>
       <img className="h-12 m-5 lg:fixed opacity-70" src={Logo} alt="" />
       <div className="flex items-center lg:h-screen">
-                <div className="gap-16 items-center py-8 px-2 mx-auto max-w-screen-xl  lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
-            <div className="font-light  sm:text-lg text-gray-400">
-            
+        <div className="gap-16 items-center py-8 px-2 mx-auto max-w-screen-xl  lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+          <div className="font-light  sm:text-lg text-gray-400">
             <h2 className="mb-4 md:mb-4 text-2xl md:text-4xl tracking-tight font-extrabold text-white text-center lg:text-left">
               Elecciones presidenciales Telemetro Reporta 2024
             </h2>
@@ -68,7 +67,6 @@ export const Home = ({ mostrarVerificacion, setMostrarVerificacion, setRol, rol 
             >
               <Card name="Metromall" image={CentroComercial} />
             </div>
-            
           </div>
           {mostrarVerificacion ? (
             <div className="fixed inset-0 flex items-center justify-center">

@@ -1,1 +1,1 @@
-export {FollowerLoad as Follower} from './FollowerLoad'
+export { FollowerLoad as Follower } from './FollowerLoad';

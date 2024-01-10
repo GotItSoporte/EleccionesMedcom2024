@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const Functions = require('../services/Functions')
+
 // Array para almacenar el historial de solicitudes
 let reivedData
 
+//------------------- ENVIA DATOS AL SERVIDOR -------------------
 router.post("/", async function (req, res) {
     try {
        reivedData = req.body;
@@ -16,6 +18,7 @@ router.post("/", async function (req, res) {
     }
 });
 
+//------------------- ENVIA DATOS DESDE EL SERVIDOR -------------------
 router.get("/", function (req, res) {
   try {
     

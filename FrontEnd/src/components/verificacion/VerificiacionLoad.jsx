@@ -48,7 +48,7 @@ export const VerificacionLoad = ({ setMostrarVerificacion, rol }) => {
       nameValidacion={nameValidacion}
       setNameValidacion={setNameValidacion}
       Error={Error}
-      rol={ rol}
+      rol={rol}
     />
   );
 };

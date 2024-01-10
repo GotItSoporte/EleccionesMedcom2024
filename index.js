@@ -18,11 +18,16 @@ app.get("/", (req, res) => {
 });
 
 
-// Salen Datos  
+//------------------- LECTURA DE DATOS (BASE DE DATOS) ------------------- 
 app.use("/ReadData", require("./routes/ReadData"));
 
-//LLegan Datos
+//------------------- DATOS XML -------------------
+app.use("/SendInfoXml", require("./routes/SendDataXml"));
+
+//------------------- DATOS FOLLOWER -------------------
 app.use("/SendInfoFollower", require("./routes/SendDataFollower"));
+
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
