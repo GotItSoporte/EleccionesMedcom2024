@@ -15,6 +15,7 @@ export const Operador = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado,
         //NO APLICA
         setDataSelect={() => {}}
         activePresentador={false}
+        setLastFile={() => {}}
       />
 
       {/*------------------- TICKER -------------------*/}

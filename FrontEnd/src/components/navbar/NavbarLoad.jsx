@@ -13,6 +13,7 @@ export const NavbarLoad = ({
   setGraficoSeleccionado,
   setDataSelect,
   activePresentador,
+  setLastFile
 }) => {
   const { data, listaGraficos } = useData();
 
@@ -35,6 +36,7 @@ export const NavbarLoad = ({
         mostrarNavbar={mostrarNavbar}
         data={data}
         setMostrarNavbar={setMostrarNavbar}
+        setLastFile={setLastFile}
         activePresentador={activePresentador}
       />
     );
@@ -51,5 +53,6 @@ NavbarLoad.propTypes = {
   graficoSeleccionado: PropTypes.string.isRequired,
   setGraficoSeleccionado: PropTypes.func.isRequired,
   setDataSelect: PropTypes.func.isRequired,
+  setLastFile: PropTypes.func.isRequired,
   activePresentador: PropTypes.bool.isRequired,
 };

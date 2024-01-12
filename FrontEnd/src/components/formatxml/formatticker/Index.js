@@ -1,1 +1,1 @@
-export {FormatTickerXmlLoad as FormatTickerXml} from './FormatTickerXmlLoad'
+export { FormatTickerXmlLoad as FormatTickerXml } from './FormatTickerXmlLoad';

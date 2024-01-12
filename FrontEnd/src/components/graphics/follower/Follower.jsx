@@ -11,7 +11,6 @@ export const Follower = ({
   children,
   postDataFollower,
 }) => {
-  console.log({ dataSelect });
   return (
     <>
       <div className={`float-left w-0 ${mostrarNavbar ? 'lg:w-auto' : 'lg:w-0'}`}>
@@ -25,6 +24,7 @@ export const Follower = ({
           //NO APLICA
           graficoSeleccionado={''}
           setGraficoSeleccionado={() => {}}
+          setLastFile={() => {}}
         />
       </div>
       {children}
@@ -38,7 +38,7 @@ export const Follower = ({
             postDataFollower();
           }}
         >
-          <Button type="Principal" rute="" name="Cargar datos" icon={iconSend} color="bg-green" />
+          <Button type="Alert" rute="" name="Cargar datos" icon={iconSend} color="bg-green" />
         </div>
       </div>
     </>

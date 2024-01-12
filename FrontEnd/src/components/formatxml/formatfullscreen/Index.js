@@ -1,1 +1,1 @@
-export {FormatFullscreenXmlLoad as FormatFullscreenXml} from './FormatFullscreenXmlLoad'
+export { FormatFullscreenXmlLoad as FormatFullscreenXml } from './FormatFullscreenXmlLoad';

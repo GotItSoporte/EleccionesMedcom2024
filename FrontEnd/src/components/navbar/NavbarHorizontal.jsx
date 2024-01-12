@@ -20,7 +20,7 @@ export const NavbarHorizontal = ({
               <div className="flex justify-start  cursor-pointer ">
                 {mostrarNavbar ? (
                   <svg
-                    className="h-12 w-12 text-white"
+                    className="h-12 w-12 text-red"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -35,7 +35,7 @@ export const NavbarHorizontal = ({
                   </svg>
                 ) : (
                   <svg
-                    className={`h-12 w-12 text-white `}
+                    className={`h-12 w-12 text-green `}
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -51,7 +51,7 @@ export const NavbarHorizontal = ({
                 )}
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-2">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2">
               {listaGraficos[rol].map((listado, index) => {
                 return (
                   <a

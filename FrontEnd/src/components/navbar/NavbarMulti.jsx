@@ -59,7 +59,7 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data }) => {
       miObjeto[provincia][corporacion] = {};
     });
   }, [corporacion, data]);
-  console.log({ isChecked });
+
   return (
     <>
       <div className={`block navbar-menu relative  ${mostrarNavbar ? 'z-50' : ''}  `}>

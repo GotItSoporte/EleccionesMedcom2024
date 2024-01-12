@@ -5,7 +5,6 @@ const Functions = require('../services/Functions')
 //------------------- ENVIA DATOS DE LA ESTRUCTURA XML DE TICKER AL SERVIDOR -------------------
 router.post("/TICKER", async function (req, res) {
     try {
-        console.log(req.body.postData)
       res.json(await Functions.CreateXml(req.body.postData,'Voto24_ticker'))
       
      
@@ -17,7 +16,6 @@ router.post("/TICKER", async function (req, res) {
 
 router.post("/FULLSCREEN", async function (req, res) {
     try {
-        console.log(req.body.postData)
       res.json(await Functions.CreateXml(req.body.postData,'Voto24_fullscreen'))
       
      

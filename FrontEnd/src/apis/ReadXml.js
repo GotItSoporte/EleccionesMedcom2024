@@ -1,6 +1,6 @@
-async function fectchApiData(SelectTable) {
+async function fectchReadXml(SelectTable) {
   try {
-    const response = await fetch(`http://192.168.0.19:5000/ReadDataSql/${SelectTable}`);
+    const response = await fetch(`http://192.168.0.19:5000/ReadInfoXml/${SelectTable}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -9,4 +9,4 @@ async function fectchApiData(SelectTable) {
   }
 }
 
-export default fectchApiData;
+export default fectchReadXml;

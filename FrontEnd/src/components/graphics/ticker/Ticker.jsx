@@ -15,13 +15,14 @@ export const Ticker = ({ mostrarNavbar, rol, setMostrarNavbar, dataSelect, setDa
           graficoSeleccionado={''}
           setGraficoSeleccionado={() => {}}
           activePresentador={false}
+          setLastFile={() => {}}
         />
       </div>
       {children}
 
       <div className="w-auto px-2 overflow-x-auto ">
         <Table data={dataSelect} />
-        <FormatTickerXml data={dataSelect}/>
+        <FormatTickerXml data={dataSelect} />
       </div>
     </>
   );

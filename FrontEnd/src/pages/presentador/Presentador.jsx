@@ -12,6 +12,7 @@ export const Presentador = ({ mostrarNavbar, setMostrarNavbar, graficoSelecciona
         rol="Presentador"
         graficoSeleccionado={graficoSeleccionado}
         setGraficoSeleccionado={setGraficoSeleccionado}
+        setLastFile={() => {}}
       />
       <div className={`float-left w-0 ${mostrarNavbar ? 'lg:w-auto' : 'lg:w-0'}`}>
         <Navbar type="navbarOnly" mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} />

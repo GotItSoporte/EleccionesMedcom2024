@@ -4,7 +4,7 @@ import { Button } from '../../components';
 import iconLastData from '../../assets/icons/lastxml.svg';
 import PropTypes from 'prop-types';
 
-export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar, activePresentador, data }) => {
+export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar, activePresentador, data, setLastFile }) => {
   const [nameCorporacion] = useState(['PRESIDENTE', 'ALCALDE', 'DIPUTADO']);
   const [open, setOpen] = useState({});
   const [openDistrito, setOpenDistrito] = useState({});
@@ -58,6 +58,8 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar, act
     });
   }, [corporacion, data]);
 
+  //------------------- TRAE LA DATA DEL ULTIMO XML GENERADO -------------------
+
   return (
     <>
       <div className={`block navbar-menu relative  ${mostrarNavbar ? 'z-50' : ''}  `}>
@@ -70,7 +72,7 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar, act
             <div className="px-4 pb-6">
               <h3 className="mb-2 text-xs uppercase text-gray-500 font-medium">SELECCIONA UNA SOLA OPCION</h3>
               {!activePresentador && (
-                <div className="flex items-center mx-auto w-fit p-1" onClick={() => setDataSelect([])}>
+                <div className="flex items-center mx-auto w-fit p-1" onClick={() => setLastFile(true)}>
                   <Button type="Principal" name="ULTIMO XML GENERADO" icon={iconLastData} rute="#" color="bg-red" />
                 </div>
               )}
@@ -242,5 +244,6 @@ NavbarOnly.propTypes = {
   setMostrarNavbar: PropTypes.func.isRequired,
   activePresentador: PropTypes.bool.isRequired,
   setDataSelect: PropTypes.func.isRequired,
+  setLastFile: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
 };

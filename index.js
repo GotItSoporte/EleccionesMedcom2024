@@ -21,8 +21,10 @@ app.get("/", (req, res) => {
 //------------------- LECTURA DE DATOS (BASE DE DATOS) ------------------- 
 app.use("/ReadData", require("./routes/ReadData"));
 
-//------------------- DATOS XML -------------------
+//------------------- ENVIAR DATOS XML -------------------
 app.use("/SendInfoXml", require("./routes/SendDataXml"));
+//------------------- LEER DATOS XML -------------------
+app.use("/ReadInfoXml", require("./routes/ReadDataXml"));
 
 //------------------- DATOS FOLLOWER -------------------
 app.use("/SendInfoFollower", require("./routes/SendDataFollower"));

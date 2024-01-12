@@ -25,22 +25,25 @@ export function DataProvider({ children }) {
   const [data, setData] = useState({});
 
   async function getData() {
-    const newData = {};
-    for (const corporacion in listCorporacion) {
-      if (listCorporacion[corporacion]) {
-        const apiData = await fetchReadData(corporacion);
-        newData[corporacion] = apiData;
-      }
-    }
-    setData(newData);
+    const newData = await Promise.all(
+      Object.keys(listCorporacion).map(async (corporacion) => {
+        if (listCorporacion[corporacion]) {
+          const apiData = await fetchReadData(corporacion);
+          return { [corporacion]: apiData };
+        }
+        return null;
+      }),
+    );
+
+    setData((prevData) => Object.assign({}, prevData, ...newData.filter(Boolean)));
+
+    // Programar la próxima actualización después de recibir los datos
+    setTimeout(getData, 1000);
   }
+  console.log({ data });
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      getData();
-    }, 60000);
-    getData();
-    return () => clearInterval(interval);
+    getData(); // Iniciar la primera actualización
   }, []);
 
   //------------------- CONTEXTOS-------------------

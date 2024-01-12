@@ -42,9 +42,13 @@ function mostrarInformacion(distritosTrue, datos) {
   return datosOrdenados;
 }
 
+//------------------- FUNCION PARA DELAY DE TIEMPO -------------------
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export function FunctionsProvider({ children }) {
   const value = {
     mostrarInformacion,
+    delay,
   };
 
   return <ContextFunctions.Provider value={value}>{children}</ContextFunctions.Provider>;
