@@ -12,7 +12,7 @@ export function useData() {
 export function DataProvider({ children }) {
   //------------------- GRAFICOS EXISTENTES -------------------
   const listaGraficos = {
-    Operador: ['Ticker', 'FullScreen', 'Wall', 'Follower'],
+    Operador: ['Ticker', 'FullScreen', 'Follower', 'Plurinominal'],
     Presentador: ['Wall', 'RA'],
   };
 
@@ -38,9 +38,8 @@ export function DataProvider({ children }) {
     setData((prevData) => Object.assign({}, prevData, ...newData.filter(Boolean)));
 
     // Programar la próxima actualización después de recibir los datos
-    setTimeout(getData, 1000);
+    setTimeout(getData, 10000);
   }
-  console.log({ data });
 
   useEffect(() => {
     getData(); // Iniciar la primera actualización

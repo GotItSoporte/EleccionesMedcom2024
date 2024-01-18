@@ -4,7 +4,15 @@ import { Button } from '../../components';
 import iconLastData from '../../assets/icons/lastxml.svg';
 import PropTypes from 'prop-types';
 
-export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar, activePresentador, data, setLastFile }) => {
+export const NavbarOnly = ({
+  setDataSelect,
+  mostrarNavbar,
+  setMostrarNavbar,
+  rol,
+  activePresentador,
+  data,
+  setLastFile,
+}) => {
   const [nameCorporacion] = useState(['PRESIDENTE', 'ALCALDE', 'DIPUTADO']);
   const [open, setOpen] = useState({});
   const [openDistrito, setOpenDistrito] = useState({});
@@ -14,6 +22,7 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar, act
 
   const { mostrarInformacion } = useFunctions();
 
+  console.log({rol})
   const toggleOpen = (el) => {
     setOpen({
       ...open,
@@ -65,13 +74,13 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar, act
       <div className={`block navbar-menu relative  ${mostrarNavbar ? 'z-50' : ''}  `}>
         <nav
           className={` lg:static h-[calc(100vh-8.4vh)] top-0 left-0 bottom-0 flex flex-col w-72 lg:w-80 sm:max-w-xs  pb-8 pt-5    ${
-            mostrarNavbar ? 'overflow-y-auto bg-gray-900 ' : '  overflow-hidden '
+            mostrarNavbar ? 'overflow-y-auto bg-gray-900 ' : '  overflow-hidden invisible '
           }`}
         >
           <div className={`${mostrarNavbar ? '' : 'w-0 -translate-x-56 '}`}>
             <div className="px-4 pb-6">
               <h3 className="mb-2 text-xs uppercase text-gray-500 font-medium">SELECCIONA UNA SOLA OPCION</h3>
-              {!activePresentador && (
+              {rol==='Operador' && (
                 <div className="flex items-center mx-auto w-fit p-1" onClick={() => setLastFile(true)}>
                   <Button type="Principal" name="ULTIMO XML GENERADO" icon={iconLastData} rute="#" color="bg-red" />
                 </div>
@@ -242,6 +251,7 @@ export const NavbarOnly = ({ setDataSelect, mostrarNavbar, setMostrarNavbar, act
 NavbarOnly.propTypes = {
   mostrarNavbar: PropTypes.bool.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,
+  rol: PropTypes.string.isRequired,
   activePresentador: PropTypes.bool.isRequired,
   setDataSelect: PropTypes.func.isRequired,
   setLastFile: PropTypes.func.isRequired,

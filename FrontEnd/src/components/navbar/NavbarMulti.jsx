@@ -4,14 +4,13 @@ import { useFunctions } from '../../context';
 import PropTypes from 'prop-types';
 import iconResetData from '../../assets/icons/resetData.svg';
 
-export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data }) => {
+export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data, isChecked, setIsChecked }) => {
   const [nameCorporacion] = useState(['PRESIDENTE', 'ALCALDE', 'DIPUTADO']);
   const [open, setOpen] = useState({});
 
   const [openDistrito, setOpenDistrito] = useState({});
   const [openCircuito, setOpenCircuito] = useState({});
   const [corporacion, setCorporacion] = useState({});
-  const [isChecked, setIsChecked] = useState({});
 
   const { mostrarInformacion } = useFunctions();
 
@@ -65,7 +64,7 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data }) => {
       <div className={`block navbar-menu relative  ${mostrarNavbar ? 'z-50' : ''}  `}>
         <nav
           className={` lg:static h-[calc(100vh-8.4vh)] top-0 left-0 bottom-0 flex flex-col w-72 lg:w-80 sm:max-w-xs  pb-8 pt-5    ${
-            mostrarNavbar ? 'overflow-y-auto bg-gray-900 ' : '  overflow-hidden '
+            mostrarNavbar ? 'overflow-y-auto bg-gray-900 ' : '  overflow-hidden invisible '
           }`}
         >
           <div className={`${mostrarNavbar ? '' : 'w-0 -translate-x-56 '}`}>
@@ -300,4 +299,6 @@ NavbarMulti.propTypes = {
   mostrarNavbar: PropTypes.bool.isRequired,
   setDataSelect: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
+  isChecked: PropTypes.object.isRequired,
+  setIsChecked: PropTypes.func.isRequired,
 };

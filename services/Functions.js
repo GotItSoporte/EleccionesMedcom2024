@@ -2,6 +2,9 @@
 var fs = require('fs');
 var convert = require('xml-js');
 const xml2js = require("xml2js");
+const udp = require('dgram');
+const client = udp.createSocket('udp4');
+const Variables= require('./Variables')
 
 //------------------- FORMATEAR DATA PARA UNREAL ENGINE -------------------
 function ChangeFormat (data){
@@ -14,7 +17,7 @@ function ChangeFormat (data){
 //------------------- CREAR XML EN LAS RUTAS ESPECIFICADAS -------------------
 async function CreateXml (data,rute) {
     return new Promise((resolve, reject) => {
-        fs.writeFile(`W:/VOTO 24 (medcom)/Elecciones Generales Mayo 5/archivosXML/${rute}.xml`, data, function (err) { 
+        fs.writeFile(`${Variables.RUTE_XML}${rute}.xml`, data, function (err) { 
             if (err) {
             reject(err);
             } else {
@@ -28,7 +31,7 @@ async function CreateXml (data,rute) {
 function ReadXml(rute) {
   return new Promise((resolve, reject) => {
     fs.readFile(
-      `W:/VOTO 24 (medcom)/Elecciones Generales Mayo 5/archivosXML/${rute}.xml`,
+      `${Variables.RUTE_XML}${rute}.xml`,
       'utf8',
       (err, xmlData) => {
         if (err) {
@@ -68,8 +71,25 @@ function ReadXml(rute) {
   });
 }
 
+
+
+//-------------------  ENVIAR DATOS A WALL A TRAVEZ DE SOCKETS -------------------
+
+
+function SendUDPMessages(msg, ip) {
+  const data= JSON.stringify(msg)
+  client.send(data, 7124, ip, function (error) {
+    if (error) {
+      console.log(error);
+      client.close();
+    } 
+  });
+}
+
+
 module.exports = {
     ChangeFormat,
     CreateXml,
-    ReadXml
+    ReadXml,
+    SendUDPMessages
 }

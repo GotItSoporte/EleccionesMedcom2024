@@ -14,6 +14,9 @@ export const Follower = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado,
         //NO APLICA
         setDataSelect={() => {}}
         activePresentador={false}
+        setLastFile={() => {}}
+        isChecked={{}}
+        setIsChecked={() => {}}
       />
 
       {/*------------------- FOLLOWER -------------------*/}

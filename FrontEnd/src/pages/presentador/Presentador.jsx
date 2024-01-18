@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import { Navbar } from '../../components';
+import { Navbar, Wall } from '../../components';
 export const Presentador = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, setGraficoSeleccionado }) => {
-  console.log({ graficoSeleccionado });
+  let rol = 'Presentador';
 
   return (
     <>
@@ -9,20 +9,27 @@ export const Presentador = ({ mostrarNavbar, setMostrarNavbar, graficoSelecciona
         type="navbarHorizontal"
         mostrarNavbar={mostrarNavbar}
         setMostrarNavbar={setMostrarNavbar}
-        rol="Presentador"
+        rol={rol}
         graficoSeleccionado={graficoSeleccionado}
         setGraficoSeleccionado={setGraficoSeleccionado}
+        //NO APLICA
+        setDataSelect={() => {}}
+        activePresentador={false}
         setLastFile={() => {}}
+        isChecked={{}}
+        setIsChecked={() => {}}
       />
-      <div className={`float-left w-0 ${mostrarNavbar ? 'lg:w-auto' : 'lg:w-0'}`}>
-        <Navbar type="navbarOnly" mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} />
+      
+      <div className={`${graficoSeleccionado === 'Wall' ? 'block' : 'hidden'}`}>
+        <Wall mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol={rol}>
+          <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
+            Presentador -
+            <span className="text-2xl md:text-5xl font-semibold md:font-extrabold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-gray-800 ml-2">
+              {graficoSeleccionado}
+            </span>
+          </h1>
+        </Wall>
       </div>
-      <h1 className="mb-4 text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white my-5">
-        Presentador -{' '}
-        <span className="text-2xl md:text-5xl font-semibold md:font-extrabold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-gray-800 ml-2">
-          {graficoSeleccionado}
-        </span>
-      </h1>
     </>
   );
 };

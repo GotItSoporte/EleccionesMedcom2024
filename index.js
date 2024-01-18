@@ -26,8 +26,12 @@ app.use("/SendInfoXml", require("./routes/SendDataXml"));
 //------------------- LEER DATOS XML -------------------
 app.use("/ReadInfoXml", require("./routes/ReadDataXml"));
 
+//------------------- DATOS WALL -------------------
+app.use("/SendInfoWall", require("./routes/SendDataWall"));
+
 //------------------- DATOS FOLLOWER -------------------
 app.use("/SendInfoFollower", require("./routes/SendDataFollower"));
+
 
 
 

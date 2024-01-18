@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types';
-import { Navbar, Ticker, FullScreen, Follower } from '../../components';
+import { Navbar, Ticker, FullScreen, Follower, Plurinominal } from '../../components';
+
 export const Operador = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, setGraficoSeleccionado }) => {
   let rol = 'Operador';
+
+  console.log({ graficoSeleccionado });
 
   return (
     <>
@@ -16,6 +19,8 @@ export const Operador = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado,
         setDataSelect={() => {}}
         activePresentador={false}
         setLastFile={() => {}}
+        isChecked={{}}
+        setIsChecked={() => {}}
       />
 
       {/*------------------- TICKER -------------------*/}
@@ -52,6 +57,18 @@ export const Operador = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado,
             </span>
           </h1>
         </Follower>
+      </div>
+
+      {/*------------------- FOLLOWER -------------------*/}
+      <div className={`${graficoSeleccionado === 'Plurinominal' ? 'block' : 'hidden'}`}>
+        <Plurinominal>
+          <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
+            Operador -
+            <span className="text-2xl md:text-5xl font-semibold md:font-extrabold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-gray-800 ml-2">
+              {graficoSeleccionado}
+            </span>
+          </h1>
+        </Plurinominal>
       </div>
     </>
   );

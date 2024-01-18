@@ -8,3 +8,4 @@ export { Table } from './table';
 export { Button } from './button';
 export { Dropdown } from './dropdown';
 export { Form } from './form';
+export { InlineLayout } from './inlinelayout';

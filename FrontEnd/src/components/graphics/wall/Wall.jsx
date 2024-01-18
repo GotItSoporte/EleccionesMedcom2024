@@ -2,15 +2,7 @@ import { Navbar, Table, Button } from '../../../components';
 import iconSend from '../../../assets/icons/send.svg';
 import PropTypes from 'prop-types';
 
-export const Follower = ({
-  mostrarNavbar,
-  rol,
-  setMostrarNavbar,
-  dataSelect,
-  setDataSelect,
-  children,
-  postDataFollower,
-}) => {
+export const Wall = ({ mostrarNavbar, rol, setMostrarNavbar, setDataSelect, dataSelect, postDataWall, children }) => {
   return (
     <>
       <div className={`float-left w-0 ${mostrarNavbar ? 'lg:w-auto' : 'lg:w-0'}`}>
@@ -20,7 +12,7 @@ export const Follower = ({
           setMostrarNavbar={setMostrarNavbar}
           setDataSelect={setDataSelect}
           rol={rol}
-          activePresentador={false}
+          activePresentador={true}
           //NO APLICA
           graficoSeleccionado={''}
           setGraficoSeleccionado={() => {}}
@@ -31,10 +23,9 @@ export const Follower = ({
       </div>
       {children}
 
-      <div className="w-auto px-2 overflow-x-auto ">
+      <div className="w-auto px-2 overflow-x-auto">
         <Table data={dataSelect} type="" />
-
-        <div className="w-fit mx-auto mt-2 p-1" onClick={() => postDataFollower()}>
+        <div className="w-fit mx-auto mt-2 p-1" onClick={() => postDataWall()}>
           <Button type="Alert" rute="" name="Cargar datos" icon={iconSend} color="bg-green" />
         </div>
       </div>
@@ -42,12 +33,13 @@ export const Follower = ({
   );
 };
 
-Follower.propTypes = {
+Wall.propTypes = {
   rol: PropTypes.string.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,
   dataSelect: PropTypes.array.isRequired,
   setDataSelect: PropTypes.func.isRequired,
+  postDataWall:PropTypes.func.isRequired,
   children: PropTypes.node,
-  postDataFollower: PropTypes.func.isRequired,
+  
 };

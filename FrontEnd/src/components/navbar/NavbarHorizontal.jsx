@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import logoMedcom from '../../assets/logoMedcom.svg';
+
 export const NavbarHorizontal = ({
   mostrarNavbar,
   setMostrarNavbar,
@@ -51,20 +52,38 @@ export const NavbarHorizontal = ({
                 )}
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2">
-              {listaGraficos[rol].map((listado, index) => {
-                return (
-                  <a
-                    key={index}
-                    className={` w-32 text-center cursor-pointer  hover:text-red text-white border-2 ${
-                      graficoSeleccionado === listado ? 'border-red-500' : ''
-                    } rounded-md`}
-                    onClick={() => setGraficoSeleccionado(listado)}
-                  >
-                    {listado}
-                  </a>
-                );
-              })}
+            <div className="flex md:items-center">
+              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2">
+                {listaGraficos[rol].map((listado, index) => {
+                  return (
+                    <a
+                      key={index}
+                      className={` w-32 h-fit  text-center cursor-pointer  hover:text-red text-white border-2 ${
+                        graficoSeleccionado === listado ? 'border-red-500' : ''
+                      } rounded-md`}
+                      onClick={() => setGraficoSeleccionado(listado)}
+                    >
+                      {listado}
+                    </a>
+                  );
+                })}
+              </div>
+              <a href="/">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-12 h-12 ml-1 md:ml-5  invert cursor-pointer"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+                  />
+                </svg>
+              </a>
             </div>
           </div>
         </nav>

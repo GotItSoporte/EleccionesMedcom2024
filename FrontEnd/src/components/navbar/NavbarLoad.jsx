@@ -13,7 +13,9 @@ export const NavbarLoad = ({
   setGraficoSeleccionado,
   setDataSelect,
   activePresentador,
-  setLastFile
+  setLastFile,
+  isChecked,
+  setIsChecked,
 }) => {
   const { data, listaGraficos } = useData();
 
@@ -35,6 +37,7 @@ export const NavbarLoad = ({
         setDataSelect={setDataSelect}
         mostrarNavbar={mostrarNavbar}
         data={data}
+        rol={rol}
         setMostrarNavbar={setMostrarNavbar}
         setLastFile={setLastFile}
         activePresentador={activePresentador}
@@ -42,7 +45,15 @@ export const NavbarLoad = ({
     );
 
   if (type === 'navbarMulti')
-    return <NavbarMulti setDataSelect={setDataSelect} mostrarNavbar={mostrarNavbar} data={data} />;
+    return (
+      <NavbarMulti
+        setDataSelect={setDataSelect}
+        mostrarNavbar={mostrarNavbar}
+        data={data}
+        isChecked={isChecked}
+        setIsChecked={setIsChecked}
+      />
+    );
 };
 
 NavbarLoad.propTypes = {
@@ -53,6 +64,8 @@ NavbarLoad.propTypes = {
   graficoSeleccionado: PropTypes.string.isRequired,
   setGraficoSeleccionado: PropTypes.func.isRequired,
   setDataSelect: PropTypes.func.isRequired,
+  isChecked: PropTypes.object.isRequired,
+  setIsChecked: PropTypes.func.isRequired,
   setLastFile: PropTypes.func.isRequired,
   activePresentador: PropTypes.bool.isRequired,
 };

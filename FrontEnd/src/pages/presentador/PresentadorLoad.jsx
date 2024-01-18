@@ -3,7 +3,7 @@ import { Presentador } from './Presentador';
 
 export const PresentadorLoad = () => {
   const [mostrarNavbar, setMostrarNavbar] = useState(true);
-  const [graficoSeleccionado, setGraficoSeleccionado] = useState('');
+  const [graficoSeleccionado, setGraficoSeleccionado] = useState('Wall');
 
   return (
     <Presentador
