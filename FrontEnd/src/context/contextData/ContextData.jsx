@@ -38,18 +38,26 @@ export function DataProvider({ children }) {
     setData((prevData) => Object.assign({}, prevData, ...newData.filter(Boolean)));
 
     // Programar la próxima actualización después de recibir los datos
-    setTimeout(getData, 10000);
+    setTimeout(getData, 1000);
   }
+
+  //------------------- CHECK GANADOR PLURINOMINAL-------------------
+  const [checkPlurinominal, setCheckPlurinominal] = useState(false);
+  const [delayCheckPlurinominal, setDelayCheckPlurinominal] = useState(false);
 
   useEffect(() => {
     getData(); // Iniciar la primera actualización
-  }, []);
+  }, [checkPlurinominal]);
 
   //------------------- CONTEXTOS-------------------
   const value = {
     listaGraficos,
     data,
     setData,
+    checkPlurinominal,
+    setCheckPlurinominal,
+    delayCheckPlurinominal,
+    setDelayCheckPlurinominal,
   };
 
   return <ContextData.Provider value={value}>{children}</ContextData.Provider>;

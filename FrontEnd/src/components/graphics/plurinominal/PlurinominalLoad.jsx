@@ -4,49 +4,40 @@ import { useEffect, useState } from 'react';
 
 export const PlurinominalLoad = ({ ...props }) => {
   const { data } = useData();
-  const [apiData, setApiData] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [dataFilter, setDataFilter] = useState([]);
   const [openMenu, setOpenMenu] = useState(false);
   const [circuitoSelect, setCircuitoSelect] = useState('');
 
-  const handleChange = (event) => {
-    const inputValue = event.target.value.toLowerCase();
-    setSearchTerm(inputValue);
-    // Filtrar datos por nombre
-    const filteredData = data?.DIPUTADO?.filter((item) => item.nombre.toLowerCase().includes(inputValue)) || [];
-    setDataFilter(filteredData);
-  };
+  const { checkPlurinominal, setCheckPlurinominal, delayCheckPlurinominal, setDelayCheckPlurinominal } = useData(false);
 
-  const handleChangeCircuito = (inputValue) => {
-    const isSameCircuito = circuitoSelect === inputValue;
+  const handleChange = () => {
+    // Filtrar datos por nombre y circuito
+    const filteredData = data?.DIPUTADO?.filter((item) => item.plurinominal === '1').filter((item) => {
+      const isSameCircuito = circuitoSelect.trim() === '' || item.circuito === circuitoSelect;
+      const isSameNombre = searchTerm.trim() === '' || item.nombre.includes(searchTerm);
+      return isSameCircuito && isSameNombre;
+    });
 
-    // Filtrar datos por circuito
-    const filteredData = isSameCircuito
-      ? data?.DIPUTADO || []
-      : data?.DIPUTADO?.filter((item) => item.circuito === inputValue) || [];
-    const filteredCircuitoSelect = isSameCircuito ? '' : inputValue;
-
-    setDataFilter(filteredData);
-    setCircuitoSelect(filteredCircuitoSelect);
+    setDataFilter(filteredData ? filteredData : []);
   };
 
   useEffect(() => {
-    if (apiData === null && Object.keys(data).length !== 0) {
-      setApiData(data);
-      setDataFilter(data?.DIPUTADO || []);
-    } else if (circuitoSelect.trim() === '' && searchTerm.trim() === '') {
-      setDataFilter(data?.DIPUTADO || []);
+    handleChange(); // Simular evento con valor actual de searchTerm
+    if (checkPlurinominal === true && delayCheckPlurinominal == true) {
+      setCheckPlurinominal(false);
+      setDelayCheckPlurinominal(false);
     }
-  }, [apiData, data, circuitoSelect, searchTerm]);
+  }, [data, searchTerm, circuitoSelect]);
 
   return (
     <Plurinominal
       data={data}
       dataFilter={dataFilter}
       searchTerm={searchTerm}
-      handleChange={handleChange}
-      handleChangeCircuito={handleChangeCircuito}
+      circuitoSelect={circuitoSelect}
+      setSearchTerm={setSearchTerm}
+      setCircuitoSelect={setCircuitoSelect}
       openMenu={openMenu}
       setOpenMenu={setOpenMenu}
       {...props}

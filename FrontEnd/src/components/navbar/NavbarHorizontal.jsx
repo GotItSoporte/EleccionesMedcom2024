@@ -18,7 +18,12 @@ export const NavbarHorizontal = ({
               <div className="order-last md:ml-5">
                 <img className="w-auto h-10  " src={logoMedcom} alt="" />
               </div>
-              <div className="flex justify-start  cursor-pointer ">
+
+              <div
+                className={`flex justify-start  ${
+                  graficoSeleccionado === 'Plurinominal' ? 'hidden' : ''
+                } cursor-pointer `}
+              >
                 {mostrarNavbar ? (
                   <svg
                     className="h-12 w-12 text-red"
@@ -53,7 +58,7 @@ export const NavbarHorizontal = ({
               </div>
             </div>
             <div className="flex md:items-center">
-              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2">
+              <div className={`grid grid-cols-1  md:grid-cols-3  lg:grid-cols-4 gap-2`}>
                 {listaGraficos[rol].map((listado, index) => {
                   return (
                     <a

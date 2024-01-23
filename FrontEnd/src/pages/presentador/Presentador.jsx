@@ -19,7 +19,7 @@ export const Presentador = ({ mostrarNavbar, setMostrarNavbar, graficoSelecciona
         isChecked={{}}
         setIsChecked={() => {}}
       />
-      
+
       <div className={`${graficoSeleccionado === 'Wall' ? 'block' : 'hidden'}`}>
         <Wall mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol={rol}>
           <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">

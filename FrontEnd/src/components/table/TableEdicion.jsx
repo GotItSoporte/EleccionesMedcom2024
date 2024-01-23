@@ -1,11 +1,19 @@
 import PropTypes from 'prop-types';
 
-export const TableEdicion = ({ data }) => {
+export const TableEdicion = ({ data, HandleDataSubmit, checkPlurinominal }) => {
   return (
-    <>
-      <div className="relative overflow-x-auto     max-h-[70vh] overflow-y-auto      ">
-        <table className="  text-xs lg:text-sm text-center  text-gray-300 ">
-          <thead className="text-xs  uppercase  bg-blue-500 text-white  ">
+    <div>
+      <div
+        className={`relative overflow-x-auto     max-h-[70vh]  ${
+          checkPlurinominal ? 'overflow-hidden ' : 'overflow-y-auto'
+        }   `}
+      >
+        <table
+          className={`relative  text-xs lg:text-sm text-center  text-gray-300   ${
+            checkPlurinominal ? 'opacity-40 cursor-default' : ''
+          } `}
+        >
+          <thead className="text-xs  uppercase  bg-blue-500 text-white   ">
             {data.length > 0 ? (
               <tr className="">
                 <th
@@ -51,13 +59,14 @@ export const TableEdicion = ({ data }) => {
               </tr>
             )}
           </thead>
+
           <tbody>
             {data.length > 0 ? (
               data.map((data, idx) => {
                 return (
                   <tr
                     key={idx}
-                    className="bg-gray-700 border-b border-gray-700 hover:bg-gray-600 font-light md:font-normal  whitespace-nowrap hover:text-white "
+                    className="bg-gray-700 border-b  border-gray-700 hover:bg-gray-600 font-light md:font-normal  whitespace-nowrap hover:text-white "
                   >
                     <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{data.nombre}</td>
                     <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{data.votos}</td>
@@ -72,22 +81,34 @@ export const TableEdicion = ({ data }) => {
                       {data.circuito || 'NO APLICA'}
                     </td>
                     <td
-                      className={`px-1 py-2 lg:px-6 lg:py-4 text-center ${
-                        data.circuito ? 'text-green-500' : 'text-red-500'
-                      } border border-gray-500  flex items-center justify-center `}
+                      className={`px-1 py-2 lg:px-6 lg:py-4 text-center  border border-gray-500  flex items-center justify-center `}
                     >
                       <input
-                        checked
-                        className="w-4 h-4 mr-2 md:mr-5 bg-red focus:ring-red-500 "
+                        checked={data.ganadorplurinominal === '1'}
+                        className={`w-4 h-4 mr-2 md:mr-5 cursor-pointer ${
+                          checkPlurinominal ? 'opacity-50 cursor-default' : ''
+                        } `}
                         id="inline-radio"
                         type="checkbox"
                         value=""
                         name="inline-radio-group"
-                        onChange={() => {}}
+                        onChange={() =>
+                          !checkPlurinominal &&
+                          HandleDataSubmit(data.ganadorplurinominal === '0' ? '1' : '0', data.nombre)
+                        }
                       />
-                      <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                        <span aria-hidden className="absolute inset-0 bg-green rounded-full"></span>
-                        <span className="relative">True</span>
+                      <span
+                        className={`relative inline-block px-3 py-1 font-semibold ${
+                          data.ganadorplurinominal === '1' ? 'text-green-900' : 'text-red-900'
+                        }  leading-tight`}
+                      >
+                        <span
+                          aria-hidden
+                          className={`absolute inset-0 ${
+                            data.ganadorplurinominal === '1' ? 'bg-green' : 'bg-red'
+                          }  rounded-full`}
+                        ></span>
+                        <span className="relative">{data.ganadorplurinominal === '1' ? 'Verdadero' : 'Falso'}</span>
                       </span>
                     </td>
                   </tr>
@@ -102,11 +123,16 @@ export const TableEdicion = ({ data }) => {
             )}
           </tbody>
         </table>
+        {checkPlurinominal && (
+          <div className="border-gray-300 h-20 w-20 animate-spin rounded-full border-8 border-t-blue-600  fixed  inset-[50%]" />
+        )}
       </div>
-    </>
+    </div>
   );
 };
 
 TableEdicion.propTypes = {
   data: PropTypes.array.isRequired,
+  HandleDataSubmit: PropTypes.func.isRequired,
+  checkPlurinominal: PropTypes.bool.isRequired,
 };

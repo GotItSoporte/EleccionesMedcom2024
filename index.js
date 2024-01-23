@@ -21,15 +21,18 @@ app.get("/", (req, res) => {
 //------------------- LECTURA DE DATOS (BASE DE DATOS) ------------------- 
 app.use("/ReadData", require("./routes/ReadData"));
 
+//------------------- LECTURA DE DATOS (BASE DE DATOS) ------------------- 
+app.use("/EditDataInTable", require("./routes/EditDataInOracle"));
+
 //------------------- ENVIAR DATOS XML -------------------
 app.use("/SendInfoXml", require("./routes/SendDataXml"));
 //------------------- LEER DATOS XML -------------------
 app.use("/ReadInfoXml", require("./routes/ReadDataXml"));
 
-//------------------- DATOS WALL -------------------
+//------------------- ENVIAR DATOS WALL -------------------
 app.use("/SendInfoWall", require("./routes/SendDataWall"));
 
-//------------------- DATOS FOLLOWER -------------------
+//------------------- ENVIAR DATOS FOLLOWER -------------------
 app.use("/SendInfoFollower", require("./routes/SendDataFollower"));
 
 

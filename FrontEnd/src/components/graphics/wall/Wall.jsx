@@ -1,8 +1,16 @@
-import { Navbar, Table, Button } from '../../../components';
-import iconSend from '../../../assets/icons/send.svg';
+import { Navbar, Table, InlineLayout, SequenceButton } from '../../../components';
 import PropTypes from 'prop-types';
 
-export const Wall = ({ mostrarNavbar, rol, setMostrarNavbar, setDataSelect, dataSelect, postDataWall, children }) => {
+export const Wall = ({
+  mostrarNavbar,
+  rol,
+  setMostrarNavbar,
+  setDataSelect,
+  selectOption,
+  setSelectOption,
+  dataGroupe,
+  children,
+}) => {
   return (
     <>
       <div className={`float-left w-0 ${mostrarNavbar ? 'lg:w-auto' : 'lg:w-0'}`}>
@@ -24,10 +32,9 @@ export const Wall = ({ mostrarNavbar, rol, setMostrarNavbar, setDataSelect, data
       {children}
 
       <div className="w-auto px-2 overflow-x-auto">
-        <Table data={dataSelect} type="" />
-        <div className="w-fit mx-auto mt-2 p-1" onClick={() => postDataWall()}>
-          <Button type="Alert" rute="" name="Cargar datos" icon={iconSend} color="bg-green" />
-        </div>
+        <InlineLayout option={selectOption} setOption={setSelectOption} />
+        <Table data={dataGroupe} type="" />
+        <SequenceButton type="Wall" data={dataGroupe} setMostrarNavbar={setMostrarNavbar} />
       </div>
     </>
   );
@@ -37,9 +44,9 @@ Wall.propTypes = {
   rol: PropTypes.string.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,
-  dataSelect: PropTypes.array.isRequired,
   setDataSelect: PropTypes.func.isRequired,
-  postDataWall:PropTypes.func.isRequired,
+  selectOption: PropTypes.number.isRequired,
+  setSelectOption: PropTypes.func.isRequired,
+  dataGroupe: PropTypes.array.isRequired,
   children: PropTypes.node,
-  
 };

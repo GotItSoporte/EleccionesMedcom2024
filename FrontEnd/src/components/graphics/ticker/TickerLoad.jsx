@@ -6,8 +6,10 @@ export const TickerLoad = ({ ...props }) => {
   const [dataSelect, setDataSelect] = useState([]);
   const [selectOption, setSelectOption] = useState(() => {
     const dataMemory = localStorage.getItem('optionTicker');
+
     return dataMemory ? parseInt(dataMemory, 10) : 0;
   });
+  console.log({ selectOption });
   const [dataGroupe, setDataGroupe] = useState([]);
 
   const [isChecked, setIsChecked] = useState(() => {

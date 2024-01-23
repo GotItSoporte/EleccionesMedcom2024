@@ -1,21 +1,21 @@
 import { Ip } from './Ip';
 
-async function sendInfoWall(selectGraph, postData) {
+async function editDataInTable(postData) {
   try {
-    const response = await fetch(`http://${Ip}:5000/SendInfoWall/${selectGraph}`, {
-      method: 'POST',
+    const response = await fetch(`http://${Ip}:5000/EditDataInTable/`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json', // Ajusta el tipo de contenido según tus necesidades
       },
-      body: JSON.stringify({ postData }),
+      body: JSON.stringify(postData),
     });
     const data = await response.json();
     console.log('Respuesta del servidor:', data.message);
     return data;
   } catch (error) {
-    console.error('Error fetching API data:', error, selectGraph);
+    console.error('Error fetching API data:', error);
     return [];
   }
 }
 
-export default sendInfoWall;
+export default editDataInTable;

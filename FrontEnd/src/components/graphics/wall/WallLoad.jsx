@@ -1,16 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Wall } from './Wall';
-import sendInfoWall from '../../../apis/SendInfoWall';
+import { useFunctions } from '../../../context';
 
 export const WallLoad = ({ ...props }) => {
   const [dataSelect, setDataSelect] = useState([]);
+  const [selectOption, setSelectOption] = useState(0);
+  const [dataGroupe, setDataGroupe] = useState([]);
+  const { seleccionarYAgruparDatos } = useFunctions();
 
-  async function postDataWall() {
-    await sendInfoWall('', dataSelect);
+  useEffect(() => {
+    setDataGroupe(seleccionarYAgruparDatos(dataSelect, selectOption));
+  }, [selectOption, dataSelect]);
 
-  }
-
-  
-
-  return <Wall {...props} setDataSelect={setDataSelect} dataSelect={dataSelect} postDataWall={postDataWall} />;
+  return (
+    <Wall
+      {...props}
+      setDataSelect={setDataSelect}
+      selectOption={selectOption}
+      setSelectOption={setSelectOption}
+      dataGroupe={dataGroupe}
+    />
+  );
 };

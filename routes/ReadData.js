@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const { dbConfig } = require('../config/config')
+const { readOracle } = require('../config/config')
 
 //------------------- PRESIDENTE -------------------
 router.get("/PRESIDENTE", async function (req, res) {
     try {
-      const result = await dbConfig("SELECT * FROM VOTO2024.PRESIDENTE_GOTIT");
+      const result = await readOracle("SELECT * FROM VOTO2024.PRESIDENTE_GOTIT");
       res.json(result);
 
     } catch (error) {
@@ -17,7 +17,7 @@ router.get("/PRESIDENTE", async function (req, res) {
 //------------------- ALCALDE -------------------
 router.get("/ALCALDE", async function (req, res) {
   try {
-    const result = await dbConfig("SELECT * FROM VOTO2024.ALCALDE_GOTIT");
+    const result = await readOracle("SELECT * FROM VOTO2024.ALCALDE_GOTIT");
     res.json(result);
 
   } catch (error) {
@@ -29,7 +29,7 @@ router.get("/ALCALDE", async function (req, res) {
 //------------------- DIPUTADO -------------------
 router.get("/DIPUTADO", async function (req, res) {
   try {
-    const result = await dbConfig("SELECT * FROM VOTO2024.DIPUTADO_GOTIT");
+    const result = await readOracle("SELECT * FROM VOTO2024.DIPUTADO_GOTIT");
     res.json(result);
 
   } catch (error) {

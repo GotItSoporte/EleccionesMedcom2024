@@ -3,7 +3,7 @@ import { Card, Verificacion } from '../../components';
 import Logo from '../../assets/logoMedcom.svg';
 import Operador from '../../assets/profiles/Operador.jpg';
 import Presentador from '../../assets/profiles/Presentador.jpg';
-//import Programador from '../../assets/profiles/Programador.jpg';
+import Follower from '../../assets/profiles/Programador.jpg';
 import CentroComercial from '../../assets/profiles/CentroCOmercial.jpg';
 
 export const Home = ({ mostrarVerificacion, setMostrarVerificacion, setRol, rol }) => {
@@ -57,7 +57,7 @@ export const Home = ({ mostrarVerificacion, setMostrarVerificacion, setRol, rol 
                 setMostrarVerificacion(true), setRol('Follower');
               }}
             >
-              <Card name="Follower" image={Operador} />
+              <Card name="Follower" image={Follower} />
             </div>
             <div
               className=""

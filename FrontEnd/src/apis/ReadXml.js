@@ -1,6 +1,8 @@
+import { Ip } from './Ip';
+
 async function fectchReadXml(SelectTable) {
   try {
-    const response = await fetch(`http://192.168.0.19:5000/ReadInfoXml/${SelectTable}`);
+    const response = await fetch(`http://${Ip}:5000/ReadInfoXml/${SelectTable}`);
     const data = await response.json();
 
     return data;

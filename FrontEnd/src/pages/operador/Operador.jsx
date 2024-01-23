@@ -4,8 +4,6 @@ import { Navbar, Ticker, FullScreen, Follower, Plurinominal } from '../../compon
 export const Operador = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, setGraficoSeleccionado }) => {
   let rol = 'Operador';
 
-  console.log({ graficoSeleccionado });
-
   return (
     <>
       <Navbar

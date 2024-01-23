@@ -26,14 +26,15 @@ export const Verificacion = ({
             value={nameValidacion}
             onChange={(e) => setNameValidacion(e.target.value)}
             aria-label="Full name"
+            autoComplete="new-password"
           />
         </div>
         <div className="flex space-x-2">
           <button type="submit" onClick={(e) => checkValidacion(e)}>
-            <Button type="Principal" rute="" name="Si" icon={iconCheck} color="bg-green" />
+            <Button type="Principal" rute="" name="Si" icon={iconCheck} color="bg-green" loading={false} />
           </button>
           <button type="submit" data-modal-hide="popup-modal" onClick={() => setMostrarVerificacion(false)}>
-            <Button type="Principal" rute="" name="No, cancelar" icon={iconXmark} color="bg-red" />
+            <Button type="Principal" rute="" name="No, cancelar" icon={iconXmark} color="bg-red" loading={false} />
           </button>
         </div>
       </form>

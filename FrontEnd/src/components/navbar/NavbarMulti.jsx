@@ -97,7 +97,10 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data, isChecked, set
                       </div>
                       {/*------------------- ABRIR PROVINCIAS DE LA CORPORACION -------------------*/}
                       {open[corporacion] &&
-                        data[corporacion]?.map((el, idx) => {
+                        (corporacion === 'DIPUTADO'
+                          ? data[corporacion]?.filter((item) => item.plurinominal === '0')
+                          : data[corporacion]
+                        )?.map((el, idx) => {
                           if (!miObjeto[el.provincia]) {
                             miObjeto[el.provincia] = {};
                           }
@@ -232,6 +235,7 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data, isChecked, set
                                 {openCircuito[el.provincia] &&
                                   corporacion === 'DIPUTADO' &&
                                   data[corporacion]
+                                    .filter((item) => item.plurinominal === '0')
                                     .filter((item) => item.provincia === el.provincia)
                                     .sort((a, b) => a.circuito.localeCompare(b.circuito))
                                     ?.map((el3, idx3) => {

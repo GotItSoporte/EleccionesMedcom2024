@@ -22,7 +22,6 @@ export const NavbarOnly = ({
 
   const { mostrarInformacion } = useFunctions();
 
-  console.log({rol})
   const toggleOpen = (el) => {
     setOpen({
       ...open,
@@ -80,9 +79,16 @@ export const NavbarOnly = ({
           <div className={`${mostrarNavbar ? '' : 'w-0 -translate-x-56 '}`}>
             <div className="px-4 pb-6">
               <h3 className="mb-2 text-xs uppercase text-gray-500 font-medium">SELECCIONA UNA SOLA OPCION</h3>
-              {rol==='Operador' && (
+              {!activePresentador && (
                 <div className="flex items-center mx-auto w-fit p-1" onClick={() => setLastFile(true)}>
-                  <Button type="Principal" name="ULTIMO XML GENERADO" icon={iconLastData} rute="#" color="bg-red" />
+                  <Button
+                    type="Principal"
+                    name="ULTIMO XML GENERADO"
+                    icon={iconLastData}
+                    rute="#"
+                    color="bg-red"
+                    loading={false}
+                  />
                 </div>
               )}
 
@@ -134,7 +140,7 @@ export const NavbarOnly = ({
                                             [el.provincia]: true,
                                           },
                                         }),
-                                        activePresentador && setMostrarNavbar(false))
+                                        rol !== 'Operador' && activePresentador && setMostrarNavbar(false))
                                       : null;
 
                                     corporacion === 'ALCALDE' ? toggleOpenDistrito(el.provincia) : null;
@@ -186,7 +192,7 @@ export const NavbarOnly = ({
                                                     },
                                                   },
                                                 }),
-                                                  activePresentador && setMostrarNavbar(false);
+                                                  rol !== 'Operador' && activePresentador && setMostrarNavbar(false);
                                               }}
                                             >
                                               <span>{el2.distrito}</span>
@@ -221,7 +227,7 @@ export const NavbarOnly = ({
                                                     },
                                                   },
                                                 }),
-                                                  activePresentador && setMostrarNavbar(false);
+                                                  rol !== 'Operador' && activePresentador && setMostrarNavbar(false);
                                               }}
                                             >
                                               <span>CIRCUITO {el3.circuito}</span>

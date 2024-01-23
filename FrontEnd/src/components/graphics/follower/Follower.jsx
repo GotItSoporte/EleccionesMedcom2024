@@ -20,7 +20,7 @@ export const Follower = ({
           setMostrarNavbar={setMostrarNavbar}
           setDataSelect={setDataSelect}
           rol={rol}
-          activePresentador={false}
+          activePresentador={true}
           //NO APLICA
           graficoSeleccionado={''}
           setGraficoSeleccionado={() => {}}
@@ -35,7 +35,7 @@ export const Follower = ({
         <Table data={dataSelect} type="" />
 
         <div className="w-fit mx-auto mt-2 p-1" onClick={() => postDataFollower()}>
-          <Button type="Alert" rute="" name="Cargar datos" icon={iconSend} color="bg-green" />
+          <Button type="Alert" rute="" name="Cargar datos" icon={iconSend} color="bg-green" loading={false} />
         </div>
       </div>
     </>

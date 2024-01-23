@@ -5,12 +5,15 @@ export const Plurinominal = ({
   data,
   dataFilter,
   searchTerm,
-  handleChange,
-  handleChangeCircuito,
+  setSearchTerm,
+  circuitoSelect,
+  setCircuitoSelect,
   openMenu,
   setOpenMenu,
   children,
 }) => {
+  console.log({ data });
+
   return (
     <>
       {children}
@@ -51,21 +54,29 @@ export const Plurinominal = ({
                   placeholder="Buscar por nombre..."
                   required
                   value={searchTerm}
-                  onChange={handleChange}
+                  onChange={(event) => setSearchTerm(event.target.value)}
                 />
               </div>
             </div>
             {openMenu && (
               <div className="z-10 fixed   divide-y divide-gray-100 rounded-lg shadow w-44 bg-gray-700">
                 <ul className="py-2 text-sm text-gray-200" aria-labelledby="dropdown-button">
-                  {Array.from(new Set(data.DIPUTADO?.map((item) => item.circuito))).map((circuito) => (
+                  <li
+                    className={`w-full ${circuitoSelect === '' ? 'bg-gray-500' : ''}`}
+                    onClick={() => setCircuitoSelect('')}
+                  >
+                    <button type="button" className="inline-flex w-full px-5 py-2 hover:bg-gray-600 hover:text-white">
+                      Todos
+                    </button>
+                  </li>
+                  {Array.from(
+                    new Set(data.DIPUTADO?.filter((item) => item.plurinominal === '1').map((item) => item.circuito)),
+                  ).map((circuito) => (
                     <li
                       key={circuito}
-                      className={`w-full ${
-                        dataFilter.some((filterItem) => filterItem.circuito === circuito) ? 'bg-gray-500' : ''
-                      }`}
+                      className={`w-full ${circuito === circuitoSelect ? 'bg-gray-500' : ''}`}
                       onClick={() => {
-                        handleChangeCircuito(circuito);
+                        setCircuitoSelect(circuito);
                       }}
                     >
                       <button type="button" className="inline-flex w-full px-5 py-2 hover:bg-gray-600 hover:text-white">
@@ -89,8 +100,9 @@ Plurinominal.propTypes = {
   data: PropTypes.object.isRequired,
   dataFilter: PropTypes.array.isRequired,
   searchTerm: PropTypes.string.isRequired,
-  handleChange: PropTypes.func.isRequired,
-  handleChangeCircuito: PropTypes.func.isRequired,
+  setSearchTerm: PropTypes.func.isRequired,
+  circuitoSelect: PropTypes.string.isRequired,
+  setCircuitoSelect: PropTypes.func.isRequired,
   openMenu: PropTypes.bool.isRequired,
   setOpenMenu: PropTypes.func.isRequired,
 };

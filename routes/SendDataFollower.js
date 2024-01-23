@@ -9,7 +9,7 @@ let reivedData
 router.post("/", async function (req, res) {
     try {
        reivedData = req.body;
-        res.json(reivedData)
+        //res.json(reivedData)
         res.json({ success: true, message: "Follower:Datos cargados correctamente." });
         console.log(`Follower:Datos cargados correctamente.`);
     } catch (error) {

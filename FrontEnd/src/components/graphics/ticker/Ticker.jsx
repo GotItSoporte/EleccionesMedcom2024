@@ -34,7 +34,7 @@ export const Ticker = ({
       {children}
 
       <div className="w-auto px-2 overflow-x-auto mt-2 ">
-        <InlineLayout option={selectOption} setOption={setSelectOption} />
+        {dataGroupe.length > 0 && <InlineLayout option={selectOption} setOption={setSelectOption} />}
         <Table data={dataGroupe} type="" />
         <FormatTickerXml data={dataGroupe} />
       </div>
