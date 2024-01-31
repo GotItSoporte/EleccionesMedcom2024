@@ -119,7 +119,14 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data, isChecked, set
                                       })
                                     }
                                   >
-                                    <Button type="Principal" name="" icon={iconResetData} rute="#" color="bg-red" />
+                                    <Button
+                                      type="Principal"
+                                      name=""
+                                      icon={iconResetData}
+                                      rute="#"
+                                      color="bg-red"
+                                      loading={false}
+                                    />
                                   </div>
                                 )}
                                 {/*------------------- FIN DE RESETEAR DATA CORPORACION -------------------*/}

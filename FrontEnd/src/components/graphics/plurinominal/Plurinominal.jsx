@@ -12,8 +12,6 @@ export const Plurinominal = ({
   setOpenMenu,
   children,
 }) => {
-  console.log({ data });
-
   return (
     <>
       {children}
@@ -26,7 +24,7 @@ export const Plurinominal = ({
                 onClick={() => setOpenMenu(!openMenu)}
                 id="dropdown-button"
                 data-dropdown-toggle="dropdown"
-                className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center   border  rounded-s-lg  focus:ring-4 focus:outline-none  bg-gray-700 hover:bg-gray-600 focus:ring-gray-700 text-white border-gray-600"
+                className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center  border  rounded-s-lg  focus:ring-4 focus:outline-none  bg-gray-700 hover:bg-gray-600 focus:ring-gray-700 text-white border-gray-600"
                 type="button"
               >
                 Diputados{' '}
@@ -59,7 +57,7 @@ export const Plurinominal = ({
               </div>
             </div>
             {openMenu && (
-              <div className="z-10 fixed   divide-y divide-gray-100 rounded-lg shadow w-44 bg-gray-700">
+              <div className="z-20 fixed   divide-y divide-gray-100 rounded-lg shadow w-44 bg-gray-700 ">
                 <ul className="py-2 text-sm text-gray-200" aria-labelledby="dropdown-button">
                   <li
                     className={`w-full ${circuitoSelect === '' ? 'bg-gray-500' : ''}`}

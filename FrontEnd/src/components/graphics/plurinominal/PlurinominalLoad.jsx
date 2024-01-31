@@ -23,11 +23,15 @@ export const PlurinominalLoad = ({ ...props }) => {
   };
 
   useEffect(() => {
-    handleChange(); // Simular evento con valor actual de searchTerm
-    if (checkPlurinominal === true && delayCheckPlurinominal == true) {
-      setCheckPlurinominal(false);
-      setDelayCheckPlurinominal(false);
-    }
+    const fetchData = async () => {
+      await handleChange(); // Simular evento con valor actual de searchTerm
+      if (checkPlurinominal === true && delayCheckPlurinominal == true) {
+        setCheckPlurinominal(false);
+        setDelayCheckPlurinominal(false);
+      }
+    };
+
+    fetchData();
   }, [data, searchTerm, circuitoSelect]);
 
   return (

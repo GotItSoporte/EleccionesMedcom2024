@@ -1,8 +1,8 @@
 import { Ip } from './Ip';
 
-async function editDataInTable(postData) {
+async function editDataInTable(postData, graph) {
   try {
-    const response = await fetch(`http://${Ip}:5000/EditDataInTable/`, {
+    const response = await fetch(`http://${Ip}:5000/EditDataInTable/${graph}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json', // Ajusta el tipo de contenido según tus necesidades

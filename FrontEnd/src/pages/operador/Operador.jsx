@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Navbar, Ticker, FullScreen, Follower, Plurinominal } from '../../components';
+import { Navbar, Ticker, FullScreen, Follower, Plurinominal, TouchScreen } from '../../components';
 
 export const Operador = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, setGraficoSeleccionado }) => {
   let rol = 'Operador';
@@ -57,7 +57,7 @@ export const Operador = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado,
         </Follower>
       </div>
 
-      {/*------------------- FOLLOWER -------------------*/}
+      {/*------------------- PLURINOMINAL -------------------*/}
       <div className={`${graficoSeleccionado === 'Plurinominal' ? 'block' : 'hidden'}`}>
         <Plurinominal>
           <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
@@ -67,6 +67,10 @@ export const Operador = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado,
             </span>
           </h1>
         </Plurinominal>
+      </div>
+      {/*------------------- TOUCHSCREEN -------------------*/}
+      <div className="">
+        <TouchScreen />
       </div>
     </>
   );

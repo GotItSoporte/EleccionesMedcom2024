@@ -1,11 +1,19 @@
 import PropTypes from 'prop-types';
+import { Dropdown } from '../../components';
 
-export const TableEdicion = ({ data, HandleDataSubmit, checkPlurinominal }) => {
+export const TableEdicion = ({
+  data,
+  HandleDataSubmit,
+  HandleDataPartidoSubmit,
+  checkPlurinominal,
+  listPartido,
+  listClasificacion,
+}) => {
   return (
     <div>
       <div
         className={`relative overflow-x-auto     max-h-[70vh]  ${
-          checkPlurinominal ? 'overflow-hidden ' : 'overflow-y-auto'
+          checkPlurinominal ? 'overflow-hidden ' : ' overflow-y-auto'
         }   `}
       >
         <table
@@ -13,7 +21,7 @@ export const TableEdicion = ({ data, HandleDataSubmit, checkPlurinominal }) => {
             checkPlurinominal ? 'opacity-40 cursor-default' : ''
           } `}
         >
-          <thead className="text-xs  uppercase  bg-blue-500 text-white   ">
+          <thead className="text-xs  uppercase  bg-blue-500 text-white  sticky top-0 z-10  ">
             {data.length > 0 ? (
               <tr className="">
                 <th
@@ -50,6 +58,36 @@ export const TableEdicion = ({ data, HandleDataSubmit, checkPlurinominal }) => {
                   scope="col"
                   className=" px-1 py-2 lg:px-6 lg:py-3 text-center w-screen font-normal md:font-semibold lg:font-bold border border-gray-400"
                 >
+                  Partido
+                </th>
+                <th
+                  scope="col"
+                  className=" px-1 py-2 lg:px-6 lg:py-3 text-center w-screen font-normal md:font-semibold lg:font-bold border border-gray-400"
+                >
+                  Partido 2
+                </th>
+                <th
+                  scope="col"
+                  className=" px-1 py-2 lg:px-6 lg:py-3 text-center w-screen font-normal md:font-semibold lg:font-bold border border-gray-400"
+                >
+                  Partido 3
+                </th>
+                <th
+                  scope="col"
+                  className=" px-1 py-2 lg:px-6 lg:py-3 text-center w-screen font-normal md:font-semibold lg:font-bold border border-gray-400"
+                >
+                  Partido 4
+                </th>
+                <th
+                  scope="col"
+                  className=" px-1 py-2 lg:px-6 lg:py-3 text-center w-screen font-normal md:font-semibold lg:font-bold border border-gray-400"
+                >
+                  Clasificacion
+                </th>
+                <th
+                  scope="col"
+                  className=" px-1 py-2 lg:px-6 lg:py-3 text-center w-screen font-normal md:font-semibold lg:font-bold border border-gray-400"
+                >
                   Ganador <br></br> Plurinominal
                 </th>
               </tr>
@@ -66,9 +104,11 @@ export const TableEdicion = ({ data, HandleDataSubmit, checkPlurinominal }) => {
                 return (
                   <tr
                     key={idx}
-                    className="bg-gray-700 border-b  border-gray-700 hover:bg-gray-600 font-light md:font-normal  whitespace-nowrap hover:text-white "
+                    className={`bg-gray-700 border-b  border-gray-700 ${
+                      checkPlurinominal ? '' : 'hover:bg-gray-600 hover:text-white'
+                    }  font-light md:font-normal  whitespace-nowrap  overflow-y-auto`}
                   >
-                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{data.nombre}</td>
+                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500  ">{data.nombre}</td>
                     <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{data.votos}</td>
                     <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{data.porcentaje}</td>
                     <td className="px-1 py-2 lg:px-6 lg:py-4 text-center border border-gray-500">{data.provincia}</td>
@@ -80,25 +120,56 @@ export const TableEdicion = ({ data, HandleDataSubmit, checkPlurinominal }) => {
                     >
                       {data.circuito || 'NO APLICA'}
                     </td>
-                    <td
-                      className={`px-1 py-2 lg:px-6 lg:py-4 text-center  border border-gray-500  flex items-center justify-center `}
-                    >
-                      <input
-                        checked={data.ganadorplurinominal === '1'}
-                        className={`w-4 h-4 mr-2 md:mr-5 cursor-pointer ${
-                          checkPlurinominal ? 'opacity-50 cursor-default' : ''
-                        } `}
-                        id="inline-radio"
-                        type="checkbox"
-                        value=""
-                        name="inline-radio-group"
-                        onChange={() =>
-                          !checkPlurinominal &&
-                          HandleDataSubmit(data.ganadorplurinominal === '0' ? '1' : '0', data.nombre)
-                        }
+
+                    <td className="px-1 py-2 lg:px-6 lg:py-4 text-center border border-gray-500">
+                      {data.nombre_partido}
+                    </td>
+                    <td className="px-1 py-2 lg:px-6 text-center border border-gray-500">
+                      <Dropdown
+                        selectedOption={data.nombre_partido2 || 'NO APLICA'}
+                        setList={Object.keys(listPartido) || []}
+                        nameData="partido2"
+                        id={data.nombre}
+                        HandleDataSubmit={HandleDataPartidoSubmit}
+                        loading={checkPlurinominal}
                       />
+                    </td>
+                    <td className="px-1 py-2 lg:px-6 text-center border border-gray-500">
+                      <Dropdown
+                        selectedOption={data.nombre_partido3 || 'NO APLICA'}
+                        setList={Object.keys(listPartido) || []}
+                        nameData="partido3"
+                        id={data.nombre}
+                        HandleDataSubmit={HandleDataPartidoSubmit}
+                        loading={checkPlurinominal}
+                      />
+                    </td>
+                    <td className="px-1 py-2 lg:px-6 text-center border border-gray-500">
+                      <Dropdown
+                        selectedOption={data.nombre_partido4 || 'NO APLICA'}
+                        setList={Object.keys(listPartido) || []}
+                        nameData="partido4"
+                        id={data.nombre}
+                        HandleDataSubmit={HandleDataPartidoSubmit}
+                        loading={checkPlurinominal}
+                      />
+                    </td>
+                    <td className="px-1 py-2 lg:px-6 lg:py-4 text-center border border-gray-500 ">
+                      <Dropdown
+                        selectedOption={data.orden_clasificacion || 'NO APLICA'}
+                        setList={
+                          (listClasificacion?.find((item) => item.circuito === data.circuito) || {})
+                            .arrayClasificacion || []
+                        }
+                        nameData="orden_clasificacion"
+                        id={data.nombre}
+                        HandleDataSubmit={HandleDataSubmit}
+                        loading={checkPlurinominal}
+                      />
+                    </td>
+                    <td className={`px-1 py-2 lg:px-6 lg:py-4 text-center  border border-gray-500    justify-center `}>
                       <span
-                        className={`relative inline-block px-3 py-1 font-semibold ${
+                        className={`relative inline-block px-3 py-1 font-semibold  ${
                           data.ganadorplurinominal === '1' ? 'text-green-900' : 'text-red-900'
                         }  leading-tight`}
                       >
@@ -134,5 +205,8 @@ export const TableEdicion = ({ data, HandleDataSubmit, checkPlurinominal }) => {
 TableEdicion.propTypes = {
   data: PropTypes.array.isRequired,
   HandleDataSubmit: PropTypes.func.isRequired,
+  HandleDataPartidoSubmit: PropTypes.func.isRequired,
+  listPartido: PropTypes.object.isRequired,
+  listClasificacion: PropTypes.array.isRequired,
   checkPlurinominal: PropTypes.bool.isRequired,
 };

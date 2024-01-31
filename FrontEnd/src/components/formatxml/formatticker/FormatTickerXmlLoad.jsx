@@ -32,18 +32,18 @@ export const FormatTickerXmlLoad = ({ data }) => {
         tempData.splice(0, 4).forEach((dataSelect, idx) => {
           if (idx === 0) {
             element.ele('template', 'prueba');
-            element.ele('field', { name: `escrutado` }, dataSelect.escrutado);
-            element.ele('field', { name: `participacion` }, dataSelect.participacion);
-            element.ele('field', { name: `corporacion` }, dataSelect.corporacion);
-            element.ele('field', { name: `provincia` }, dataSelect.provincia);
-            element.ele('field', { name: `distrito` }, dataSelect.distrito);
-            element.ele('field', { name: `circuito` }, dataSelect.circuito);
+            element.ele('field', { name: `escrutado` }, dataSelect.escrutado || '');
+            element.ele('field', { name: `participacion` }, dataSelect.participacion || '');
+            element.ele('field', { name: `corporacion` }, dataSelect.corporacion || '');
+            element.ele('field', { name: `provincia` }, dataSelect.provincia || '');
+            element.ele('field', { name: `distrito` }, dataSelect.distrito || '');
+            element.ele('field', { name: `circuito` }, dataSelect.circuito || '');
           }
 
-          element.ele('field', { name: `cedula${idx + 1}` }, dataSelect.cedula);
-          element.ele('field', { name: `nombre${idx + 1}` }, dataSelect.nombre.split(' ').pop());
-          element.ele('field', { name: `porcentaje${idx + 1}` }, dataSelect.porcentaje);
-          element.ele('field', { name: `votos${idx + 1}` }, dataSelect.votos);
+          element.ele('field', { name: `cedula${idx + 1}` }, dataSelect.cedula || '');
+          element.ele('field', { name: `nombre${idx + 1}` }, dataSelect.nombre.split(' ').pop() || '');
+          element.ele('field', { name: `porcentaje${idx + 1}` }, dataSelect.porcentaje || '');
+          element.ele('field', { name: `votos${idx + 1}` }, dataSelect.votos || '');
           lastidx = idx + 1;
         });
         element.ele('field', { name: `registros` }, lastidx);
