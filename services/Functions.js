@@ -9,8 +9,9 @@ const Variables= require('./Variables')
 //------------------- FORMATEAR DATA PARA UNREAL ENGINE -------------------
 function ChangeFormat (data){
     return data.map((elemento, indice) => ({
-        [`nombre${indice}`]: elemento.nombre || "",
-        [`votos${indice}`]: elemento.votos || "",
+        [`nombre${indice }`]: elemento.nombre || "",
+        [`votos${indice }`]:elemento.votos || "", // elemento.votos || 
+        [`porcentaje${indice }`]: elemento.porcentaje || "22.22",
       })).reduce((resultado, elemento) => ({ ...resultado, ...elemento }), {});
 }
 
@@ -73,9 +74,7 @@ function ReadXml(rute) {
 
 
 
-//-------------------  ENVIAR DATOS A WALL A TRAVEZ DE SOCKETS -------------------
-
-
+//-------------------  ENVIAR DATOS A WALL Y RA A TRAVES DE SOCKETS -------------------
 function SendUDPMessages(msg, ip) {
   const data= JSON.stringify(msg)
   client.send(data, 7124, ip, function (error) {

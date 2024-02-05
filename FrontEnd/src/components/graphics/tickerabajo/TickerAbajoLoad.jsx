@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Ticker } from './Ticker';
+import { TickerAbajo } from './TickerAbajo';
 import { useFunctions } from '../../../context';
 
-export const TickerLoad = ({ ...props }) => {
-  const nameGrafico = 'Ticker';
+export const TickerAbajoLoad = ({ ...props }) => {
+  const nameGrafico = 'TickerAbajo';
   const [dataSelect, setDataSelect] = useState([]);
   const [selectOption, setSelectOption] = useState(() => {
     const dataMemory = localStorage.getItem('option' + nameGrafico);
@@ -34,7 +34,7 @@ export const TickerLoad = ({ ...props }) => {
   }, [selectOption]);
 
   return (
-    <Ticker
+    <TickerAbajo
       {...props}
       nameGrafico={nameGrafico}
       setDataSelect={setDataSelect}

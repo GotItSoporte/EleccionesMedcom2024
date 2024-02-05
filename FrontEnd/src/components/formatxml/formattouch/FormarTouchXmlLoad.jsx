@@ -24,7 +24,12 @@ export const FormatTouchXmlLoad = ({ data }) => {
       const dataRegion = datosPorRegion[region];
       let tempData = [...dataRegion];
       for (let i = 0; i <= dataRegion.length - 1; i += dataRegion.length) {
-        const element = elementData.ele(('' + region).replace(/[^\wÀ-ÿ]/g, '_'));
+        const element = elementData.ele(
+          ('' + region)
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^\wÀ-ÿ]/g, '_'),
+        );
         let lastCircuito;
         tempData.splice(0, dataRegion.length).forEach((dataSelect) => {
           if (dataSelect.circuito !== lastCircuito) {
@@ -52,11 +57,32 @@ export const FormatTouchXmlLoad = ({ data }) => {
           element3.ele('porcentaje', dataSelect.porcentaje || '');
           element3.ele('votos', dataSelect.votos || '');
           element3.ele('ganadorplurinominal', dataSelect.ganadorplurinominal || '');
+          element3.ele('codigo_partido', dataSelect.codigo_partido || '');
+          element3.ele('codigo_partido2', dataSelect.codigo_partido2 || '');
+          element3.ele('codigo_partido3', dataSelect.codigo_partido3 || '');
+          element3.ele('codigo_partido4', dataSelect.codigo_partido4 || '');
           element3.ele('nombre_partido', dataSelect.nombre_partido || '');
-          element3.ele('nombre_partido2', dataSelect.nombre_partido2 || '');
-          element3.ele('nombre_partido3', dataSelect.nombre_partido3 || '');
-          element3.ele('nombre_partido4', dataSelect.nombre_partido4 || '');
           lastCircuito = dataSelect.circuito;
+        });
+      }
+    }
+
+    const elementData3 = tickerfeed.ele('data3');
+    for (const region in datosPorRegion) {
+      const dataRegion = datosPorRegion[region];
+      let tempData = [...dataRegion];
+      for (let i = 0; i <= dataRegion.length - 1; i += dataRegion.length) {
+        let lastProvincia;
+
+        tempData.splice(0, dataRegion.length).forEach((dataSelect) => {
+          if (dataSelect.provincia !== lastProvincia) {
+            var provincia = (dataSelect.provincia || '')
+              .normalize('NFD')
+              .replace(/[\u0300-\u036f]/g, '')
+              .replace(/[^\wÀ-ÿ]/g, '_');
+            elementData3.ele('provincia', provincia || '');
+          }
+          lastProvincia = dataSelect.provincia;
         });
       }
     }

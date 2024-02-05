@@ -5,6 +5,7 @@ import iconLastData from '../../assets/icons/lastxml.svg';
 import PropTypes from 'prop-types';
 
 export const NavbarOnly = ({
+  nameCorporacion,
   setDataSelect,
   mostrarNavbar,
   setMostrarNavbar,
@@ -13,7 +14,6 @@ export const NavbarOnly = ({
   data,
   setLastFile,
 }) => {
-  const [nameCorporacion] = useState(['PRESIDENTE', 'ALCALDE', 'DIPUTADO']);
   const [open, setOpen] = useState({});
   const [openDistrito, setOpenDistrito] = useState({});
   const [openCircuito, setOpenCircuito] = useState({});
@@ -255,6 +255,7 @@ export const NavbarOnly = ({
 };
 
 NavbarOnly.propTypes = {
+  nameCorporacion: PropTypes.array.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,
   rol: PropTypes.string.isRequired,

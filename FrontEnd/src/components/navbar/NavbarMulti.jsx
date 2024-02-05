@@ -51,10 +51,12 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data, isChecked, set
           .map((objeto) => objeto.provincia)
           .filter((provincia, index, arr) => arr.indexOf(provincia) === index)
       : [];
+
     provinciasUnicas.forEach((provincia) => {
       if (!miObjeto[provincia]) {
         miObjeto[provincia] = {};
       }
+
       miObjeto[provincia][corporacion] = {};
     });
   }, [corporacion, data]);

@@ -1,7 +1,7 @@
-import { Navbar, Table, FormatTickerXml, InlineLayout } from '../../../components';
+import { Navbar, Table, FormatTickerXml, InlineLayout } from '../..';
 import PropTypes from 'prop-types';
 
-export const Ticker = ({
+export const TickerAbajo = ({
   nameGrafico,
   mostrarNavbar,
   setDataSelect,
@@ -42,7 +42,7 @@ export const Ticker = ({
   );
 };
 
-Ticker.propTypes = {
+TickerAbajo.propTypes = {
   nameGrafico: PropTypes.string.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,
   setDataSelect: PropTypes.func.isRequired,

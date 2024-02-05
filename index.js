@@ -30,7 +30,7 @@ app.use("/SendInfoXml", require("./routes/SendDataXml"));
 app.use("/ReadInfoXml", require("./routes/ReadDataXml"));
 
 //------------------- ENVIAR DATOS WALL -------------------
-app.use("/SendInfoWall", require("./routes/SendDataWall"));
+app.use("/SendInfoSocket", require("./routes/SendDataSocket"));
 
 //------------------- ENVIAR DATOS FOLLOWER -------------------
 app.use("/SendInfoFollower", require("./routes/SendDataFollower"));

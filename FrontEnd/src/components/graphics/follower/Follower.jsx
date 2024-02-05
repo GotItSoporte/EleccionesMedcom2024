@@ -21,6 +21,7 @@ export const Follower = ({
           setDataSelect={setDataSelect}
           rol={rol}
           activePresentador={true}
+          nameCorporacion={['PRESIDENTE', 'ALCALDE', 'DIPUTADO']}
           //NO APLICA
           graficoSeleccionado={''}
           setGraficoSeleccionado={() => {}}

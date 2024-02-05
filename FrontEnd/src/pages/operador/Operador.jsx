@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Navbar, Ticker, FullScreen, Follower, Plurinominal, TouchScreen } from '../../components';
+import { Navbar, Ticker, TickerAbajo, FullScreen, Follower, Plurinominal, TouchScreen } from '../../components';
 
 export const Operador = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, setGraficoSeleccionado }) => {
   let rol = 'Operador';
@@ -19,6 +19,7 @@ export const Operador = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado,
         setLastFile={() => {}}
         isChecked={{}}
         setIsChecked={() => {}}
+        nameCorporacion={[]}
       />
 
       {/*------------------- TICKER -------------------*/}
@@ -31,6 +32,18 @@ export const Operador = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado,
             </span>
           </h1>
         </Ticker>
+      </section>
+
+      {/*------------------- TICKERABAJO -------------------*/}
+      <section className={`${graficoSeleccionado === 'TickerAbajo' ? 'block' : 'hidden'}`}>
+        <TickerAbajo mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol={rol}>
+          <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
+            Operador -
+            <span className="text-2xl md:text-5xl font-semibold md:font-extrabold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-gray-800 ml-2">
+              {graficoSeleccionado}
+            </span>
+          </h1>
+        </TickerAbajo>
       </section>
 
       {/*------------------- FULLSCREEN -------------------*/}

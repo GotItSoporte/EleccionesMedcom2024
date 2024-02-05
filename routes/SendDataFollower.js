@@ -18,6 +18,9 @@ router.post("/", async function (req, res) {
     }
 });
 
+
+
+
 //------------------- ENVIA DATOS DESDE EL SERVIDOR -------------------
 router.get("/", function (req, res) {
   try {

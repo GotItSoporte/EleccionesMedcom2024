@@ -12,7 +12,7 @@ export function useData() {
 export function DataProvider({ children }) {
   //------------------- GRAFICOS EXISTENTES -------------------
   const listaGraficos = {
-    Operador: ['Ticker', 'FullScreen', 'Follower', 'Plurinominal'],
+    Operador: ['Ticker', 'TickerAbajo', 'FullScreen', 'Follower', 'Plurinominal'],
     Presentador: ['Wall', 'RA'],
   };
 
@@ -38,7 +38,7 @@ export function DataProvider({ children }) {
     setData((prevData) => Object.assign({}, prevData, ...newData.filter(Boolean)));
 
     // Programar la próxima actualización después de recibir los datos
-    setTimeout(getData, 1000);
+    setTimeout(getData, 100000);
   }
 
   //------------------- CHECK GANADOR PLURINOMINAL-------------------
@@ -49,6 +49,94 @@ export function DataProvider({ children }) {
     getData(); // Iniciar la primera actualización
   }, [checkPlurinominal]);
 
+  //------------------- LISTA PARTIDOS SECUNDARIOS-------------------
+  const listPartido = {
+    'NO APLICA': {},
+    PRD: {
+      id: 9,
+      nombre: 'PARTIDO REVOLUCIONARIO DEMOCRÁTICO',
+    },
+    PP: {
+      id: 8,
+      nombre: 'PARTIDO POPULAR',
+    },
+    MOL: {
+      id: 3,
+      nombre: 'MOLIRENA',
+    },
+    PAN: {
+      id: 7,
+      nombre: 'PARTIDO PANAMEÑISTA',
+    },
+    CD: {
+      id: 1,
+      nombre: 'CAMBIO DEMOCRÁTICO',
+    },
+    PA: {
+      id: 5,
+      nombre: 'PARTIDO ALIANZA',
+    },
+    RM: {
+      id: 10,
+      nombre: 'REALIZANDO METAS',
+    },
+    PAIS: {
+      id: 6,
+      nombre: 'PAÍS',
+    },
+    MOCA: {
+      id: 4,
+      nombre: 'MOVIMIENTO OTRO CAMINO',
+    },
+    'LIBRE POST.': {
+      id: 2,
+      nombre: 'LIBRE POSTULACIÓN',
+    },
+  };
+
+  //------------------- LISTA CURULES-------------------
+  const curules = {
+    '1-1': 2,
+    '2-1': 2,
+    '2-2': 1,
+    '2-3': 1,
+    '2-4': 1,
+    '3-1': 4,
+    '3-2': 1,
+    '4-1': 3,
+    '4-2': 1,
+    '4-3': 2,
+    '4-4': 1,
+    '4-5': 1,
+    '4-6': 1,
+    '5-1': 1,
+    '5-2': 1,
+    '6-1': 1,
+    '6-2': 1,
+    '6-3': 1,
+    '7-1': 1,
+    '7-2': 1,
+    '8-1': 1,
+    '8-2': 7,
+    '8-3': 5,
+    '8-4': 5,
+    '8-5': 3,
+    '8-6': 4,
+    '9-1': 2,
+    '9-2': 1,
+    '9-3': 1,
+    '9-4': 1,
+    '10-1': 1,
+    '10-2': 1,
+    '12-1': 1,
+    '12-2': 1,
+    '12-3': 1,
+    '13-1': 3,
+    '13-2': 1,
+    '13-3': 1,
+    '13-4': 3,
+  };
+
   //------------------- CONTEXTOS-------------------
   const value = {
     listaGraficos,
@@ -58,6 +146,8 @@ export function DataProvider({ children }) {
     setCheckPlurinominal,
     delayCheckPlurinominal,
     setDelayCheckPlurinominal,
+    listPartido,
+    curules,
   };
 
   return <ContextData.Provider value={value}>{children}</ContextData.Provider>;

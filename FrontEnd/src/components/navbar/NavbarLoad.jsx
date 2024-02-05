@@ -6,6 +6,7 @@ import { useData } from '../../context';
 
 export const NavbarLoad = ({
   type,
+  nameCorporacion,
   mostrarNavbar,
   setMostrarNavbar,
   rol,
@@ -34,6 +35,7 @@ export const NavbarLoad = ({
   if (type === 'navbarOnly')
     return (
       <NavbarOnly
+        nameCorporacion={nameCorporacion}
         setDataSelect={setDataSelect}
         mostrarNavbar={mostrarNavbar}
         data={data}
@@ -58,6 +60,7 @@ export const NavbarLoad = ({
 
 NavbarLoad.propTypes = {
   type: PropTypes.string.isRequired,
+  nameCorporacion: PropTypes.array.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,
   rol: PropTypes.string.isRequired,

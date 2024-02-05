@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { SequenceButton } from './SequenceButton';
-import sendInfoWall from '../../apis/SendInfoWall';
+import sendInfoSocket from '../../apis/SendInfoSocket';
 import PropTypes from 'prop-types';
 
 export const SequenceButtonLoad = ({ type, data, setMostrarNavbar }) => {
@@ -9,7 +9,7 @@ export const SequenceButtonLoad = ({ type, data, setMostrarNavbar }) => {
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-  async function postDataWall() {
+  async function postData(type) {
     const formattedData = data
       .map(
         (entry, index) =>
@@ -19,55 +19,55 @@ export const SequenceButtonLoad = ({ type, data, setMostrarNavbar }) => {
       )
       .join(';');
 
-    const WALLMessage = `${formattedData};EntradaDataWALL=1`;
-    const WALL_UDPMessage = {
-      data: WALLMessage,
+    const message = `${formattedData};EntradaData${type.toUpperCase()}=1`;
+    const udpMessage = {
+      data: message,
     };
 
     setLoading(true);
     setMostrarNavbar(false);
-    await sendInfoWall('', WALL_UDPMessage);
+    await sendInfoSocket(type, udpMessage);
     await delay(7000);
     setLoading(false);
     setSequence(data.length + 1);
   }
 
-  async function postContinueWall() {
-    const WALLMessage = 'ContinueDataWALL=1';
-    const WALL_UDPMessage = {
-      data: WALLMessage,
+  async function postContinue(type) {
+    const message = `ContinueData${type.toUpperCase()}=1`;
+    const udpMessage = {
+      data: message,
     };
 
     setLoading(true);
 
-    await sendInfoWall('', WALL_UDPMessage);
+    await sendInfoSocket(type, udpMessage);
     await delay(3000);
     setLoading(false);
     setSequence(sequence - 1);
   }
 
-  async function postSalidaWall() {
-    const WALLMessage = 'ContinueDataWALL=1';
-    const WALL_UDPMessage = {
-      data: WALLMessage,
+  async function postSalida() {
+    const message = `SalidaData${type.toUpperCase()}=1`;
+    const udpMessage = {
+      data: message,
     };
 
     setLoading(true);
-    await sendInfoWall('', WALL_UDPMessage);
+    await sendInfoSocket(type, udpMessage);
     await delay(5000);
     setSequence(0);
     setLoading(false);
     setMostrarNavbar(true);
   }
 
-  async function postSalidaForzadaWall() {
-    const WALLMessage = 'ContinueDataWALL=1';
-    const WALL_UDPMessage = {
-      data: WALLMessage,
+  async function postSalidaForzada() {
+    const message = `SalidaForzadaData${type.toUpperCase()}=1`;
+    const udpMessage = {
+      data: message,
     };
 
     setLoading(true);
-    await sendInfoWall('', WALL_UDPMessage);
+    await sendInfoSocket(type, udpMessage);
     await delay(5000);
     setSequence(0);
     setLoading(false);
@@ -77,10 +77,10 @@ export const SequenceButtonLoad = ({ type, data, setMostrarNavbar }) => {
   return (
     <SequenceButton
       data={data}
-      postData={postDataWall}
-      postContinue={postContinueWall}
-      postSalida={postSalidaWall}
-      postSalidaForzada={postSalidaForzadaWall}
+      postData={postData}
+      postContinue={postContinue}
+      postSalida={postSalida}
+      postSalidaForzada={postSalidaForzada}
       sequence={sequence}
       loading={loading}
     />

@@ -18,6 +18,7 @@ export const Presentador = ({ mostrarNavbar, setMostrarNavbar, graficoSelecciona
         setLastFile={() => {}}
         isChecked={{}}
         setIsChecked={() => {}}
+        nameCorporacion={[]}
       />
 
       <div className={`${graficoSeleccionado === 'Wall' ? 'block' : 'hidden'}`}>

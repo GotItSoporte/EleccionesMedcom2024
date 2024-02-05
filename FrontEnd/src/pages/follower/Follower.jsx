@@ -17,6 +17,7 @@ export const Follower = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado,
         setLastFile={() => {}}
         isChecked={{}}
         setIsChecked={() => {}}
+        nameCorporacion={[]}
       />
 
       {/*------------------- FOLLOWER -------------------*/}

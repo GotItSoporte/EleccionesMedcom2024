@@ -8,12 +8,12 @@ export const SequenceButton = ({ data, postData, postContinue, postSalida, postS
       {data.length > 0 && (
         <div className="flex justify-center">
           {sequence === 0 && (
-            <div className="p-2" onClick={() => !loading && postData()}>
+            <div className="p-2" onClick={async () => !loading && await postData()}>
               <Button type="Control" rute="" name="Cargar datos" icon={iconSend} color="bg-green" loading={loading} />
             </div>
           )}
           {sequence > 1 && (
-            <div className="p-2" onClick={() => !loading && postContinue()}>
+            <div className="p-2" onClick={async () => !loading && await postContinue()}>
               <Button
                 type="Control"
                 rute=""
@@ -25,12 +25,12 @@ export const SequenceButton = ({ data, postData, postContinue, postSalida, postS
             </div>
           )}
           {sequence === 1 && (
-            <div className="p-2" onClick={() => !loading && postSalida()}>
+            <div className="p-2" onClick={async () => !loading && await postSalida()}>
               <Button type="Control" rute="" name={`Salida`} icon={iconSend} color="bg-red" loading={loading} />
             </div>
           )}
 
-          <div className="p-2" onClick={() => !loading && postSalidaForzada()}>
+          <div className="p-2" onClick={async () => !loading && await postSalidaForzada()}>
             <Button type="Control" rute="" name={`Salida Forzada`} icon={iconSend} color="bg-red" loading={loading} />
           </div>
         </div>

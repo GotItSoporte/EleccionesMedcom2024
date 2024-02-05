@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import xmlbuilder from 'xmlbuilder';
 import { useEffect } from 'react';
 
-export const FormatTickerXmlLoad = ({ data }) => {
-  async function CreateFile(data) {
+export const FormatTickerXmlLoad = ({ name, data }) => {
+  async function CreateFile(name, data) {
     const tickerfeed = xmlbuilder.create('tickerfeed');
     const playlist = tickerfeed.ele('playlist', {
       type: 'flipping_carousel',
-      name: 'tickerprueba',
+      name: name,
       target: 'carousel',
     });
 
@@ -31,7 +31,7 @@ export const FormatTickerXmlLoad = ({ data }) => {
         let lastidx;
         tempData.splice(0, 4).forEach((dataSelect, idx) => {
           if (idx === 0) {
-            element.ele('template', 'prueba');
+            element.ele('template', name);
             element.ele('field', { name: `escrutado` }, dataSelect.escrutado || '');
             element.ele('field', { name: `participacion` }, dataSelect.participacion || '');
             element.ele('field', { name: `corporacion` }, dataSelect.corporacion || '');
@@ -50,16 +50,17 @@ export const FormatTickerXmlLoad = ({ data }) => {
       }
     }
     const xml = tickerfeed.end({ pretty: true }).toString();
-    await sendInfoXml('TICKER', xml);
+    await sendInfoXml(name.toUpperCase(), xml);
   }
 
   useEffect(() => {
-    CreateFile(data);
+    CreateFile(name, data);
   }, [data]);
 
   return <FormatTickerXml />;
 };
 
 FormatTickerXmlLoad.propTypes = {
+  name: PropTypes.string.isRequired,
   data: PropTypes.array.isRequired,
 };

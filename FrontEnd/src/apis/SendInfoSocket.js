@@ -1,8 +1,8 @@
 import { Ip } from './Ip';
 
-async function sendInfoWall(selectGraph, postData) {
+async function sendInfoSocket(selectGraph, postData) {
   try {
-    const response = await fetch(`http://${Ip}:5000/SendInfoWall/${selectGraph}`, {
+    const response = await fetch(`http://${Ip}:5000/SendInfoSocket/${selectGraph}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json', // Ajusta el tipo de contenido según tus necesidades
@@ -18,4 +18,4 @@ async function sendInfoWall(selectGraph, postData) {
   }
 }
 
-export default sendInfoWall;
+export default sendInfoSocket;

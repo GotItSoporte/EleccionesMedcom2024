@@ -18,7 +18,9 @@ function mostrarInformacion(distritosTrue, datos) {
         : tipo === 'ALCALDE'
           ? datos[tipo].filter((entry) => distritosTrue[tipo]?.[entry.provincia]?.[entry.distrito] === true)
           : tipo === 'DIPUTADO'
-            ? datos[tipo].filter((entry) => distritosTrue[tipo]?.[entry.provincia]?.[entry.circuito] === true)
+            ? datos[tipo]
+                .filter((entry) => distritosTrue[tipo]?.[entry.provincia]?.[entry.circuito] === true)
+                .filter((item) => (item.plurinominal === '1' ? item.ganadorplurinominal === '1' : item))
             : null;
 
     if (datosFiltrados && datosFiltrados.length > 0) {
@@ -37,6 +39,11 @@ function mostrarInformacion(distritosTrue, datos) {
 
       return (a.distrito || a.circuito).localeCompare(b.distrito || b.circuito);
     }
+    if (a.provincia === 'NACIONAL') return -1;
+    if (b.provincia === 'NACIONAL') return 1;
+
+    if (a.provincia === 'PANAMÁ') return -1;
+    if (b.provincia === 'PANAMÁ') return 1;
     return a.provincia.localeCompare(b.provincia);
   });
   return datosOrdenados;

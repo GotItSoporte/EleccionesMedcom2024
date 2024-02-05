@@ -16,6 +16,7 @@ export const Wall = ({
       <div className={`float-left w-0 ${mostrarNavbar ? 'lg:w-auto' : 'lg:w-0'}`}>
         <Navbar
           type="navbarOnly"
+          nameCorporacion={['PRESIDENTE', 'ALCALDE', 'DIPUTADO']}
           mostrarNavbar={mostrarNavbar}
           setMostrarNavbar={setMostrarNavbar}
           setDataSelect={setDataSelect}
@@ -32,9 +33,9 @@ export const Wall = ({
       {children}
 
       <div className="w-auto px-2 overflow-x-auto">
-        <InlineLayout option={selectOption} setOption={setSelectOption} />
+      {dataGroupe.length > 0 && <InlineLayout option={selectOption} setOption={setSelectOption} />}
         <Table data={dataGroupe} type="" />
-        <SequenceButton type="Wall" data={dataGroupe} setMostrarNavbar={setMostrarNavbar} />
+        <SequenceButton type="WALL" data={dataGroupe} setMostrarNavbar={setMostrarNavbar} />
       </div>
     </>
   );

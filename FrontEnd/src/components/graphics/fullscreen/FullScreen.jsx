@@ -19,15 +19,16 @@ export const FullScreen = ({
       <div className={`float-left w-0 ${mostrarNavbar ? 'lg:w-auto' : 'lg:w-0'}`}>
         <Navbar
           type="navbarOnly"
-          mostrarNavbar={mostrarNavbar}
-          setMostrarNavbar={setMostrarNavbar}
+          nameCorporacion={['PRESIDENTE', 'ALCALDE', 'DIPUTADO']}
           setDataSelect={setDataSelect}
+          mostrarNavbar={mostrarNavbar}
           rol={rol}
+          setMostrarNavbar={setMostrarNavbar}
+          setLastFile={setLastFile}
           activePresentador={false}
           //NO APLICA
           graficoSeleccionado={''}
           setGraficoSeleccionado={() => {}}
-          setLastFile={setLastFile}
           isChecked={{}}
           setIsChecked={() => {}}
         />
