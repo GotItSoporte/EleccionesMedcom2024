@@ -1,8 +1,13 @@
 import PropTypes from 'prop-types';
 
-export const FormFollower = ({ index,OnChangeCedula, OnChangeNombre, OnChangeVotos, OnChangePorcentaje,DeleteCandidato }) => {
-
-
+export const FormFollower = ({
+  index,
+  OnChangeCedula,
+  OnChangeNombre,
+  OnChangeVotos,
+  OnChangePorcentaje,
+  DeleteCandidato,
+}) => {
   return (
     <>
       <div className="shadow-md border border-gray-700 rounded-md ">
@@ -13,7 +18,7 @@ export const FormFollower = ({ index,OnChangeCedula, OnChangeNombre, OnChangeVot
           </h2>
 
           <div className="md:w-2/3 max-w-sm mx-auto">
-          <div>
+            <div>
               <label className="text-sm text-gray-400">Cedula</label>
               <div className="w-full inline-flex border">
                 <div className="w-1/12 pt-2 bg-gray-300">
@@ -30,7 +35,7 @@ export const FormFollower = ({ index,OnChangeCedula, OnChangeNombre, OnChangeVot
                   type="text"
                   className="w-11/12 focus:outline-none text-black p-2"
                   placeholder="1234"
-                  onChange={ OnChangeCedula}
+                  onChange={OnChangeCedula}
                 />
               </div>
             </div>
@@ -51,11 +56,11 @@ export const FormFollower = ({ index,OnChangeCedula, OnChangeNombre, OnChangeVot
                   type="text"
                   className="w-11/12 focus:outline-none text-black p-2"
                   placeholder="Candidato electoral"
-                  onChange={ OnChangeNombre}
+                  onChange={OnChangeNombre}
                 />
               </div>
             </div>
-         
+
             <div>
               <label className="text-sm text-gray-400">Votos</label>
               <div className="w-full inline-flex border">

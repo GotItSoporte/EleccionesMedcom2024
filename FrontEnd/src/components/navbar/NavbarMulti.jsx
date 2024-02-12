@@ -4,8 +4,7 @@ import { useFunctions } from '../../context';
 import PropTypes from 'prop-types';
 import iconResetData from '../../assets/icons/resetData.svg';
 
-export const NavbarMulti = ({ nameCorporacion,setDataSelect, mostrarNavbar, data, isChecked, setIsChecked }) => {
-  
+export const NavbarMulti = ({ nameCorporacion, setDataSelect, mostrarNavbar, data, isChecked, setIsChecked }) => {
   const [open, setOpen] = useState({});
 
   const [openDistrito, setOpenDistrito] = useState({});

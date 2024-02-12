@@ -5,12 +5,11 @@ import xmlbuilder from 'xmlbuilder';
 import { useEffect } from 'react';
 
 export const FormatTickerXmlLoad = ({ name, data }) => {
-
-  const nameTemplate={
-    'Voto_Arriba_Voto24':'Voto24_Arriba',
-    'Voto_Arriba_Abajo_Voto24':'Voto24_Arriba_Canal',
-    'Voto_Abajo_Voto24':'Voto24_Abajo',
-  }
+  const nameTemplate = {
+    Voto_Arriba_Voto24: 'Voto24_Arriba',
+    Voto_Arriba_Abajo_Voto24: 'Voto24_Arriba_Canal',
+    Voto_Abajo_Voto24: 'Voto24_Abajo',
+  };
 
   async function CreateFile(name, data) {
     const tickerfeed = xmlbuilder.create('tickerfeed');
@@ -39,20 +38,34 @@ export const FormatTickerXmlLoad = ({ name, data }) => {
         tempData.splice(0, 4).forEach((dataSelect, idx) => {
           if (idx === 0) {
             element.ele('template', nameTemplate[name]);
-            if(name!=='Voto_Abajo_Voto24'){
-            element.ele('field', { name: `escrutado` }, dataSelect.escrutado || '11.11');
-            element.ele('field', { name: `participacion` }, dataSelect.participacion || '22.22');
+            if (name !== 'Voto_Abajo_Voto24') {
+              element.ele('field', { name: `escrutado` }, dataSelect.escrutado || '11.11');
+              element.ele('field', { name: `participacion` }, dataSelect.participacion || '22.22');
             }
             element.ele('field', { name: `corporacion` }, dataSelect.corporacion || '');
-            element.ele('field', { name: `region` }, dataSelect.corporacion==='PRESIDENTE'?dataSelect.provincia:dataSelect.corporacion==='ALCALDE'?dataSelect.distrito:dataSelect.corporacion==='DIPUTADO'?'Circuito '+dataSelect.circuito:null || '');
+            element.ele(
+              'field',
+              { name: `region` },
+              dataSelect.corporacion === 'PRESIDENTE'
+                ? dataSelect.provincia
+                : dataSelect.corporacion === 'ALCALDE'
+                  ? dataSelect.distrito
+                  : dataSelect.corporacion === 'DIPUTADO'
+                    ? 'Circuito ' + dataSelect.circuito
+                    : null || '',
+            );
           }
-          if(name!=='Voto_Abajo_Voto24'){
-          element.ele('field', { name: `cedula${idx + 1}` }, dataSelect.cedula || '1-21-1845');
-        }
+          if (name !== 'Voto_Abajo_Voto24') {
+            element.ele('field', { name: `cedula${idx + 1}` }, dataSelect.cedula || '1-21-1845');
+          }
           element.ele('field', { name: `nombre${idx + 1}` }, dataSelect.nombre.split(' ').pop() || '');
           element.ele('field', { name: `porcentaje${idx + 1}` }, dataSelect.porcentaje || '12.11');
-          if(name!=='Voto_Abajo_Voto24'){
-          element.ele('field', { name: `votos${idx + 1}` }, dataSelect.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") || '');
+          if (name !== 'Voto_Abajo_Voto24') {
+            element.ele(
+              'field',
+              { name: `votos${idx + 1}` },
+              dataSelect.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') || '',
+            );
           }
           lastidx = idx + 1;
         });

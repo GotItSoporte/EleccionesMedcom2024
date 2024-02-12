@@ -55,7 +55,7 @@ export const FormatTouchXmlLoad = ({ data }) => {
           element3.ele('cedula', dataSelect.cedula || '');
           element3.ele('nombre', dataSelect.nombre || '');
           element3.ele('porcentaje', dataSelect.porcentaje || '');
-          element3.ele('votos', dataSelect.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") || '');
+          element3.ele('votos', dataSelect.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') || '');
           element3.ele('ganadorplurinominal', dataSelect.ganadorplurinominal || '');
           element3.ele('codigo_partido', dataSelect.codigo_partido || '');
           element3.ele('codigo_partido2', dataSelect.codigo_partido2 || '');

@@ -2,15 +2,8 @@ import { Button } from '../../components';
 import iconSend from '../../assets/icons/send.svg';
 import PropTypes from 'prop-types';
 
-export const SequenceSetRegiones = ({
-  type,
-  data,
-  postData,
-  postContinue,
-  sequence,
-  loading,
-}) => {
-    console.log({sequence})
+export const SequenceSetRegiones = ({ type, data, postData, postContinue, sequence, loading }) => {
+  console.log({ sequence });
   return (
     <>
       {data.length > 0 && (
@@ -32,7 +25,6 @@ export const SequenceSetRegiones = ({
               />
             </div>
           )}
-        
         </div>
       )}
     </>

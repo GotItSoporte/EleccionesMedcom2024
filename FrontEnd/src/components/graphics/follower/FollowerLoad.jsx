@@ -6,7 +6,6 @@ export const FollowerLoad = ({ ...props }) => {
   const [dataSelect, setDataSelect] = useState([]);
 
   async function postDataFollower() {
-    
     await sendInfoFollower('', dataSelect);
   }
 

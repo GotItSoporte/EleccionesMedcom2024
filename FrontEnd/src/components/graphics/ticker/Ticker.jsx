@@ -28,7 +28,7 @@ export const Ticker = ({
           activePresentador={false}
           setLastFile={() => {}}
           setMostrarNavbar={() => {}}
-          nameCorporacion={['PRESIDENTE','ALCALDE']}
+          nameCorporacion={['PRESIDENTE', 'ALCALDE']}
         />
       </div>
       {children}
@@ -38,7 +38,7 @@ export const Ticker = ({
         <Table data={dataGroupe} type="" />
         <FormatTickerXml name={nameGrafico} data={dataGroupe} />
         {/* TICKER SECUNDARIO */}
-        <FormatTickerXml name='Voto_Arriba_Abajo_Voto24' data={dataGroupe} />
+        <FormatTickerXml name="Voto_Arriba_Abajo_Voto24" data={dataGroupe} />
       </div>
     </>
   );

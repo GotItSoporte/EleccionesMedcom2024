@@ -7,7 +7,7 @@ async function sendInfoSocket(selectGraph, postData) {
       headers: {
         'Content-Type': 'application/json', // Ajusta el tipo de contenido según tus necesidades
       },
-      body: JSON.stringify( postData ),
+      body: JSON.stringify(postData),
     });
     const data = await response.json();
     console.log('Respuesta del servidor:', data.message);

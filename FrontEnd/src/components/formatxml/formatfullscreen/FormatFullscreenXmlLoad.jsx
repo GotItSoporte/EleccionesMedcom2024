@@ -5,9 +5,7 @@ import xmlbuilder from 'xmlbuilder';
 import { useData } from '../../../context';
 
 export const FormatFullscreenXmlLoad = ({ data }) => {
-
   const { curules } = useData();
-
 
   async function CreateFile(data) {
     const tickerfeed = xmlbuilder.create('data');
@@ -18,7 +16,7 @@ export const FormatFullscreenXmlLoad = ({ data }) => {
       element.ele('ganadorplurinominal', dataSelect.ganadorplurinominal || '');
       element.ele('nombre', dataSelect.nombre || '');
       element.ele('cedula', dataSelect.cedula || '');
-      element.ele('votos', dataSelect.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") || '');
+      element.ele('votos', dataSelect.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') || '');
       element.ele('porcentaje', dataSelect.porcentaje || '');
       element.ele('provincia', dataSelect.provincia || '');
       element.ele('distrito', dataSelect.distrito || '');

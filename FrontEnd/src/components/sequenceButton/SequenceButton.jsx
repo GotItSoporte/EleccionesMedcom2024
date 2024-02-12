@@ -26,7 +26,7 @@ export const SequenceButton = ({
               <Button
                 type="Control"
                 rute=""
-                name={`Continuar ${sequence -1}`}
+                name={`Continuar ${sequence - 1}`}
                 icon={iconSend}
                 color="bg-green"
                 loading={loading}

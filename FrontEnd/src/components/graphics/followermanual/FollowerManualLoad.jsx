@@ -3,8 +3,9 @@ import { FollowerManual } from './FollowerManual';
 import sendInfoFollower from '../../../apis/SendInfoFollower';
 
 export const FollowerManualLoad = ({ ...props }) => {
-
-  const [componentes, setComponentes] = useState([{ id: 0, corporacion: '', provincia: '', nombre: '', votos: 0, porcentaje: 0   }]);
+  const [componentes, setComponentes] = useState([
+    { id: 0, corporacion: '', provincia: '', nombre: '', votos: 0, porcentaje: 0 },
+  ]);
 
   const duplicarComponente = () => {
     const newComponentes = [...componentes, { id: componentes.length, nombre: '' }];
@@ -12,12 +13,12 @@ export const FollowerManualLoad = ({ ...props }) => {
   };
 
   const eliminarComponente = (id) => {
-    const newComponentes = componentes.filter((componente) =>  componente.id !== id);
+    const newComponentes = componentes.filter((componente) => componente.id !== id);
     setComponentes(newComponentes);
   };
 
   const handleCorporacionChange = (event) => {
-    console.log('entro')
+    console.log('entro');
     const newComponentes = [...componentes];
     const index = newComponentes.findIndex((componente) => componente);
     newComponentes[index].corporacion = event.target.value;
@@ -30,14 +31,14 @@ export const FollowerManualLoad = ({ ...props }) => {
     setComponentes(newComponentes);
   };
 
-  const handleCedulaChange = (id,event) => {
+  const handleCedulaChange = (id, event) => {
     const newComponentes = [...componentes];
     const index = newComponentes.findIndex((componente) => componente.id === id);
     newComponentes[index].cedula = event.target.value;
     setComponentes(newComponentes);
   };
 
-  const handleNombreChange = (id,event) => {
+  const handleNombreChange = (id, event) => {
     const newComponentes = [...componentes];
     const index = newComponentes.findIndex((componente) => componente.id === id);
     newComponentes[index].nombre = event.target.value;
@@ -54,22 +55,19 @@ export const FollowerManualLoad = ({ ...props }) => {
   const handlePorcentajeChange = (id, event) => {
     const newComponentes = [...componentes];
     const index = newComponentes.findIndex((componente) => componente.id === id);
-    newComponentes[index].porcentaje = event.target.value
+    newComponentes[index].porcentaje = event.target.value;
     setComponentes(newComponentes);
   };
 
-
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log({componentes})
+    console.log({ componentes });
     await sendInfoFollower('', componentes);
     // Aquí puedes realizar cualquier acción que desees con los datos del formulario
   };
 
-  console.log({componentes})
+  console.log({ componentes });
 
- 
   return (
     <FollowerManual
       {...props}
