@@ -21,7 +21,7 @@ export const NavbarHorizontal = ({
 
               <div
                 className={`flex justify-start  ${
-                  graficoSeleccionado === 'Plurinominal' ? 'hidden' : ''
+                  graficoSeleccionado === 'Plurinominal' || graficoSeleccionado === 'FollowerManual' ? 'hidden' : ''
                 } cursor-pointer `}
               >
                 {mostrarNavbar ? (
@@ -63,7 +63,7 @@ export const NavbarHorizontal = ({
                   return (
                     <a
                       key={index}
-                      className={` w-32 h-fit  text-center cursor-pointer  hover:text-red text-white border-2 ${
+                      className={` w-auto p-1 h-fit  text-center cursor-pointer hover:text-red text-white border-2 ${
                         graficoSeleccionado === listado ? 'border-red-500' : ''
                       } rounded-md`}
                       onClick={() => setGraficoSeleccionado(listado)}

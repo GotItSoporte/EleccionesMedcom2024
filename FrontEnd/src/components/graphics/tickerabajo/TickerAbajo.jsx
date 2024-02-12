@@ -28,7 +28,7 @@ export const TickerAbajo = ({
           activePresentador={false}
           setLastFile={() => {}}
           setMostrarNavbar={() => {}}
-          nameCorporacion={[]}
+          nameCorporacion={['ALCALDE', 'DIPUTADO']}
         />
       </div>
       {children}

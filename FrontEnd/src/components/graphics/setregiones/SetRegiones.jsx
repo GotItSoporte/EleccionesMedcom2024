@@ -1,57 +1,55 @@
-import { Navbar, Table, FormatTickerXml, InlineLayout } from '../../../components';
+import { Navbar, Table, InlineLayout, SequenceButton } from '../..';
 import PropTypes from 'prop-types';
 
-export const Ticker = ({
+export const SetRegiones = ({
   nameGrafico,
   mostrarNavbar,
+  rol,
+  setMostrarNavbar,
   setDataSelect,
   selectOption,
   setSelectOption,
   dataGroupe,
-  isChecked,
-  setIsChecked,
   children,
 }) => {
   return (
     <>
       <div className={`float-left w-0 ${mostrarNavbar ? 'lg:w-auto' : 'lg:w-0'}`}>
         <Navbar
-          type="navbarMulti"
+          type="navbarOnly"
+          nameCorporacion={['ALCALDE']}
           mostrarNavbar={mostrarNavbar}
+          setMostrarNavbar={setMostrarNavbar}
           setDataSelect={setDataSelect}
-          isChecked={isChecked}
-          setIsChecked={setIsChecked}
+          rol={rol}
+          activePresentador={true}
           //NO APLICA
-          rol={''}
           graficoSeleccionado={''}
           setGraficoSeleccionado={() => {}}
-          activePresentador={false}
           setLastFile={() => {}}
-          setMostrarNavbar={() => {}}
-          nameCorporacion={['PRESIDENTE','ALCALDE']}
+          isChecked={{}}
+          setIsChecked={() => {}}
         />
       </div>
       {children}
 
-      <div className="w-auto px-2 overflow-x-auto mt-2 ">
+      <div className="w-auto px-2 overflow-x-auto">
         {dataGroupe.length > 0 && <InlineLayout option={selectOption} setOption={setSelectOption} />}
         <Table data={dataGroupe} type="" />
-        <FormatTickerXml name={nameGrafico} data={dataGroupe} />
-        {/* TICKER SECUNDARIO */}
-        <FormatTickerXml name='Voto_Arriba_Abajo_Voto24' data={dataGroupe} />
+        <SequenceButton type={nameGrafico} data={dataGroupe} setMostrarNavbar={setMostrarNavbar} />
       </div>
     </>
   );
 };
 
-Ticker.propTypes = {
+SetRegiones.propTypes = {
   nameGrafico: PropTypes.string.isRequired,
+  rol: PropTypes.string.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,
+  setMostrarNavbar: PropTypes.func.isRequired,
   setDataSelect: PropTypes.func.isRequired,
   selectOption: PropTypes.number.isRequired,
   setSelectOption: PropTypes.func.isRequired,
   dataGroupe: PropTypes.array.isRequired,
-  isChecked: PropTypes.object.isRequired,
-  setIsChecked: PropTypes.func.isRequired,
   children: PropTypes.node,
 };

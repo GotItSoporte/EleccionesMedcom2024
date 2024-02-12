@@ -1,5 +1,5 @@
 export { Home } from './home';
-export { Operador } from './operador';
-export { Presentador } from './presentador';
-export { Follower } from './follower';
+export { Master } from './master';
+export { EstudioWall } from './estudiowall';
+export { EstudioVirtual } from './estudioVirtual';
 export { Metromall } from './metromall';

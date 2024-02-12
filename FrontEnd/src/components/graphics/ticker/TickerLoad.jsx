@@ -3,7 +3,7 @@ import { Ticker } from './Ticker';
 import { useFunctions } from '../../../context';
 
 export const TickerLoad = ({ ...props }) => {
-  const nameGrafico = 'Ticker';
+  const nameGrafico = 'Voto_Arriba_Voto24';
   const [dataSelect, setDataSelect] = useState([]);
   const [selectOption, setSelectOption] = useState(() => {
     const dataMemory = localStorage.getItem('option' + nameGrafico);

@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { Follower } from './Follower';
+import { EstudioVirtual } from './EstudioVirtual';
 
-export const FollowerLoad = () => {
+export const EstudioVirtualLoad = () => {
   const [mostrarNavbar, setMostrarNavbar] = useState(true);
-  const [graficoSeleccionado, setGraficoSeleccionado] = useState('Ticker');
+  const [graficoSeleccionado, setGraficoSeleccionado] = useState('Follower');
 
   return (
-    <Follower
+    <EstudioVirtual
       mostrarNavbar={mostrarNavbar}
       setMostrarNavbar={setMostrarNavbar}
       graficoSeleccionado={graficoSeleccionado}

@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import { Navbar, Ticker, TickerAbajo, FullScreen, Follower, Plurinominal, TouchScreen } from '../../components';
+import { Navbar, Ticker, TickerAbajo, FullScreen, Plurinominal, TouchScreen } from '../../components';
 
-export const Operador = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, setGraficoSeleccionado }) => {
-  let rol = 'Operador';
+export const Master = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, setGraficoSeleccionado }) => {
+  let rol = 'Master';
 
   return (
     <>
@@ -23,10 +23,10 @@ export const Operador = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado,
       />
 
       {/*------------------- TICKER -------------------*/}
-      <section className={`${graficoSeleccionado === 'Ticker' ? 'block' : 'hidden'}`}>
+      <section className={`${graficoSeleccionado === 'Voto_Arriba_Voto24' ? 'block' : 'hidden'}`}>
         <Ticker mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol={rol}>
           <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
-            Operador -
+            Master -
             <span className="text-2xl md:text-5xl font-semibold md:font-extrabold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-gray-800 ml-2">
               {graficoSeleccionado}
             </span>
@@ -35,10 +35,10 @@ export const Operador = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado,
       </section>
 
       {/*------------------- TICKERABAJO -------------------*/}
-      <section className={`${graficoSeleccionado === 'TickerAbajo' ? 'block' : 'hidden'}`}>
+      <section className={`${graficoSeleccionado === 'Voto_Abajo_Voto24' ? 'block' : 'hidden'}`}>
         <TickerAbajo mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol={rol}>
           <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
-            Operador -
+            Master -
             <span className="text-2xl md:text-5xl font-semibold md:font-extrabold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-gray-800 ml-2">
               {graficoSeleccionado}
             </span>
@@ -50,7 +50,7 @@ export const Operador = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado,
       <div className={`${graficoSeleccionado === 'FullScreen' ? 'block' : 'hidden'}`}>
         <FullScreen mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol={rol}>
           <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
-            Operador -
+            Master -
             <span className="text-2xl md:text-5xl font-semibold md:font-extrabold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-gray-800 ml-2">
               {graficoSeleccionado}
             </span>
@@ -58,23 +58,11 @@ export const Operador = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado,
         </FullScreen>
       </div>
 
-      {/*------------------- FOLLOWER -------------------*/}
-      <div className={`${graficoSeleccionado === 'Follower' ? 'block' : 'hidden'}`}>
-        <Follower mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol={rol}>
-          <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
-            Operador -
-            <span className="text-2xl md:text-5xl font-semibold md:font-extrabold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-gray-800 ml-2">
-              {graficoSeleccionado}
-            </span>
-          </h1>
-        </Follower>
-      </div>
-
       {/*------------------- PLURINOMINAL -------------------*/}
       <div className={`${graficoSeleccionado === 'Plurinominal' ? 'block' : 'hidden'}`}>
         <Plurinominal>
           <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
-            Operador -
+            Master -
             <span className="text-2xl md:text-5xl font-semibold md:font-extrabold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-gray-800 ml-2">
               {graficoSeleccionado}
             </span>
@@ -89,7 +77,7 @@ export const Operador = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado,
   );
 };
 
-Operador.propTypes = {
+Master.propTypes = {
   mostrarNavbar: PropTypes.bool.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,
   graficoSeleccionado: PropTypes.string.isRequired,

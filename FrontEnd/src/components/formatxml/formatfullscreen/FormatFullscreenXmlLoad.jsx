@@ -2,8 +2,13 @@ import { FormatFullscreenXml } from './FormatFullscreenXml';
 import sendInfoXml from '../../../apis/SendInfoXml';
 import PropTypes from 'prop-types';
 import xmlbuilder from 'xmlbuilder';
+import { useData } from '../../../context';
 
 export const FormatFullscreenXmlLoad = ({ data }) => {
+
+  const { curules } = useData();
+
+
   async function CreateFile(data) {
     const tickerfeed = xmlbuilder.create('data');
     data.forEach((dataSelect) => {
@@ -13,11 +18,12 @@ export const FormatFullscreenXmlLoad = ({ data }) => {
       element.ele('ganadorplurinominal', dataSelect.ganadorplurinominal || '');
       element.ele('nombre', dataSelect.nombre || '');
       element.ele('cedula', dataSelect.cedula || '');
-      element.ele('votos', dataSelect.votos || '');
+      element.ele('votos', dataSelect.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") || '');
       element.ele('porcentaje', dataSelect.porcentaje || '');
       element.ele('provincia', dataSelect.provincia || '');
       element.ele('distrito', dataSelect.distrito || '');
       element.ele('circuito', dataSelect.circuito || '');
+      element.ele('curules', curules[dataSelect.circuito] || '');
       element.ele('corporacion', dataSelect.corporacion || '');
       element.ele('participacion', dataSelect.participacion || '99.99');
       element.ele('escrutado', dataSelect.escrutado || '20.11');

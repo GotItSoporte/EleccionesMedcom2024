@@ -9,3 +9,4 @@ export { Button } from './button';
 export { SequenceButton } from './sequenceButton';
 export { Dropdown } from './dropdown';
 export { InlineLayout } from './inlinelayout';
+export { FormFollower } from './formfollower';

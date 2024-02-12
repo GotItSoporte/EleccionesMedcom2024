@@ -4,8 +4,8 @@ import { useFunctions } from '../../context';
 import PropTypes from 'prop-types';
 import iconResetData from '../../assets/icons/resetData.svg';
 
-export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data, isChecked, setIsChecked }) => {
-  const [nameCorporacion] = useState(['PRESIDENTE', 'ALCALDE', 'DIPUTADO']);
+export const NavbarMulti = ({ nameCorporacion,setDataSelect, mostrarNavbar, data, isChecked, setIsChecked }) => {
+  
   const [open, setOpen] = useState({});
 
   const [openDistrito, setOpenDistrito] = useState({});
@@ -309,6 +309,7 @@ export const NavbarMulti = ({ setDataSelect, mostrarNavbar, data, isChecked, set
 };
 
 NavbarMulti.propTypes = {
+  nameCorporacion: PropTypes.array.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,
   setDataSelect: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,

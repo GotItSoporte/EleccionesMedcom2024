@@ -49,6 +49,7 @@ export const NavbarLoad = ({
   if (type === 'navbarMulti')
     return (
       <NavbarMulti
+        nameCorporacion={nameCorporacion}
         setDataSelect={setDataSelect}
         mostrarNavbar={mostrarNavbar}
         data={data}

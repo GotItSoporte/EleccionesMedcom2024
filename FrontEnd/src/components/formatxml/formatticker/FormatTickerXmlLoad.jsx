@@ -5,11 +5,18 @@ import xmlbuilder from 'xmlbuilder';
 import { useEffect } from 'react';
 
 export const FormatTickerXmlLoad = ({ name, data }) => {
+
+  const nameTemplate={
+    'Voto_Arriba_Voto24':'Voto24_Arriba',
+    'Voto_Arriba_Abajo_Voto24':'Voto24_Arriba_Canal',
+    'Voto_Abajo_Voto24':'Voto24_Abajo',
+  }
+
   async function CreateFile(name, data) {
     const tickerfeed = xmlbuilder.create('tickerfeed');
     const playlist = tickerfeed.ele('playlist', {
       type: 'flipping_carousel',
-      name: name,
+      name: name.toUpperCase(),
       target: 'carousel',
     });
 
@@ -31,19 +38,22 @@ export const FormatTickerXmlLoad = ({ name, data }) => {
         let lastidx;
         tempData.splice(0, 4).forEach((dataSelect, idx) => {
           if (idx === 0) {
-            element.ele('template', name);
-            element.ele('field', { name: `escrutado` }, dataSelect.escrutado || '');
-            element.ele('field', { name: `participacion` }, dataSelect.participacion || '');
+            element.ele('template', nameTemplate[name]);
+            if(name!=='Voto_Abajo_Voto24'){
+            element.ele('field', { name: `escrutado` }, dataSelect.escrutado || '11.11');
+            element.ele('field', { name: `participacion` }, dataSelect.participacion || '22.22');
+            }
             element.ele('field', { name: `corporacion` }, dataSelect.corporacion || '');
-            element.ele('field', { name: `provincia` }, dataSelect.provincia || '');
-            element.ele('field', { name: `distrito` }, dataSelect.distrito || '');
-            element.ele('field', { name: `circuito` }, dataSelect.circuito || '');
+            element.ele('field', { name: `region` }, dataSelect.corporacion==='PRESIDENTE'?dataSelect.provincia:dataSelect.corporacion==='ALCALDE'?dataSelect.distrito:dataSelect.corporacion==='DIPUTADO'?'Circuito '+dataSelect.circuito:null || '');
           }
-
-          element.ele('field', { name: `cedula${idx + 1}` }, dataSelect.cedula || '');
+          if(name!=='Voto_Abajo_Voto24'){
+          element.ele('field', { name: `cedula${idx + 1}` }, dataSelect.cedula || '1-21-1845');
+        }
           element.ele('field', { name: `nombre${idx + 1}` }, dataSelect.nombre.split(' ').pop() || '');
-          element.ele('field', { name: `porcentaje${idx + 1}` }, dataSelect.porcentaje || '');
-          element.ele('field', { name: `votos${idx + 1}` }, dataSelect.votos || '');
+          element.ele('field', { name: `porcentaje${idx + 1}` }, dataSelect.porcentaje || '12.11');
+          if(name!=='Voto_Abajo_Voto24'){
+          element.ele('field', { name: `votos${idx + 1}` }, dataSelect.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") || '');
+          }
           lastidx = idx + 1;
         });
         element.ele('field', { name: `registros` }, lastidx);

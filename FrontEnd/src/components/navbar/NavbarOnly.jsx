@@ -140,7 +140,7 @@ export const NavbarOnly = ({
                                             [el.provincia]: true,
                                           },
                                         }),
-                                        rol !== 'Operador' && activePresentador && setMostrarNavbar(false))
+                                        rol !== 'Master' && activePresentador && setMostrarNavbar(false))
                                       : null;
 
                                     corporacion === 'ALCALDE' ? toggleOpenDistrito(el.provincia) : null;
@@ -192,7 +192,7 @@ export const NavbarOnly = ({
                                                     },
                                                   },
                                                 }),
-                                                  rol !== 'Operador' && activePresentador && setMostrarNavbar(false);
+                                                  rol !== 'Master' && activePresentador && setMostrarNavbar(false);
                                               }}
                                             >
                                               <span>{el2.distrito}</span>
@@ -227,7 +227,7 @@ export const NavbarOnly = ({
                                                     },
                                                   },
                                                 }),
-                                                  rol !== 'Operador' && activePresentador && setMostrarNavbar(false);
+                                                  rol !== 'Master' && activePresentador && setMostrarNavbar(false);
                                               }}
                                             >
                                               <span>CIRCUITO {el3.circuito}</span>

@@ -9,21 +9,17 @@ export const VerificacionLoad = ({ setMostrarVerificacion, rol }) => {
   const navigate = useNavigate();
 
   const credentials = {
-    Operador: {
+    Master: {
       password: 'medcom1',
-      route: '/Operador',
+      route: '/Master',
     },
-    Presentador: {
+    EstudioWall: {
       password: 'medcom2',
-      route: '/Presentador',
+      route: '/Estudio-Wall',
     },
-    Programador: {
-      password: 'medcom5',
-      route: '/Programador',
-    },
-    Follower: {
+    EstudioVirtual: {
       password: 'medcom3',
-      route: '/Follower',
+      route: '/Estudio-Virtual',
     },
     Metromall: {
       password: 'medcom4',

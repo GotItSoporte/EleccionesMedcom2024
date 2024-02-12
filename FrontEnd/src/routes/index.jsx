@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Home, Operador, Presentador, Metromall, Follower } from '../pages';
+import { Home, Master, EstudioWall, Metromall, EstudioVirtual } from '../pages';
 
 export const router = createBrowserRouter([
   {
@@ -7,19 +7,19 @@ export const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: '/Operador',
-    element: <Operador />,
+    path: '/Master',
+    element: <Master />,
   },
   {
-    path: '/Presentador',
-    element: <Presentador />,
+    path: '/Estudio-Wall',
+    element: <EstudioWall />,
+  },
+  {
+    path: '/Estudio-Virtual',
+    element: <EstudioVirtual />,
   },
   {
     path: '/Metromall',
     element: <Metromall />,
-  },
-  {
-    path: '/Follower',
-    element: <Follower />,
   },
 ]);

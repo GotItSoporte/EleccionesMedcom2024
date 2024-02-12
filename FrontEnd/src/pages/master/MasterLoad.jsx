@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { Operador } from './Operador';
+import { Master } from './Master';
 
-export const OperadorLoad = () => {
+export const MasterLoad = () => {
   const [mostrarNavbar, setMostrarNavbar] = useState(true);
-  const [graficoSeleccionado, setGraficoSeleccionado] = useState('Ticker');
+  const [graficoSeleccionado, setGraficoSeleccionado] = useState('Voto_Arriba_Voto24');
 
   return (
-    <Operador
+    <Master
       mostrarNavbar={mostrarNavbar}
       setMostrarNavbar={setMostrarNavbar}
       graficoSeleccionado={graficoSeleccionado}

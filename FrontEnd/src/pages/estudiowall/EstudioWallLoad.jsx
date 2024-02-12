@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { Presentador } from './Presentador';
+import { EstudioWall } from './EstudioWall';
 
-export const PresentadorLoad = () => {
+export const EstudioWallLoad = () => {
   const [mostrarNavbar, setMostrarNavbar] = useState(true);
   const [graficoSeleccionado, setGraficoSeleccionado] = useState('Wall');
 
   return (
-    <Presentador
+    <EstudioWall
       mostrarNavbar={mostrarNavbar}
       setMostrarNavbar={setMostrarNavbar}
       graficoSeleccionado={graficoSeleccionado}

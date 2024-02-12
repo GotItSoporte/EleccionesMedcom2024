@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { Card, Verificacion } from '../../components';
 import Logo from '../../assets/logoMedcom.svg';
-import Operador from '../../assets/profiles/Operador.jpg';
-import Presentador from '../../assets/profiles/Presentador.jpg';
-import Follower from '../../assets/profiles/Programador.jpg';
+import Master from '../../assets/profiles/Operador.jpg';
+import EstudioWall from '../../assets/profiles/Presentador.jpg';
+import EstudioVirtual from '../../assets/profiles/Programador.jpg';
 import CentroComercial from '../../assets/profiles/CentroCOmercial.jpg';
 
 export const Home = ({ mostrarVerificacion, setMostrarVerificacion, setRol, rol }) => {
@@ -38,26 +38,26 @@ export const Home = ({ mostrarVerificacion, setMostrarVerificacion, setRol, rol 
             <div
               className=""
               onClick={() => {
-                setMostrarVerificacion(true), setRol('Operador');
+                setMostrarVerificacion(true), setRol('Master');
               }}
             >
-              <Card name="Operador" image={Operador} />
+              <Card name="Master" image={Master} />
             </div>
             <div
               className=""
               onClick={() => {
-                setMostrarVerificacion(true), setRol('Presentador');
+                setMostrarVerificacion(true), setRol('EstudioWall');
               }}
             >
-              <Card name="Presentador" image={Presentador} />
+              <Card name="Estudio Wall" image={EstudioWall} />
             </div>
             <div
               className=""
               onClick={() => {
-                setMostrarVerificacion(true), setRol('Follower');
+                setMostrarVerificacion(true), setRol('EstudioVirtual');
               }}
             >
-              <Card name="Follower" image={Follower} />
+              <Card name="Estudio Virtual" image={EstudioVirtual} />
             </div>
             <div
               className=""

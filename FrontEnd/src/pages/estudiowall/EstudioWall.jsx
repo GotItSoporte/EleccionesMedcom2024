@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types';
-import { Navbar } from '../../components';
+import { Navbar, Wall } from '../../components';
+export const EstudioWall = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, setGraficoSeleccionado }) => {
+  let rol = 'EstudioWall';
 
-export const Follower = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, setGraficoSeleccionado }) => {
   return (
     <>
       <Navbar
         type="navbarHorizontal"
         mostrarNavbar={mostrarNavbar}
         setMostrarNavbar={setMostrarNavbar}
-        rol="Operador"
+        rol={rol}
         graficoSeleccionado={graficoSeleccionado}
         setGraficoSeleccionado={setGraficoSeleccionado}
         //NO APLICA
@@ -19,23 +20,22 @@ export const Follower = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado,
         setIsChecked={() => {}}
         nameCorporacion={[]}
       />
-
-      {/*------------------- FOLLOWER -------------------*/}
-      <section className={`${graficoSeleccionado === 'Ticker' ? 'block' : 'hidden'}`}>
-        <Follower mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol="Operador">
+      {/*------------------- WALL -------------------*/}
+      <div className={`${graficoSeleccionado === 'Wall' ? 'block' : 'hidden'}`}>
+        <Wall mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol={rol}>
           <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
-            Operador -
+            EstudioWall -
             <span className="text-2xl md:text-5xl font-semibold md:font-extrabold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-gray-800 ml-2">
               {graficoSeleccionado}
             </span>
           </h1>
-        </Follower>
-      </section>
+        </Wall>
+      </div>
     </>
   );
 };
 
-Follower.propTypes = {
+EstudioWall.propTypes = {
   mostrarNavbar: PropTypes.bool.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,
   graficoSeleccionado: PropTypes.string.isRequired,

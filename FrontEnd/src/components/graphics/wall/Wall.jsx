@@ -2,6 +2,7 @@ import { Navbar, Table, InlineLayout, SequenceButton } from '../../../components
 import PropTypes from 'prop-types';
 
 export const Wall = ({
+  nameGrafico,
   mostrarNavbar,
   rol,
   setMostrarNavbar,
@@ -33,15 +34,16 @@ export const Wall = ({
       {children}
 
       <div className="w-auto px-2 overflow-x-auto">
-      {dataGroupe.length > 0 && <InlineLayout option={selectOption} setOption={setSelectOption} />}
+        {dataGroupe.length > 0 && <InlineLayout option={selectOption} setOption={setSelectOption} />}
         <Table data={dataGroupe} type="" />
-        <SequenceButton type="WALL" data={dataGroupe} setMostrarNavbar={setMostrarNavbar} />
+        <SequenceButton type={nameGrafico} data={dataGroupe} setMostrarNavbar={setMostrarNavbar} />
       </div>
     </>
   );
 };
 
 Wall.propTypes = {
+  nameGrafico: PropTypes.string.isRequired,
   rol: PropTypes.string.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,

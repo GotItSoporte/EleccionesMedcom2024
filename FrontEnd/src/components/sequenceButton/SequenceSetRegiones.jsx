@@ -2,16 +2,15 @@ import { Button } from '../../components';
 import iconSend from '../../assets/icons/send.svg';
 import PropTypes from 'prop-types';
 
-export const SequenceButton = ({
+export const SequenceSetRegiones = ({
   type,
   data,
   postData,
   postContinue,
-  postSalida,
-  postSalidaForzada,
   sequence,
   loading,
 }) => {
+    console.log({sequence})
   return (
     <>
       {data.length > 0 && (
@@ -26,29 +25,21 @@ export const SequenceButton = ({
               <Button
                 type="Control"
                 rute=""
-                name={`Continuar ${sequence -1}`}
+                name={`Continuar ${sequence}`}
                 icon={iconSend}
                 color="bg-green"
                 loading={loading}
               />
             </div>
           )}
-          {sequence === 1 && (
-            <div className="p-2" onClick={async () => !loading && (await postSalida(type))}>
-              <Button type="Control" rute="" name={`Salida`} icon={iconSend} color="bg-red" loading={loading} />
-            </div>
-          )}
-
-          <div className="p-2" onClick={async () => !loading && (await postSalidaForzada(type))}>
-            <Button type="Control" rute="" name={`Salida Forzada`} icon={iconSend} color="bg-red" loading={loading} />
-          </div>
+        
         </div>
       )}
     </>
   );
 };
 
-SequenceButton.propTypes = {
+SequenceSetRegiones.propTypes = {
   type: PropTypes.string.isRequired,
   data: PropTypes.array.isRequired,
   postData: PropTypes.func.isRequired,

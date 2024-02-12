@@ -12,8 +12,9 @@ export function useData() {
 export function DataProvider({ children }) {
   //------------------- GRAFICOS EXISTENTES -------------------
   const listaGraficos = {
-    Operador: ['Ticker', 'TickerAbajo', 'FullScreen', 'Follower', 'Plurinominal'],
-    Presentador: ['Wall', 'RA'],
+    Master: ['Voto_Arriba_Voto24', 'Voto_Abajo_Voto24', 'FullScreen', 'Plurinominal'],
+    EstudioWall: ['Wall', 'RA'],
+    EstudioVirtual: ['Follower', 'FollowerManual', 'SetRegiones'],
   };
 
   //------------------- GET DATA -------------------
@@ -22,32 +23,12 @@ export function DataProvider({ children }) {
     ALCALDE: [],
     DIPUTADO: [],
   });
+
+  //------------------- VARIABLE DATA -------------------
   const [data, setData] = useState({});
 
-  async function getData() {
-    const newData = await Promise.all(
-      Object.keys(listCorporacion).map(async (corporacion) => {
-        if (listCorporacion[corporacion]) {
-          const apiData = await fetchReadData(corporacion);
-          return { [corporacion]: apiData };
-        }
-        return null;
-      }),
-    );
-
-    setData((prevData) => Object.assign({}, prevData, ...newData.filter(Boolean)));
-
-    // Programar la próxima actualización después de recibir los datos
-    setTimeout(getData, 100000);
-  }
-
-  //------------------- CHECK GANADOR PLURINOMINAL-------------------
-  const [checkPlurinominal, setCheckPlurinominal] = useState(false);
-  const [delayCheckPlurinominal, setDelayCheckPlurinominal] = useState(false);
-
-  useEffect(() => {
-    getData(); // Iniciar la primera actualización
-  }, [checkPlurinominal]);
+  //------------------- TIEMPO CARGA DE DATA-------------------
+  const timeLoad = 1000000;
 
   //------------------- LISTA PARTIDOS SECUNDARIOS-------------------
   const listPartido = {
@@ -136,6 +117,31 @@ export function DataProvider({ children }) {
     '13-3': 1,
     '13-4': 3,
   };
+
+  //------------------- CHECK GANADOR PLURINOMINAL-------------------
+  const [checkPlurinominal, setCheckPlurinominal] = useState(false);
+  const [delayCheckPlurinominal, setDelayCheckPlurinominal] = useState(false);
+
+  async function getData() {
+    const newData = await Promise.all(
+      Object.keys(listCorporacion).map(async (corporacion) => {
+        if (listCorporacion[corporacion]) {
+          const apiData = await fetchReadData(corporacion);
+          return { [corporacion]: apiData };
+        }
+        return null;
+      }),
+    );
+
+    setData((prevData) => Object.assign({}, prevData, ...newData.filter(Boolean)));
+
+    // Programar la próxima actualización después de recibir los datos
+    setTimeout(getData, timeLoad);
+  }
+
+  useEffect(() => {
+    getData(); // Iniciar la primera actualización
+  }, [checkPlurinominal]);
 
   //------------------- CONTEXTOS-------------------
   const value = {

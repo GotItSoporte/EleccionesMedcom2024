@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Wall } from './Wall';
+import { SetRegiones } from './SetRegiones';
 import { useFunctions } from '../../../context';
 
-export const WallLoad = ({ ...props }) => {
-  const nameGrafico = 'WALL';
+export const SetRegionesLoad = ({ ...props }) => {
+  const nameGrafico = 'SETREGIONES';
   const [dataSelect, setDataSelect] = useState([]);
   const [selectOption, setSelectOption] = useState(0);
   const [dataGroupe, setDataGroupe] = useState([]);
@@ -14,7 +14,7 @@ export const WallLoad = ({ ...props }) => {
   }, [selectOption, dataSelect]);
 
   return (
-    <Wall
+    <SetRegiones
       {...props}
       nameGrafico={nameGrafico}
       setDataSelect={setDataSelect}
