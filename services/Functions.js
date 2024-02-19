@@ -11,7 +11,9 @@ function ChangeFormat (data){
 
     return data.map((elemento, indice) => ({
         [`corporacion`]:  data[0].corporacion || "",
-        [`provincia`]:  data[0].provincia || "",
+        [`participacion`]:  data[0].participacion || "22.22",
+        [`escrutado`]:  data[0].escrutado || "",
+        [`region`]:  data[0].corporacion==='PRESIDENTE'? data[0].provincia:data[0].corporacion==='ALCALDE'? data[0].distrito:data[0].corporacion==='DIPUTADO'?'CIRCUITO '+data[0].circuito:null || data[0].region || "" ,
         [`cedula${indice }`]: elemento.cedula || "SIN IDENTIFICACION",
         [`nombre${indice }`]: elemento.nombre.split(" ")[0] || "",
         [`apellido${indice }`]: elemento.nombre.split(" ").pop() || "",

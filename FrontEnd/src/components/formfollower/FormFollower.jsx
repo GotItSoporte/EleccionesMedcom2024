@@ -54,7 +54,7 @@ export const FormFollower = ({
                 </div>
                 <input
                   type="text"
-                  className="w-11/12 focus:outline-none text-black p-2"
+                  className="w-11/12 focus:outline-none text-black p-2 uppercase"
                   placeholder="Candidato electoral"
                   onChange={OnChangeNombre}
                 />
@@ -110,7 +110,7 @@ export const FormFollower = ({
                 <input
                   type="text"
                   className="w-11/12 focus:outline-none text-black p-2"
-                  placeholder="99.99%"
+                  placeholder="99.99"
                   onChange={OnChangePorcentaje}
                 />
               </div>

@@ -10,6 +10,8 @@ export const SetRegiones = ({
   selectOption,
   setSelectOption,
   dataGroupe,
+  setActiveData,
+  dataSelect,
   children,
 }) => {
   return (
@@ -34,9 +36,14 @@ export const SetRegiones = ({
       {children}
 
       <div className="w-auto px-2 overflow-x-auto">
-        {dataGroupe.length > 0 && <InlineLayout option={selectOption} setOption={setSelectOption} />}
-        <Table data={dataGroupe} type="" />
-        <SequenceButton type={nameGrafico} data={dataGroupe} setMostrarNavbar={setMostrarNavbar} />
+        {dataGroupe.length > 0 && <InlineLayout option={selectOption} setOption={setSelectOption}  />}
+        <Table data={dataSelect} type="" option={selectOption} />
+        <SequenceButton
+          type={nameGrafico}
+          data={dataGroupe}
+          setMostrarNavbar={setMostrarNavbar}
+          setActiveData={setActiveData}
+        />
       </div>
     </>
   );
@@ -47,9 +54,11 @@ SetRegiones.propTypes = {
   rol: PropTypes.string.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,
+  dataSelect: PropTypes.array.isRequired,
   setDataSelect: PropTypes.func.isRequired,
   selectOption: PropTypes.number.isRequired,
   setSelectOption: PropTypes.func.isRequired,
   dataGroupe: PropTypes.array.isRequired,
+  setActiveData: PropTypes.func.isRequired,
   children: PropTypes.node,
 };

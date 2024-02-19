@@ -5,7 +5,7 @@ import { useData } from '../../context';
 import editDataInTable from '../../apis/EditDataInTable';
 import { useEffect, useState } from 'react';
 
-export const TableLoad = ({ type, data }) => {
+export const TableLoad = ({ type, data, option }) => {
   const { checkPlurinominal, setCheckPlurinominal, setDelayCheckPlurinominal, listPartido, curules } = useData();
   const [listClasificacion, setListClasificacion] = useState(() => {
     return handleRangeClasificacion(data) || [];
@@ -74,7 +74,7 @@ export const TableLoad = ({ type, data }) => {
     setListClasificacion(handleRangeClasificacion(data));
   }, [data]);
 
-  if (type === '') return <Table data={data ? data : []} />;
+  if (type === '') return <Table data={data ? data : []} option={option}  />;
   if (type === 'Edicion')
     return (
       <TableEdicion
@@ -91,4 +91,5 @@ export const TableLoad = ({ type, data }) => {
 TableLoad.propTypes = {
   data: PropTypes.array.isRequired,
   type: PropTypes.string.isRequired,
+  option: PropTypes.number.isRequired,
 };

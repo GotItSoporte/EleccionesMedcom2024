@@ -37,6 +37,7 @@ export const TickerAbajoLoad = ({ ...props }) => {
     <TickerAbajo
       {...props}
       nameGrafico={nameGrafico}
+      dataSelect={dataSelect}
       setDataSelect={setDataSelect}
       selectOption={selectOption}
       setSelectOption={setSelectOption}

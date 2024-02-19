@@ -3,7 +3,6 @@ import iconSend from '../../assets/icons/send.svg';
 import PropTypes from 'prop-types';
 
 export const SequenceSetRegiones = ({ type, data, postData, postContinue, sequence, loading }) => {
-  console.log({ sequence });
   return (
     <>
       {data.length > 0 && (
@@ -36,8 +35,6 @@ SequenceSetRegiones.propTypes = {
   data: PropTypes.array.isRequired,
   postData: PropTypes.func.isRequired,
   postContinue: PropTypes.func.isRequired,
-  postSalida: PropTypes.func.isRequired,
-  postSalidaForzada: PropTypes.func.isRequired,
   sequence: PropTypes.number.isRequired,
   loading: PropTypes.bool.isRequired,
 };

@@ -34,10 +34,11 @@ export const Follower = ({
 
       <div className="w-auto px-2 overflow-x-auto ">
         <Table data={dataSelect} type="" />
-
-        <div className="w-fit mx-auto mt-2 p-1" onClick={() => postDataFollower()}>
-          <Button type="Alert" rute="" name="Cargar datos" icon={iconSend} color="bg-green" loading={false} />
-        </div>
+        {dataSelect.length > 0 && (
+          <div className="w-fit mx-auto mt-2 p-1" onClick={() => postDataFollower()}>
+            <Button type="Alert" rute="" name="Cargar datos" icon={iconSend} color="bg-green" loading={false} />
+          </div>
+        )}
       </div>
     </>
   );

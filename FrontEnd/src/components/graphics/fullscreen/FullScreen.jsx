@@ -5,6 +5,7 @@ export const FullScreen = ({
   mostrarNavbar,
   setMostrarNavbar,
   rol,
+  dataSelect,
   setDataSelect,
   selectOption,
   setSelectOption,
@@ -55,16 +56,25 @@ export const FullScreen = ({
               </svg>
             </div>
             <div className="  overflow-x-auto w-auto  ">
-              <Table data={dataLastFile} type="" />
+              <Table data={dataLastFile} type=""  option={0} />
             </div>
           </div>
         )}
-        {dataGroupe.length > 0 && <InlineLayout option={selectOption} setOption={setSelectOption} />}
+        {dataGroupe.length > 0 && (
+          <InlineLayout
+            option={selectOption}
+            setOption={setSelectOption}
+            dataSelect={dataSelect}
+            ActiveTicker={false}
+          />
+        )}
 
-        <Table data={dataGroupe} type="" />
-        <div className="w-fit mx-auto mt-2 p-1">
-          <FormatFullscreenXml data={dataGroupe} />
-        </div>
+        <Table data={dataSelect} type="" option={selectOption} />
+        {dataGroupe.length > 0 && (
+          <div className="w-fit mx-auto mt-2 p-1">
+            <FormatFullscreenXml data={dataGroupe} />
+          </div>
+        )}
       </div>
     </>
   );
@@ -74,6 +84,7 @@ FullScreen.propTypes = {
   rol: PropTypes.string.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,
+  dataSelect: PropTypes.array.isRequired,
   setDataSelect: PropTypes.func.isRequired,
   selectOption: PropTypes.number.isRequired,
   setSelectOption: PropTypes.func.isRequired,

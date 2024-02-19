@@ -16,7 +16,7 @@ router.post("/VOTO_ARRIBA_VOTO24", async function (req, res) {
         res.status(500).json({ error: "Error en la data enviada de ticker " });
     }
 });
-router.post("/VOTO_ARRIBA_ABAJO_VOTO24", async function (req, res) {
+router.post("/VOTO_ABAJO_CANAL_V24", async function (req, res) {
   try {
     await Functions.CreateXml(req.body.postData,variables.NAME_FILE_TICKERARRIBA2)
     res.json({ success: true, message: "TickerArriba_Abajo: datos XML cargados correctamente" });

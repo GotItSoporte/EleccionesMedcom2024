@@ -4,7 +4,7 @@ import sendInfoFollower from '../../../apis/SendInfoFollower';
 
 export const FollowerManualLoad = ({ ...props }) => {
   const [componentes, setComponentes] = useState([
-    { id: 0, corporacion: '', provincia: '', nombre: '', votos: 0, porcentaje: 0 },
+    { id: 0, corporacion: '', region: '', participacion: '', escrutado: '', nombre: '', votos: 0, porcentaje: '' },
   ]);
 
   const duplicarComponente = () => {
@@ -18,16 +18,29 @@ export const FollowerManualLoad = ({ ...props }) => {
   };
 
   const handleCorporacionChange = (event) => {
-    console.log('entro');
     const newComponentes = [...componentes];
     const index = newComponentes.findIndex((componente) => componente);
-    newComponentes[index].corporacion = event.target.value;
+    newComponentes[index].corporacion = event.target.value.toUpperCase();
     setComponentes(newComponentes);
   };
-  const handleProvinciaChange = (event) => {
+  const handleRegionChange = (event) => {
     const newComponentes = [...componentes];
     const index = newComponentes.findIndex((componente) => componente);
-    newComponentes[index].provincia = event.target.value;
+    newComponentes[index].region = event.target.value.toUpperCase();
+    setComponentes(newComponentes);
+  };
+
+  const handleParticipacionChange = (event) => {
+    const newComponentes = [...componentes];
+    const index = newComponentes.findIndex((componente) => componente);
+    newComponentes[index].participacion = event.target.value;
+    setComponentes(newComponentes);
+  };
+
+  const handleEscrutadoChange = (event) => {
+    const newComponentes = [...componentes];
+    const index = newComponentes.findIndex((componente) => componente);
+    newComponentes[index].escrutado = event.target.value;
     setComponentes(newComponentes);
   };
 
@@ -41,7 +54,7 @@ export const FollowerManualLoad = ({ ...props }) => {
   const handleNombreChange = (id, event) => {
     const newComponentes = [...componentes];
     const index = newComponentes.findIndex((componente) => componente.id === id);
-    newComponentes[index].nombre = event.target.value;
+    newComponentes[index].nombre = event.target.value.toUpperCase();
     setComponentes(newComponentes);
   };
 
@@ -66,8 +79,6 @@ export const FollowerManualLoad = ({ ...props }) => {
     // Aquí puedes realizar cualquier acción que desees con los datos del formulario
   };
 
-  console.log({ componentes });
-
   return (
     <FollowerManual
       {...props}
@@ -75,7 +86,9 @@ export const FollowerManualLoad = ({ ...props }) => {
       duplicarComponente={duplicarComponente}
       eliminarComponente={eliminarComponente}
       handleCorporacionChange={handleCorporacionChange}
-      handleProvinciaChange={handleProvinciaChange}
+      handleRegionChange={handleRegionChange}
+      handleParticipacionChange={handleParticipacionChange}
+      handleEscrutadoChange={handleEscrutadoChange}
       handleCedulaChange={handleCedulaChange}
       handleNombreChange={handleNombreChange}
       handleVotosChange={handleVotosChange}

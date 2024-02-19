@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 export const TickerAbajo = ({
   nameGrafico,
   mostrarNavbar,
+  dataSelect,
   setDataSelect,
   selectOption,
   setSelectOption,
@@ -34,8 +35,10 @@ export const TickerAbajo = ({
       {children}
 
       <div className="w-auto px-2 overflow-x-auto mt-2 ">
-        {dataGroupe.length > 0 && <InlineLayout option={selectOption} setOption={setSelectOption} />}
-        <Table data={dataGroupe} type="" />
+        {dataGroupe.length > 0 && (
+          <InlineLayout option={selectOption} setOption={setSelectOption} dataSelect={dataSelect} ActiveTicker={true} />
+        )}
+        <Table data={dataGroupe} type="" option={0}   />
         <FormatTickerXml name={nameGrafico} data={dataGroupe} />
       </div>
     </>
@@ -45,6 +48,7 @@ export const TickerAbajo = ({
 TickerAbajo.propTypes = {
   nameGrafico: PropTypes.string.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,
+  dataSelect: PropTypes.array.isRequired,
   setDataSelect: PropTypes.func.isRequired,
   selectOption: PropTypes.number.isRequired,
   setSelectOption: PropTypes.func.isRequired,

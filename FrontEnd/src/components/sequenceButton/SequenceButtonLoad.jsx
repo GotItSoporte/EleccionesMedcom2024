@@ -4,13 +4,15 @@ import { SequenceSetRegiones } from './SequenceSetRegiones';
 import sendInfoSocket from '../../apis/SendInfoSocket';
 import PropTypes from 'prop-types';
 
-export const SequenceButtonLoad = ({ type, data, setMostrarNavbar }) => {
+export const SequenceButtonLoad = ({ type, data, setMostrarNavbar, setActiveData }) => {
   const [sequence, setSequence] = useState(0);
   const [loading, setLoading] = useState(false);
 
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   async function postData(type) {
+    setActiveData(false);
+
     const formattedData = data
       .map(
         (entry, index) =>
@@ -48,7 +50,7 @@ export const SequenceButtonLoad = ({ type, data, setMostrarNavbar }) => {
     setSequence(sequence - 1);
   }
 
-  async function postSalida() {
+  async function postSalida(type) {
     const message = `SalidaData${type}=1`;
     const udpMessage = {
       data: message,
@@ -60,9 +62,11 @@ export const SequenceButtonLoad = ({ type, data, setMostrarNavbar }) => {
     setSequence(0);
     setLoading(false);
     setMostrarNavbar(true);
+
+    setActiveData(true);
   }
 
-  async function postSalidaForzada() {
+  async function postSalidaForzada(type) {
     const message = `SalidaForzadaData${type}=1`;
     const udpMessage = {
       data: message,
@@ -74,6 +78,8 @@ export const SequenceButtonLoad = ({ type, data, setMostrarNavbar }) => {
     setSequence(0);
     setLoading(false);
     setMostrarNavbar(true);
+
+    setActiveData(true);
   }
 
   if (type === 'SETREGIONES')
@@ -83,8 +89,6 @@ export const SequenceButtonLoad = ({ type, data, setMostrarNavbar }) => {
         data={data}
         postData={postData}
         postContinue={postContinue}
-        postSalida={postSalida}
-        postSalidaForzada={postSalidaForzada}
         sequence={sequence}
         loading={loading}
       />
@@ -99,6 +103,8 @@ export const SequenceButtonLoad = ({ type, data, setMostrarNavbar }) => {
         postContinue={postContinue}
         sequence={sequence}
         loading={loading}
+        postSalida={postSalida}
+        postSalidaForzada={postSalidaForzada}
       />
     );
 };
@@ -107,4 +113,5 @@ SequenceButtonLoad.propTypes = {
   type: PropTypes.string.isRequired,
   data: PropTypes.array.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,
+  setActiveData: PropTypes.func.isRequired,
 };

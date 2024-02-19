@@ -33,6 +33,7 @@ export const FullScreenLoad = ({ ...props }) => {
     <FullScreen
       {...props}
       setDataSelect={setDataSelect}
+      dataSelect={dataSelect}
       selectOption={selectOption}
       setSelectOption={setSelectOption}
       lastFile={lastFile}

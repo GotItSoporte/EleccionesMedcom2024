@@ -9,7 +9,9 @@ export const FollowerManual = ({
   duplicarComponente,
   eliminarComponente,
   handleCorporacionChange,
-  handleProvinciaChange,
+  handleRegionChange,
+  handleParticipacionChange,
+  handleEscrutadoChange,
   handleCedulaChange,
   handleNombreChange,
   handleVotosChange,
@@ -32,9 +34,66 @@ export const FollowerManual = ({
                 loading={false}
               />
             </div>
-            <div className="grid grid-cols-6 gap-4 mb-5">
+            <div className="grid grid-cols-6 gap-4 mb-2">
               <div className="col-start-2 col-span-2">
                 <label className="text-sm text-gray-400">Corporación</label>
+                <div className="w-full inline-flex border">
+                  <div className="w-1/12 pt-2 bg-gray-300">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="w-6 text-white  mx-auto "
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z"
+                      />
+                    </svg>
+                  </div>
+                  <input
+                    type="text"
+                    className="w-11/12 focus:outline-none text-black p-2 uppercase"
+                    placeholder="Presidentes"
+                    onChange={(event) => handleCorporacionChange(event)}
+                  />
+                </div>
+              </div>
+              <div className="col-start-4 col-span-2">
+                <label className="text-sm text-gray-400">Region</label>
+                <div className="w-full inline-flex border">
+                  <div className="w-1/12 pt-2 bg-gray-300">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="w-6 text-white  mx-auto"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z"
+                      />
+                    </svg>
+                  </div>
+                  <input
+                    type="text"
+                    className="w-11/12 focus:outline-none text-black p-2 uppercase"
+                    placeholder="Bocas del Toro"
+                    onChange={(event) => handleRegionChange(event)}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-6 gap-4 mb-5">
+              <div className="col-start-2 col-span-2">
+                <label className="text-sm text-gray-400">Participación</label>
                 <div className="w-full inline-flex border">
                   <div className="w-1/12 pt-2 bg-gray-300">
                     <svg
@@ -55,13 +114,13 @@ export const FollowerManual = ({
                   <input
                     type="text"
                     className="w-11/12 focus:outline-none text-black p-2"
-                    placeholder="Presidentes"
-                    onChange={(event) => handleCorporacionChange(event)}
+                    placeholder="99.99"
+                    onChange={(event) => handleParticipacionChange(event)}
                   />
                 </div>
               </div>
               <div className="col-start-4 col-span-2">
-                <label className="text-sm text-gray-400">Provincia</label>
+                <label className="text-sm text-gray-400">Escrutado</label>
                 <div className="w-full inline-flex border">
                   <div className="w-1/12 pt-2 bg-gray-300">
                     <svg
@@ -82,8 +141,8 @@ export const FollowerManual = ({
                   <input
                     type="text"
                     className="w-11/12 focus:outline-none text-black p-2"
-                    placeholder="Bocas del Toro"
-                    onChange={(event) => handleProvinciaChange(event)}
+                    placeholder="99.99"
+                    onChange={(event) => handleEscrutadoChange(event)}
                   />
                 </div>
               </div>
@@ -125,7 +184,9 @@ FollowerManual.propTypes = {
   duplicarComponente: PropTypes.func.isRequired,
   eliminarComponente: PropTypes.func.isRequired,
   handleCorporacionChange: PropTypes.func.isRequired,
-  handleProvinciaChange: PropTypes.func.isRequired,
+  handleRegionChange: PropTypes.func.isRequired,
+  handleParticipacionChange: PropTypes.func.isRequired,
+  handleEscrutadoChange: PropTypes.func.isRequired,
   handleCedulaChange: PropTypes.func.isRequired,
   handleNombreChange: PropTypes.func.isRequired,
   handleVotosChange: PropTypes.func.isRequired,

@@ -28,11 +28,13 @@ export function DataProvider({ children }) {
   const [data, setData] = useState({});
 
   //------------------- TIEMPO CARGA DE DATA-------------------
-  const timeLoad = 1000000;
+  const timeLoad = 100000;
 
   //------------------- LISTA PARTIDOS SECUNDARIOS-------------------
   const listPartido = {
-    'NO APLICA': {},
+    'NO APLICA': {
+      id: 0,
+    },
     PRD: {
       id: 9,
       nombre: 'PARTIDO REVOLUCIONARIO DEMOCRÁTICO',

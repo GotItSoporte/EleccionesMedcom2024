@@ -9,18 +9,24 @@ export const WallLoad = ({ ...props }) => {
   const [dataGroupe, setDataGroupe] = useState([]);
   const { seleccionarYAgruparDatos } = useFunctions();
 
+  const [activeData, setActiveData] = useState(true); //para pausar la data mientras la interaccion con la tableta
+
   useEffect(() => {
-    setDataGroupe(seleccionarYAgruparDatos(dataSelect, selectOption));
-  }, [selectOption, dataSelect]);
+    if (activeData) {
+      setDataGroupe(seleccionarYAgruparDatos(dataSelect, selectOption));
+    }
+  }, [selectOption, dataSelect, activeData]);
 
   return (
     <Wall
       {...props}
       nameGrafico={nameGrafico}
+      dataSelect={dataSelect}
       setDataSelect={setDataSelect}
       selectOption={selectOption}
       setSelectOption={setSelectOption}
       dataGroupe={dataGroupe}
+      setActiveData={setActiveData}
     />
   );
 };

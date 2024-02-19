@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 export const Ticker = ({
   nameGrafico,
   mostrarNavbar,
+  dataSelect,
   setDataSelect,
   selectOption,
   setSelectOption,
@@ -28,17 +29,19 @@ export const Ticker = ({
           activePresentador={false}
           setLastFile={() => {}}
           setMostrarNavbar={() => {}}
-          nameCorporacion={['PRESIDENTE', 'ALCALDE']}
+          nameCorporacion={['PRESIDENTE']}
         />
       </div>
       {children}
 
       <div className="w-auto px-2 overflow-x-auto mt-2 ">
-        {dataGroupe.length > 0 && <InlineLayout option={selectOption} setOption={setSelectOption} />}
-        <Table data={dataGroupe} type="" />
+        {dataGroupe.length > 0 && (
+          <InlineLayout option={selectOption} setOption={setSelectOption} dataSelect={dataSelect} ActiveTicker={true} />
+        )}
+        <Table data={dataGroupe}  type=""  option={0}  />
         <FormatTickerXml name={nameGrafico} data={dataGroupe} />
         {/* TICKER SECUNDARIO */}
-        <FormatTickerXml name="Voto_Arriba_Abajo_Voto24" data={dataGroupe} />
+        <FormatTickerXml name="Voto_Abajo_Canal_V24" data={dataGroupe} />
       </div>
     </>
   );
@@ -47,6 +50,7 @@ export const Ticker = ({
 Ticker.propTypes = {
   nameGrafico: PropTypes.string.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,
+  dataSelect: PropTypes.array.isRequired,
   setDataSelect: PropTypes.func.isRequired,
   selectOption: PropTypes.number.isRequired,
   setSelectOption: PropTypes.func.isRequired,

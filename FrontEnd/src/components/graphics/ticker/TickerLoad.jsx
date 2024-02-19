@@ -37,6 +37,7 @@ export const TickerLoad = ({ ...props }) => {
     <Ticker
       {...props}
       nameGrafico={nameGrafico}
+      dataSelect={dataSelect}
       setDataSelect={setDataSelect}
       selectOption={selectOption}
       setSelectOption={setSelectOption}

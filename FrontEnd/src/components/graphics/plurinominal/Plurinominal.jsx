@@ -87,7 +87,7 @@ export const Plurinominal = ({
             )}
           </div>
         </form>
-        <Table data={dataFilter} type="Edicion" />
+        <Table data={dataFilter} type="Edicion" option={0} />
       </div>
     </>
   );

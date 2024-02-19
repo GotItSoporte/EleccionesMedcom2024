@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 export const FormatTickerXmlLoad = ({ name, data }) => {
   const nameTemplate = {
     Voto_Arriba_Voto24: 'Voto24_Arriba',
-    Voto_Arriba_Abajo_Voto24: 'Voto24_Arriba_Canal',
+    Voto_Abajo_Canal_V24: 'Voto24_Abajo_Canal',
     Voto_Abajo_Voto24: 'Voto24_Abajo',
   };
 
@@ -39,8 +39,8 @@ export const FormatTickerXmlLoad = ({ name, data }) => {
           if (idx === 0) {
             element.ele('template', nameTemplate[name]);
             if (name !== 'Voto_Abajo_Voto24') {
-              element.ele('field', { name: `escrutado` }, dataSelect.escrutado || '11.11');
-              element.ele('field', { name: `participacion` }, dataSelect.participacion || '22.22');
+              element.ele('field', { name: `escrutado` }, dataSelect.escrutado || '');
+              element.ele('field', { name: `participacion` }, dataSelect.participacion || '');
             }
             element.ele('field', { name: `corporacion` }, dataSelect.corporacion || '');
             element.ele(
@@ -55,11 +55,12 @@ export const FormatTickerXmlLoad = ({ name, data }) => {
                     : null || '',
             );
           }
+          element.ele('field', { name: `codigo_partido${idx + 1}` }, dataSelect.codigo_partido || '');
           if (name !== 'Voto_Abajo_Voto24') {
-            element.ele('field', { name: `cedula${idx + 1}` }, dataSelect.cedula || '1-21-1845');
+            element.ele('field', { name: `cedula${idx + 1}` }, dataSelect.cedula || '');
           }
           element.ele('field', { name: `nombre${idx + 1}` }, dataSelect.nombre.split(' ').pop() || '');
-          element.ele('field', { name: `porcentaje${idx + 1}` }, dataSelect.porcentaje || '12.11');
+          element.ele('field', { name: `porcentaje${idx + 1}` }, dataSelect.porcentaje || '');
           if (name !== 'Voto_Abajo_Voto24') {
             element.ele(
               'field',

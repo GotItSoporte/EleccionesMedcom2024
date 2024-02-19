@@ -63,7 +63,7 @@ export const NavbarHorizontal = ({
                   return (
                     <a
                       key={index}
-                      className={` w-auto p-1 h-fit  text-center cursor-pointer hover:text-red text-white border-2 ${
+                      className={` max-w-auto p-1  h-fit  text-center cursor-pointer hover:text-red text-white border-2 ${
                         graficoSeleccionado === listado ? 'border-red-500' : ''
                       } rounded-md`}
                       onClick={() => setGraficoSeleccionado(listado)}
