@@ -1,0 +1,9 @@
+export { Ticker } from './ticker';
+export { TickerAbajo } from './/tickerabajo';
+export { FullScreen } from './fullscreen';
+export { Follower } from './follower';
+export { FollowerManual } from './followermanual';
+export { Plurinominal } from './plurinominal';
+export { Wall } from './wall';
+export { TouchScreen } from './touchscreen';
+export { SetRegiones } from './setregiones';

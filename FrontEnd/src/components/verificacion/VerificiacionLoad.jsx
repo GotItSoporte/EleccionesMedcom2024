@@ -8,15 +8,29 @@ export const VerificacionLoad = ({ setMostrarVerificacion, rol }) => {
   const [Error, setError] = useState(false);
   const navigate = useNavigate();
 
-  const password = {
-    operador: 'medcom1',
-    presentador: 'medcom2',
+  const credentials = {
+    Master: {
+      password: 'medcom1',
+      route: '/Master',
+    },
+    EstudioWall: {
+      password: 'medcom2',
+      route: '/Estudio-Wall',
+    },
+    EstudioVirtual: {
+      password: 'medcom3',
+      route: '/Estudio-Virtual',
+    },
+    Metromall: {
+      password: 'medcom4',
+      route: '/Metromall',
+    },
   };
 
   const checkValidacion = (e) => {
     e.preventDefault(); // Evita que la página se recargue
-    if (nameValidacion === password[rol]) {
-      navigate('/Register', { state: { myVariable: nameValidacion } });
+    if (nameValidacion === credentials[rol].password) {
+      navigate(credentials[rol].route, { state: { myVariable: nameValidacion } });
     } else {
       setError(true);
       setNameValidacion('');
@@ -30,6 +44,7 @@ export const VerificacionLoad = ({ setMostrarVerificacion, rol }) => {
       nameValidacion={nameValidacion}
       setNameValidacion={setNameValidacion}
       Error={Error}
+      rol={rol}
     />
   );
 };
