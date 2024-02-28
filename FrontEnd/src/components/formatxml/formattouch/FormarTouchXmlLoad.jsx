@@ -3,9 +3,12 @@ import sendInfoXml from '../../../apis/SendInfoXml';
 import PropTypes from 'prop-types';
 import xmlbuilder from 'xmlbuilder';
 import { useEffect } from 'react';
+import { useData } from '../../../context';
 
-export const FormatTouchXmlLoad = ({ data }) => {
-  async function CreateFile(data) {
+export const FormatTouchXmlLoad = ({ name, data }) => {
+  const { curules } = useData();
+
+  async function CreateFile(name, data) {
     const tickerfeed = xmlbuilder.create('tickerfeed');
 
     // Separar los datos por región
@@ -33,7 +36,9 @@ export const FormatTouchXmlLoad = ({ data }) => {
         let lastCircuito;
         tempData.splice(0, dataRegion.length).forEach((dataSelect) => {
           if (dataSelect.circuito !== lastCircuito) {
-            element.ele('circuito', 'circuito ' + dataSelect.circuito);
+            const elementall = element.ele('element');
+            elementall.ele('circuito', 'Circuito ' + dataSelect.circuito);
+            elementall.ele('plurinominal', dataSelect.plurinominal);
           }
           lastCircuito = dataSelect.circuito;
         });
@@ -52,16 +57,22 @@ export const FormatTouchXmlLoad = ({ data }) => {
             element2 = elementData2.ele('circuito' + dataSelect.circuito);
           }
           const element3 = element2.ele('datos');
+
           element3.ele('cedula', dataSelect.cedula || '');
           element3.ele('nombre', dataSelect.nombre || '');
           element3.ele('porcentaje', dataSelect.porcentaje || '');
           element3.ele('votos', dataSelect.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') || '');
+          element3.ele('circuito', dataSelect.circuito || '');
+          element3.ele('curules', curules[dataSelect.circuito] || '');
+          element3.ele('plurinominal', dataSelect.plurinominal || '');
           element3.ele('ganadorplurinominal', dataSelect.ganadorplurinominal || '');
           element3.ele('codigo_partido', dataSelect.codigo_partido || '');
           element3.ele('codigo_partido2', dataSelect.codigo_partido2 || '');
           element3.ele('codigo_partido3', dataSelect.codigo_partido3 || '');
           element3.ele('codigo_partido4', dataSelect.codigo_partido4 || '');
           element3.ele('nombre_partido', dataSelect.nombre_partido || '');
+          element3.ele('participacion', (Math.random() * 99.99).toFixed(2) || '');
+          element3.ele('escrutado', (Math.random() * 99.99).toFixed(2) || '');
           lastCircuito = dataSelect.circuito;
         });
       }
@@ -89,16 +100,17 @@ export const FormatTouchXmlLoad = ({ data }) => {
 
     const xml = tickerfeed.end({ pretty: true }).toString();
 
-    await sendInfoXml('TOUCHSCREEN', xml);
+    await sendInfoXml(name, xml);
   }
 
   useEffect(() => {
-    CreateFile(data);
-  }, [data]);
+    CreateFile(name, data);
+  }, [name, data]);
 
   return <FormatTouchXml />;
 };
 
 FormatTouchXmlLoad.propTypes = {
   data: PropTypes.array.isRequired,
+  name: PropTypes.string.isRequired,
 };

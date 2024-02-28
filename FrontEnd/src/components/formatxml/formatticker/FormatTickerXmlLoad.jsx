@@ -39,8 +39,8 @@ export const FormatTickerXmlLoad = ({ name, data }) => {
           if (idx === 0) {
             element.ele('template', nameTemplate[name]);
             if (name !== 'Voto_Abajo_Voto24') {
-              element.ele('field', { name: `escrutado` }, dataSelect.escrutado || '');
-              element.ele('field', { name: `participacion` }, dataSelect.participacion || '');
+              element.ele('field', { name: `escrutado` }, (Math.random() * 99.99).toFixed(2) || ''); //dataSelect.escrutado
+              element.ele('field', { name: `participacion` }, (Math.random() * 99.99).toFixed(2) || ''); //dataSelect.participacion
             }
             element.ele('field', { name: `corporacion` }, dataSelect.corporacion || '');
             element.ele(
@@ -60,7 +60,7 @@ export const FormatTickerXmlLoad = ({ name, data }) => {
             element.ele('field', { name: `cedula${idx + 1}` }, dataSelect.cedula || '');
           }
           element.ele('field', { name: `nombre${idx + 1}` }, dataSelect.nombre.split(' ').pop() || '');
-          element.ele('field', { name: `porcentaje${idx + 1}` }, dataSelect.porcentaje || '');
+          element.ele('field', { name: `porcentaje${idx + 1}` }, (Math.random() * 99.99).toFixed(2) || ''); //dataSelect.porcentaje
           if (name !== 'Voto_Abajo_Voto24') {
             element.ele(
               'field',

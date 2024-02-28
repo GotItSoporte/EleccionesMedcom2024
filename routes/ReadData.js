@@ -5,7 +5,7 @@ const { readOracle } = require('../config/config')
 //------------------- PRESIDENTE -------------------
 router.get("/PRESIDENTE", async function (req, res) {
     try {
-      const result = await readOracle("SELECT * FROM VOTO2024.PRESIDENTE_GOTIT");
+      const result = await readOracle("SELECT * FROM VOTO2024.PRESIDENTE_GOTIT ORDER BY provincia");
       res.json(result);
 
     } catch (error) {
@@ -17,7 +17,7 @@ router.get("/PRESIDENTE", async function (req, res) {
 //------------------- ALCALDE -------------------
 router.get("/ALCALDE", async function (req, res) {
   try {
-    const result = await readOracle("SELECT * FROM VOTO2024.ALCALDE_GOTIT ");
+    const result = await readOracle("SELECT * FROM VOTO2024.ALCALDE_GOTIT ORDER BY provincia,distrito ");
     res.json(result);
 
   } catch (error) {
@@ -29,7 +29,7 @@ router.get("/ALCALDE", async function (req, res) {
 //------------------- DIPUTADO -------------------
 router.get("/DIPUTADO", async function (req, res) {
   try {
-    const result = await readOracle("SELECT * FROM VOTO2024.DIPUTADO_GOTIT ORDER BY circuito ,orden_clasificacion asc, votos desc" );
+    const result = await readOracle("SELECT * FROM VOTO2024.DIPUTADO_GOTIT ORDER BY provincia,circuito ,orden_clasificacion asc, votos desc" );
     res.json(result);
 
   } catch (error) {

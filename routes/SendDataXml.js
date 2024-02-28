@@ -45,7 +45,7 @@ router.post("/VOTO_ABAJO_VOTO24", async function (req, res) {
 
 router.post("/FULLSCREEN", async function (req, res) {
     try {
-      await Functions.CreateXml(req.body.postData,'Voto24_fullscreen')
+      await Functions.CreateXml(req.body.postData,variables.NAME_FILE_FULLSCREEN)
       res.json({ success: true, message: "Fullscreen: datos XML cargados correctamente" });
       console.log(`Fullscreen: datos XML cargados correctamente`);
     } catch (error) {
@@ -56,9 +56,20 @@ router.post("/FULLSCREEN", async function (req, res) {
 
 router.post("/TOUCHSCREEN", async function (req, res) {
   try {
-    await Functions.CreateXml(req.body.postData,'Voto24_touchscreen')
+    await Functions.CreateXml(req.body.postData,variables.NAME_FILE_TOUCHSCREEN)
     res.json({ success: true, message: "Touchscreen: datos XML cargados correctamente" });
     console.log(`Touchscreen: datos XML cargados correctamente`);
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Error en la data enviada de fullscreen " });
+  }
+});
+
+router.post("/TOUCHSCREENALL", async function (req, res) {
+  try {
+    await Functions.CreateXml(req.body.postData,variables.NAME_FILE_TOUCHSCREENALL)
+    res.json({ success: true, message: "TouchscreenAll: datos XML cargados correctamente" });
+    console.log(`TouchscreenAll: datos XML cargados correctamente`);
   } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Error en la data enviada de fullscreen " });

@@ -34,6 +34,7 @@ export const SequenceButtonLoad = ({ type, data, setMostrarNavbar, setActiveData
     await delay(7000);
     setLoading(false);
     setSequence(type === 'SETREGIONES' ? (data.length > 4 ? 1 : 0) : data.length + 1);
+    type === 'SETREGIONES' ? (data.length > 4 ? null : setActiveData(true)) : null;
   }
 
   async function postContinue(type) {
@@ -48,6 +49,7 @@ export const SequenceButtonLoad = ({ type, data, setMostrarNavbar, setActiveData
     await delay(3000);
     setLoading(false);
     setSequence(sequence - 1);
+    type === 'SETREGIONES' && setActiveData(true);
   }
 
   async function postSalida(type) {

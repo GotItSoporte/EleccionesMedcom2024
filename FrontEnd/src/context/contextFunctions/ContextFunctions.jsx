@@ -9,7 +9,7 @@ export function useFunctions() {
 }
 
 //------------------- FUNCION COMPARAR FILTROS CON DATA  -------------------
-function mostrarInformacion(distritosTrue, datos) {
+function mostrarInformacion(distritosTrue, datos, Reeleccion = false) {
   const datosFiltradosTotales = [];
   for (const tipo in datos) {
     const datosFiltrados =
@@ -20,7 +20,13 @@ function mostrarInformacion(distritosTrue, datos) {
           : tipo === 'DIPUTADO'
             ? datos[tipo]
                 .filter((entry) => distritosTrue[tipo]?.[entry.provincia]?.[entry.circuito] === true)
-                .filter((item) => (item.plurinominal === '1' ? item.ganadorplurinominal === '1' : item))
+                .filter((item) =>
+                  Reeleccion
+                    ? item.reeleccion === '1'
+                    : item.plurinominal === '1'
+                      ? item.ganadorplurinominal === '1'
+                      : item,
+                )
             : null;
 
     if (datosFiltrados && datosFiltrados.length > 0) {

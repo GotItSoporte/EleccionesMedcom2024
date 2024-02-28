@@ -56,7 +56,7 @@ export const FullScreen = ({
               </svg>
             </div>
             <div className="  overflow-x-auto w-auto  ">
-              <Table data={dataLastFile} type=""  option={0} />
+              <Table data={dataLastFile} type="" option={0} />
             </div>
           </div>
         )}

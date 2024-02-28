@@ -38,7 +38,7 @@ export const TickerAbajo = ({
         {dataGroupe.length > 0 && (
           <InlineLayout option={selectOption} setOption={setSelectOption} dataSelect={dataSelect} ActiveTicker={true} />
         )}
-        <Table data={dataGroupe} type="" option={0}   />
+        <Table data={dataGroupe} type="" option={0} />
         <FormatTickerXml name={nameGrafico} data={dataGroupe} />
       </div>
     </>

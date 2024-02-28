@@ -2,8 +2,6 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 
 export const InlineLayout = ({ option, setOption, dataSelect }) => {
-  
-  
   useEffect(() => {
     setOption(dataSelect.length);
   }, []);

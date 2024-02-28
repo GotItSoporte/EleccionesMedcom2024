@@ -1,12 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const Functions = require('../services/Functions')
+const variables = require('../services/Variables')
+
 
 //------------------- ENVIA DATOS DESDE EL SERVIDOR AL FRONTEND -------------------
 
 router.get("/FULLSCREEN", async function (req, res) {
     try {    
-      res.json(await Functions.ReadXml('Voto24_fullscreen'))
+      res.json(await Functions.ReadXml(variables.NAME_FILE_FULLSCREEN))
    
     } catch (error) {
         console.error(error);

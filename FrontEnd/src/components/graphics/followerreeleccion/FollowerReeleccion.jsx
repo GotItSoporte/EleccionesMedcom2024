@@ -1,16 +1,13 @@
-import { Navbar, Table, Button, InlineLayout } from '../../../components';
+import { Navbar, Table, Button } from '../../../components';
 import iconSend from '../../../assets/icons/send.svg';
 import PropTypes from 'prop-types';
 
-export const Follower = ({
+export const FollowerReeleccion = ({
   mostrarNavbar,
   rol,
   setMostrarNavbar,
   dataSelect,
   setDataSelect,
-  selectOption,
-  setSelectOption,
-  dataGroupe,
   children,
   postDataFollower,
 }) => {
@@ -24,8 +21,8 @@ export const Follower = ({
           setDataSelect={setDataSelect}
           rol={rol}
           activePresentador={true}
-          nameCorporacion={['PRESIDENTE', 'ALCALDE', 'DIPUTADO']}
-          graficoSeleccionado="Follower"
+          nameCorporacion={['DIPUTADO']}
+          graficoSeleccionado="FollowerReeleccion"
           //NO APLICA
           setGraficoSeleccionado={() => {}}
           setLastFile={() => {}}
@@ -35,12 +32,8 @@ export const Follower = ({
       </div>
       {children}
 
-      {dataGroupe.length > 0 && (
-        <InlineLayout option={selectOption} setOption={setSelectOption} dataSelect={dataSelect} ActiveTicker={false} />
-      )}
-
       <div className="w-auto px-2 overflow-x-auto ">
-        <Table data={dataSelect} type="" option={selectOption} />
+        <Table data={dataSelect} type="" option={0} />
         {dataSelect.length > 0 && (
           <div className="w-fit mx-auto mt-2 p-1" onClick={() => postDataFollower()}>
             <Button type="Alert" rute="" name="Cargar datos" icon={iconSend} color="bg-green" loading={false} />
@@ -51,15 +44,12 @@ export const Follower = ({
   );
 };
 
-Follower.propTypes = {
+FollowerReeleccion.propTypes = {
   rol: PropTypes.string.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,
   dataSelect: PropTypes.array.isRequired,
   setDataSelect: PropTypes.func.isRequired,
-  selectOption: PropTypes.number.isRequired,
-  setSelectOption: PropTypes.func.isRequired,
-  dataGroupe: PropTypes.array.isRequired,
   children: PropTypes.node,
   postDataFollower: PropTypes.func.isRequired,
 };

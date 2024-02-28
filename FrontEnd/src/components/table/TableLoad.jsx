@@ -42,10 +42,12 @@ export const TableLoad = ({ type, data, option }) => {
     return orden_clasificacion;
   }
 
-  async function HandleDataSubmit(nameVariableSelected, variableSelected, identificationNumber) {
+  // Para cambiarun dato unico
+  async function HandleDataSubmit(nameVariableSelected, variableSelected, identificationNumber,corporacion) {
     setCheckPlurinominal(true);
 
     const editedData = {
+      corporacion: corporacion,
       nameVariableSelected: nameVariableSelected,
       variableSelected: variableSelected,
       cedula: identificationNumber,
@@ -55,10 +57,12 @@ export const TableLoad = ({ type, data, option }) => {
     setDelayCheckPlurinominal(true);
   }
 
-  async function HandleDataPartidoSubmit(nameVariableSelected, variableSelected, identificationNumber) {
+  // para cambiar un dato de partidos 
+  async function HandleDataPartidoSubmit(nameVariableSelected, variableSelected, identificationNumber,corporacion) {
     setCheckPlurinominal(true);
 
     const editedData = {
+      corporacion: corporacion,
       nameCodigoSelected: 'codigo_' + nameVariableSelected,
       codigoSelected: listPartido[variableSelected].id,
       nameVariableSelected: 'nombre_' + nameVariableSelected,
@@ -70,11 +74,13 @@ export const TableLoad = ({ type, data, option }) => {
     setDelayCheckPlurinominal(true);
   }
 
+
+
   useEffect(() => {
     setListClasificacion(handleRangeClasificacion(data));
   }, [data]);
 
-  if (type === '') return <Table data={data ? data : []} option={option}  />;
+  if (type === '') return <Table data={data ? data : []} option={option} />;
   if (type === 'Edicion')
     return (
       <TableEdicion

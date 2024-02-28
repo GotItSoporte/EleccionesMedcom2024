@@ -21,7 +21,7 @@ export const SequenceButton = ({
               <Button type="Control" rute="" name="Cargar datos" icon={iconSend} color="bg-green" loading={loading} />
             </div>
           )}
-          {sequence >= 1 && (
+          {sequence > 1 && (
             <div className="p-2" onClick={async () => !loading && (await postContinue(type))}>
               <Button
                 type="Control"

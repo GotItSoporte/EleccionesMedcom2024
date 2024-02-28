@@ -13,6 +13,7 @@ export const NavbarOnly = ({
   activePresentador,
   data,
   setLastFile,
+  graficoSeleccionado,
 }) => {
   const [open, setOpen] = useState({});
   const [openDistrito, setOpenDistrito] = useState({});
@@ -48,8 +49,12 @@ export const NavbarOnly = ({
 
   //------------------- ACTUALIZA EL FILTRO RESPECTO A DATA -------------------
   useEffect(() => {
-    setDataSelect(mostrarInformacion(isChecked, data));
-  }, [isChecked, data]);
+    if (graficoSeleccionado === 'FollowerReeleccion') {
+      setDataSelect(mostrarInformacion(isChecked, data, true));
+    } else {
+      setDataSelect(mostrarInformacion(isChecked, data));
+    }
+  }, [isChecked, data, graficoSeleccionado]);
 
   //------------------- EJECUCION PARA OBTENER PROVINCIAS, CIRCUITOS Y DISTRITOS UNICOS -------------------
   useEffect(() => {
@@ -114,7 +119,16 @@ export const NavbarOnly = ({
                         </span>
                       </a>
                       {open[corporacion] &&
-                        data[corporacion]?.map((el, idx) => {
+                        (corporacion === 'DIPUTADO'
+                          ? data[corporacion]
+                              ?.filter((item) =>
+                                graficoSeleccionado === 'Follower' ? item.plurinominal === '1' : item,
+                              )
+                              .filter((item) =>
+                                graficoSeleccionado === 'FollowerReeleccion' ? item.reeleccion === '1' : item,
+                              )
+                          : data[corporacion]
+                        )?.map((el, idx) => {
                           if (!miObjeto[el.provincia]) {
                             miObjeto[el.provincia] = {};
                           }
@@ -205,6 +219,12 @@ export const NavbarOnly = ({
                                 {openCircuito[el.provincia] &&
                                   corporacion === 'DIPUTADO' &&
                                   data[corporacion]
+                                    .filter((item) =>
+                                      graficoSeleccionado === 'Follower' ? item.plurinominal === '1' : item,
+                                    )
+                                    .filter((item) =>
+                                      graficoSeleccionado === 'FollowerReeleccion' ? item.reeleccion === '1' : item,
+                                    )
                                     .filter((item) => item.provincia === el.provincia)
                                     .sort((a, b) => a.circuito.localeCompare(b.circuito))
                                     ?.map((el3, idx3) => {
@@ -259,6 +279,7 @@ NavbarOnly.propTypes = {
   mostrarNavbar: PropTypes.bool.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,
   rol: PropTypes.string.isRequired,
+  graficoSeleccionado: PropTypes.string.isRequired,
   activePresentador: PropTypes.bool.isRequired,
   setDataSelect: PropTypes.func.isRequired,
   setLastFile: PropTypes.func.isRequired,

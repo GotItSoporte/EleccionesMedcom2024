@@ -36,7 +36,14 @@ export const SetRegiones = ({
       {children}
 
       <div className="w-auto px-2 overflow-x-auto">
-        {dataGroupe.length > 0 && <InlineLayout option={selectOption} setOption={setSelectOption}  />}
+        {dataGroupe.length > 0 && (
+          <InlineLayout
+            option={selectOption}
+            setOption={setSelectOption}
+            dataSelect={dataSelect}
+            ActiveTicker={false}
+          />
+        )}
         <Table data={dataSelect} type="" option={selectOption} />
         <SequenceButton
           type={nameGrafico}

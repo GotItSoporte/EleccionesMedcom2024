@@ -14,7 +14,7 @@ export function DataProvider({ children }) {
   const listaGraficos = {
     Master: ['Voto_Arriba_Voto24', 'Voto_Abajo_Voto24', 'FullScreen', 'Plurinominal'],
     EstudioWall: ['Wall', 'RA'],
-    EstudioVirtual: ['Follower', 'FollowerManual', 'SetRegiones'],
+    EstudioVirtual: ['Follower', 'FollowerReeleccion', 'FollowerManual', 'SetRegiones'],
   };
 
   //------------------- GET DATA -------------------
@@ -55,7 +55,7 @@ export function DataProvider({ children }) {
       id: 1,
       nombre: 'CAMBIO DEMOCRÁTICO',
     },
-    PA: {
+    ALIANZA: {
       id: 5,
       nombre: 'PARTIDO ALIANZA',
     },

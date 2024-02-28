@@ -6,18 +6,30 @@ export const PlurinominalLoad = ({ ...props }) => {
   const { data } = useData();
   const [searchTerm, setSearchTerm] = useState('');
   const [dataFilter, setDataFilter] = useState([]);
-  const [openMenu, setOpenMenu] = useState(false);
-  const [circuitoSelect, setCircuitoSelect] = useState('');
+  const [openCorporacion, setOpenCorporacion] = useState(false);
+
+  const [corporacionSelect, setCorporacionSelect] = useState('');
+  const [provinciaSelect, setProvinciaSelect] = useState('');
+  const [datoSelect, setDatoSelect] = useState('');
 
   const { checkPlurinominal, setCheckPlurinominal, delayCheckPlurinominal, setDelayCheckPlurinominal } = useData(false);
 
   const handleChange = () => {
     // Filtrar datos por nombre y circuito
-    const filteredData = data?.DIPUTADO?.filter((item) => item.plurinominal === '1').filter((item) => {
-      const isSameCircuito = circuitoSelect.trim() === '' || item.circuito === circuitoSelect;
+    const corporacion=corporacionSelect?.toUpperCase()
+    const filteredData = data?.[corporacion]?.filter((item) => {
+      const isSameDato = 
+      (corporacion === 'PRESIDENTE' && (datoSelect.trim() === '' || item.provincia === datoSelect)) ||
+      (corporacion === 'ALCALDE' && (datoSelect.trim() === '' || item.distrito === datoSelect && item.provincia === provinciaSelect)) ||
+      (corporacion === 'DIPUTADO' && (datoSelect.trim() === '' || item.circuito === datoSelect ));
       const isSameNombre = searchTerm.trim() === '' || item.nombre.includes(searchTerm);
-      return isSameCircuito && isSameNombre;
+
+      
+      return isSameDato && isSameNombre;
+     
     });
+
+    console.log({filteredData})
 
     setDataFilter(filteredData ? filteredData : []);
   };
@@ -32,18 +44,22 @@ export const PlurinominalLoad = ({ ...props }) => {
     };
 
     fetchData();
-  }, [data, searchTerm, circuitoSelect]);
+  }, [data, searchTerm, datoSelect,corporacionSelect]);
 
   return (
     <Plurinominal
       data={data}
       dataFilter={dataFilter}
       searchTerm={searchTerm}
-      circuitoSelect={circuitoSelect}
+      corporacionSelect={corporacionSelect}
+      setCorporacionSelect={setCorporacionSelect}
+      provinciaSelect={provinciaSelect}
+      setProvinciaSelect={setProvinciaSelect}
+      datoSelect={datoSelect}
+      setDatoSelect={setDatoSelect}
       setSearchTerm={setSearchTerm}
-      setCircuitoSelect={setCircuitoSelect}
-      openMenu={openMenu}
-      setOpenMenu={setOpenMenu}
+      openCorporacion={openCorporacion}
+      setOpenCorporacion={setOpenCorporacion}
       {...props}
     />
   );

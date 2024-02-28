@@ -43,6 +43,7 @@ export const NavbarLoad = ({
         setMostrarNavbar={setMostrarNavbar}
         setLastFile={setLastFile}
         activePresentador={activePresentador}
+        graficoSeleccionado={graficoSeleccionado}
       />
     );
 

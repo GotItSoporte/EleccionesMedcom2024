@@ -6,10 +6,15 @@ export const Plurinominal = ({
   dataFilter,
   searchTerm,
   setSearchTerm,
-  circuitoSelect,
-  setCircuitoSelect,
-  openMenu,
-  setOpenMenu,
+  corporacionSelect,
+  setCorporacionSelect,
+  provinciaSelect,
+  setProvinciaSelect,
+
+  datoSelect,
+  setDatoSelect,
+  openCorporacion,
+  setOpenCorporacion,
   children,
 }) => {
   return (
@@ -21,10 +26,34 @@ export const Plurinominal = ({
           <div className=" mb-2">
             <div className="flex">
               <button
+                onClick={() => setOpenCorporacion(!openCorporacion)}
+                id="dropdown-button"
+                data-dropdown-toggle="dropdown"
+                className="flex-shrink-0 z-30 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center  border  rounded-s-lg  focus:ring-4 focus:outline-none  bg-gray-700 hover:bg-gray-600 focus:ring-gray-700 text-white border-gray-600"
+                type="button"
+              >
+                Corporación{' '}
+                <svg
+                  className="w-2.5 h-2.5 ms-2.5"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 10 6"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m1 1 4 4 4-4"
+                  />
+                </svg>
+              </button>
+              {/*<button
                 onClick={() => setOpenMenu(!openMenu)}
                 id="dropdown-button"
                 data-dropdown-toggle="dropdown"
-                className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center  border  rounded-s-lg  focus:ring-4 focus:outline-none  bg-gray-700 hover:bg-gray-600 focus:ring-gray-700 text-white border-gray-600"
+                className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center  border  focus:ring-4 focus:outline-none  bg-gray-700 hover:bg-gray-600 focus:ring-gray-700 text-white border-gray-600"
                 type="button"
               >
                 Diputados{' '}
@@ -43,12 +72,13 @@ export const Plurinominal = ({
                     d="m1 1 4 4 4-4"
                   />
                 </svg>
-              </button>
+  </button> */}
+
               <div className="relative w-full ">
                 <input
                   type="search"
                   id="search-dropdown"
-                  className="block p-2.5 w-full z-20 text-sm   rounded-e-lg border-s-2 border  focus:ring-blue-500  bg-gray-700 border-s-gray-700  border-gray-600 placeholder-gray-400 text-white focus:border-blue-500"
+                  className="block p-2.5 w-full z-30 text-sm   rounded-e-lg border-s-2 border  focus:ring-blue-500  bg-gray-700 border-s-gray-700  border-gray-600 placeholder-gray-400 text-white focus:border-blue-500"
                   placeholder="Buscar por nombre..."
                   required
                   value={searchTerm}
@@ -56,13 +86,257 @@ export const Plurinominal = ({
                 />
               </div>
             </div>
-            {openMenu && (
+            {openCorporacion && (
+              <div className="z-30 fixed   divide-x divide-gray-600 rounded-lg shadow w-auto bg-gray-700 flex ">
+                <ul className="py-2 text-sm text-gray-200 p-2" aria-labelledby="dropdown-button">
+
+                  <li
+                    className={`w-full flex  items-center hover:bg-gray-600 hover:text-white ${
+                      corporacionSelect === 'Presidente' ? 'bg-gray-500' : ''
+                    }`}
+                    onClick={() => {setCorporacionSelect('Presidente'),setDatoSelect(''),setProvinciaSelect('')}}
+                  >
+                    <button type="button" className="inline-flex w-full pl-5  py-2 ">
+                      Presidente
+                    </button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="w-4 h-4 mr-1"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                    </svg>
+                  </li>
+                  <li
+                    className={`w-full  flex  items-center hover:bg-gray-600 hover:text-white ${
+                      corporacionSelect === 'Alcalde' ? 'bg-gray-500' : ''
+                    }`}
+                    onClick={() => {setCorporacionSelect('Alcalde'),setDatoSelect(''),setProvinciaSelect('')}}
+                  >
+                    <button type="button" className="inline-flex w-full pl-5 py-2 ">
+                      Alcalde
+                    </button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="w-4 h-4 mr-1"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                    </svg>
+                  </li>
+                  <li
+                    className={`w-full flex  items-center hover:bg-gray-600 hover:text-white ${
+                      corporacionSelect === 'Diputado' ? 'bg-gray-500' : ''
+                    } `}
+                    onClick={() => {setCorporacionSelect('Diputado'),setDatoSelect(''),setProvinciaSelect('')}}
+                  >
+                    <button type="button" className="inline-flex w-full pl-5 py-2 ">
+                      Diputado
+                    </button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="w-4 h-4 mr-1"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                    </svg>
+                  </li>
+                </ul>
+
+                {/*------ SEGUNDA COLUMNA ------- */}
+                <ul className="py-2 text-sm text-gray-200" aria-labelledby="dropdown-button">
+                  {/*------ PRESIDENTE ------- */}
+                  {corporacionSelect === 'Presidente' && (
+                    <div className="grid grid-cols-3  mx-2 w-72">
+                      <li
+                        className={`w-full ${datoSelect === '' ? 'bg-gray-500 ' : ''} `}
+                        onClick={() => {setDatoSelect(''),setProvinciaSelect('')}}
+                      >
+                        <button
+                          type="button"
+                          className="inline-flex w-full px-1 py-2  hover:bg-gray-600 hover:text-white justify-center "
+                        >
+                          Todos
+                        </button>
+                      </li>
+
+                      {Array.from(new Set(data.PRESIDENTE?.map((item) => item.provincia))).map((provincia) => (
+                        <li
+                          key={provincia}
+                          className={`w-full ${provincia === datoSelect ? 'bg-gray-500' : ''}`}
+                          onClick={() => {
+                            setDatoSelect(provincia);
+                          }}
+                        >
+                          <button
+                            type="button"
+                            className="inline-flex w-full justify-center py-2 hover:bg-gray-600 hover:text-white"
+                          >
+                            {provincia.charAt(0).toUpperCase() + provincia.slice(1).toLowerCase()}
+                          </button>
+                        </li>
+                      ))}
+                    </div>
+                  )}
+                  {/*------ ALCALDE ------- */}
+                  {corporacionSelect === 'Alcalde' && (
+                    <div className="grid grid-cols-2 mx-1 w-72">
+                      <li
+                        className={`w-full hover:bg-gray-600 hover:text-white  ${datoSelect === '' && provinciaSelect === '' ? 'bg-gray-500 ' : ''} `}
+                        onClick={() =>{setProvinciaSelect(''),setDatoSelect('')}}
+                      >
+                        <button
+                          type="button"
+                          className="inline-flex w-full px-1 py-2 justify-center  "
+                        >
+                          Todos
+                        </button>
+                      </li>
+
+                      {Array.from(new Set(data.ALCALDE?.map((item) => item.provincia))).map((provincia) => (
+                        <li
+                          key={provincia}
+                          className={`w-full flex items-center hover:bg-gray-600 hover:text-white ${
+                            provincia === provinciaSelect ? 'bg-gray-500' : ''
+                          }`}
+                          onClick={() => {
+                            setProvinciaSelect(provincia);
+                          }}
+                        >
+                          <button type="button" className="inline-flex w-full justify-center py-2 ">
+                            {provincia.charAt(0).toUpperCase() + provincia.slice(1).toLowerCase()}
+                          </button>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth="1.5"
+                            stroke="currentColor"
+                            className="w-4 h-4 mr-1"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                          </svg>
+                        </li>
+                      ))}
+                    </div>
+                  )}
+                  {/*------ DIPUTADO ------- */}
+                  {corporacionSelect === 'Diputado' && (
+                    <div className="grid grid-cols-2  mx-1 w-72">
+                      <li
+                        className={`w-full  hover:bg-gray-600 hover:text-white  ${datoSelect === '' && provinciaSelect === '' ? 'bg-gray-500 ' : ''} `}
+                        onClick={() => {setProvinciaSelect(''),setDatoSelect('')}}
+                      >
+                        <button
+                          type="button"
+                          className="inline-flex w-full px-1 py-2 justify-center "
+                        >
+                          Todos
+                        </button>
+                      </li>
+
+                      {Array.from(new Set(data.DIPUTADO?.map((item) => item.provincia))).map((provincia) => (
+                        <li
+                          key={provincia}
+                          className={`w-full flex items-center hover:bg-gray-600 hover:text-white ${
+                            provincia === provinciaSelect ? 'bg-gray-500' : ''
+                          }`}
+                          onClick={() => {
+                            setProvinciaSelect(provincia);
+                          }}
+                        >
+                          <button type="button" className="inline-flex w-full justify-center py-2 ">
+                            {provincia?.charAt(0).toUpperCase() + provincia?.slice(1).toLowerCase()}
+                          </button>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth="1.5"
+                            stroke="currentColor"
+                            className="w-4 h-4 mr-1"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                          </svg>
+                        </li>
+                      ))}
+                    </div>
+                  )}
+                </ul>
+
+                {/*------ TERCER COLUMNA ------- */}
+                <ul className="py-2 text-sm text-gray-200" aria-labelledby="dropdown-button">
+                  {/*------ ALCALDE ------- */}
+                  {corporacionSelect === 'Alcalde' && (
+                    <div className="grid grid-cols-3 mx-1 w-64">
+
+                      {Array.from(
+                        new Set(
+                          data.ALCALDE?.filter((item) => item.provincia === provinciaSelect).map(
+                            (item) => item.distrito,
+                          ),
+                        ),
+                      ).map((distrito) => (
+                        <li
+                          key={distrito}
+                          className={`w-full flex items-center hover:bg-gray-600 hover:text-white ${
+                            distrito === datoSelect ? 'bg-gray-500' : ''
+                          }`}
+                          onClick={() => {
+                            setDatoSelect(distrito);
+                          }}
+                        >
+                          <button type="button" className="inline-flex w-full justify-center py-2 ">
+                            {distrito.charAt(0).toUpperCase() + distrito.slice(1).toLowerCase()}
+                          </button>
+                        </li>
+                      ))}
+                    </div>
+                  )}
+
+                  {corporacionSelect === 'Diputado' && (
+                    <div className="grid grid-cols-3 mx-1 w-64">
+
+                      {Array.from(
+                        new Set(
+                          data.DIPUTADO?.filter((item) => item.provincia === provinciaSelect).map(
+                            (item) => item.circuito,
+                          ),
+                        ),
+                      ).map((circuito) => (
+                        <li
+                          key={circuito}
+                          className={`w-full flex items-center hover:bg-gray-600 hover:text-white ${
+                            circuito === datoSelect ? 'bg-gray-500' : ''
+                          }`}
+                          onClick={() => {
+                            setDatoSelect(circuito);
+                          }}
+                        >
+                          <button type="button" className="inline-flex w-full justify-center py-2 ">
+                            {circuito}
+                          </button>
+                        </li>
+                      ))}
+                    </div>
+                  )}
+                </ul>
+              </div>
+            )}
+
+            {/*{openMenu && (
               <div className="z-20 fixed   divide-y divide-gray-100 rounded-lg shadow w-44 bg-gray-700 ">
                 <ul className="py-2 text-sm text-gray-200" aria-labelledby="dropdown-button">
-                  <li
-                    className={`w-full ${circuitoSelect === '' ? 'bg-gray-500' : ''}`}
-                    onClick={() => setCircuitoSelect('')}
-                  >
+                  <li className={`w-full ${datoSelect === '' ? 'bg-gray-500' : ''}`} onClick={() => setDatoSelect('')}>
                     <button type="button" className="inline-flex w-full px-5 py-2 hover:bg-gray-600 hover:text-white">
                       Todos
                     </button>
@@ -72,9 +346,9 @@ export const Plurinominal = ({
                   ).map((circuito) => (
                     <li
                       key={circuito}
-                      className={`w-full ${circuito === circuitoSelect ? 'bg-gray-500' : ''}`}
+                      className={`w-full ${circuito === datoSelect ? 'bg-gray-500' : ''}`}
                       onClick={() => {
-                        setCircuitoSelect(circuito);
+                        setDatoSelect(circuito);
                       }}
                     >
                       <button type="button" className="inline-flex w-full px-5 py-2 hover:bg-gray-600 hover:text-white">
@@ -84,7 +358,7 @@ export const Plurinominal = ({
                   ))}
                 </ul>
               </div>
-            )}
+                    )}*/}
           </div>
         </form>
         <Table data={dataFilter} type="Edicion" option={0} />
@@ -99,8 +373,12 @@ Plurinominal.propTypes = {
   dataFilter: PropTypes.array.isRequired,
   searchTerm: PropTypes.string.isRequired,
   setSearchTerm: PropTypes.func.isRequired,
-  circuitoSelect: PropTypes.string.isRequired,
-  setCircuitoSelect: PropTypes.func.isRequired,
-  openMenu: PropTypes.bool.isRequired,
-  setOpenMenu: PropTypes.func.isRequired,
+  corporacionSelect: PropTypes.string.isRequired,
+  setCorporacionSelect: PropTypes.func.isRequired,
+  provinciaSelect: PropTypes.string.isRequired,
+  setProvinciaSelect: PropTypes.func.isRequired,
+  datoSelect: PropTypes.string.isRequired,
+  setDatoSelect: PropTypes.func.isRequired,
+  openCorporacion: PropTypes.bool.isRequired,
+  setOpenCorporacion: PropTypes.func.isRequired,
 };

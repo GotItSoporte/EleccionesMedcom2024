@@ -4,7 +4,7 @@ import Logo from '../../assets/logoMedcom.svg';
 import Master from '../../assets/profiles/Operador.jpg';
 import EstudioWall from '../../assets/profiles/Presentador.jpg';
 import EstudioVirtual from '../../assets/profiles/Programador.jpg';
-import CentroComercial from '../../assets/profiles/CentroCOmercial.jpg';
+//import CentroComercial from '../../assets/profiles/CentroCOmercial.jpg';
 
 export const Home = ({ mostrarVerificacion, setMostrarVerificacion, setRol, rol }) => {
   return (
@@ -34,9 +34,9 @@ export const Home = ({ mostrarVerificacion, setMostrarVerificacion, setRol, rol 
               Aplicativo web de control de datos para crear gráficos de noticias.{' '}
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-2 md:gap-4">
+          <div className="grid grid-cols-8 gap-2 md:gap-4">
             <div
-              className=""
+              className="col-span-4"
               onClick={() => {
                 setMostrarVerificacion(true), setRol('Master');
               }}
@@ -44,7 +44,7 @@ export const Home = ({ mostrarVerificacion, setMostrarVerificacion, setRol, rol 
               <Card name="Master" image={Master} />
             </div>
             <div
-              className=""
+              className="col-span-4"
               onClick={() => {
                 setMostrarVerificacion(true), setRol('EstudioWall');
               }}
@@ -52,21 +52,21 @@ export const Home = ({ mostrarVerificacion, setMostrarVerificacion, setRol, rol 
               <Card name="Estudio Wall" image={EstudioWall} />
             </div>
             <div
-              className=""
+              className="col-start-3 col-span-4"
               onClick={() => {
                 setMostrarVerificacion(true), setRol('EstudioVirtual');
               }}
             >
               <Card name="Estudio Virtual" image={EstudioVirtual} />
             </div>
-            <div
+            {/*<div
               className=""
               onClick={() => {
                 setMostrarVerificacion(true), setRol('Metromall');
               }}
             >
               <Card name="Metromall" image={CentroComercial} />
-            </div>
+            </div>*/}
           </div>
           {mostrarVerificacion ? (
             <div className="fixed inset-0 flex items-center justify-center">
