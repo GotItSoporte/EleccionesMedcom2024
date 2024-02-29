@@ -17,14 +17,14 @@ export const FormatFullscreenXmlLoad = ({ data }) => {
       element.ele('nombre', dataSelect.nombre || '');
       element.ele('cedula', dataSelect.cedula || '');
       element.ele('votos', dataSelect.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') || '');
-      element.ele('porcentaje', (Math.random() * 99.99).toFixed(2) || ''); // dataSelect.porcentaje
+      element.ele('porcentaje', dataSelect.porcentaje || ''); // dataSelect.porcentaje
       element.ele('provincia', dataSelect.provincia || '');
       element.ele('distrito', dataSelect.distrito || '');
       element.ele('circuito', dataSelect.circuito || '');
       element.ele('curules', curules[dataSelect.circuito] || '');
       element.ele('corporacion', dataSelect.corporacion || '');
-      element.ele('participacion', (Math.random() * 99.99).toFixed(2) || ''); //dataSelect.participacion
-      element.ele('escrutado', (Math.random() * 99.99).toFixed(2) || ''); //dataSelect.escrutado
+      element.ele('participacion', dataSelect.participacion || ''); //dataSelect.participacion
+      element.ele('escrutado', dataSelect.escrutado || ''); //dataSelect.escrutado
       element.ele('codigo_partido', dataSelect.codigo_partido || '');
       element.ele('nombre_partido', dataSelect.nombre_partido || '');
       element.ele('codigo_partido2', dataSelect.codigo_partido2 || '');

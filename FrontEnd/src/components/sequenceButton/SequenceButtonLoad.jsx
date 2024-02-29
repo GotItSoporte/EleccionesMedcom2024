@@ -13,6 +13,7 @@ export const SequenceButtonLoad = ({ type, data, setMostrarNavbar, setActiveData
   async function postData(type) {
     setActiveData(false);
 
+
     const formattedData = data
       .map(
         (entry, index) =>

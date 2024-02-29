@@ -5,7 +5,7 @@ const { readOracle } = require('../config/config')
 //------------------- PRESIDENTE -------------------
 router.get("/PRESIDENTE", async function (req, res) {
     try {
-      const result = await readOracle("SELECT * FROM VOTO2024.PRESIDENTE_GOTIT ORDER BY provincia");
+      const result = await readOracle("SELECT * FROM VOTO2024.PRESIDENTE_GOTIT ORDER BY provincia,votos desc");
       res.json(result);
 
     } catch (error) {
@@ -17,7 +17,7 @@ router.get("/PRESIDENTE", async function (req, res) {
 //------------------- ALCALDE -------------------
 router.get("/ALCALDE", async function (req, res) {
   try {
-    const result = await readOracle("SELECT * FROM VOTO2024.ALCALDE_GOTIT ORDER BY provincia,distrito ");
+    const result = await readOracle("SELECT * FROM VOTO2024.ALCALDE_GOTIT ORDER BY provincia,distrito,votos desc ");
     res.json(result);
 
   } catch (error) {

@@ -122,11 +122,11 @@ export const TableEdicion = ({
                 return (
                   <tr
                     key={idx}
-                    className={`bg-gray-700 border-b  border-gray-700 ${
+                    className={`bg-gray-700 border-b  border-gray-700  ${
                       checkPlurinominal ? '' : 'hover:bg-gray-600 hover:text-white'
                     }  font-light md:font-normal  whitespace-nowrap  overflow-y-auto`}
                   >
-                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500  ">
+                    <td className="px-1 py-2 lg:px-3  border border-gray-500  ">
                       <p className="invisible h-0">{data.nombre}</p>
                       <div className="w-full inline-flex border ">
                         <input
@@ -180,25 +180,25 @@ export const TableEdicion = ({
                       </div>
                     </td>
 
-                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{data.votos}</td>
-                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{data.porcentaje}</td>
-                    <td className="px-1 py-2 lg:px-6 lg:py-4 text-center border border-gray-500">{data.provincia}</td>
+                    <td className="px-1 py-2 lg:px-3  border border-gray-500">{data.votos}</td>
+                    <td className="px-1 py-2 lg:px-3  border border-gray-500">{data.porcentaje}</td>
+                    <td className="px-1 py-2 lg:px-3  text-center border border-gray-500">{data.provincia}</td>
                     <td
-                      className={`px-1 py-2 lg:px-6 lg:py-4 text-center ${
+                      className={`px-1 py-2 lg:px-3 text-center  ${
                         data.distrito ? 'text-green-500' : 'text-red-500'
-                      } border border-gray-500`}
+                      } border border-gray-500 `}
                     >
                       {data.distrito || 'NO APLICA'}
                     </td>
                     <td
-                      className={`px-1 py-2 lg:px-6 lg:py-4 text-center ${
+                      className={`px-1 py-2 lg:px-3  text-center ${
                         data.circuito ? 'text-green-500' : 'text-red-500'
                       } border border-gray-500`}
                     >
                       {data.circuito || 'NO APLICA'}
                     </td>
 
-                    <td className="px-1 py-2 lg:px-6 lg:py-4 text-center border border-gray-500">
+                    <td className="px-1 py-2 lg:px-3  text-center border border-gray-500">
                       {data.nombre_partido}
                     </td>
                     <td className="px-1 py-2 lg:px-6 text-center border border-gray-500">
@@ -239,7 +239,7 @@ export const TableEdicion = ({
                     </td>
                     {data.plurinominal === '1' ? (
                       <>
-                        <td className="px-1 py-2 lg:px-6 lg:py-4 text-center border border-gray-500 ">
+                        <td className="px-1 py-2 lg:px-3  text-center border border-gray-500 ">
                           <Dropdown
                             selectedOption={data.orden_clasificacion || 'NO APLICA'}
                             setList={
@@ -256,7 +256,7 @@ export const TableEdicion = ({
                         </td>
 
                         <td
-                          className={`px-1 py-2 lg:px-6 lg:py-4 text-center  border border-gray-500    justify-center `}
+                          className={`px-1 py-2 lg:px-3  text-center  border border-gray-500    justify-center `}
                         >
                           <span
                             className={`relative inline-block px-3 py-1 font-semibold  ${
@@ -275,10 +275,10 @@ export const TableEdicion = ({
                       </>
                     ) : (
                       <>
-                        <td className="px-1 py-2 lg:px-6 lg:py-4 text-center text-red-500 border border-gray-500">
+                        <td className="px-1 py-2 lg:px-3  text-center text-red-500 border border-gray-500">
                           NO APLICA
                         </td>
-                        <td className="px-1 py-2 lg:px-6 lg:py-4 text-center text-red-500 border border-gray-500">
+                        <td className="px-1 py-2 lg:px-3  text-center text-red-500 border border-gray-500">
                           NO APLICA
                         </td>
                       </>

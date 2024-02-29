@@ -28,7 +28,7 @@ export function DataProvider({ children }) {
   const [data, setData] = useState({});
 
   //------------------- TIEMPO CARGA DE DATA-------------------
-  const timeLoad = 100000;
+  const timeLoad = 1000;
 
   //------------------- LISTA PARTIDOS SECUNDARIOS-------------------
   const listPartido = {
