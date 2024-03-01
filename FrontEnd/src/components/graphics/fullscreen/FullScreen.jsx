@@ -20,7 +20,7 @@ export const FullScreen = ({
       <div className={`float-left w-0 ${mostrarNavbar ? 'lg:w-auto' : 'lg:w-0'}`}>
         <Navbar
           type="navbarOnly"
-          nameCorporacion={['PRESIDENTE', 'ALCALDE', 'DIPUTADO']}
+          nameCorporacion={['PRESIDENTE']}
           setDataSelect={setDataSelect}
           mostrarNavbar={mostrarNavbar}
           rol={rol}
