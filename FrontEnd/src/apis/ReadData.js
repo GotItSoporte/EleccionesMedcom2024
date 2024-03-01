@@ -7,7 +7,8 @@ async function fetchReadData(selectTable) {
 
     return data;
   } catch (error) {
-    console.error('Error fetching API data:', error, selectTable);
+    console.error('Error al obtener datos de API:', error, selectTable);
+    alert('Error al obtener datos de API:', error, selectTable);
     return [];
   }
 }

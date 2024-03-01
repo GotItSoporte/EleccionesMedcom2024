@@ -29,7 +29,7 @@ export const PlurinominalLoad = ({ ...props }) => {
      
     });
 
-    console.log({filteredData})
+    
 
     setDataFilter(filteredData ? filteredData : []);
   };
