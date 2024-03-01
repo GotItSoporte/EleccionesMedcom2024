@@ -23,8 +23,8 @@ export const FollowerManual = ({
       {children}
       <section className="  bg-opacity-50 w-screen">
         <div>
-          <form onSubmit={(event) => handleSubmit(event)} className="w-[80%] mx-auto">
-            <div className="flex justify-center mb-5 mt-10 w-fit mx-auto" onClick={duplicarComponente}>
+          <form onSubmit={(event) => handleSubmit(event)} className="w-[88%] md:w-[80%] mx-auto">
+            <div className="flex justify-center mb-5 mt-5 md:mt-10 w-fit mx-auto" onClick={duplicarComponente}>
               <Button
                 type="Principal"
                 rute=""
@@ -35,10 +35,10 @@ export const FollowerManual = ({
               />
             </div>
             <div className="grid grid-cols-6 gap-4 mb-2">
-              <div className="col-start-2 col-span-2">
+              <div className="col-span-3 md:col-start-2 md:col-span-2">
                 <label className="text-sm text-gray-400">Corporación</label>
                 <div className="w-full inline-flex border">
-                  <div className="w-1/12 pt-2 bg-gray-300">
+                  <div className=" md:w-1/12 pt-2 bg-gray-300">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -57,15 +57,15 @@ export const FollowerManual = ({
                   <input
                     type="text"
                     className="w-11/12 focus:outline-none text-black p-2 uppercase"
-                    placeholder="Presidentes"
+                    placeholder="Presidente"
                     onChange={(event) => handleCorporacionChange(event)}
                   />
                 </div>
               </div>
-              <div className="col-start-4 col-span-2">
+              <div className="col-span-3 md:col-start-4 md:col-span-2">
                 <label className="text-sm text-gray-400">Region</label>
                 <div className="w-full inline-flex border">
-                  <div className="w-1/12 pt-2 bg-gray-300">
+                  <div className="md:w-1/12 pt-2 bg-gray-300">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -92,10 +92,10 @@ export const FollowerManual = ({
             </div>
 
             <div className="grid grid-cols-6 gap-4 mb-5">
-              <div className="col-start-2 col-span-2">
+              <div className="col-span-3 md:col-start-2 md:col-span-2">
                 <label className="text-sm text-gray-400">Participación</label>
                 <div className="w-full inline-flex border">
-                  <div className="w-1/12 pt-2 bg-gray-300">
+                  <div className="md:w-1/12 pt-2 bg-gray-300">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -119,10 +119,10 @@ export const FollowerManual = ({
                   />
                 </div>
               </div>
-              <div className="col-start-4 col-span-2">
+              <div className="col-span-3 md:col-start-4 md:col-span-2">
                 <label className="text-sm text-gray-400">Escrutado</label>
                 <div className="w-full inline-flex border">
-                  <div className="w-1/12 pt-2 bg-gray-300">
+                  <div className="md:w-1/12 pt-2 bg-gray-300">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -149,8 +149,8 @@ export const FollowerManual = ({
             </div>
 
             <div
-              className={`flex justify-center  max-h-[calc(50vh)] overflow-y-auto ${
-                componentes.length > 2 ? 'grid grid-cols-2 gap-4' : ''
+              className={`flex justify-center overflow-x-hidden  max-h-[calc(40vh)] overflow-y-auto ${
+                componentes.length > 2 ? 'grid grid-cols-1 md:grid-cols-2 gap-4' : 'grid grid-cols-1 md:grid-cols-2 gap-4'
               }`}
             >
               {componentes.map((componente, index) => (

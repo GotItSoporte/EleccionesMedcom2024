@@ -14,7 +14,7 @@ const readOracle = async (ruteSQL) => {
         const result = await connection.execute(ruteSQL); // "SELECT * FROM PRESIDENTES"
         await connection.close();
 
-        const metaData = result.metaData.map(item => item.name);
+       /* const metaData = result.metaData.map(item => item.name);
         const rows = result.rows;
         
 
@@ -30,7 +30,21 @@ const readOracle = async (ruteSQL) => {
             resultArray.push(rowObject);
         }
 
-        return resultArray
+        return resultArray*/
+
+        
+        // Procesar los resultados
+        const metaData = result.metaData.map(item => item.name.toLowerCase());
+        const rows = result.rows.map(row => {
+            const rowObject = {};
+            metaData.forEach((name, index) => {
+                rowObject[name] = row[index];
+            });
+            return rowObject;
+        });
+
+        return rows;
+
 
     } catch (err) {
         console.error(err);

@@ -5,6 +5,7 @@ import { useFunctions } from '../../../context';
 export const SetRegionesLoad = ({ ...props }) => {
   const nameGrafico = 'SETREGIONES';
   const [dataSelect, setDataSelect] = useState([]);
+  const [dataSelectReference, setDataSelectReference] = useState(dataSelect || []);
   const [selectOption, setSelectOption] = useState(0);
   const [dataGroupe, setDataGroupe] = useState([]);
   const { seleccionarYAgruparDatos } = useFunctions();
@@ -19,6 +20,7 @@ export const SetRegionesLoad = ({ ...props }) => {
     lastRegion.current = dataSelect[0]?.distrito;
 
     if (activeData) {
+      setDataSelectReference(dataSelect)
       setDataGroupe(seleccionarYAgruparDatos(dataSelect, selectOption));
     }
   }, [selectOption, dataSelect, activeData]);
@@ -27,12 +29,13 @@ export const SetRegionesLoad = ({ ...props }) => {
     <SetRegiones
       {...props}
       nameGrafico={nameGrafico}
+      dataSelectReference={dataSelectReference}
       setDataSelect={setDataSelect}
       selectOption={selectOption}
       setSelectOption={setSelectOption}
       dataGroupe={dataGroupe}
       setActiveData={setActiveData}
-      dataSelect={dataSelect}
+    
     />
   );
 };

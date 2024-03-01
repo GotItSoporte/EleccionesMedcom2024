@@ -22,7 +22,7 @@ export const TableEdicion = ({
   return (
     <div>
       <div
-        className={`relative overflow-x-auto     max-h-[70vh]  ${
+        className={`relative overflow-x-auto max-h-[50vh] md:max-h-[70vh]  ${
           checkPlurinominal ? 'overflow-hidden ' : ' overflow-y-auto'
         }   `}
       >

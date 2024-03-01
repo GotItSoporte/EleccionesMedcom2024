@@ -87,8 +87,8 @@ export const Plurinominal = ({
               </div>
             </div>
             {openCorporacion && (
-              <div className="z-30 fixed   divide-x divide-gray-600 rounded-lg shadow w-auto bg-gray-700 flex ">
-                <ul className="py-2 text-sm text-gray-200 p-2" aria-labelledby="dropdown-button">
+              <div className="z-30 fixed   divide-x divide-gray-600 rounded-lg shadow w-auto bg-gray-700 flex max-h-[20vh] ">
+                <ul className="md:py-2 text-sm text-gray-200 md:p-2" aria-labelledby="dropdown-button">
 
                   <li
                     className={`w-full flex  items-center hover:bg-gray-600 hover:text-white ${
@@ -96,7 +96,7 @@ export const Plurinominal = ({
                     }`}
                     onClick={() => {setCorporacionSelect('Presidente'),setDatoSelect(''),setProvinciaSelect('')}}
                   >
-                    <button type="button" className="inline-flex w-full pl-5  py-2 ">
+                    <button type="button" className="inline-flex w-full pl-1 md:pl-5  py-2 ">
                       Presidente
                     </button>
                     <svg
@@ -116,7 +116,7 @@ export const Plurinominal = ({
                     }`}
                     onClick={() => {setCorporacionSelect('Alcalde'),setDatoSelect(''),setProvinciaSelect('')}}
                   >
-                    <button type="button" className="inline-flex w-full pl-5 py-2 ">
+                    <button type="button" className="inline-flex w-full pl-1 md:pl-5 py-2 ">
                       Alcalde
                     </button>
                     <svg
@@ -136,7 +136,7 @@ export const Plurinominal = ({
                     } `}
                     onClick={() => {setCorporacionSelect('Diputado'),setDatoSelect(''),setProvinciaSelect('')}}
                   >
-                    <button type="button" className="inline-flex w-full pl-5 py-2 ">
+                    <button type="button" className="inline-flex w-full pl-1 md:pl-5 py-2 ">
                       Diputado
                     </button>
                     <svg
@@ -153,17 +153,17 @@ export const Plurinominal = ({
                 </ul>
 
                 {/*------ SEGUNDA COLUMNA ------- */}
-                <ul className="py-2 text-sm text-gray-200" aria-labelledby="dropdown-button">
+                <ul className="md:py-2 text-sm text-gray-200" aria-labelledby="dropdown-button">
                   {/*------ PRESIDENTE ------- */}
                   {corporacionSelect === 'Presidente' && (
-                    <div className="grid grid-cols-3  mx-2 w-72">
+                    <div className="grid grid-cols-1 mx-1 md:grid-cols-3  md:mx-2 w-24 md:w-72 overflow-y-auto h-full">
                       <li
                         className={`w-full ${datoSelect === '' ? 'bg-gray-500 ' : ''} `}
                         onClick={() => {setDatoSelect(''),setProvinciaSelect('')}}
                       >
                         <button
                           type="button"
-                          className="inline-flex w-full px-1 py-2  hover:bg-gray-600 hover:text-white justify-center "
+                          className="inline-flex w-full md:px-1 py-2  hover:bg-gray-600 hover:text-white justify-center "
                         >
                           Todos
                         </button>
@@ -189,7 +189,7 @@ export const Plurinominal = ({
                   )}
                   {/*------ ALCALDE ------- */}
                   {corporacionSelect === 'Alcalde' && (
-                    <div className="grid grid-cols-2 mx-1 w-72">
+                    <div className="grid grid-cols-1 md:grid-cols-2 mx-1 md:mx-2 w-24 md:w-72 overflow-y-auto h-full">
                       <li
                         className={`w-full hover:bg-gray-600 hover:text-white  ${datoSelect === '' && provinciaSelect === '' ? 'bg-gray-500 ' : ''} `}
                         onClick={() =>{setProvinciaSelect(''),setDatoSelect('')}}
@@ -231,7 +231,7 @@ export const Plurinominal = ({
                   )}
                   {/*------ DIPUTADO ------- */}
                   {corporacionSelect === 'Diputado' && (
-                    <div className="grid grid-cols-2  mx-1 w-72">
+                    <div className="grid grid-cols-1 md:grid-cols-2  mx-1 md:mx-2 w-24 md:w-72 overflow-y-auto h-full">
                       <li
                         className={`w-full  hover:bg-gray-600 hover:text-white  ${datoSelect === '' && provinciaSelect === '' ? 'bg-gray-500 ' : ''} `}
                         onClick={() => {setProvinciaSelect(''),setDatoSelect('')}}
@@ -277,7 +277,7 @@ export const Plurinominal = ({
                 <ul className="py-2 text-sm text-gray-200" aria-labelledby="dropdown-button">
                   {/*------ ALCALDE ------- */}
                   {corporacionSelect === 'Alcalde' && (
-                    <div className="grid grid-cols-3 mx-1 w-64">
+                    <div className="md:grid md:grid-cols-3 mx-1 md:mx-2 w-24 md:w-64  overflow-y-auto h-full ">
 
                       {Array.from(
                         new Set(
@@ -304,7 +304,7 @@ export const Plurinominal = ({
                   )}
 
                   {corporacionSelect === 'Diputado' && (
-                    <div className="grid grid-cols-3 mx-1 w-64">
+                    <div className="md:grid  md:grid-cols-3 mx-1 md:mx-2 w-24 md:w-64 overflow-y-auto h-full ">
 
                       {Array.from(
                         new Set(

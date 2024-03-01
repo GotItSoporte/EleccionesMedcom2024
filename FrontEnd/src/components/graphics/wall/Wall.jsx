@@ -6,7 +6,7 @@ export const Wall = ({
   mostrarNavbar,
   rol,
   setMostrarNavbar,
-  dataSelect,
+  dataSelectReference,
   setDataSelect,
   selectOption,
   setSelectOption,
@@ -40,11 +40,11 @@ export const Wall = ({
           <InlineLayout
             option={selectOption}
             setOption={setSelectOption}
-            dataSelect={dataSelect}
+            dataSelect={dataSelectReference}
             ActiveTicker={false}
           />
         )}
-        <Table data={dataSelect} type="" option={selectOption} />
+        <Table data={dataSelectReference} type="" option={selectOption} />
         <SequenceButton
           type={nameGrafico}
           data={dataGroupe}
@@ -61,8 +61,8 @@ Wall.propTypes = {
   rol: PropTypes.string.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,
-  dataSelect: PropTypes.array.isRequired,
   setDataSelect: PropTypes.func.isRequired,
+  dataSelectReference: PropTypes.array.isRequired,
   selectOption: PropTypes.number.isRequired,
   setSelectOption: PropTypes.func.isRequired,
   dataGroupe: PropTypes.array.isRequired,
