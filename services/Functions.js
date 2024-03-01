@@ -28,7 +28,7 @@ function ChangeFormat(data) {
       [`votos${indice}`]:
         elemento.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") || "", // elemento.votos ||
       [`porcentaje${indice}`]:
-        elemento.porcentaje || "",
+        elemento.porcentaje.toString() || "",
     }))
     .reduce((resultado, elemento) => ({ ...resultado, ...elemento }), {});
 }
