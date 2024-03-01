@@ -156,7 +156,7 @@ export const Plurinominal = ({
                 <ul className="md:py-2 text-sm text-gray-200" aria-labelledby="dropdown-button">
                   {/*------ PRESIDENTE ------- */}
                   {corporacionSelect === 'Presidente' && (
-                    <div className="grid grid-cols-1 mx-1 md:grid-cols-3  md:mx-2 w-24 md:w-72 overflow-y-auto h-full">
+                    <div className="grid grid-cols-1 mx-1 md:grid-cols-3  md:mx-2 w-24 md:w-72 overflow-y-auto h-full md:h-auto">
                       <li
                         className={`w-full ${datoSelect === '' ? 'bg-gray-500 ' : ''} `}
                         onClick={() => {setDatoSelect(''),setProvinciaSelect('')}}
@@ -189,7 +189,7 @@ export const Plurinominal = ({
                   )}
                   {/*------ ALCALDE ------- */}
                   {corporacionSelect === 'Alcalde' && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 mx-1 md:mx-2 w-24 md:w-72 overflow-y-auto h-full">
+                    <div className="grid grid-cols-1 md:grid-cols-2 mx-1 md:mx-2 w-24 md:w-72 overflow-y-auto h-full md:h-full">
                       <li
                         className={`w-full hover:bg-gray-600 hover:text-white  ${datoSelect === '' && provinciaSelect === '' ? 'bg-gray-500 ' : ''} `}
                         onClick={() =>{setProvinciaSelect(''),setDatoSelect('')}}
@@ -231,7 +231,7 @@ export const Plurinominal = ({
                   )}
                   {/*------ DIPUTADO ------- */}
                   {corporacionSelect === 'Diputado' && (
-                    <div className="grid grid-cols-1 md:grid-cols-2  mx-1 md:mx-2 w-24 md:w-72 overflow-y-auto h-full">
+                    <div className="grid grid-cols-1 md:grid-cols-2  mx-1 md:mx-2 w-24 md:w-72 overflow-y-auto h-full md:h-auto">
                       <li
                         className={`w-full  hover:bg-gray-600 hover:text-white  ${datoSelect === '' && provinciaSelect === '' ? 'bg-gray-500 ' : ''} `}
                         onClick={() => {setProvinciaSelect(''),setDatoSelect('')}}
@@ -277,7 +277,7 @@ export const Plurinominal = ({
                 <ul className="py-2 text-sm text-gray-200" aria-labelledby="dropdown-button">
                   {/*------ ALCALDE ------- */}
                   {corporacionSelect === 'Alcalde' && (
-                    <div className="md:grid md:grid-cols-3 mx-1 md:mx-2 w-24 md:w-64  overflow-y-auto h-full ">
+                    <div className="md:grid md:grid-cols-3 mx-1 md:mx-2 w-24 md:w-64  overflow-y-auto h-full md:h-auto ">
 
                       {Array.from(
                         new Set(
@@ -304,7 +304,7 @@ export const Plurinominal = ({
                   )}
 
                   {corporacionSelect === 'Diputado' && (
-                    <div className="md:grid  md:grid-cols-3 mx-1 md:mx-2 w-24 md:w-64 overflow-y-auto h-full ">
+                    <div className="md:grid  md:grid-cols-3 mx-1 md:mx-2 w-24 md:w-64 overflow-y-auto h-full md:h-auto">
 
                       {Array.from(
                         new Set(
