@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Navbar, Ticker, TickerAbajo, FullScreen, Plurinominal, TouchScreen } from '../../components';
+import { Navbar, Ticker, TickerAbajo, FullScreen,FullScreenTribunal, Plurinominal, TouchScreen } from '../../components';
 
 export const Master = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, setGraficoSeleccionado }) => {
   let rol = 'Master';
@@ -47,7 +47,7 @@ export const Master = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, s
       </section>
 
       {/*------------------- FULLSCREEN -------------------*/}
-      <div className={`${graficoSeleccionado === 'FullScreen' ? 'block' : 'hidden'}`}>
+      <div className={`${graficoSeleccionado === 'FullScreenPalacio' ? 'block' : 'hidden'}`}>
         <FullScreen mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol={rol}>
           <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
             Master -
@@ -56,6 +56,18 @@ export const Master = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, s
             </span>
           </h1>
         </FullScreen>
+      </div>
+      
+            {/*------------------- FULLSCREEN TRIBUNAL -------------------*/}
+            <div className={`${graficoSeleccionado === 'FullScreenTribunal' ? 'block' : 'hidden'}`}>
+        <FullScreenTribunal mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol={rol}>
+          <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
+            Master -
+            <span className="text-2xl md:text-5xl font-semibold md:font-extrabold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-gray-800 ml-2">
+              {graficoSeleccionado}
+            </span>
+          </h1>
+        </FullScreenTribunal>
       </div>
 
       {/*------------------- PLURINOMINAL -------------------*/}

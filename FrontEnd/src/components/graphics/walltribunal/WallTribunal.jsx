@@ -1,7 +1,7 @@
 import { Navbar, Table, InlineLayout, SequenceButton } from '../../../components';
 import PropTypes from 'prop-types';
 
-export const Wall = ({
+export const WallTribunal = ({
   nameGrafico,
   mostrarNavbar,
   rol,
@@ -19,7 +19,7 @@ export const Wall = ({
       <div className={`float-left w-0 ${mostrarNavbar ? 'lg:w-auto' : 'lg:w-0'} `}>
         <Navbar
           type="navbarOnly"
-          nameCorporacion={['PRESIDENTE']}
+          nameCorporacion={['ALCALDE', 'DIPUTADO']}
           mostrarNavbar={mostrarNavbar}
           setMostrarNavbar={setMostrarNavbar}
           setDataSelect={setDataSelect}
@@ -56,7 +56,7 @@ export const Wall = ({
   );
 };
 
-Wall.propTypes = {
+WallTribunal.propTypes = {
   nameGrafico: PropTypes.string.isRequired,
   rol: PropTypes.string.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,

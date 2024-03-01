@@ -1,7 +1,7 @@
 import { Navbar, Table, FormatFullscreenXml, InlineLayout } from '../../../components';
 import PropTypes from 'prop-types';
 
-export const FullScreen = ({
+export const FullScreenTribunal = ({
   mostrarNavbar,
   setMostrarNavbar,
   rol,
@@ -72,7 +72,7 @@ export const FullScreen = ({
         <Table data={dataSelect} type="" option={selectOption} />
         {dataGroupe.length > 0 && (
           <div className="w-fit mx-auto mt-2 p-1">
-            <FormatFullscreenXml name='FULLSCREENPALACIO' data={dataGroupe} />
+            <FormatFullscreenXml name='FULLSCREENTRIBUNAL' data={dataGroupe} />
           </div>
         )}
       </div>
@@ -80,7 +80,7 @@ export const FullScreen = ({
   );
 };
 
-FullScreen.propTypes = {
+FullScreenTribunal.propTypes = {
   rol: PropTypes.string.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,

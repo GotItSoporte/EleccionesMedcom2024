@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { FullScreen } from './FullScreen';
+import { FullScreenTribunal } from './FullScreentribunal';
 import { useFunctions } from '../../../context';
 import fetchReadXml from '../../../apis/ReadXml';
 
-export const FullScreenLoad = ({ ...props }) => {
+export const FullScreenTribunalLoad = ({ ...props }) => {
   const [dataSelect, setDataSelect] = useState([]);
   const [selectOption, setSelectOption] = useState(0);
   const [dataGroupe, setDataGroupe] = useState([]);
@@ -15,7 +15,7 @@ export const FullScreenLoad = ({ ...props }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const newData = await fetchReadXml('FULLSCREENPALACIO');
+        const newData = await fetchReadXml('FULLSCREENTRIBUNAL');
         setDataLastFile(newData);
       } catch (error) {
         // Manejar el error según sea necesario
@@ -30,7 +30,7 @@ export const FullScreenLoad = ({ ...props }) => {
   }, [selectOption, dataSelect]);
 
   return (
-    <FullScreen
+    <FullScreenTribunal
       {...props}
       setDataSelect={setDataSelect}
       dataSelect={dataSelect}

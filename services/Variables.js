@@ -3,7 +3,8 @@
 //-------------------  VARIABLES DE RUTA PARA DATOS XML -------------------
 const RUTE_XML = "W:/VOTO 24 (medcom)/Elecciones Generales Mayo 5/archivosXML/";
 
-const NAME_FILE_FULLSCREEN = 'Voto24_fullscreen' 
+const NAME_FILE_FULLSCREENPALACIO = 'Voto24_fullscreen' 
+const NAME_FILE_FULLSCREENTRIBUNAL = 'Voto24_fullscreentribunal' 
 
 const NAME_FILE_TOUCHSCREEN = 'Voto24_touchscreen'
 const NAME_FILE_TOUCHSCREENALL = 'Voto24_touchscreenall'
@@ -28,7 +29,8 @@ module.exports = {
     UDP_PORT,
     IP_ENGINE_WALL,
     IP_ENGINE_SETREGIONES,
-    NAME_FILE_FULLSCREEN,
+    NAME_FILE_FULLSCREENPALACIO,
+    NAME_FILE_FULLSCREENTRIBUNAL,
     NAME_FILE_TOUCHSCREEN,
     NAME_FILE_TOUCHSCREENALL,
     NAME_FILE_ESCRUTADONACIONAL,

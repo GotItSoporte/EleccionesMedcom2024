@@ -1,10 +1,12 @@
 export { Ticker } from './ticker';
 export { TickerAbajo } from './/tickerabajo';
 export { FullScreen } from './fullscreen';
+export { FullScreenTribunal } from './fullscreentribunal';
 export { Follower } from './follower';
 export { FollowerReeleccion } from './followerreeleccion';
 export { FollowerManual } from './followermanual';
 export { Plurinominal } from './plurinominal';
 export { Wall } from './wall';
+export { WallTribunal } from './walltribunal';
 export { TouchScreen } from './touchscreen';
 export { SetRegiones } from './setregiones';

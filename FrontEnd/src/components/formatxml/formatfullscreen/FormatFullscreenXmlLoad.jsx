@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import xmlbuilder from 'xmlbuilder';
 import { useData } from '../../../context';
 
-export const FormatFullscreenXmlLoad = ({ data }) => {
+export const FormatFullscreenXmlLoad = ({name, data }) => {
   const { curules } = useData();
 
-  async function CreateFile(data) {
+  async function CreateFile(name,data) {
     const tickerfeed = xmlbuilder.create('data');
     data.forEach((dataSelect) => {
       const element = tickerfeed.ele('element');
@@ -35,12 +35,13 @@ export const FormatFullscreenXmlLoad = ({ data }) => {
       element.ele('nombre_partido4', dataSelect.nombre_partido4 || '');
     });
     const xml = tickerfeed.end({ pretty: true }).toString();
-    await sendInfoXml('FULLSCREEN', xml);
+    await sendInfoXml(name, xml);
   }
 
-  return <FormatFullscreenXml CreateFile={CreateFile} data={data} />;
+  return <FormatFullscreenXml CreateFile={CreateFile} data={data} name={name} />;
 };
 
 FormatFullscreenXmlLoad.propTypes = {
   data: PropTypes.array.isRequired,
+  name: PropTypes.string.isRequired,
 };
