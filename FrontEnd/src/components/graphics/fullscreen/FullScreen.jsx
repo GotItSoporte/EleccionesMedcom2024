@@ -72,7 +72,7 @@ export const FullScreen = ({
         <Table data={dataSelect} type="" option={selectOption} />
         {dataGroupe.length > 0 && (
           <div className="w-fit mx-auto mt-2 p-1">
-            <FormatFullscreenXml name='FULLSCREENPALACIO' data={dataGroupe} />
+            <FormatFullscreenXml name="FULLSCREENPALACIO" data={dataGroupe} />
           </div>
         )}
       </div>

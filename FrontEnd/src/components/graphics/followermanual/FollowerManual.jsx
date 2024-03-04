@@ -150,7 +150,9 @@ export const FollowerManual = ({
 
             <div
               className={`flex justify-center overflow-x-hidden  max-h-[calc(40vh)] overflow-y-auto ${
-                componentes.length > 2 ? 'grid grid-cols-1 md:grid-cols-2 gap-4' : 'grid grid-cols-1 md:grid-cols-2 gap-4'
+                componentes.length > 2
+                  ? 'grid grid-cols-1 md:grid-cols-2 gap-4'
+                  : 'grid grid-cols-1 md:grid-cols-2 gap-4'
               }`}
             >
               {componentes.map((componente, index) => (

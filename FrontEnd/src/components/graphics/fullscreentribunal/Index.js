@@ -1,1 +1,1 @@
-export {FullScreenTribunalLoad as FullScreenTribunal} from './FullScreenTribunalLoad'
+export { FullScreenTribunalLoad as FullScreenTribunal } from './FullScreenTribunalLoad';

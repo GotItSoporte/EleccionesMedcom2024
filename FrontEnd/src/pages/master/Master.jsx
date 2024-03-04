@@ -1,5 +1,13 @@
 import PropTypes from 'prop-types';
-import { Navbar, Ticker, TickerAbajo, FullScreen,FullScreenTribunal, Plurinominal, TouchScreen } from '../../components';
+import {
+  Navbar,
+  Ticker,
+  TickerAbajo,
+  FullScreen,
+  FullScreenTribunal,
+  Plurinominal,
+  TouchScreen,
+} from '../../components';
 
 export const Master = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, setGraficoSeleccionado }) => {
   let rol = 'Master';
@@ -57,9 +65,9 @@ export const Master = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, s
           </h1>
         </FullScreen>
       </div>
-      
-            {/*------------------- FULLSCREEN TRIBUNAL -------------------*/}
-            <div className={`${graficoSeleccionado === 'FullScreenTribunal' ? 'block' : 'hidden'}`}>
+
+      {/*------------------- FULLSCREEN TRIBUNAL -------------------*/}
+      <div className={`${graficoSeleccionado === 'FullScreenTribunal' ? 'block' : 'hidden'}`}>
         <FullScreenTribunal mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol={rol}>
           <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
             Master -

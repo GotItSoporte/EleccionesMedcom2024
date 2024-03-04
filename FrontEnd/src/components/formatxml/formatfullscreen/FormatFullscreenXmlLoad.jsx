@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import xmlbuilder from 'xmlbuilder';
 import { useData } from '../../../context';
 
-export const FormatFullscreenXmlLoad = ({name, data }) => {
+export const FormatFullscreenXmlLoad = ({ name, data }) => {
   const { curules } = useData();
 
-  async function CreateFile(name,data) {
+  async function CreateFile(name, data) {
     const tickerfeed = xmlbuilder.create('data');
     data.forEach((dataSelect) => {
       const element = tickerfeed.ele('element');

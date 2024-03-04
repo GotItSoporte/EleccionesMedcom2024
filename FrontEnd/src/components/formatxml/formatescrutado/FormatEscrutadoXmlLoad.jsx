@@ -5,15 +5,13 @@ import xmlbuilder from 'xmlbuilder';
 import { useEffect } from 'react';
 
 export const FormatEscrutadoXmlLoad = ({ name, data }) => {
-
-  async function CreateFile(name,data) {
+  async function CreateFile(name, data) {
     const tickerfeed = xmlbuilder.create('data');
     const element = tickerfeed.ele('element');
-    element.ele('escrutado', (Math.random() * 99.99).toFixed(2) || ''); //data.escrutado 
+    element.ele('escrutado', (Math.random() * 99.99).toFixed(2) || ''); //data.escrutado
     const xml = tickerfeed.end({ pretty: true }).toString();
     await sendInfoXml(name, xml);
   }
-  
 
   useEffect(() => {
     CreateFile(name, data);

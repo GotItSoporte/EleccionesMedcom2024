@@ -20,7 +20,7 @@ export const FullScreenTribunal = ({
       <div className={`float-left w-0 ${mostrarNavbar ? 'lg:w-auto' : 'lg:w-0'}`}>
         <Navbar
           type="navbarOnly"
-          nameCorporacion={[ 'ALCALDE', 'DIPUTADO']}
+          nameCorporacion={['ALCALDE', 'DIPUTADO']}
           setDataSelect={setDataSelect}
           mostrarNavbar={mostrarNavbar}
           rol={rol}
@@ -72,7 +72,7 @@ export const FullScreenTribunal = ({
         <Table data={dataSelect} type="" option={selectOption} />
         {dataGroupe.length > 0 && (
           <div className="w-fit mx-auto mt-2 p-1">
-            <FormatFullscreenXml name='FULLSCREENTRIBUNAL' data={dataGroupe} />
+            <FormatFullscreenXml name="FULLSCREENTRIBUNAL" data={dataGroupe} />
           </div>
         )}
       </div>

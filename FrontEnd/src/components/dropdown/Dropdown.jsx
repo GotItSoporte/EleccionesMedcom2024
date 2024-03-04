@@ -1,6 +1,17 @@
 import PropTypes from 'prop-types';
 
-export const Dropdown = ({ open, setOpen, selectedOption, HandleDataSubmit,corporacion, nameData, id, setList, loading,FuncionGanadorPlurinominal }) => {
+export const Dropdown = ({
+  open,
+  setOpen,
+  selectedOption,
+  HandleDataSubmit,
+  corporacion,
+  nameData,
+  id,
+  setList,
+  loading,
+  FuncionGanadorPlurinominal,
+}) => {
   return (
     <div className="relative ">
       <button
@@ -33,12 +44,12 @@ export const Dropdown = ({ open, setOpen, selectedOption, HandleDataSubmit,corpo
                 <a
                   href="#"
                   className="block px-4 py-2  hover:bg-gray-600 hover:text-white"
-                  onClick={() => {                 
-                    if (FuncionGanadorPlurinominal) {                      
-                      HandleDataSubmit(nameData, el, id,corporacion);
-                      HandleDataSubmit('ganadorplurinominal', el !== 'NO APLICA' ? '1' : '0', id,corporacion);
+                  onClick={() => {
+                    if (FuncionGanadorPlurinominal) {
+                      HandleDataSubmit(nameData, el, id, corporacion);
+                      HandleDataSubmit('ganadorplurinominal', el !== 'NO APLICA' ? '1' : '0', id, corporacion);
                     } else {
-                      HandleDataSubmit(nameData, el, id,corporacion);
+                      HandleDataSubmit(nameData, el, id, corporacion);
                     }
                     setOpen(!open);
                   }}
@@ -66,5 +77,5 @@ Dropdown.propTypes = {
   corporacion: PropTypes.string.isRequired,
   nameData: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  FuncionGanadorPlurinominal : PropTypes.bool.isRequired,
+  FuncionGanadorPlurinominal: PropTypes.bool.isRequired,
 };

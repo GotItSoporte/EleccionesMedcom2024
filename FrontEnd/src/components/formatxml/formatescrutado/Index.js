@@ -1,1 +1,1 @@
-export {FormatEscrutadoXmlLoad as FormatEscrutadoXml} from './FormatEscrutadoXmlLoad'
+export { FormatEscrutadoXmlLoad as FormatEscrutadoXml } from './FormatEscrutadoXmlLoad';

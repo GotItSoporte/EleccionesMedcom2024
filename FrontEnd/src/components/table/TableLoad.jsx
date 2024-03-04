@@ -11,6 +11,8 @@ export const TableLoad = ({ type, data, option }) => {
     return handleRangeClasificacion(data) || [];
   });
 
+  const [ConfirmEdit, setConfirmEdit] = useState(false); //Para table edicion
+
   function handleRangeClasificacion(data) {
     const filteredData = data?.filter((item) => item.circuito);
 
@@ -43,7 +45,7 @@ export const TableLoad = ({ type, data, option }) => {
   }
 
   // Para cambiarun dato unico
-  async function HandleDataSubmit(nameVariableSelected, variableSelected, identificationNumber,corporacion) {
+  async function HandleDataSubmit(nameVariableSelected, variableSelected, identificationNumber, corporacion) {
     setCheckPlurinominal(true);
 
     const editedData = {
@@ -55,10 +57,11 @@ export const TableLoad = ({ type, data, option }) => {
 
     await editDataInTable(editedData, '');
     setDelayCheckPlurinominal(true);
+    setConfirmEdit(true);
   }
 
-  // para cambiar un dato de partidos 
-  async function HandleDataPartidoSubmit(nameVariableSelected, variableSelected, identificationNumber,corporacion) {
+  // para cambiar un dato de partidos
+  async function HandleDataPartidoSubmit(nameVariableSelected, variableSelected, identificationNumber, corporacion) {
     setCheckPlurinominal(true);
 
     const editedData = {
@@ -74,8 +77,6 @@ export const TableLoad = ({ type, data, option }) => {
     setDelayCheckPlurinominal(true);
   }
 
-
-
   useEffect(() => {
     setListClasificacion(handleRangeClasificacion(data));
   }, [data]);
@@ -90,6 +91,8 @@ export const TableLoad = ({ type, data, option }) => {
         checkPlurinominal={checkPlurinominal}
         listPartido={listPartido}
         listClasificacion={listClasificacion}
+        ConfirmEdit={ConfirmEdit}
+        setConfirmEdit={setConfirmEdit}
       />
     );
 };

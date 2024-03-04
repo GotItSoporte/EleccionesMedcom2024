@@ -1,4 +1,3 @@
-
-export const FormatEscrutadoXml = () =>{
-    return <></>;
-}
+export const FormatEscrutadoXml = () => {
+  return <></>;
+};

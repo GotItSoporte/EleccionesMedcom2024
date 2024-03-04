@@ -12,8 +12,8 @@ export function useData() {
 export function DataProvider({ children }) {
   //------------------- GRAFICOS EXISTENTES -------------------
   const listaGraficos = {
-    Master: ['Voto_Arriba_Voto24', 'Voto_Abajo_Voto24', 'FullScreenPalacio','FullScreenTribunal', 'Plurinominal'],
-    EstudioWall: ['WallPalacio','WallTribunal', 'RA'],
+    Master: ['Voto_Arriba_Voto24', 'Voto_Abajo_Voto24', 'FullScreenPalacio', 'FullScreenTribunal', 'Plurinominal'],
+    EstudioWall: ['WallPalacio', 'WallTribunal', 'RA'],
     EstudioVirtual: ['Follower', 'FollowerReeleccion', 'FollowerManual', 'SetRegiones'],
   };
 
@@ -28,7 +28,7 @@ export function DataProvider({ children }) {
   const [data, setData] = useState({});
 
   //------------------- TIEMPO CARGA DE DATA-------------------
-  const timeLoad = 5000;
+  const timeLoad = 1000;
 
   //------------------- LISTA PARTIDOS SECUNDARIOS-------------------
   const listPartido = {

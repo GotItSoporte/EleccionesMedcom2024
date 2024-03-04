@@ -16,20 +16,17 @@ export const PlurinominalLoad = ({ ...props }) => {
 
   const handleChange = () => {
     // Filtrar datos por nombre y circuito
-    const corporacion=corporacionSelect?.toUpperCase()
+    const corporacion = corporacionSelect?.toUpperCase();
     const filteredData = data?.[corporacion]?.filter((item) => {
-      const isSameDato = 
-      (corporacion === 'PRESIDENTE' && (datoSelect.trim() === '' || item.provincia === datoSelect)) ||
-      (corporacion === 'ALCALDE' && (datoSelect.trim() === '' || item.distrito === datoSelect && item.provincia === provinciaSelect)) ||
-      (corporacion === 'DIPUTADO' && (datoSelect.trim() === '' || item.circuito === datoSelect ));
+      const isSameDato =
+        (corporacion === 'PRESIDENTE' && (datoSelect.trim() === '' || item.provincia === datoSelect)) ||
+        (corporacion === 'ALCALDE' &&
+          (datoSelect.trim() === '' || (item.distrito === datoSelect && item.provincia === provinciaSelect))) ||
+        (corporacion === 'DIPUTADO' && (datoSelect.trim() === '' || item.circuito === datoSelect));
       const isSameNombre = searchTerm.trim() === '' || item.nombre.includes(searchTerm);
 
-      
       return isSameDato && isSameNombre;
-     
     });
-
-    
 
     setDataFilter(filteredData ? filteredData : []);
   };
@@ -44,7 +41,7 @@ export const PlurinominalLoad = ({ ...props }) => {
     };
 
     fetchData();
-  }, [data, searchTerm, datoSelect,corporacionSelect]);
+  }, [data, searchTerm, datoSelect, corporacionSelect]);
 
   return (
     <Plurinominal
