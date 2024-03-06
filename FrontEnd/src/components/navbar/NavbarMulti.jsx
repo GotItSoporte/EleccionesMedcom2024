@@ -100,7 +100,9 @@ export const NavbarMulti = ({ nameCorporacion, setDataSelect, mostrarNavbar, dat
                       {open[corporacion] &&
                         (corporacion === 'DIPUTADO'
                           ? data[corporacion]?.filter((item) => item.plurinominal === '0')
-                          : data[corporacion]
+                          : corporacion === 'ALCALDE'
+                            ? data[corporacion].filter((item) => item.activo === '1')
+                            : data[corporacion]
                         )?.map((el, idx) => {
                           if (!miObjeto[el.provincia]) {
                             miObjeto[el.provincia] = {};
@@ -194,6 +196,7 @@ export const NavbarMulti = ({ nameCorporacion, setDataSelect, mostrarNavbar, dat
                                 {openDistrito[el.provincia] &&
                                   corporacion === 'ALCALDE' &&
                                   data[corporacion]
+                                    .filter((item) => item.activo === '1')
                                     .filter((item) => item.provincia === el.provincia)
                                     .sort((a, b) => a.distrito.localeCompare(b.distrito))
                                     ?.map((el2, idx2) => {

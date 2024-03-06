@@ -38,7 +38,7 @@ export const FullScreen = ({
 
       <div className="w-auto px-2 overflow-x-auto">
         {lastFile && (
-          <div className="fixed bg-gray-900 border-green border-2 rounded-sm w-[95%]  p-2   z-10 max-h-[50%] overflow-y-auto  md:w-auto mr-2 ">
+          <div className="fixed md:left-0 bg-gray-900 border-green border-2 rounded-sm w-[95%]  p-2   z-50 max-h-[50%] overflow-y-auto  md:w-auto mr-2 ">
             <div className="flex justify-end">
               <svg
                 className="h-12 left-0 text-red cursor-pointer"

@@ -17,7 +17,7 @@ export const FormatFullscreenXmlLoad = ({ name, data }) => {
       element.ele('nombre', dataSelect.nombre || '');
       element.ele('cedula', dataSelect.cedula || '');
       element.ele('votos', dataSelect.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') || '');
-      element.ele('porcentaje', dataSelect.porcentaje || ''); // dataSelect.porcentaje
+      element.ele('porcentaje', dataSelect.porcentaje.toString() || ''); // dataSelect.porcentaje
       element.ele('provincia', dataSelect.provincia || '');
       element.ele('distrito', dataSelect.distrito || '');
       element.ele('circuito', dataSelect.circuito || '');

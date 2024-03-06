@@ -46,7 +46,7 @@ export const SequenceButtonLoad = ({ type, data, setMostrarNavbar, setActiveData
     setLoading(true);
 
     await sendInfoSocket(type, udpMessage);
-    await delay(3000);
+    await delay(5000);
     setLoading(false);
     setSequence(sequence - 1);
     type === 'SETREGIONES' && setActiveData(true);

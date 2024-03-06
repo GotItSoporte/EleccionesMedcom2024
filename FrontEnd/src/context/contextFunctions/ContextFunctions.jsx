@@ -40,16 +40,18 @@ function mostrarInformacion(distritosTrue, datos, Reeleccion = false) {
     if (a.corporacion !== b.corporacion) {
       return ordenDeseado.indexOf(a.corporacion) - ordenDeseado.indexOf(b.corporacion);
     }
-    if (a.provincia === b.provincia) {
-      // Comparar distritos para ALCALDE o circuitos para DIPUTADO
 
-      return (a.distrito || a.circuito).localeCompare(b.distrito || b.circuito);
-    }
     if (a.provincia === 'NACIONAL') return -1;
     if (b.provincia === 'NACIONAL') return 1;
 
     if (a.provincia === 'PANAMÁ') return -1;
     if (b.provincia === 'PANAMÁ') return 1;
+
+    if (a.provincia === b.provincia) {
+      // Comparar distritos para ALCALDE o circuitos para DIPUTADO
+      return (a.distrito || a.circuito).localeCompare(b.distrito || b.circuito);
+    }
+
     return a.provincia.localeCompare(b.provincia);
   });
   return datosOrdenados;

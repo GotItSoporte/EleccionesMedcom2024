@@ -127,7 +127,9 @@ export const NavbarOnly = ({
                               .filter((item) =>
                                 graficoSeleccionado === 'FollowerReeleccion' ? item.reeleccion === '1' : item,
                               )
-                          : data[corporacion]
+                          : corporacion === 'ALCALDE'
+                            ? data[corporacion].filter((item) => item.activo === '1')
+                            : data[corporacion]
                         )?.map((el, idx) => {
                           if (!miObjeto[el.provincia]) {
                             miObjeto[el.provincia] = {};
@@ -184,6 +186,7 @@ export const NavbarOnly = ({
                                 {openDistrito[el.provincia] &&
                                   corporacion === 'ALCALDE' &&
                                   data[corporacion]
+                                    .filter((item) => item.activo === '1')
                                     .filter((item) => item.provincia === el.provincia)
                                     .sort((a, b) => a.distrito.localeCompare(b.distrito))
                                     ?.map((el2, idx2) => {

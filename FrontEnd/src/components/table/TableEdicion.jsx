@@ -10,10 +10,9 @@ export const TableEdicion = ({
   listPartido,
   listClasificacion,
   ConfirmEdit,
-  setConfirmEdit
+  setConfirmEdit,
 }) => {
   const [nombreEditado, setNombreEditado] = useState({ id: null, nombre: '', activeEdit: false });
-  
 
   const lastCorporacionRef = useRef(null);
 
@@ -24,14 +23,14 @@ export const TableEdicion = ({
         activeEdit: false,
       }));
       lastCorporacionRef.current = data[0].corporacion;
-    } else if (ConfirmEdit){
+    } else if (ConfirmEdit) {
       setNombreEditado((prevNombreEditado) => ({
         ...prevNombreEditado,
         activeEdit: false,
       }));
       setConfirmEdit(false);
     }
-  }, [data,ConfirmEdit]);
+  }, [data, ConfirmEdit]);
 
   return (
     <div>
