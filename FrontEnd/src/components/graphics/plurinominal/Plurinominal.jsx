@@ -89,12 +89,13 @@ export const Plurinominal = ({
             {openCorporacion && (
               <div className="z-30 fixed   divide-x divide-gray-600 rounded-lg shadow w-auto bg-gray-700 flex max-h-[20vh] ">
                 <ul className="md:py-2 text-sm text-gray-200 md:p-2" aria-labelledby="dropdown-button">
-
                   <li
                     className={`w-full flex  items-center hover:bg-gray-600 hover:text-white ${
                       corporacionSelect === 'Presidente' ? 'bg-gray-500' : ''
                     }`}
-                    onClick={() => {setCorporacionSelect('Presidente'),setDatoSelect(''),setProvinciaSelect('')}}
+                    onClick={() => {
+                      setCorporacionSelect('Presidente'), setDatoSelect(''), setProvinciaSelect('');
+                    }}
                   >
                     <button type="button" className="inline-flex w-full pl-1 md:pl-5  py-2 ">
                       Presidente
@@ -114,7 +115,9 @@ export const Plurinominal = ({
                     className={`w-full  flex  items-center hover:bg-gray-600 hover:text-white ${
                       corporacionSelect === 'Alcalde' ? 'bg-gray-500' : ''
                     }`}
-                    onClick={() => {setCorporacionSelect('Alcalde'),setDatoSelect(''),setProvinciaSelect('')}}
+                    onClick={() => {
+                      setCorporacionSelect('Alcalde'), setDatoSelect(''), setProvinciaSelect('');
+                    }}
                   >
                     <button type="button" className="inline-flex w-full pl-1 md:pl-5 py-2 ">
                       Alcalde
@@ -134,7 +137,9 @@ export const Plurinominal = ({
                     className={`w-full flex  items-center hover:bg-gray-600 hover:text-white ${
                       corporacionSelect === 'Diputado' ? 'bg-gray-500' : ''
                     } `}
-                    onClick={() => {setCorporacionSelect('Diputado'),setDatoSelect(''),setProvinciaSelect('')}}
+                    onClick={() => {
+                      setCorporacionSelect('Diputado'), setDatoSelect(''), setProvinciaSelect('');
+                    }}
                   >
                     <button type="button" className="inline-flex w-full pl-1 md:pl-5 py-2 ">
                       Diputado
@@ -159,7 +164,9 @@ export const Plurinominal = ({
                     <div className="grid grid-cols-1 mx-1 md:grid-cols-3  md:mx-2 w-24 md:w-72 overflow-y-auto h-full md:h-auto">
                       <li
                         className={`w-full ${datoSelect === '' ? 'bg-gray-500 ' : ''} `}
-                        onClick={() => {setDatoSelect(''),setProvinciaSelect('')}}
+                        onClick={() => {
+                          setDatoSelect(''), setProvinciaSelect('');
+                        }}
                       >
                         <button
                           type="button"
@@ -191,13 +198,14 @@ export const Plurinominal = ({
                   {corporacionSelect === 'Alcalde' && (
                     <div className="grid grid-cols-1 md:grid-cols-2 mx-1 md:mx-2 w-24 md:w-72 overflow-y-auto h-full md:h-full">
                       <li
-                        className={`w-full hover:bg-gray-600 hover:text-white  ${datoSelect === '' && provinciaSelect === '' ? 'bg-gray-500 ' : ''} `}
-                        onClick={() =>{setProvinciaSelect(''),setDatoSelect('')}}
+                        className={`w-full hover:bg-gray-600 hover:text-white  ${
+                          datoSelect === '' && provinciaSelect === '' ? 'bg-gray-500 ' : ''
+                        } `}
+                        onClick={() => {
+                          setProvinciaSelect(''), setDatoSelect('');
+                        }}
                       >
-                        <button
-                          type="button"
-                          className="inline-flex w-full px-1 py-2 justify-center  "
-                        >
+                        <button type="button" className="inline-flex w-full px-1 py-2 justify-center  ">
                           Todos
                         </button>
                       </li>
@@ -233,13 +241,14 @@ export const Plurinominal = ({
                   {corporacionSelect === 'Diputado' && (
                     <div className="grid grid-cols-1 md:grid-cols-2  mx-1 md:mx-2 w-24 md:w-72 overflow-y-auto h-full md:h-auto">
                       <li
-                        className={`w-full  hover:bg-gray-600 hover:text-white  ${datoSelect === '' && provinciaSelect === '' ? 'bg-gray-500 ' : ''} `}
-                        onClick={() => {setProvinciaSelect(''),setDatoSelect('')}}
+                        className={`w-full  hover:bg-gray-600 hover:text-white  ${
+                          datoSelect === '' && provinciaSelect === '' ? 'bg-gray-500 ' : ''
+                        } `}
+                        onClick={() => {
+                          setProvinciaSelect(''), setDatoSelect('');
+                        }}
                       >
-                        <button
-                          type="button"
-                          className="inline-flex w-full px-1 py-2 justify-center "
-                        >
+                        <button type="button" className="inline-flex w-full px-1 py-2 justify-center ">
                           Todos
                         </button>
                       </li>
@@ -278,7 +287,6 @@ export const Plurinominal = ({
                   {/*------ ALCALDE ------- */}
                   {corporacionSelect === 'Alcalde' && (
                     <div className="md:grid md:grid-cols-3 mx-1 md:mx-2 w-24 md:w-64  overflow-y-auto h-full md:h-auto ">
-
                       {Array.from(
                         new Set(
                           data.ALCALDE?.filter((item) => item.provincia === provinciaSelect).map(
@@ -305,7 +313,6 @@ export const Plurinominal = ({
 
                   {corporacionSelect === 'Diputado' && (
                     <div className="md:grid  md:grid-cols-3 mx-1 md:mx-2 w-24 md:w-64 overflow-y-auto h-full md:h-auto">
-
                       {Array.from(
                         new Set(
                           data.DIPUTADO?.filter((item) => item.provincia === provinciaSelect).map(

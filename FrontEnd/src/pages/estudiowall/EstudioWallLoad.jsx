@@ -3,7 +3,7 @@ import { EstudioWall } from './EstudioWall';
 
 export const EstudioWallLoad = () => {
   const [mostrarNavbar, setMostrarNavbar] = useState(true);
-  const [graficoSeleccionado, setGraficoSeleccionado] = useState('Wall');
+  const [graficoSeleccionado, setGraficoSeleccionado] = useState('WallPalacio');
 
   return (
     <EstudioWall

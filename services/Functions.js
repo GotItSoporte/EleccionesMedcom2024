@@ -34,9 +34,9 @@ function ChangeFormat(data) {
 }
 
 //------------------- CREAR XML EN LAS RUTAS ESPECIFICADAS -------------------
-async function CreateXml(data, rute) {
+async function CreateXml(ruteFile ,data, rute) {
   return new Promise((resolve, reject) => {
-    fs.writeFile(`${Variables.RUTE_XML}${rute}.xml`, data, function (err) {
+    fs.writeFile(`${ruteFile}${rute}.xml`, data, function (err) {
       if (err) {
         reject(err);
       } else {

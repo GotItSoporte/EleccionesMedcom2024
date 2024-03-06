@@ -13,7 +13,7 @@ export const WallTribunalLoad = ({ ...props }) => {
   const [activeData, setActiveData] = useState(true); //para pausar la data mientras la interaccion con la tableta
   useEffect(() => {
     if (activeData) {
-      setDataSelectReference(dataSelect)
+      setDataSelectReference(dataSelect);
       setDataGroupe(seleccionarYAgruparDatos(dataSelect, selectOption));
     }
   }, [selectOption, dataSelect, activeData]);

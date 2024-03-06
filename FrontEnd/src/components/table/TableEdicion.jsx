@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Dropdown } from '../../components';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export const TableEdicion = ({
   data,
@@ -9,15 +9,28 @@ export const TableEdicion = ({
   checkPlurinominal,
   listPartido,
   listClasificacion,
+  ConfirmEdit,
+  setConfirmEdit,
 }) => {
   const [nombreEditado, setNombreEditado] = useState({ id: null, nombre: '', activeEdit: false });
 
-  useEffect(()=>{
-    setNombreEditado({
-      ...nombreEditado,
-      activeEdit:false,
-    })
-  },[data])
+  const lastCorporacionRef = useRef(null);
+
+  useEffect(() => {
+    if (data.length > 0 && data[0].corporacion !== lastCorporacionRef.current) {
+      setNombreEditado((prevNombreEditado) => ({
+        ...prevNombreEditado,
+        activeEdit: false,
+      }));
+      lastCorporacionRef.current = data[0].corporacion;
+    } else if (ConfirmEdit) {
+      setNombreEditado((prevNombreEditado) => ({
+        ...prevNombreEditado,
+        activeEdit: false,
+      }));
+      setConfirmEdit(false);
+    }
+  }, [data, ConfirmEdit]);
 
   return (
     <div>
@@ -154,7 +167,9 @@ export const TableEdicion = ({
                             strokeWidth="1.5"
                             stroke="currentColor"
                             className="w-8 px-1 bg-green-500 mx-auto hover:bg-green-600 hover:cursor-pointer"
-                            onClick={()=>{HandleDataSubmit('nombre',nombreEditado.nombre,data.nombre,data.corporacion)}}
+                            onClick={() => {
+                              HandleDataSubmit('nombre', nombreEditado.nombre, data.nombre, data.corporacion);
+                            }}
                           >
                             <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                           </svg>
@@ -198,9 +213,7 @@ export const TableEdicion = ({
                       {data.circuito || 'NO APLICA'}
                     </td>
 
-                    <td className="px-1 py-2 lg:px-3  text-center border border-gray-500">
-                      {data.nombre_partido}
-                    </td>
+                    <td className="px-1 py-2 lg:px-3  text-center border border-gray-500">{data.nombre_partido}</td>
                     <td className="px-1 py-2 lg:px-6 text-center border border-gray-500">
                       <Dropdown
                         selectedOption={data.nombre_partido2 || 'NO APLICA'}
@@ -255,9 +268,7 @@ export const TableEdicion = ({
                           />
                         </td>
 
-                        <td
-                          className={`px-1 py-2 lg:px-3  text-center  border border-gray-500    justify-center `}
-                        >
+                        <td className={`px-1 py-2 lg:px-3  text-center  border border-gray-500    justify-center `}>
                           <span
                             className={`relative inline-block px-3 py-1 font-semibold  ${
                               data.ganadorplurinominal === '1' ? 'text-green-900' : 'text-red-900'
@@ -310,4 +321,6 @@ TableEdicion.propTypes = {
   listPartido: PropTypes.object.isRequired,
   listClasificacion: PropTypes.array.isRequired,
   checkPlurinominal: PropTypes.bool.isRequired,
+  ConfirmEdit: PropTypes.bool.isRequired,
+  setConfirmEdit: PropTypes.func.isRequired,
 };

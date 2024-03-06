@@ -20,7 +20,7 @@ export const SetRegionesLoad = ({ ...props }) => {
     lastRegion.current = dataSelect[0]?.distrito;
 
     if (activeData) {
-      setDataSelectReference(dataSelect)
+      setDataSelectReference(dataSelect);
       setDataGroupe(seleccionarYAgruparDatos(dataSelect, selectOption));
     }
   }, [selectOption, dataSelect, activeData]);
@@ -35,7 +35,6 @@ export const SetRegionesLoad = ({ ...props }) => {
       setSelectOption={setSelectOption}
       dataGroupe={dataGroupe}
       setActiveData={setActiveData}
-    
     />
   );
 };

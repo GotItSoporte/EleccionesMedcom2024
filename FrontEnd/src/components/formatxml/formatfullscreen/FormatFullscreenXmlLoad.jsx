@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import xmlbuilder from 'xmlbuilder';
 import { useData } from '../../../context';
 
-export const FormatFullscreenXmlLoad = ({name, data }) => {
+export const FormatFullscreenXmlLoad = ({ name, data }) => {
   const { curules } = useData();
 
-  async function CreateFile(name,data) {
+  async function CreateFile(name, data) {
     const tickerfeed = xmlbuilder.create('data');
     data.forEach((dataSelect) => {
       const element = tickerfeed.ele('element');
@@ -17,7 +17,7 @@ export const FormatFullscreenXmlLoad = ({name, data }) => {
       element.ele('nombre', dataSelect.nombre || '');
       element.ele('cedula', dataSelect.cedula || '');
       element.ele('votos', dataSelect.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') || '');
-      element.ele('porcentaje', dataSelect.porcentaje || ''); // dataSelect.porcentaje
+      element.ele('porcentaje', dataSelect.porcentaje.toString() || ''); // dataSelect.porcentaje
       element.ele('provincia', dataSelect.provincia || '');
       element.ele('distrito', dataSelect.distrito || '');
       element.ele('circuito', dataSelect.circuito || '');
