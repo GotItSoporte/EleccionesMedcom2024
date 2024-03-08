@@ -34,12 +34,11 @@ export const Follower = ({
         />
       </div>
       {children}
-
+      <div className="w-auto px-2 overflow-x-auto">
       {dataGroupe.length > 0 && (
         <InlineLayout option={selectOption} setOption={setSelectOption} dataSelect={dataSelect} ActiveTicker={false} />
       )}
 
-      <div className="w-auto px-2 overflow-x-auto ">
         <Table data={dataSelect} type="" option={selectOption} />
         {dataSelect.length > 0 && (
           <div className="w-fit mx-auto mt-2 p-1" onClick={() => postDataFollower()}>

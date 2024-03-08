@@ -16,7 +16,7 @@ export const InlineLayout = ({ option, setOption, dataSelect }) => {
 
   return (
     <div>
-      <div className="flex pt-2 pb-2 pl-2 border border-gray-400 w-auto  ">
+      <div className="flex pt-1 pb-1 pl-1 border border-gray-400 w-auto  ">
         <h1 className="mr-5 text-sm md:text-base font-semibold text-white inline-flex items-center">CANDIDATOS:</h1>
         <div className="grid grid-cols-4 gap-2 md:grid-cols-8">
           {Array.from(
@@ -30,11 +30,11 @@ export const InlineLayout = ({ option, setOption, dataSelect }) => {
                 >
                   <span
                     id="inline-radio"
-                    className={`w-4 h-4 ${
+                    className={`w-6 h-6 ${
                       option === index + 1 ? 'bg-blue-500' : 'bg-white'
                     } border border-gray-300 rounded-full `}
                   ></span>
-                  <label htmlFor="inline-radio" className="ml-1 text-xs md:text-sm font-semibold text-white">
+                  <label htmlFor="inline-radio" className="ml-1  md:text-sm font-semibold text-white">
                     {index + 1}
                   </label>
                 </div>

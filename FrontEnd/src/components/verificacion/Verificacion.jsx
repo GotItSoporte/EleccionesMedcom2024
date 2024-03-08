@@ -14,7 +14,7 @@ export const Verificacion = ({
   return (
     <>
       <form className="w-full max-w-lg bg-gray-900 p-20 rounded-xl border-2">
-        <h1 className="max-w-sm mx-auto p-2 md:text-lg lg:text-xl font-normal text-center tracking-tight text-white  rounded-b-lg  focus:ring-4 focus:outline-none ">
+        <h1 className="max-w-sm mx-auto p-2 text-3xl md:text-5xl lg:text-5xl font-extrabold text-center tracking-tight text-white  rounded-b-lg  focus:ring-4 focus:outline-none ">
           {rol}
         </h1>
         {Error ? <div className="text-red-600">Clave mal digitada*</div> : <></>}

@@ -11,17 +11,17 @@ export const FormFollower = ({
   return (
     <>
       <div className="shadow-md border border-gray-700 rounded-md ">
-        <div className="md:inline-flex space-y-2 md:space-y-0 w-full p-4 text-white items-center">
-          <h2 className="md:w-1/3 max-w-sm mx-auto text-xl text-center">
+        <div className="lg:inline-flex space-y-2 md:space-y-0 w-full p-4 text-white items-center">
+          <h2 className="  mx-auto text-xl text-center lg:ml-1">
             Información Electoral <br></br>
             <span className="text-green">Candidato #{index + 1}</span>
           </h2>
 
-          <div className="md:w-2/3 max-w-sm mx-auto">
+          <div className=" max-w-sm mx-auto">
             <div>
               <label className="text-sm text-gray-400">Cedula</label>
               <div className="w-full inline-flex border">
-                <div className="w-1/12 pt-2 bg-gray-300">
+                <div className="w-8 lg:w-10 pt-2 bg-gray-300">
                   <svg fill="none" className="w-6  mx-auto" viewBox="0 0 24 24" stroke="currentColor">
                     <path
                       strokeLinecap="round"
@@ -33,7 +33,7 @@ export const FormFollower = ({
                 </div>
                 <input
                   type="text"
-                  className="w-11/12 focus:outline-none text-black p-2"
+                  className="w-11/12 focus:outline-none text-black p-2 text-sm lg:text-base"
                   placeholder="1234"
                   onChange={OnChangeCedula}
                 />
@@ -42,7 +42,7 @@ export const FormFollower = ({
             <div>
               <label className="text-sm text-gray-400">Nombre</label>
               <div className="w-full inline-flex border">
-                <div className="w-1/12 pt-2 bg-gray-300">
+                <div className="w-8 lg:w-10 pt-2 bg-gray-300">
                   <svg fill="none" className="w-6  mx-auto" viewBox="0 0 24 24" stroke="currentColor">
                     <path
                       strokeLinecap="round"
@@ -54,7 +54,7 @@ export const FormFollower = ({
                 </div>
                 <input
                   type="text"
-                  className="w-11/12 focus:outline-none text-black p-2 uppercase"
+                  className="w-11/12 focus:outline-none text-black p-2 text-sm lg:text-base uppercase"
                   placeholder="Candidato electoral"
                   onChange={OnChangeNombre}
                 />
@@ -64,7 +64,7 @@ export const FormFollower = ({
             <div>
               <label className="text-sm text-gray-400">Votos</label>
               <div className="w-full inline-flex border">
-                <div className="w-1/12 pt-2 bg-gray-300">
+                <div className="w-8 lg:w-10 pt-2 bg-gray-300">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -82,7 +82,7 @@ export const FormFollower = ({
                 </div>
                 <input
                   type="number"
-                  className="w-11/12 focus:outline-none text-black p-2"
+                  className="w-11/12 focus:outline-none text-black p-2 text-sm lg:text-base"
                   placeholder="9999"
                   onChange={OnChangeVotos}
                 />
@@ -91,7 +91,7 @@ export const FormFollower = ({
             <div>
               <label className="text-sm text-gray-400">Porcentaje</label>
               <div className="w-full inline-flex border">
-                <div className="w-1/12 pt-2 bg-gray-300">
+                <div className="w-8 lg:w-10 pt-2 bg-gray-300">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -109,7 +109,7 @@ export const FormFollower = ({
                 </div>
                 <input
                   type="text"
-                  className="w-11/12 focus:outline-none text-black p-2"
+                  className="w-11/12 focus:outline-none text-black p-2 text-sm lg:text-base"
                   placeholder="99.99"
                   onChange={OnChangePorcentaje}
                 />

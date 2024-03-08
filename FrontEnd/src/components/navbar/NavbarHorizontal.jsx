@@ -58,7 +58,7 @@ export const NavbarHorizontal = ({
               </div>
             </div>
             <div className="flex md:items-center">
-              <div className={`grid grid-cols-1  md:grid-cols-3  lg:grid-cols-4 gap-2`}>
+              <div className={`grid grid-cols-1  md:grid-cols-2  lg:grid-cols-4 gap-2`}>
                 {listaGraficos[rol].map((listado, index) => {
                   return (
                     <a
