@@ -140,7 +140,7 @@ export const TableEdicion = ({
                     }  font-light md:font-normal  whitespace-nowrap  overflow-y-auto`}
                   >
                     <td className="px-1 py-2 lg:px-3  border border-gray-500  ">
-                      <p className="invisible h-0">{data.nombre}</p>
+                      <p className="invisible h-0 ml-14 ">{data.nombre}</p>
                       <div className="w-full inline-flex border ">
                         <input
                           style={{ background: 'none' }}
