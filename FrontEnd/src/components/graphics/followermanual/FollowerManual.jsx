@@ -21,10 +21,10 @@ export const FollowerManual = ({
   return (
     <>
       {children}
-      <section className="  bg-opacity-50 w-screen">
+      <section className="  bg-opacity-50  overflow-x-hidden">
         <div>
           <form onSubmit={(event) => handleSubmit(event)} className="w-[88%] md:w-[80%] mx-auto">
-            <div className="flex justify-center mb-5 mt-5 md:mt-10 w-fit mx-auto" onClick={duplicarComponente}>
+            <div className="flex justify-center mb-5 mt-5 lg:mt-10 w-fit mx-auto" onClick={duplicarComponente}>
               <Button
                 type="Principal"
                 rute=""
@@ -38,7 +38,7 @@ export const FollowerManual = ({
               <div className="col-span-3 md:col-start-2 md:col-span-2">
                 <label className="text-sm text-gray-400">Corporación</label>
                 <div className="w-full inline-flex border">
-                  <div className=" md:w-1/12 pt-2 bg-gray-300">
+                  <div className=" w-8 lg:w-10 pt-2 bg-gray-300">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -56,7 +56,7 @@ export const FollowerManual = ({
                   </div>
                   <input
                     type="text"
-                    className="w-11/12 focus:outline-none text-black p-2 uppercase"
+                    className="w-11/12 focus:outline-none text-black p-2 uppercase text-sm lg:text-base "
                     placeholder="Presidente"
                     onChange={(event) => handleCorporacionChange(event)}
                   />
@@ -65,7 +65,7 @@ export const FollowerManual = ({
               <div className="col-span-3 md:col-start-4 md:col-span-2">
                 <label className="text-sm text-gray-400">Region</label>
                 <div className="w-full inline-flex border">
-                  <div className="md:w-1/12 pt-2 bg-gray-300">
+                  <div className="w-8 lg:w-10 pt-2 bg-gray-300">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -83,7 +83,7 @@ export const FollowerManual = ({
                   </div>
                   <input
                     type="text"
-                    className="w-11/12 focus:outline-none text-black p-2 uppercase"
+                    className="w-11/12 focus:outline-none text-black p-2 uppercase text-sm lg:text-base"
                     placeholder="Bocas del Toro"
                     onChange={(event) => handleRegionChange(event)}
                   />
@@ -95,7 +95,7 @@ export const FollowerManual = ({
               <div className="col-span-3 md:col-start-2 md:col-span-2">
                 <label className="text-sm text-gray-400">Participación</label>
                 <div className="w-full inline-flex border">
-                  <div className="md:w-1/12 pt-2 bg-gray-300">
+                  <div className="w-8 lg:w-10 pt-2 bg-gray-300">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -113,7 +113,7 @@ export const FollowerManual = ({
                   </div>
                   <input
                     type="text"
-                    className="w-11/12 focus:outline-none text-black p-2"
+                    className="w-11/12 focus:outline-none text-black p-2 text-sm lg:text-base"
                     placeholder="99.99"
                     onChange={(event) => handleParticipacionChange(event)}
                   />
@@ -122,7 +122,7 @@ export const FollowerManual = ({
               <div className="col-span-3 md:col-start-4 md:col-span-2">
                 <label className="text-sm text-gray-400">Escrutado</label>
                 <div className="w-full inline-flex border">
-                  <div className="md:w-1/12 pt-2 bg-gray-300">
+                  <div className="w-8 lg:w-10 pt-2 bg-gray-300">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -140,7 +140,7 @@ export const FollowerManual = ({
                   </div>
                   <input
                     type="text"
-                    className="w-11/12 focus:outline-none text-black p-2"
+                    className="w-11/12 focus:outline-none text-black p-2 text-sm lg:text-base"
                     placeholder="99.99"
                     onChange={(event) => handleEscrutadoChange(event)}
                   />

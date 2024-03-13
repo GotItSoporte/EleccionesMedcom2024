@@ -161,7 +161,7 @@ export const Plurinominal = ({
                 <ul className="md:py-2 text-sm text-gray-200" aria-labelledby="dropdown-button">
                   {/*------ PRESIDENTE ------- */}
                   {corporacionSelect === 'Presidente' && (
-                    <div className="grid grid-cols-1 mx-1 md:grid-cols-3  md:mx-2 w-24 md:w-72 overflow-y-auto h-full md:h-auto">
+                    <div className="grid grid-cols-1 mx-1 md:grid-cols-3  md:mx-2 w-24 md:w-72 overflow-y-auto h-full md:h-full">
                       <li
                         className={`w-full ${datoSelect === '' ? 'bg-gray-500 ' : ''} `}
                         onClick={() => {

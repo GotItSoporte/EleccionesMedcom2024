@@ -60,6 +60,7 @@ export const FullScreen = ({
             </div>
           </div>
         )}
+        
         {dataGroupe.length > 0 && (
           <InlineLayout
             option={selectOption}
@@ -68,7 +69,7 @@ export const FullScreen = ({
             ActiveTicker={false}
           />
         )}
-
+        
         <Table data={dataSelect} type="" option={selectOption} />
         {dataGroupe.length > 0 && (
           <div className="w-fit mx-auto mt-2 p-1">

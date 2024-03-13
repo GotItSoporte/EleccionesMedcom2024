@@ -25,16 +25,16 @@ export const Home = ({ mostrarVerificacion, setMostrarVerificacion, setRol, rol 
       </div>
       <img className="h-12 m-5 lg:fixed opacity-70" src={Logo} alt="" />
       <div className="flex items-center lg:h-screen">
-        <div className="gap-16 items-center py-8 px-2 mx-auto max-w-screen-xl  lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
+        <div className="gap-16 items-center  px-2 mx-auto max-w-screen-xl mt-2 lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
           <div className="font-light  sm:text-lg text-gray-400">
-            <h2 className="mb-4 md:mb-4 text-2xl md:text-4xl tracking-tight font-extrabold text-white text-center lg:text-left">
+            <h2 className="mb-2 lg:mb-4 text-2xl md:text-5xl tracking-tight font-extrabold text-white text-center lg:text-left">
               Elecciones presidenciales Telemetro Reporta 2024
             </h2>
-            <p className="mb-4 md:mb-4 text-center lg:text-left">
+            <p className="mb-2 md:mb-4 lg:mb-0 text-center lg:text-left">
               Aplicativo web de control de datos para crear gráficos de noticias.{' '}
             </p>
           </div>
-          <div className="grid grid-cols-8 gap-2 md:gap-4">
+          <div className="grid grid-cols-8 gap-2 md:gap-4 md:mx-14 lg:mx-0">
             <div
               className="col-span-4"
               onClick={() => {

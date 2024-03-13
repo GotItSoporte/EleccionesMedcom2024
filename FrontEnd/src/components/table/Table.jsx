@@ -10,7 +10,7 @@ export const Table = ({ data, option }) => {
               <tr className="">
                 <th
                   scope="col"
-                  className=" px-1 py-2 lg:px-6 lg:py-3 text-center w-screen font-normal md:font-semibold lg:font-bold border border-gray-400 "
+                  className=" px-1 py-2 lg:px-6 lg:py-3 text-center w-screen font-normal md:font-semibold lg:font-bold  border-gray-400 "
                 >
                   Nombre
                 </th>
