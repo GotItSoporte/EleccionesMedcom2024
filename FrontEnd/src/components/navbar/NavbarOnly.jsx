@@ -60,8 +60,8 @@ export const NavbarOnly = ({
   useEffect(() => {
     const provinciasUnicas = data[corporacion]
       ? data[corporacion]
-          .map((objeto) => objeto.provincia)
-          .filter((provincia, index, arr) => arr.indexOf(provincia) === index)
+          ?.map((objeto) => objeto.provincia)
+          ?.filter((provincia, index, arr) => arr.indexOf(provincia) === index)
       : [];
     provinciasUnicas.forEach((provincia) => {
       if (!miObjeto[provincia]) {
@@ -98,7 +98,7 @@ export const NavbarOnly = ({
               )}
 
               <ul className="mb-8 text-sm font-medium">
-                {nameCorporacion.map((corporacion, idx) => {
+                {nameCorporacion?.map((corporacion, idx) => {
                   return (
                     <li key={idx}>
                       <a
@@ -124,11 +124,11 @@ export const NavbarOnly = ({
                               ?.filter((item) =>
                                 graficoSeleccionado === 'Follower' ? item.plurinominal === '1' : item,
                               )
-                              .filter((item) =>
+                              ?.filter((item) =>
                                 graficoSeleccionado === 'FollowerReeleccion' ? item.reeleccion === '1' : item,
                               )
                           : corporacion === 'ALCALDE'
-                            ? data[corporacion].filter((item) => item.activo === '1')
+                            ? data[corporacion]?.filter((item) => item.activo === '1')
                             : data[corporacion]
                         )?.map((el, idx) => {
                           if (!miObjeto[el.provincia]) {
@@ -186,9 +186,9 @@ export const NavbarOnly = ({
                                 {openDistrito[el.provincia] &&
                                   corporacion === 'ALCALDE' &&
                                   data[corporacion]
-                                    .filter((item) => item.activo === '1')
-                                    .filter((item) => item.provincia === el.provincia)
-                                    .sort((a, b) => a.distrito.localeCompare(b.distrito))
+                                    ?.filter((item) => item.activo === '1')
+                                    ?.filter((item) => item.provincia === el.provincia)
+                                    ?.sort((a, b) => a.distrito.localeCompare(b.distrito))
                                     ?.map((el2, idx2) => {
                                       if (!miObjeto[el.provincia][corporacion][el2.distrito]) {
                                         miObjeto[el.provincia][corporacion][el2.distrito] = true;
@@ -222,14 +222,14 @@ export const NavbarOnly = ({
                                 {openCircuito[el.provincia] &&
                                   corporacion === 'DIPUTADO' &&
                                   data[corporacion]
-                                    .filter((item) =>
+                                    ?.filter((item) =>
                                       graficoSeleccionado === 'Follower' ? item.plurinominal === '1' : item,
                                     )
-                                    .filter((item) =>
+                                    ?.filter((item) =>
                                       graficoSeleccionado === 'FollowerReeleccion' ? item.reeleccion === '1' : item,
                                     )
-                                    .filter((item) => item.provincia === el.provincia)
-                                    .sort((a, b) => a.circuito.localeCompare(b.circuito))
+                                    ?.filter((item) => item.provincia === el.provincia)
+                                    ?.sort((a, b) => a.circuito.localeCompare(b.circuito))
                                     ?.map((el3, idx3) => {
                                       if (!miObjeto[el.provincia][corporacion][el3.circuito]) {
                                         miObjeto[el.provincia][corporacion][el3.circuito] = true;

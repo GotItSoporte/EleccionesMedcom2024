@@ -4,6 +4,7 @@ const xml2js = require("xml2js");
 const udp = require("dgram");
 const client = udp.createSocket("udp4");
 const Variables = require("./Variables");
+const xlsx = require("xlsx");
 
 //------------------- FORMATEAR DATA PARA UNREAL ENGINE -------------------
 function ChangeFormat(data) {
@@ -23,18 +24,23 @@ function ChangeFormat(data) {
           ? "CIRCUITO " + data[0].circuito
           : null || data[0].region || "",
       [`cedula${indice}`]: elemento.cedula || "SIN IDENTIFICACION",
-      [`nombre${indice}`]: elemento.nombre.split(" ")[0] || "",
-      [`apellido${indice}`]: elemento.nombre.split(" ").pop() || "",
+      [`nombre${indice}`]: elemento.nombre?.split(" ")[0].toUpperCase() || "",
+      [`apellido${indice}`]: elemento.nombre?.split(" ").pop().toUpperCase() || "",
       [`votos${indice}`]:
-        elemento.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") || "", // elemento.votos ||
-      [`porcentaje${indice}`]:
-        elemento.porcentaje.toString() || "",
+        elemento.votos?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") || "", // elemento.votos ||
+      [`porcentaje${indice}`]: (Math.random() * 99.99).toFixed(2),
+      [`codigo_partido1_${indice}`]: elemento.codigo_partido?.toString() || "",
+      [`codigo_partido2_${indice}`]: elemento.codigo_partido2?.toString() || "",
+      [`codigo_partido3_${indice}`]: elemento.codigo_partido3?.toString() || "",
+      [`codigo_partido4_${indice}`]: elemento.codigo_partido4?.toString() || "",
+      [`ganadorplurinominal${indice}`]:
+        elemento.ganadorplurinominal?.toString() || "0",
     }))
     .reduce((resultado, elemento) => ({ ...resultado, ...elemento }), {});
 }
 
 //------------------- CREAR XML EN LAS RUTAS ESPECIFICADAS -------------------
-async function CreateXml(ruteFile ,data, rute) {
+async function CreateXml(ruteFile, data, rute) {
   return new Promise((resolve, reject) => {
     fs.writeFile(`${ruteFile}${rute}.xml`, data, function (err) {
       if (err) {
@@ -88,7 +94,7 @@ function ReadXml(rute) {
 
 //-------------------  ENVIAR DATOS A WALL Y RA A TRAVES DE SOCKETS -------------------
 function SendUDPMessages(msg, ip) {
-  console.log(msg)
+  console.log(msg);
   client.send(msg, 7124, ip, function (error) {
     if (error) {
       console.log(error);
@@ -97,9 +103,33 @@ function SendUDPMessages(msg, ip) {
   });
 }
 
+function ReadExcelFollower(ruteFile, rute) {
+  const workbook = xlsx.readFile(`${ruteFile}${rute}.xlsx`);
+  const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+
+  const data = [];
+
+  // Itera sobre las primeras 20 filas de la hoja de trabajo
+  for (let index = 2; index <= 21; index++) {
+    const cedula = worksheet[`B${index}`].v;
+    const nombre = worksheet[`A${index}`].v;
+
+
+    data.push({ cedula: cedula, nombre: nombre });
+  }
+  return data;
+  /*return data
+    .map((elemento, indice) => ({
+      [`cedula${indice}`]: elemento.cedula || "",
+      [`nombre${indice}`]: elemento.nombre || "",
+    }))
+    .reduce((resultado, elemento) => ({ ...resultado, ...elemento }), {});*/
+}
+
 module.exports = {
   ChangeFormat,
   CreateXml,
   ReadXml,
   SendUDPMessages,
+  ReadExcelFollower,
 };

@@ -75,6 +75,14 @@ export function DataProvider({ children }) {
       id: 2,
       nombre: 'LIBRE POSTULACIÓN',
     },
+    'LIBRE POST 2.': {
+      id: 2,
+      nombre: 'LIBRE POSTULACIÓN 2',
+    },
+    'LIBRE POST 3.': {
+      id: 2,
+      nombre: 'LIBRE POSTULACIÓN 3',
+    },
   };
 
   //------------------- LISTA CURULES-------------------

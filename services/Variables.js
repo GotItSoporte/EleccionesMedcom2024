@@ -1,8 +1,8 @@
 
 
 //-------------------  VARIABLES DE RUTA PARA DATOS XML -------------------
-const RUTE_XML = "Z:/Voto24/ELECCIONES2024/";
-const RUTE_XMLTICKER = "Z:/TReporta/DataScrollTR/";
+const RUTE_XML = "W:/VOTO 24 (medcom)/Elecciones Generales Mayo 5/archivosXML/"; //Z:/Voto24/ELECCIONES2024/
+const RUTE_XMLTICKER = "W:/VOTO 24 (medcom)/Elecciones Generales Mayo 5/archivosXML/"; //Z:/TReporta/DataScrollTR/
 
 const NAME_FILE_FULLSCREENPALACIO = 'Voto24_fullscreen' 
 const NAME_FILE_FULLSCREENTRIBUNAL = 'Voto24_fullscreentribunal' 
@@ -22,6 +22,9 @@ const IP_ENGINE_WALL = "localhost"
 const IP_ENGINE_SETREGIONES = "localhost"
 const UDP_PORT = 7124;
 
+//-------------------  VARIABLES PARA LECTURA EXCEL FOLLOWER -------------------
+const NAME_FILE_EXCEL_FOLLOWER = 'Parlamentro_centroamericano'
+
 
 
 
@@ -38,5 +41,6 @@ module.exports = {
     NAME_FILE_ESCRUTADONACIONAL,
     NAME_FILE_TICKERARRIBA,
     NAME_FILE_TICKERARRIBA2,
-    NAME_FILE_TICKERABAJO 
+    NAME_FILE_TICKERABAJO,
+    NAME_FILE_EXCEL_FOLLOWER
 };
