@@ -34,4 +34,19 @@ router.get("/", function (req, res) {
   }
 });
 
+//------------------- ENVIA DATOS DESDE EL SERVIDOR -------------------
+router.get("/EXCEL", function (req, res) {
+  try {
+    res.json(
+      Functions.ReadExcelFollower(
+        variables.RUTE_XML,
+        variables.NAME_FILE_EXCEL_FOLLOWER
+      )
+    );
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error al obtener la data de Follower" });
+  }
+});
+
 module.exports = router;
