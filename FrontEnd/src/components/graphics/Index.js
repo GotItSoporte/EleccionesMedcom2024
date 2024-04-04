@@ -10,3 +10,4 @@ export { Wall } from './wall';
 export { WallTribunal } from './walltribunal';
 export { TouchScreen } from './touchscreen';
 export { SetRegiones } from './setregiones';
+export { RaExteriorMapa } from './raexteriormapa';

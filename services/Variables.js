@@ -12,6 +12,8 @@ const NAME_FILE_TOUCHSCREENALL = 'Voto24_touchscreenall'
 
 const NAME_FILE_ESCRUTADONACIONAL = 'Voto24_escrutadonacional'
 
+const NAME_FILE_RAEXTERIORMAPA = 'Voto24_raexteriormapa'
+
 
 const NAME_FILE_TICKERARRIBA = 'Voto24_TickerArriba'
 const NAME_FILE_TICKERARRIBA2 = 'Voto24_TickerAbajo_Canal'   //RECORDAR QUE ESTE VA ABAJO PERO CON LOS DATOS DE TICKER ARRIBA 
@@ -27,7 +29,6 @@ const NAME_FILE_EXCEL_FOLLOWER = 'Parlamentro_centroamericano'
 
 
 
-
 module.exports = {
     RUTE_XML,
     RUTE_XMLTICKER,
@@ -39,6 +40,7 @@ module.exports = {
     NAME_FILE_TOUCHSCREEN,
     NAME_FILE_TOUCHSCREENALL,
     NAME_FILE_ESCRUTADONACIONAL,
+    NAME_FILE_RAEXTERIORMAPA,
     NAME_FILE_TICKERARRIBA,
     NAME_FILE_TICKERARRIBA2,
     NAME_FILE_TICKERABAJO,
