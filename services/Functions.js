@@ -9,9 +9,9 @@ const xlsx = require("xlsx");
 //------------------- FORMATEAR DATA PARA UNREAL ENGINE -------------------
 function ChangeFormat(data) {
   return data
-    .map((elemento, indice) => ({
-      [`cantidad`]: data.length,
-      [`corporacion`]: data[0].corporacion || "",
+    ?.map((elemento, indice) => ({
+      [`cantidad`]: data?.length,
+      [`corporacion`]: data[0]?.corporacion || "",
       ["seleccion"]:
         data[0].corporacion === "PRESIDENTE"
           ? "PRESIDENCIAL"
@@ -20,20 +20,20 @@ function ChangeFormat(data) {
             ? "PLURINOMINAL"
             : "UNINOMINAL"
           : "UNINOMINAL",
-      [`participacion`]: data[0].participacion || "", // (Math.random() * 99.99).toFixed(2)
+      [`participacion`]: data[0]?.participacion || "", // (Math.random() * 99.99).toFixed(2)
       [`escrutado`]: data[0]?.escrutado || "",
       [`provincia`]: data[0]?.provincia || "",
       [`region`]:
-        data[0].corporacion === "PRESIDENTE"
-          ? data[0].provincia
-          : data[0].corporacion === "ALCALDE"
-          ? data[0].distrito
-          : data[0].corporacion === "DIPUTADO"
-          ? "CIRCUITO " + data[0].circuito
-          : null || data[0].region || "",
+        data[0]?.corporacion === "PRESIDENTE"
+          ? data[0]?.provincia
+          : data[0]?.corporacion === "ALCALDE"
+          ? data[0]?.distrito
+          : data[0]?.corporacion === "DIPUTADO"
+          ? "CIRCUITO " + data[0]?.circuito
+          : null || data[0]?.region || "",
       [`cedula${indice}`]: elemento.cedula || "SIN IDENTIFICACION",
       [`cedulavideoganador`]:
-      data[0]?.cedula + "-Gana_Video" || "SIN IDENTIFICACION",
+        data[0]?.cedula + "-Gana_Video" || "SIN IDENTIFICACION",
       [`cedulavideo${indice}`]:
         elemento.cedula + "_Video" || "SIN IDENTIFICACION",
       [`nombre${indice}`]: elemento.nombre?.split(" ")[0].toUpperCase() || "",
@@ -252,8 +252,8 @@ function ReadExcelFormulaFollower(ruteFile, rute) {
 
   return data
     .map((elemento, indice) => ({
-      [`cedula${indice}`]: elemento.cedula + '_Presi' || "",
-      [`cedulavice${indice}`]: elemento.cedula +'_Vice' || "",
+      [`cedula${indice}`]: elemento.cedula + "_Presi" || "",
+      [`cedulavice${indice}`]: elemento.cedula + "_Vice" || "",
       [`nombrePresidencial${indice}`]: elemento.nombrePresidencial || "",
       [`apellidoPresidencial${indice}`]: elemento.apellidoPresidencial || "",
       [`nombreVicepresidencial${indice}`]:
@@ -274,5 +274,5 @@ module.exports = {
   ReadXml,
   SendUDPMessages,
   ReadExcelFollower,
-  ReadExcelFormulaFollower
+  ReadExcelFormulaFollower,
 };

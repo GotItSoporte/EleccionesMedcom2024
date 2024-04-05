@@ -46,16 +46,11 @@ export const Dropdown = ({
                   className="block px-4 py-2  hover:bg-gray-600 hover:text-white"
                   onClick={() => {
                     if (FuncionGanadorPlurinominalValor) {
-                      console.log({el})
+                      console.log({ el });
                       HandleDataSubmit(nameData, el, id, corporacion);
                       HandleDataSubmit('ganadorplurinominalvalor', el !== 'NO APLICA' ? '1' : '0', id, corporacion);
-                      if(el==='NO APLICA'){
-                        HandleDataSubmit(
-                          'ganadorplurinominal',
-                          '0',
-                          id,
-                          corporacion,
-                        )
+                      if (el === 'NO APLICA') {
+                        HandleDataSubmit('ganadorplurinominal', '0', id, corporacion);
                       }
                     } else {
                       HandleDataSubmit(nameData, el, id, corporacion);
