@@ -41,7 +41,7 @@ function ChangeFormat(data) {
         elemento.nombre?.split(" ").pop().toUpperCase() || "",
       [`votos${indice}`]:
         elemento.votos?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") || "", // elemento.votos ||
-      [`porcentaje${indice}`]: elemento.porcentaje?.toString() || "", //(Math.random() * 99.99).toFixed(2),
+      [`porcentaje${indice}`]: elemento.porcentaje.toFixed(2).toString()|| "", //(Math.random() * 99.99).toFixed(2),
       [`codigo_partido1_${indice}`]: elemento.codigo_partido?.toString() || "",
       [`codigo_partido2_${indice}`]: elemento.codigo_partido2?.toString() || "",
       [`codigo_partido3_${indice}`]: elemento.codigo_partido3?.toString() || "",
@@ -260,10 +260,10 @@ function ReadExcelFormulaFollower(ruteFile, rute) {
         elemento.nombreVicepresidencial || "",
       [`apellidoVicepresidencial${indice}`]:
         elemento.apellidoVicepresidencial || "",
-      [`bandera1${indice}`]: listPartido[elemento.bandera1]?.id || "",
-      [`bandera2${indice}`]: listPartido[elemento.bandera2]?.id || "",
-      [`bandera3${indice}`]: listPartido[elemento.bandera3]?.id || "",
-      [`bandera4${indice}`]: listPartido[elemento.bandera4]?.id || "",
+      [`codigo_partido1_${indice}`]: listPartido[elemento.bandera1]?.id?.toString() || "",
+      [`codigo_partido2_${indice}`]: listPartido[elemento.bandera2]?.id?.toString() || "",
+      [`codigo_partido3_${indice}`]: listPartido[elemento.bandera3]?.id?.toString() || "",
+      [`codigo_partido4_${indice}`]: listPartido[elemento.bandera4]?.id?.toString() || "",
     }))
     .reduce((resultado, elemento) => ({ ...resultado, ...elemento }), {});
 }
