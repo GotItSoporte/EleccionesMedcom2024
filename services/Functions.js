@@ -19,7 +19,7 @@ function ChangeFormat(data) {
           ? data[0].plurinominal === "1"
             ? "PLURINOMINAL"
             : "UNINOMINAL"
-          : null,
+          : "UNINOMINAL",
       [`participacion`]: data[0].participacion || "", // (Math.random() * 99.99).toFixed(2)
       [`escrutado`]: data[0]?.escrutado || "",
       [`provincia`]: data[0]?.provincia || "",
@@ -202,7 +202,7 @@ const listPartido = {
 };
 
 //-------------------  LECTURA DE EXCEL FORMULA-------------------
-function ReadExcelFollower(ruteFile, rute) {
+function ReadExcelFormulaFollower(ruteFile, rute) {
   const workbook = xlsx.readFile(`${ruteFile}${rute}.xlsx`);
   const worksheet = workbook.Sheets[workbook.SheetNames[0]];
   const data = [];
@@ -232,10 +232,10 @@ function ReadExcelFollower(ruteFile, rute) {
     const apellidoVicepresidencial = celdaApellidoVicepresidencial
       ? celdaApellidoVicepresidencial.v
       : "";
-    const bandera1 = celdaBandera1 ? celdaBandera1.v : "";
-    const bandera2 = celdaBandera2 ? celdaBandera2.v : "";
-    const bandera3 = celdaBandera3 ? celdaBandera3.v : "";
-    const bandera4 = celdaBandera4 ? celdaBandera4.v : "";
+    const bandera1 = celdaBandera1 ? celdaBandera1.v : "NO APLICA";
+    const bandera2 = celdaBandera2 ? celdaBandera2.v : "NO APLICA";
+    const bandera3 = celdaBandera3 ? celdaBandera3.v : "NO APLICA";
+    const bandera4 = celdaBandera4 ? celdaBandera4.v : "NO APLICA";
 
     data.push({
       cedula: cedula.toString(),
@@ -252,17 +252,18 @@ function ReadExcelFollower(ruteFile, rute) {
 
   return data
     .map((elemento, indice) => ({
-      [`cedula${indice}`]: elemento.cedula || "",
+      [`cedula${indice}`]: elemento.cedula + '_Presi' || "",
+      [`cedulavice${indice}`]: elemento.cedula +'_Vice' || "",
       [`nombrePresidencial${indice}`]: elemento.nombrePresidencial || "",
       [`apellidoPresidencial${indice}`]: elemento.apellidoPresidencial || "",
       [`nombreVicepresidencial${indice}`]:
         elemento.nombreVicepresidencial || "",
       [`apellidoVicepresidencial${indice}`]:
         elemento.apellidoVicepresidencial || "",
-      [`bandera1${indice}`]: elemento.bandera1 || "",
-      [`bandera2${indice}`]: elemento.bandera2 || "",
-      [`bandera3${indice}`]: elemento.bandera3 || "",
-      [`bandera4${indice}`]: elemento.bandera4 || "",
+      [`bandera1${indice}`]: listPartido[elemento.bandera1]?.id || "",
+      [`bandera2${indice}`]: listPartido[elemento.bandera2]?.id || "",
+      [`bandera3${indice}`]: listPartido[elemento.bandera3]?.id || "",
+      [`bandera4${indice}`]: listPartido[elemento.bandera4]?.id || "",
     }))
     .reduce((resultado, elemento) => ({ ...resultado, ...elemento }), {});
 }
@@ -273,4 +274,5 @@ module.exports = {
   ReadXml,
   SendUDPMessages,
   ReadExcelFollower,
+  ReadExcelFormulaFollower
 };

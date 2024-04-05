@@ -49,4 +49,19 @@ router.get("/EXCEL", function (req, res) {
   }
 });
 
+router.get("/EXCELFORMULA", function (req, res) {
+  try {
+    res.json(
+      Functions.ReadExcelFormulaFollower(
+        variables.RUTE_XML,
+        variables.NAME_FILE_EXCEL_FORMULA_FOLLOWER
+      )
+    );
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error al obtener la data de Follower" });
+  }
+});
+
+
 module.exports = router;

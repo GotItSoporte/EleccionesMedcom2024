@@ -64,8 +64,8 @@ export const FormatRaExteriorXmlLoad = ({ name, data }) => {
     const elementData2 = tickerfeed.ele('data2');
     for (const provincia in datosPorRegion) {
       if (provincia !== 'NACIONAL') {
-      const element2 = elementData2.ele('elemento');
-     
+        const element2 = elementData2.ele('elemento');
+
         const primerCedula = datosPorRegion[provincia][0].cedula;
 
         element2.ele('provincia', provincia || '');

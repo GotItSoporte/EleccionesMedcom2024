@@ -24,7 +24,7 @@ function mostrarInformacion(distritosTrue, datos, Reeleccion = false) {
                   Reeleccion
                     ? item.reeleccion === '1'
                     : item.plurinominal === '1'
-                      ? item.ganadorplurinominal === '1'
+                      ? item.ganadorplurinominalvalor === '1'
                       : item,
                 )
             : null;

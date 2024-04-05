@@ -10,7 +10,7 @@ export const Dropdown = ({
   id,
   setList,
   loading,
-  FuncionGanadorPlurinominal,
+  FuncionGanadorPlurinominalValor,
 }) => {
   return (
     <div className="relative ">
@@ -45,9 +45,18 @@ export const Dropdown = ({
                   href="#"
                   className="block px-4 py-2  hover:bg-gray-600 hover:text-white"
                   onClick={() => {
-                    if (FuncionGanadorPlurinominal) {
+                    if (FuncionGanadorPlurinominalValor) {
+                      console.log({el})
                       HandleDataSubmit(nameData, el, id, corporacion);
-                      HandleDataSubmit('ganadorplurinominal', el !== 'NO APLICA' ? '1' : '0', id, corporacion);
+                      HandleDataSubmit('ganadorplurinominalvalor', el !== 'NO APLICA' ? '1' : '0', id, corporacion);
+                      if(el==='NO APLICA'){
+                        HandleDataSubmit(
+                          'ganadorplurinominal',
+                          '0',
+                          id,
+                          corporacion,
+                        )
+                      }
                     } else {
                       HandleDataSubmit(nameData, el, id, corporacion);
                     }
@@ -77,5 +86,5 @@ Dropdown.propTypes = {
   corporacion: PropTypes.string.isRequired,
   nameData: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  FuncionGanadorPlurinominal: PropTypes.bool.isRequired,
+  FuncionGanadorPlurinominalValor: PropTypes.bool.isRequired,
 };

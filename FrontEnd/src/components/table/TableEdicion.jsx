@@ -121,6 +121,12 @@ export const TableEdicion = ({
                 >
                   Ganador <br></br> Plurinominal
                 </th>
+                <th
+                  scope="col"
+                  className=" px-1 py-2 lg:px-6 lg:py-3 text-center w-screen font-normal md:font-semibold lg:font-bold border border-gray-400"
+                >
+                  Activar <br></br> Icono
+                </th>
               </tr>
             ) : (
               <tr>
@@ -223,7 +229,7 @@ export const TableEdicion = ({
                         id={data.nombre}
                         HandleDataSubmit={HandleDataPartidoSubmit}
                         loading={checkPlurinominal}
-                        FuncionGanadorPlurinominal={false}
+                        FuncionGanadorPlurinominalValor={false}
                       />
                     </td>
                     <td className="px-1 py-2 lg:px-6 text-center border border-gray-500">
@@ -235,7 +241,7 @@ export const TableEdicion = ({
                         id={data.nombre}
                         HandleDataSubmit={HandleDataPartidoSubmit}
                         loading={checkPlurinominal}
-                        FuncionGanadorPlurinominal={false}
+                        FuncionGanadorPlurinominalValor={false}
                       />
                     </td>
                     <td className="px-1 py-2 lg:px-6 text-center border border-gray-500">
@@ -247,7 +253,7 @@ export const TableEdicion = ({
                         id={data.nombre}
                         HandleDataSubmit={HandleDataPartidoSubmit}
                         loading={checkPlurinominal}
-                        FuncionGanadorPlurinominal={false}
+                        FuncionGanadorPlurinominalValor={false}
                       />
                     </td>
                     {data.plurinominal === '1' ? (
@@ -264,25 +270,53 @@ export const TableEdicion = ({
                             id={data.nombre}
                             HandleDataSubmit={HandleDataSubmit}
                             loading={checkPlurinominal}
-                            FuncionGanadorPlurinominal={true}
+                            FuncionGanadorPlurinominalValor={true}
                           />
                         </td>
 
-                        <td className={`px-1 py-2 lg:px-3  text-center  border border-gray-500    justify-center `}>
+                        <td className={`px-1 py-2 lg:px-3  text-center  border border-gray-500     `}>
                           <span
                             className={`relative inline-block px-3 py-1 font-semibold  ${
-                              data.ganadorplurinominal === '1' ? 'text-green-900' : 'text-red-900'
+                              data.ganadorplurinominalvalor === '1' ? 'text-green-900' : 'text-red-900'
                             }  leading-tight`}
                           >
                             <span
                               aria-hidden
                               className={`absolute inset-0 ${
-                                data.ganadorplurinominal === '1' ? 'bg-green' : 'bg-red'
+                                data.ganadorplurinominalvalor === '1' ? 'bg-green' : 'bg-red'
                               }  rounded-full`}
                             ></span>
-                            <span className="relative">{data.ganadorplurinominal === '1' ? 'Verdadero' : 'Falso'}</span>
+                            <span className="relative">
+                              {data.ganadorplurinominalvalor === '1' ? 'Verdadero' : 'Falso'}
+                            </span>
                           </span>
                         </td>
+                        {data.ganadorplurinominalvalor === '1' ? (
+                          <td className=" px-1 py-2 lg:px-3   border border-gray-500  ">
+                            <div
+                              className="flex items-center cursor-pointer justify-center "
+                              onClick={() =>
+                                HandleDataSubmit(
+                                  'ganadorplurinominal',
+                                  data.ganadorplurinominal === '0' ? '1' : '0',
+                                  data.nombre,
+                                  data.corporacion,
+                                )
+                              }
+                            >
+                              <span
+                                id="inline-radio"
+                                className={`w-6 h-6  border border-gray-300 rounded-full ${
+                                  data.ganadorplurinominal === '1' ? 'bg-green' : 'bg-red'
+                                } `}
+                              ></span>
+                            </div>
+                          </td>
+                        ) : (
+                          <td className="px-1 py-2 lg:px-3  text-center text-red-500 border border-gray-500">
+                            NO APLICA
+                          </td>
+                        )}
                       </>
                     ) : (
                       <>
