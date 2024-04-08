@@ -20,8 +20,8 @@ function ChangeFormat(data) {
             ? "PLURINOMINAL"
             : "UNINOMINAL"
           : "UNINOMINAL",
-      [`participacion`]: data[0]?.participacion || "", // (Math.random() * 99.99).toFixed(2)
-      [`escrutado`]: data[0]?.escrutado || "",
+      [`participacion`]: data[0]?.participacion?.toFixed(2)?.toString() || "", // (Math.random() * 99.99).toFixed(2)
+      [`escrutado`]: data[0]?.escrutado?.toFixed(2)?.toString() || "",
       [`provincia`]: data[0]?.provincia || "",
       [`region`]:
         data[0]?.corporacion === "PRESIDENTE"
@@ -31,21 +31,21 @@ function ChangeFormat(data) {
           : data[0]?.corporacion === "DIPUTADO"
           ? "CIRCUITO " + data[0]?.circuito
           : null || data[0]?.region || "",
-      [`cedula${indice}`]: elemento.cedula || "SIN IDENTIFICACION",
+      [`cedula${indice}`]: elemento?.cedula || "SIN IDENTIFICACION",
       [`cedulavideoganador`]:
         data[0]?.cedula + "-Gana_Video" || "SIN IDENTIFICACION",
       [`cedulavideo${indice}`]:
-        elemento.cedula + "_Video" || "SIN IDENTIFICACION",
-      [`nombre${indice}`]: elemento.nombre?.split(" ")[0].toUpperCase() || "",
+        elemento?.cedula + "_Video" || "SIN IDENTIFICACION",
+      [`nombre${indice}`]: elemento?.nombre?.split(" ")[0].toUpperCase() || "",
       [`apellido${indice}`]:
-        elemento.nombre?.split(" ").pop().toUpperCase() || "",
+        elemento?.nombre?.split(" ").pop().toUpperCase() || "",
       [`votos${indice}`]:
-        elemento.votos?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") || "", // elemento.votos ||
+        elemento?.votos?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") || "", // elemento.votos ||
       [`porcentaje${indice}`]: elemento.porcentaje.toFixed(2).toString()|| "", //(Math.random() * 99.99).toFixed(2),
-      [`codigo_partido1_${indice}`]: elemento.codigo_partido?.toString() || "",
-      [`codigo_partido2_${indice}`]: elemento.codigo_partido2?.toString() || "",
-      [`codigo_partido3_${indice}`]: elemento.codigo_partido3?.toString() || "",
-      [`codigo_partido4_${indice}`]: elemento.codigo_partido4?.toString() || "",
+      [`codigo_partido1_${indice}`]: elemento?.codigo_partido?.toString() || "",
+      [`codigo_partido2_${indice}`]: elemento?.codigo_partido2?.toString() || "",
+      [`codigo_partido3_${indice}`]: elemento?.codigo_partido3?.toString() || "",
+      [`codigo_partido4_${indice}`]: elemento?.codigo_partido4?.toString() || "",
       [`ganadorplurinominal${indice}`]:
         elemento.ganadorplurinominal?.toString() || "0",
     }))

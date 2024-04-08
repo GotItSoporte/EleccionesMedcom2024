@@ -35,7 +35,7 @@ export const TableEdicion = ({
   return (
     <div>
       <div
-        className={`relative overflow-x-auto max-h-[50vh] md:max-h-[70vh]  ${
+        className={`relative overflow-x-auto max-h-[50vh] md:max-h-[55vh]  ${
           checkPlurinominal ? 'overflow-hidden ' : ' overflow-y-auto'
         }   `}
       >
@@ -325,6 +325,9 @@ export const TableEdicion = ({
                         </td>
                         <td className="px-1 py-2 lg:px-3  text-center text-red-500 border border-gray-500">
                           NO APLICA
+                        </td>
+                        <td className="px-1 py-2 lg:px-3  text-center text-red-500 border border-gray-500">
+                            NO APLICA
                         </td>
                       </>
                     )}

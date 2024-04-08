@@ -1,7 +1,6 @@
 //-------------------  VARIABLES DE RUTA PARA DATOS XML -------------------
-const RUTE_XML = "W:/VOTO 24 (medcom)/Elecciones Generales Mayo 5/archivosXML/"; //Z:/Voto24/ELECCIONES2024/
-const RUTE_XMLTICKER =
-  "W:/VOTO 24 (medcom)/Elecciones Generales Mayo 5/archivosXML/"; //Z:/TReporta/DataScrollTR/
+const RUTE_XML = "Z:/Voto24/ELECCIONES2024/"; //Z:/Voto24/ELECCIONES2024/
+const RUTE_XMLTICKER = "Z:/TReporta/DataScrollTR/"; //Z:/TReporta/DataScrollTR/
 
 const NAME_FILE_FULLSCREENPALACIO = "Voto24_fullscreen";
 const NAME_FILE_FULLSCREENTRIBUNAL = "Voto24_fullscreentribunal";
@@ -18,7 +17,7 @@ const NAME_FILE_TICKERARRIBA2 = "Voto24_TickerAbajo_Canal"; //RECORDAR QUE ESTE 
 const NAME_FILE_TICKERABAJO = "Voto24_TickerAbajo";
 
 //-------------------  VARIABLES PARA ENVIAR DATOS WALL -------------------
-const IP_ENGINE_WALL = "192.168.2.12vgg";
+const IP_ENGINE_WALL = "localhost";
 const IP_ENGINE_SETREGIONES = "localhost";
 const UDP_PORT = 7124;
 

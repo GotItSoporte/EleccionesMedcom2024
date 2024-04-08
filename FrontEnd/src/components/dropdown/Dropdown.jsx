@@ -17,7 +17,7 @@ export const Dropdown = ({
       <button
         className={`flex-shrink-0 ${
           loading ? 'cursor-default' : 'cursor-pointer hover:bg-gray-600'
-        }  inline-flex items-center py-2 px-3 text-sm  text-center   border  rounded-lg  focus:ring-4 focus:outline-none  bg-gray-700  focus:ring-gray-700 text-white border-gray-600`}
+        }  inline-flex items-center py-2 px-3    text-center   border  rounded-lg  focus:ring-4 focus:outline-none  bg-gray-700  focus:ring-gray-700 text-white border-gray-600`}
         type="button"
         onClick={() => setOpen(!open)}
       >

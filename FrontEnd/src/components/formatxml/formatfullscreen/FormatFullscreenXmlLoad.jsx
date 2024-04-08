@@ -24,7 +24,7 @@ export const FormatFullscreenXmlLoad = ({ name, data }) => {
       element.ele('curules', curules[dataSelect.circuito] || '');
       element.ele('corporacion', dataSelect.corporacion || '');
       element.ele('participacion', dataSelect.participacion || ''); //dataSelect.participacion
-      element.ele('escrutado', dataSelect.escrutado.tostring() || ''); //dataSelect.escrutado
+      element.ele('escrutado', dataSelect.escrutado?.tostring() || ''); //dataSelect.escrutado
       element.ele('codigo_partido', dataSelect.codigo_partido || '');
       element.ele('nombre_partido', dataSelect.nombre_partido || '');
       element.ele('codigo_partido2', dataSelect.codigo_partido2 || '');
