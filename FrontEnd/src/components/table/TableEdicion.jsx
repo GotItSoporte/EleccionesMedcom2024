@@ -327,7 +327,7 @@ export const TableEdicion = ({
                           NO APLICA
                         </td>
                         <td className="px-1 py-2 lg:px-3  text-center text-red-500 border border-gray-500">
-                            NO APLICA
+                          NO APLICA
                         </td>
                       </>
                     )}
