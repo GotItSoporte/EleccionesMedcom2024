@@ -3,6 +3,7 @@ export { TickerAbajo } from './/tickerabajo';
 export { FullScreen } from './fullscreen';
 export { FullScreenTribunal } from './fullscreentribunal';
 export { Follower } from './follower';
+export { FollowerCarrera } from './followercarrera';
 export { FollowerReeleccion } from './followerreeleccion';
 export { FollowerManual } from './followermanual';
 export { Plurinominal } from './plurinominal';

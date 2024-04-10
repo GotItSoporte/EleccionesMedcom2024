@@ -8,7 +8,7 @@ export const FormatEscrutadoXmlLoad = ({ name, data }) => {
   async function CreateFile(name, data) {
     const tickerfeed = xmlbuilder.create('data');
     const element = tickerfeed.ele('element');
-    element.ele('escrutado', data[0]?.escrutado?.toString() || ''); //data.escrutado
+    element.ele('escrutado', data[0]?.escrutado?.toFixed().toString() || ''); //data[0]?.escrutado?.toFixed().toString() 
 
     const data2 = tickerfeed.ele('data2');
     data?.forEach((dataSelect) => {

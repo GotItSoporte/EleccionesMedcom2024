@@ -14,7 +14,7 @@ export function DataProvider({ children }) {
   const listaGraficos = {
     Master: ['Voto_Arriba_Voto24', 'Voto_Abajo_Voto24', 'FullScreenPalacio', 'FullScreenTribunal', 'Plurinominal'],
     EstudioWall: ['WallPalacio', 'WallTribunal', 'RA'],
-    EstudioVirtual: ['Follower', 'FollowerReeleccion', 'FollowerManual', 'SetRegiones'],
+    EstudioVirtual: ['Follower','FollowerReeleccion', 'FollowerManual', 'SetRegiones'],
   };
 
   //------------------- GET DATA -------------------

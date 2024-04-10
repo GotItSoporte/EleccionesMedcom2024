@@ -5,12 +5,12 @@ const variables = require("../services/Variables");
 
 // Array para almacenar el historial de solicitudes
 let reivedData;
+let reivedDataCarrera;
 
 //------------------- ENVIA DATOS AL SERVIDOR -------------------
 router.post("/", async function (req, res) {
   try {
     reivedData = req.body;
-    //res.json(reivedData)
     res.json({
       success: true,
       message: "Follower:Datos cargados correctamente.",
@@ -22,11 +22,26 @@ router.post("/", async function (req, res) {
   }
 });
 
+//------------------- ENVIA DATOS AL SERVIDOR -------------------
+router.post("/CARRERA", async function (req, res) {
+  try {
+    reivedDataCarrera = req.body;
+    res.json({
+      success: true,
+      message: "FollowerCarrera:Datos cargados correctamente.",
+    });
+    console.log(`FollowerCarrera:Datos cargados correctamente.`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error en la data enviada " });
+  }
+});
+
+
+
 //------------------- ENVIA DATOS DESDE EL SERVIDOR -------------------
 router.get("/", function (req, res) {
   try {
-    //const hola = Functions.ReadExcelFollower(variables.RUTE_XML,variables.NAME_FILE_EXCEL_FOLLOWER)
-    //console.log({hola})
     res.json(Functions.ChangeFormat(reivedData));
   } catch (error) {
     console.error(error);
@@ -34,7 +49,15 @@ router.get("/", function (req, res) {
   }
 });
 
-//------------------- ENVIA DATOS DESDE EL SERVIDOR -------------------
+router.get("/CARRERA", function (req, res) {
+  try {
+    res.json(Functions.ChangeFormat(reivedDataCarrera));
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error al obtener la data de Follower" });
+  }
+});
+
 router.get("/EXCEL", function (req, res) {
   try {
     res.json(
