@@ -14,7 +14,7 @@ export function DataProvider({ children }) {
   const listaGraficos = {
     Master: ['Voto_Arriba_Voto24', 'Voto_Abajo_Voto24', 'FullScreenPalacio', 'FullScreenTribunal', 'Plurinominal'],
     EstudioWall: ['WallPalacio', 'WallTribunal', 'RA'],
-    EstudioVirtual: ['Follower', 'FollowerReeleccion', 'FollowerManual', 'SetRegiones'],
+    EstudioVirtual: ['Follower','FollowerReeleccion', 'FollowerManual', 'SetRegiones'],
   };
 
   //------------------- GET DATA -------------------
@@ -74,6 +74,26 @@ export function DataProvider({ children }) {
     'LIBRE POST.': {
       id: 2,
       nombre: 'LIBRE POSTULACIÓN',
+    },
+    'LIBRE POST 2.': {
+      id: 2,
+      nombre: 'LIBRE POSTULACIÓN 2',
+    },
+    'LIBRE POST 3.': {
+      id: 2,
+      nombre: 'LIBRE POSTULACIÓN 3',
+    },
+    "PP ZULAY": {
+      id: 11,
+      nombre: "PARTIDO ZULAY",
+    },
+    "PP ARROCHA": {
+      id: 12,
+      nombre: "PARTIDO ARROCHA",
+    },
+    "PP GORDON": {
+      id: 13,
+      nombre: "PARTIDO GORDON",
     },
   };
 

@@ -24,7 +24,7 @@ function mostrarInformacion(distritosTrue, datos, Reeleccion = false) {
                   Reeleccion
                     ? item.reeleccion === '1'
                     : item.plurinominal === '1'
-                      ? item.ganadorplurinominal === '1'
+                      ? item.ganadorplurinominalvalor === '1'
                       : item,
                 )
             : null;
@@ -67,7 +67,6 @@ function mostrarInformacion(distritosTrue, datos, Reeleccion = false) {
     if (b.provincia === 'PANAMÁ') {
       return 1;
     }
-    
 
     if (a.provincia === b.provincia) {
       // Comparar distritos para ALCALDE o circuitos para DIPUTADO

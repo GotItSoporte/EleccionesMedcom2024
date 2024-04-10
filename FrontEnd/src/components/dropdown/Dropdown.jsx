@@ -10,14 +10,14 @@ export const Dropdown = ({
   id,
   setList,
   loading,
-  FuncionGanadorPlurinominal,
+  FuncionGanadorPlurinominalValor,
 }) => {
   return (
     <div className="relative ">
       <button
         className={`flex-shrink-0 ${
           loading ? 'cursor-default' : 'cursor-pointer hover:bg-gray-600'
-        }  inline-flex items-center py-2 px-3 text-sm  text-center   border  rounded-lg  focus:ring-4 focus:outline-none  bg-gray-700  focus:ring-gray-700 text-white border-gray-600`}
+        }  inline-flex items-center py-2 px-3    text-center   border  rounded-lg  focus:ring-4 focus:outline-none  bg-gray-700  focus:ring-gray-700 text-white border-gray-600`}
         type="button"
         onClick={() => setOpen(!open)}
       >
@@ -45,9 +45,13 @@ export const Dropdown = ({
                   href="#"
                   className="block px-4 py-2  hover:bg-gray-600 hover:text-white"
                   onClick={() => {
-                    if (FuncionGanadorPlurinominal) {
+                    if (FuncionGanadorPlurinominalValor) {
+                      console.log({ el });
                       HandleDataSubmit(nameData, el, id, corporacion);
-                      HandleDataSubmit('ganadorplurinominal', el !== 'NO APLICA' ? '1' : '0', id, corporacion);
+                      HandleDataSubmit('ganadorplurinominalvalor', el !== 'NO APLICA' ? '1' : '0', id, corporacion);
+                      if (el === 'NO APLICA') {
+                        HandleDataSubmit('ganadorplurinominal', '0', id, corporacion);
+                      }
                     } else {
                       HandleDataSubmit(nameData, el, id, corporacion);
                     }
@@ -77,5 +81,5 @@ Dropdown.propTypes = {
   corporacion: PropTypes.string.isRequired,
   nameData: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  FuncionGanadorPlurinominal: PropTypes.bool.isRequired,
+  FuncionGanadorPlurinominalValor: PropTypes.bool.isRequired,
 };

@@ -1,20 +1,18 @@
 const oracledb = require("oracledb");
 
 const dbConfig = {
-    user: 'INFORMACIONPREELECTORAL',
-    password: '@44K7UzZr#1I',
-    connectString: '10.26.27.21:1521/medc.medcomsubnet.medcomvcn.oraclevcn.com'
+  user: "INFORMACIONPREELECTORAL",
+  password: "@44K7UzZr#1I",
+  connectString: "10.26.27.21:1521/medc.medcomsubnet.medcomvcn.oraclevcn.com",
 };
 
-
 const readOracle = async (ruteSQL) => {
-    try {
+  try {
+    const connection = await oracledb.getConnection(dbConfig);
+    const result = await connection.execute(ruteSQL); // "SELECT * FROM PRESIDENTES"
+    await connection.close();
 
-        const connection = await oracledb.getConnection(dbConfig);
-        const result = await connection.execute(ruteSQL); // "SELECT * FROM PRESIDENTES"
-        await connection.close();
-
-       /* const metaData = result.metaData.map(item => item.name);
+    /* const metaData = result.metaData.map(item => item.name);
         const rows = result.rows;
         
 
@@ -32,43 +30,40 @@ const readOracle = async (ruteSQL) => {
 
         return resultArray*/
 
-        
-        // Procesar los resultados
-        const metaData = result.metaData.map(item => item.name.toLowerCase());
-        const rows = result.rows.map(row => {
-            const rowObject = {};
-            metaData.forEach((name, index) => {
-                rowObject[name] = row[index];
-            });
-            return rowObject;
-        });
+    // Procesar los resultados
+    const metaData = result.metaData.map((item) => item.name.toLowerCase());
+    const rows = result.rows.map((row) => {
+      const rowObject = {};
+      metaData.forEach((name, index) => {
+        rowObject[name] = row[index];
+      });
+      return rowObject;
+    });
 
-        return rows;
-
-
-    } catch (err) {
-        console.error(err);
-        console.log("error consulta")
-    }
+    return rows;
+  } catch (err) {
+    console.error(err);
+    console.log("error consulta");
+  }
 };
 
-const editOracle = async (ruteSQL,params) => {
-    try {
+const editOracle = async (ruteSQL, params) => {
+  try {
+    const connection = await oracledb.getConnection(dbConfig);
+    const result = await connection.execute(ruteSQL, params, {
+      autoCommit: true,
+    }); // "SELECT * FROM PRESIDENTES"
+    await connection.close();
 
-        const connection = await oracledb.getConnection(dbConfig);
-        const result = await connection.execute(ruteSQL,params,{ autoCommit: true }); // "SELECT * FROM PRESIDENTES"
-        await connection.close();
-
-        return result
-
-    } catch (err) {
-        console.error(err);
-        console.log("error consulta")
-        throw err;
-    }
+    return result;
+  } catch (err) {
+    console.error(err);
+    console.log("error consulta");
+    throw err;
+  }
 };
 
 module.exports = {
-    readOracle: readOracle,  // Asigna la función a la propiedad dbConfig
-    editOracle:editOracle
+  readOracle: readOracle, // Asigna la función a la propiedad dbConfig
+  editOracle: editOracle,
 };

@@ -7,6 +7,8 @@ import {
   FullScreenTribunal,
   Plurinominal,
   TouchScreen,
+  RaExteriorMapa,
+  FollowerCarrera
 } from '../../components';
 
 export const Master = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, setGraficoSeleccionado }) => {
@@ -92,6 +94,16 @@ export const Master = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, s
       {/*------------------- TOUCHSCREEN -------------------*/}
       <div className="">
         <TouchScreen />
+      </div>
+
+      {/*------------------- RA EXTERIOR MAPA -------------------*/}
+      <div className="">
+        <RaExteriorMapa />  
+      </div>
+
+            {/*------------------- RA EXTERIOR MAPA -------------------*/}
+      <div className="">
+        <FollowerCarrera />  
       </div>
     </>
   );
