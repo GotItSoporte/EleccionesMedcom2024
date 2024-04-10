@@ -36,16 +36,24 @@ function ChangeFormat(data) {
         data[0]?.cedula + "-Gana_Video" || "SIN IDENTIFICACION",
       [`cedulavideo${indice}`]:
         elemento?.cedula + "_Video" || "SIN IDENTIFICACION",
-      [`nombre${indice}`]: elemento?.nombre?.split(" ")[0].toUpperCase() || "",
+      [`nombre${indice}`]:
+        elemento.cedula === "8-766-2490"
+          ? "JOSÉ G."
+          : elemento.cedula === "4-132-245"
+          ? "JOSÉ R."
+          : elemento?.nombre?.split(" ")[0].toUpperCase() || "",
       [`apellido${indice}`]:
         elemento?.nombre?.split(" ").pop().toUpperCase() || "",
       [`votos${indice}`]:
         elemento?.votos?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") || "", // elemento.votos ||
-      [`porcentaje${indice}`]: elemento.porcentaje.toFixed(2).toString()|| "", //(Math.random() * 99.99).toFixed(2),
+      [`porcentaje${indice}`]: elemento.porcentaje.toFixed(2).toString() || "", //(Math.random() * 99.99).toFixed(2),
       [`codigo_partido1_${indice}`]: elemento?.codigo_partido?.toString() || "",
-      [`codigo_partido2_${indice}`]: elemento?.codigo_partido2?.toString() || "",
-      [`codigo_partido3_${indice}`]: elemento?.codigo_partido3?.toString() || "",
-      [`codigo_partido4_${indice}`]: elemento?.codigo_partido4?.toString() || "",
+      [`codigo_partido2_${indice}`]:
+        elemento?.codigo_partido2?.toString() || "",
+      [`codigo_partido3_${indice}`]:
+        elemento?.codigo_partido3?.toString() || "",
+      [`codigo_partido4_${indice}`]:
+        elemento?.codigo_partido4?.toString() || "",
       [`ganadorplurinominal${indice}`]:
         elemento.ganadorplurinominal?.toString() || "0",
     }))
@@ -199,6 +207,18 @@ const listPartido = {
     id: 2,
     nombre: "LIBRE POSTULACIÓN 3",
   },
+  "PP ZULAY": {
+    id: 11,
+    nombre: "PARTIDO ZULAY",
+  },
+  "PP ARROCHA": {
+    id: 12,
+    nombre: "PARTIDO ARROCHA",
+  },
+  "PP GORDON": {
+    id: 13,
+    nombre: "PARTIDO GORDON",
+  },
 };
 
 //-------------------  LECTURA DE EXCEL FORMULA-------------------
@@ -260,10 +280,14 @@ function ReadExcelFormulaFollower(ruteFile, rute) {
         elemento.nombreVicepresidencial || "",
       [`apellidoVicepresidencial${indice}`]:
         elemento.apellidoVicepresidencial || "",
-      [`codigo_partido1_${indice}`]: listPartido[elemento.bandera1]?.id?.toString() || "",
-      [`codigo_partido2_${indice}`]: listPartido[elemento.bandera2]?.id?.toString() || "",
-      [`codigo_partido3_${indice}`]: listPartido[elemento.bandera3]?.id?.toString() || "",
-      [`codigo_partido4_${indice}`]: listPartido[elemento.bandera4]?.id?.toString() || "",
+      [`codigo_partido1_${indice}`]:
+        listPartido[elemento.bandera1]?.id?.toString() || "",
+      [`codigo_partido2_${indice}`]:
+        listPartido[elemento.bandera2]?.id?.toString() || "",
+      [`codigo_partido3_${indice}`]:
+        listPartido[elemento.bandera3]?.id?.toString() || "",
+      [`codigo_partido4_${indice}`]:
+        listPartido[elemento.bandera4]?.id?.toString() || "",
     }))
     .reduce((resultado, elemento) => ({ ...resultado, ...elemento }), {});
 }

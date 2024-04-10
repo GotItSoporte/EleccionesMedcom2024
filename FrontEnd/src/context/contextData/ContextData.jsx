@@ -83,6 +83,18 @@ export function DataProvider({ children }) {
       id: 2,
       nombre: 'LIBRE POSTULACIÓN 3',
     },
+    "PP ZULAY": {
+      id: 11,
+      nombre: "PARTIDO ZULAY",
+    },
+    "PP ARROCHA": {
+      id: 12,
+      nombre: "PARTIDO ARROCHA",
+    },
+    "PP GORDON": {
+      id: 13,
+      nombre: "PARTIDO GORDON",
+    },
   };
 
   //------------------- LISTA CURULES-------------------
