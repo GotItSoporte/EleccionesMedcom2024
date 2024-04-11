@@ -39,8 +39,8 @@ export const FormatTickerXmlLoad = ({ name, data }) => {
           if (idx === 0) {
             element.ele('template', nameTemplate[name]);
             if (name !== 'Voto_Abajo_Voto24') {
-              element.ele('field', { name: `escrutado` }, dataSelect.escrutado || ''); //dataSelect.escrutado
-              element.ele('field', { name: `participacion` }, dataSelect.participacion || ''); //dataSelect.participacion
+              element.ele('field', { name: `escrutado` }, dataSelect.escrutado.toString() || ''); //dataSelect.escrutado
+              element.ele('field', { name: `participacion` }, dataSelect.participacion.toString() || ''); //dataSelect.participacion
             }
             element.ele('field', { name: `corporacion` }, dataSelect.corporacion || '');
             element.ele(

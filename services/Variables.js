@@ -17,13 +17,14 @@ const NAME_FILE_TICKERARRIBA2 = "Voto24_TickerAbajo_Canal"; //RECORDAR QUE ESTE 
 const NAME_FILE_TICKERABAJO = "Voto24_TickerAbajo";
 
 //-------------------  VARIABLES PARA ENVIAR DATOS WALL -------------------
-const IP_ENGINE_WALL = "localhost";
-const IP_ENGINE_SETREGIONES = "localhost";
+const IP_ENGINE_WALL = "192.168.70.116"; //192.168.70.116
+const IP_ENGINE_SETREGIONES = "192.168.70.129"; //192.168.70.129
 const UDP_PORT = 7124;
 
 //-------------------  VARIABLES PARA LECTURA EXCEL FOLLOWER -------------------
 const NAME_FILE_EXCEL_FOLLOWER = "Parlamentro_centroamericano";
 const NAME_FILE_EXCEL_FORMULA_FOLLOWER = "Formula_Presidencial";
+
 
 module.exports = {
   RUTE_XML,
