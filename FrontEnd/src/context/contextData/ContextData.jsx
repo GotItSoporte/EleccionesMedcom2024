@@ -165,6 +165,14 @@ export function DataProvider({ children }) {
     getData(); // Iniciar la primera actualización
   }, [checkPlurinominal]);
 
+
+
+  const [blockWallScreen, setBlockWallScreen ] = useState({
+    'wall':false,
+    'wallTribunal':false,
+  })
+
+
   //------------------- CONTEXTOS-------------------
   const value = {
     listaGraficos,
@@ -176,6 +184,10 @@ export function DataProvider({ children }) {
     setDelayCheckPlurinominal,
     listPartido,
     curules,
+
+
+    blockWallScreen, 
+    setBlockWallScreen
   };
 
   return <ContextData.Provider value={value}>{children}</ContextData.Provider>;
