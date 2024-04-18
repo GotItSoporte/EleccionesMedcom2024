@@ -32,67 +32,67 @@ export function DataProvider({ children }) {
 
   //------------------- LISTA PARTIDOS SECUNDARIOS-------------------
   const listPartido = {
-    'NO APLICA': {
+    "NO APLICA": {
       id: 0,
     },
     PRD: {
-      id: 9,
-      nombre: 'PARTIDO REVOLUCIONARIO DEMOCRÁTICO',
+      id: 2,
+      nombre: "PARTIDO REVOLUCIONARIO DEMOCRÁTICO",
     },
     PP: {
-      id: 8,
-      nombre: 'PARTIDO POPULAR',
+      id: 3,
+      nombre: "PARTIDO POPULAR",
     },
     MOL: {
-      id: 3,
-      nombre: 'MOLIRENA',
+      id: 4,
+      nombre: "MOLIRENA",
     },
     PAN: {
-      id: 7,
-      nombre: 'PARTIDO PANAMEÑISTA',
+      id: 8,
+      nombre: "PARTIDO PANAMEÑISTA",
     },
     CD: {
-      id: 1,
-      nombre: 'CAMBIO DEMOCRÁTICO',
+      id: 32,
+      nombre: "CAMBIO DEMOCRÁTICO",
     },
     ALIANZA: {
-      id: 5,
-      nombre: 'PARTIDO ALIANZA',
+      id: 51,
+      nombre: "PARTIDO ALIANZA",
     },
     RM: {
-      id: 10,
-      nombre: 'REALIZANDO METAS',
+      id: 56,
+      nombre: "REALIZANDO METAS",
     },
     PAIS: {
-      id: 6,
-      nombre: 'PAÍS',
+      id: 52,
+      nombre: "PAÍS",
     },
     MOCA: {
-      id: 4,
-      nombre: 'MOVIMIENTO OTRO CAMINO',
+      id: 53,
+      nombre: "MOVIMIENTO OTRO CAMINO",
     },
-    'LIBRE POST.': {
-      id: 2,
-      nombre: 'LIBRE POSTULACIÓN',
+    "LIBRE POST.": {
+      id: 57,
+      nombre: "LIBRE POSTULACIÓN",
     },
-    'LIBRE POST 2.': {
-      id: 2,
-      nombre: 'LIBRE POSTULACIÓN 2',
+    "LIBRE POST 2.": {
+      id: 58,
+      nombre: "LIBRE POSTULACIÓN 2",
     },
-    'LIBRE POST 3.': {
-      id: 2,
-      nombre: 'LIBRE POSTULACIÓN 3',
+    "LIBRE POST 3.": {
+      id: 59,
+      nombre: "LIBRE POSTULACIÓN 3",
     },
     "PP ZULAY": {
-      id: 11,
+      id: 501,
       nombre: "PARTIDO ZULAY",
     },
     "PP ARROCHA": {
-      id: 12,
+      id: 503,
       nombre: "PARTIDO ARROCHA",
     },
     "PP GORDON": {
-      id: 13,
+      id: 502,
       nombre: "PARTIDO GORDON",
     },
   };

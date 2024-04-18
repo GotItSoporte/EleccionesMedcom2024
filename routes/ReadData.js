@@ -6,7 +6,7 @@ const { readOracle } = require("../config/config");
 router.get("/PRESIDENTE", async function (req, res) {
   try {
     const result = await readOracle(
-      "SELECT * FROM VOTO2024.PRESIDENTE_GOTIT ORDER BY provincia,votos desc"
+      "SELECT * FROM VOTO2024.PRESIDENTE_GOTIT ORDER BY provincia,votos desc,nomina asc"
     );
     res.json(result);
   } catch (error) {

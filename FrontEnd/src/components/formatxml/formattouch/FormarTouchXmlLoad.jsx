@@ -60,8 +60,8 @@ export const FormatTouchXmlLoad = ({ name, data }) => {
 
           element3.ele('cedula', dataSelect.cedula || '');
           element3.ele('nombre', dataSelect.nombre || '');
-          element3.ele('porcentaje', dataSelect.porcentaje.toString() || '');
-          element3.ele('votos', dataSelect.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') || '');
+          element3.ele('porcentaje', dataSelect.porcentaje?.toString() || '');
+          element3.ele('votos', dataSelect.votos?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') || '');
           element3.ele('circuito', dataSelect.circuito || '');
           element3.ele('curules', curules[dataSelect.circuito] || '');
           element3.ele('plurinominal', dataSelect.plurinominal || '');

@@ -16,15 +16,15 @@ export const FormatFullscreenXmlLoad = ({ name, data }) => {
       element.ele('ganadorplurinominal', dataSelect.ganadorplurinominal || '');
       element.ele('nombre', dataSelect.nombre || '');
       element.ele('cedula', dataSelect.cedula || '');
-      element.ele('votos', dataSelect.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') || '');
-      element.ele('porcentaje', dataSelect.porcentaje.toString() || ''); // dataSelect.porcentaje
+      element.ele('votos', dataSelect.votos?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') || '');
+      element.ele('porcentaje', dataSelect.porcentaje?.toString() || ''); // dataSelect.porcentaje
       element.ele('provincia', dataSelect.provincia || '');
       element.ele('distrito', dataSelect.distrito || '');
       element.ele('circuito', dataSelect.circuito || '');
       element.ele('curules', curules[dataSelect.circuito] || '');
       element.ele('corporacion', dataSelect.corporacion || '');
-      element.ele('participacion', dataSelect.participacion.toString() || ''); //dataSelect.participacion
-      element.ele('escrutado', dataSelect.escrutado.toString() || ''); //dataSelect.escrutado
+      element.ele('participacion', dataSelect.participacion?.toString() || ''); //dataSelect.participacion
+      element.ele('escrutado', dataSelect.escrutado?.toString() || ''); //dataSelect.escrutado
       element.ele('codigo_partido', dataSelect.codigo_partido || '');
       element.ele('nombre_partido', dataSelect.nombre_partido || '');
       element.ele('codigo_partido2', dataSelect.codigo_partido2 || '');

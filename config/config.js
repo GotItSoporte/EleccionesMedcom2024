@@ -1,9 +1,9 @@
 const oracledb = require("oracledb");
 
 const dbConfig = {
-  user: "INFORMACIONPREELECTORAL",
-  password: "@44K7UzZr#1I",
-  connectString: "10.26.27.21:1521/medc.medcomsubnet.medcomvcn.oraclevcn.com",
+  user: "SPAGOMEZ",
+  password: "7$1c0tdOxvFlev#",
+  connectString: "10.26.27.94:1521/medc.medcomsubnet.medcomvcn.oraclevcn.com",
 };
 
 const readOracle = async (ruteSQL) => {

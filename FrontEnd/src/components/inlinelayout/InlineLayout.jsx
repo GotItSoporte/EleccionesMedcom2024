@@ -3,7 +3,12 @@ import { useEffect } from 'react';
 
 export const InlineLayout = ({ option, setOption, dataSelect }) => {
   useEffect(() => {
-    setOption(dataSelect.length);
+    if (dataSelect.length>8){
+      setOption(8);
+    } else {
+      setOption(dataSelect.length);
+    }
+    
   }, []);
 
   useEffect(() => {

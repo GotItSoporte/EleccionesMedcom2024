@@ -39,8 +39,8 @@ export const FormatTickerXmlLoad = ({ name, data }) => {
           if (idx === 0) {
             element.ele('template', nameTemplate[name]);
             if (name !== 'Voto_Abajo_Voto24') {
-              element.ele('field', { name: `escrutado` }, dataSelect.escrutado.toString() || ''); //dataSelect.escrutado
-              element.ele('field', { name: `participacion` }, dataSelect.participacion.toString() || ''); //dataSelect.participacion
+              element.ele('field', { name: `escrutado` }, dataSelect.escrutado?.toString() || ''); //dataSelect.escrutado
+              element.ele('field', { name: `participacion` }, dataSelect.participacion?.toString() || ''); //dataSelect.participacion
             }
             element.ele('field', { name: `corporacion` }, dataSelect.corporacion || '');
             element.ele(
@@ -59,7 +59,7 @@ export const FormatTickerXmlLoad = ({ name, data }) => {
             element.ele('field', { name: `cedula${idx + 1}` }, dataSelect.cedula || '');
           }
           element.ele('field', { name: `nombre${idx + 1}` }, dataSelect.nombre.split(' ').pop() || '');
-          element.ele('field', { name: `porcentaje${idx + 1}` }, dataSelect.porcentaje.toString() || ''); //dataSelect.porcentaje
+          element.ele('field', { name: `porcentaje${idx + 1}` }, dataSelect.porcentaje?.toString() || ''); //dataSelect.porcentaje
           if (name !== 'Voto_Abajo_Voto24') {
             element.ele('field', { name: `votos${idx + 1}` }, dataSelect.votos || '');
           }
