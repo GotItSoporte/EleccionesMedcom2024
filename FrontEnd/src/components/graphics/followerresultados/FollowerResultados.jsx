@@ -1,32 +1,32 @@
-import { Navbar, Table, InlineLayout, SequenceButton } from '../..';
+import { Navbar, Table, Button, InlineLayout } from '../../../components';
+import iconSend from '../../../assets/icons/send.svg';
 import PropTypes from 'prop-types';
 
-export const SetRegiones = ({
-  nameGrafico,
+export const FollowerResultados = ({
   mostrarNavbar,
   rol,
   setMostrarNavbar,
-  dataSelectReference,
+  dataSelect,
   setDataSelect,
   selectOption,
   setSelectOption,
   dataGroupe,
-  setActiveData,
   children,
+  postDataFollower,
 }) => {
   return (
     <>
       <div className={`float-left w-0 ${mostrarNavbar ? 'lg:w-auto' : 'lg:w-0'}`}>
         <Navbar
           type="navbarOnly"
-          nameCorporacion={['ALCALDE']}
           mostrarNavbar={mostrarNavbar}
           setMostrarNavbar={setMostrarNavbar}
           setDataSelect={setDataSelect}
           rol={rol}
           activePresentador={true}
+          nameCorporacion={['PRESIDENTE', 'ALCALDE', 'DIPUTADO']}
+          graficoSeleccionado="FollowerResultados"
           //NO APLICA
-          graficoSeleccionado={''}
           setGraficoSeleccionado={() => {}}
           setLastFile={() => {}}
           isChecked={{}}
@@ -34,38 +34,36 @@ export const SetRegiones = ({
         />
       </div>
       {children}
-
       <div className="w-auto px-2 overflow-x-auto">
         {dataGroupe.length > 0 && (
           <InlineLayout
             option={selectOption}
             setOption={setSelectOption}
-            dataSelect={dataSelectReference}
+            dataSelect={dataSelect}
             ActiveTicker={false}
           />
         )}
-        <Table data={dataSelectReference} type="" option={selectOption} />
-        <SequenceButton
-          type={nameGrafico}
-          data={dataGroupe}
-          setMostrarNavbar={setMostrarNavbar}
-          setActiveData={setActiveData}
-        />
+
+        <Table data={dataSelect} type="" option={selectOption} />
+        {dataSelect.length > 0 && (
+          <div className="w-fit mx-auto mt-2 p-1" onClick={() => postDataFollower()}>
+            <Button type="Alert" rute="" name="Cargar datos" icon={iconSend} color="bg-green" loading={false} />
+          </div>
+        )}
       </div>
     </>
   );
 };
 
-SetRegiones.propTypes = {
-  nameGrafico: PropTypes.string.isRequired,
+FollowerResultados.propTypes = {
   rol: PropTypes.string.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,
+  dataSelect: PropTypes.array.isRequired,
   setDataSelect: PropTypes.func.isRequired,
-  dataSelectReference: PropTypes.array.isRequired,
   selectOption: PropTypes.number.isRequired,
   setSelectOption: PropTypes.func.isRequired,
   dataGroupe: PropTypes.array.isRequired,
-  setActiveData: PropTypes.func.isRequired,
   children: PropTypes.node,
+  postDataFollower: PropTypes.func.isRequired,
 };

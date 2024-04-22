@@ -76,7 +76,7 @@ export const Table = ({ data, option }) => {
                   >
                     <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{value.nombre}</td>
                     <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{value.votos}</td>
-                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{value.porcentaje.toFixed(2)}</td>
+                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{value.porcentaje?.toFixed(2)}</td>
                     <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{value.nombre_partido}</td>
                     <td className="px-1 py-2 lg:px-6 lg:py-4 text-center border border-gray-500">{value.provincia}</td>
                     <td

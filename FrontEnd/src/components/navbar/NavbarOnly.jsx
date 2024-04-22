@@ -122,9 +122,6 @@ export const NavbarOnly = ({
                         (corporacion === 'DIPUTADO'
                           ? data[corporacion]
                               ?.filter((item) =>
-                                graficoSeleccionado === 'Follower' ? item.plurinominal === '1' : item,
-                              )
-                              ?.filter((item) =>
                                 graficoSeleccionado === 'FollowerReeleccion' ? item.reeleccion === '1' : item,
                               )
                           : corporacion === 'ALCALDE'
@@ -223,9 +220,6 @@ export const NavbarOnly = ({
                                   corporacion === 'DIPUTADO' &&
                                   data[corporacion]
                                     ?.filter((item) =>
-                                      graficoSeleccionado === 'Follower' ? item.plurinominal === '1' : item,
-                                    )
-                                    ?.filter((item) =>
                                       graficoSeleccionado === 'FollowerReeleccion' ? item.reeleccion === '1' : item,
                                     )
                                     ?.filter((item) => item.provincia === el.provincia)
@@ -253,7 +247,7 @@ export const NavbarOnly = ({
                                                   rol !== 'Master' && activePresentador && setMostrarNavbar(false);
                                               }}
                                             >
-                                              <span>CIRCUITO {el3.circuito}</span>
+                                              <span>CIRCUITO {el3.circuito} {el3?.plurinominal==='1' && <span className='text-green'>(P)</span>}</span>
                                             </a>
                                           </div>
                                         );

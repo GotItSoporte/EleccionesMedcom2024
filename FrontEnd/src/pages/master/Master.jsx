@@ -5,6 +5,7 @@ import {
   TickerAbajo,
   FullScreen,
   FullScreenTribunal,
+  Editable,
   Plurinominal,
   TouchScreen,
   RaExteriorMapa,
@@ -80,6 +81,18 @@ export const Master = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, s
         </FullScreenTribunal>
       </div>
 
+      {/*------------------- EDITABLE -------------------*/}
+      <div className={`${graficoSeleccionado === 'Editable' ? 'block' : 'hidden'}`}>
+        <Editable>
+          <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
+            Master -
+            <span className="text-2xl md:text-5xl font-semibold md:font-extrabold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-gray-800 ml-2">
+              {graficoSeleccionado}
+            </span>
+          </h1>
+        </Editable>
+      </div>
+
       {/*------------------- PLURINOMINAL -------------------*/}
       <div className={`${graficoSeleccionado === 'Plurinominal' ? 'block' : 'hidden'}`}>
         <Plurinominal>
@@ -91,6 +104,8 @@ export const Master = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, s
           </h1>
         </Plurinominal>
       </div>
+
+
       {/*------------------- TOUCHSCREEN -------------------*/}
       <div className="">
         <TouchScreen />

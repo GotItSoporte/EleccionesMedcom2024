@@ -2,8 +2,9 @@ import PropTypes from 'prop-types';
 import { Card, Verificacion } from '../../components';
 import Logo from '../../assets/logoMedcom.svg';
 import Master from '../../assets/profiles/Operador.jpg';
-import EstudioWall from '../../assets/profiles/Presentador.jpg';
-import EstudioVirtual from '../../assets/profiles/Programador.jpg';
+import Wall from '../../assets/profiles/Presentador.jpg';
+import Follower from '../../assets/profiles/Programador.jpg';
+import SetRegiones from '../../assets/profiles/Regiones.jpg';
 //import CentroComercial from '../../assets/profiles/CentroCOmercial.jpg';
 
 export const Home = ({ mostrarVerificacion, setMostrarVerificacion, setRol, rol }) => {
@@ -46,18 +47,26 @@ export const Home = ({ mostrarVerificacion, setMostrarVerificacion, setRol, rol 
             <div
               className="col-span-4"
               onClick={() => {
-                setMostrarVerificacion(true), setRol('EstudioWall');
+                setMostrarVerificacion(true), setRol('Wall');
               }}
             >
-              <Card name="Estudio Wall" image={EstudioWall} />
+              <Card name="Wall" image={Wall} />
             </div>
             <div
-              className="col-start-3 col-span-4"
+              className="col-span-4"
               onClick={() => {
-                setMostrarVerificacion(true), setRol('EstudioVirtual');
+                setMostrarVerificacion(true), setRol('Follower');
               }}
             >
-              <Card name="Estudio Virtual" image={EstudioVirtual} />
+              <Card name="Follower" image={Follower} />
+            </div>
+            <div
+              className=" col-span-4"
+              onClick={() => {
+                setMostrarVerificacion(true), setRol('SetRegiones');
+              }}
+            >
+              <Card name="SetRegiones" image={SetRegiones} />
             </div>
             {/*<div
               className=""

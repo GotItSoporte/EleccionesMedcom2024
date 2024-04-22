@@ -21,7 +21,7 @@ function ChangeFormat(data) {
             : "UNINOMINAL"
           : "UNINOMINAL",
       [`participacion`]: data[0]?.participacion?.toFixed(2)?.toString() || "", // (Math.random() * 99.99).toFixed(2)
-      [`escrutado`]: data[0]?.escrutado?.toFixed(2)?.toString() || "",
+      [`escrutado`]: parseFloat(data[0]?.escrutado)?.toFixed(2)?.toString() || "",
       [`provincia`]: data[0]?.provincia || "",
       [`region`]:
         data[0]?.corporacion === "PRESIDENTE"

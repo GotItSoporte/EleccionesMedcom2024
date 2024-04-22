@@ -24,7 +24,7 @@ export const NavbarHorizontal = ({
 
               <div
                 className={`flex justify-start  ${
-                  graficoSeleccionado === 'Plurinominal' || graficoSeleccionado === 'FollowerManual' ? 'hidden' : ''
+                  graficoSeleccionado === 'Editable' || graficoSeleccionado === 'Plurinominal' || graficoSeleccionado === 'FollowerManual' ? 'hidden' : ''
                 } cursor-pointer `}
               >
                 {mostrarNavbar ? (

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Wall } from './Wall';
+import { WallPalacio } from './WallPalacio';
 import { useFunctions, useData } from '../../../context';
 
-export const WallLoad = ({ ...props }) => {
+export const WallPalacioLoad = ({ ...props }) => {
   const nameGrafico = 'WALL';
   const [dataSelect, setDataSelect] = useState([]);
   const [dataSelectReference, setDataSelectReference] = useState(dataSelect || []);
@@ -25,7 +25,7 @@ export const WallLoad = ({ ...props }) => {
   }, [selectOption, dataSelect, activeData]);
 
   return (
-    <Wall
+    <WallPalacio
       {...props}
       nameGrafico={nameGrafico}
       dataSelectReference={dataSelectReference}

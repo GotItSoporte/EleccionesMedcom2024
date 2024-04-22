@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { SetRegiones } from './SetRegiones';
+import { SetRegiones360 } from './SetRegiones360';
 import { useFunctions } from '../../../context';
 
-export const SetRegionesLoad = ({ ...props }) => {
+export const SetRegiones360Load = ({ ...props }) => {
   const nameGrafico = 'SETREGIONES';
   const [dataSelect, setDataSelect] = useState([]);
   const [dataSelectReference, setDataSelectReference] = useState(dataSelect || []);
@@ -26,7 +26,7 @@ export const SetRegionesLoad = ({ ...props }) => {
   }, [selectOption, dataSelect, activeData]);
 
   return (
-    <SetRegiones
+    <SetRegiones360
       {...props}
       nameGrafico={nameGrafico}
       dataSelectReference={dataSelectReference}

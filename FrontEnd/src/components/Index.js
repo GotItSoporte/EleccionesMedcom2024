@@ -1,6 +1,5 @@
 export * from './graphics';
 export * from './formatxml';
-
 export { Card } from './card';
 export { Verificacion } from './verificacion';
 export { Navbar } from './navbar';

@@ -1,32 +1,32 @@
-import { Navbar, Table, Button, InlineLayout } from '../../../components';
-import iconSend from '../../../assets/icons/send.svg';
+import { Navbar, Table, InlineLayout, SequenceButton } from '../..';
 import PropTypes from 'prop-types';
 
-export const Follower = ({
+export const SetRegiones360 = ({
+  nameGrafico,
   mostrarNavbar,
   rol,
   setMostrarNavbar,
-  dataSelect,
+  dataSelectReference,
   setDataSelect,
   selectOption,
   setSelectOption,
   dataGroupe,
+  setActiveData,
   children,
-  postDataFollower,
 }) => {
   return (
     <>
       <div className={`float-left w-0 ${mostrarNavbar ? 'lg:w-auto' : 'lg:w-0'}`}>
         <Navbar
           type="navbarOnly"
+          nameCorporacion={['ALCALDE']}
           mostrarNavbar={mostrarNavbar}
           setMostrarNavbar={setMostrarNavbar}
           setDataSelect={setDataSelect}
           rol={rol}
           activePresentador={true}
-          nameCorporacion={['PRESIDENTE', 'ALCALDE', 'DIPUTADO']}
-          graficoSeleccionado="Follower"
           //NO APLICA
+          graficoSeleccionado={''}
           setGraficoSeleccionado={() => {}}
           setLastFile={() => {}}
           isChecked={{}}
@@ -34,36 +34,38 @@ export const Follower = ({
         />
       </div>
       {children}
+
       <div className="w-auto px-2 overflow-x-auto">
         {dataGroupe.length > 0 && (
           <InlineLayout
             option={selectOption}
             setOption={setSelectOption}
-            dataSelect={dataSelect}
+            dataSelect={dataSelectReference}
             ActiveTicker={false}
           />
         )}
-
-        <Table data={dataSelect} type="" option={selectOption} />
-        {dataSelect.length > 0 && (
-          <div className="w-fit mx-auto mt-2 p-1" onClick={() => postDataFollower()}>
-            <Button type="Alert" rute="" name="Cargar datos" icon={iconSend} color="bg-green" loading={false} />
-          </div>
-        )}
+        <Table data={dataSelectReference} type="" option={selectOption} />
+        <SequenceButton
+          type={nameGrafico}
+          data={dataGroupe}
+          setMostrarNavbar={setMostrarNavbar}
+          setActiveData={setActiveData}
+        />
       </div>
     </>
   );
 };
 
-Follower.propTypes = {
+SetRegiones360.propTypes = {
+  nameGrafico: PropTypes.string.isRequired,
   rol: PropTypes.string.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,
-  dataSelect: PropTypes.array.isRequired,
   setDataSelect: PropTypes.func.isRequired,
+  dataSelectReference: PropTypes.array.isRequired,
   selectOption: PropTypes.number.isRequired,
   setSelectOption: PropTypes.func.isRequired,
   dataGroupe: PropTypes.array.isRequired,
+  setActiveData: PropTypes.func.isRequired,
   children: PropTypes.node,
-  postDataFollower: PropTypes.func.isRequired,
 };

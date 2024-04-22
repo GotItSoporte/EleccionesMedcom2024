@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import { Navbar, Follower, FollowerReeleccion, FollowerManual, SetRegiones } from '../../components';
+import { Navbar, FollowerResultados, FollowerReeleccion, FollowerManual } from '../../components';
 
-export const EstudioVirtual = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, setGraficoSeleccionado }) => {
-  let rol = 'EstudioVirtual';
+export const Follower = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, setGraficoSeleccionado }) => {
+  let rol = 'Follower';
 
   return (
     <>
@@ -23,22 +23,22 @@ export const EstudioVirtual = ({ mostrarNavbar, setMostrarNavbar, graficoSelecci
       />
 
       {/*------------------- FOLLOWER -------------------*/}
-      <div className={`${graficoSeleccionado === 'Follower' ? 'block' : 'hidden'}`}>
-        <Follower mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol={rol}>
+      <div className={`${graficoSeleccionado === 'FollowerResultados' ? 'block' : 'hidden'}`}>
+        <FollowerResultados mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol={rol}>
           <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
-            EstudioVirtual -
+            Follower -
             <span className="text-2xl md:text-5xl font-semibold md:font-extrabold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-gray-800 ml-2">
               {graficoSeleccionado}
             </span>
           </h1>
-        </Follower>
+        </FollowerResultados>
       </div>
 
       {/*------------------- FOLLOWER REELECCION -------------------*/}
       <div className={`${graficoSeleccionado === 'FollowerReeleccion' ? 'block' : 'hidden'}`}>
         <FollowerReeleccion mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol={rol}>
           <h1 className="text-2xl md:text-4xl lg:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
-            EstudioVirtual -
+            Follower -
             <span className="text-2xl md:text-4xl lg:text-5xl font-semibold md:font-extrabold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-gray-800 ml-2 ">
               {graficoSeleccionado}
             </span>
@@ -50,7 +50,7 @@ export const EstudioVirtual = ({ mostrarNavbar, setMostrarNavbar, graficoSelecci
       <div className={`${graficoSeleccionado === 'FollowerManual' ? 'block' : 'hidden'}`}>
         <FollowerManual mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol={rol}>
           <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
-            EstudioVirtual -
+            Follower -
             <span className="text-2xl md:text-5xl font-semibold md:font-extrabold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-gray-800 ml-2">
               {graficoSeleccionado}
             </span>
@@ -58,22 +58,11 @@ export const EstudioVirtual = ({ mostrarNavbar, setMostrarNavbar, graficoSelecci
         </FollowerManual>
       </div>
 
-      {/*------------------- SETREGIONES -------------------*/}
-      <div className={`${graficoSeleccionado === 'SetRegiones' ? 'block' : 'hidden'}`}>
-        <SetRegiones mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol={rol}>
-          <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
-            EstudioVirtual -
-            <span className="text-2xl md:text-5xl font-semibold md:font-extrabold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-gray-800 ml-2">
-              {graficoSeleccionado}
-            </span>
-          </h1>
-        </SetRegiones>
-      </div>
     </>
   );
 };
 
-EstudioVirtual.propTypes = {
+Follower.propTypes = {
   mostrarNavbar: PropTypes.bool.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,
   graficoSeleccionado: PropTypes.string.isRequired,

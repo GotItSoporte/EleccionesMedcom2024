@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Follower } from './Follower';
+import { FollowerResultados } from './FollowerResultados';
 import { useFunctions } from '../../../context';
 import sendInfoFollower from '../../../apis/SendInfoFollower';
 
-export const FollowerLoad = ({ ...props }) => {
+export const FollowerResultadosLoad = ({ ...props }) => {
   const [dataSelect, setDataSelect] = useState([]);
   const [selectOption, setSelectOption] = useState(0);
   const [dataGroupe, setDataGroupe] = useState([]);
@@ -19,7 +19,7 @@ export const FollowerLoad = ({ ...props }) => {
   }, [selectOption, dataSelect]);
 
   return (
-    <Follower
+    <FollowerResultados
       {...props}
       dataSelect={dataSelect}
       setDataSelect={setDataSelect}

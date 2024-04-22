@@ -13,17 +13,17 @@ export const VerificacionLoad = ({ setMostrarVerificacion, rol }) => {
       password: 'medcom1',
       route: '/Master',
     },
-    EstudioWall: {
+    Wall: {
       password: 'medcom2',
-      route: '/Estudio-Wall',
+      route: '/Wall',
     },
-    EstudioVirtual: {
+    Follower: {
       password: 'medcom3',
-      route: '/Estudio-Virtual',
+      route: '/Follower',
     },
-    Metromall: {
+    SetRegiones: {
       password: 'medcom4',
-      route: '/Metromall',
+      route: '/SetRegiones',
     },
   };
 
