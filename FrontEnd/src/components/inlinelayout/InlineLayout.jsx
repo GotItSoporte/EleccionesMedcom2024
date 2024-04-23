@@ -21,7 +21,8 @@ export const InlineLayout = ({ option, setOption, dataSelect }) => {
 
   return (
     <div>
-      <div className="flex pt-1 pb-1 pl-1 border border-gray-400 w-auto  ">
+      <div className="flex justify-between pt-1 pb-1 pl-1 border border-gray-400 w-auto  ">
+        <div className='flex'>
         <h1 className="mr-5 text-sm md:text-base font-semibold text-white inline-flex items-center">CANDIDATOS:</h1>
         <div className="grid grid-cols-4 gap-2 md:grid-cols-8">
           {Array.from(
@@ -45,6 +46,11 @@ export const InlineLayout = ({ option, setOption, dataSelect }) => {
                 </div>
               ),
           )}
+        </div>
+        </div>
+        <div className='md:flex md:space-x-2 mx-4 my-auto '>
+        <h1 className=" text-sm  font-semibold text-white ">PARTICIPACIÓN: {dataSelect[0]?.participacion?.toFixed(2)?.toString()}</h1>
+        <h1 className="text-sm font-semibold text-white ">ESCRUTADO: {dataSelect[0]?.escrutado}</h1>
         </div>
       </div>
     </div>

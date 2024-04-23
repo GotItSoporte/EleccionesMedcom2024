@@ -10,7 +10,6 @@ export const Plurinominal = ({
   setCorporacionSelect,
   provinciaSelect,
   setProvinciaSelect,
-
   datoSelect,
   setDatoSelect,
   openCorporacion,
@@ -166,7 +165,7 @@ export const Plurinominal = ({
                     <div className="md:grid  md:grid-cols-3 mx-1 md:mx-2 w-24 md:w-64 overflow-y-auto h-full md:h-auto">
                       {Array.from(
                         new Set(
-                          data.DIPUTADO?.filter((item) => item.provincia === provinciaSelect).map(
+                          data.DIPUTADO?.filter(item=>item.plurinominal ==='1')?.filter((item) => item.provincia === provinciaSelect).map(
                             (item) => item.circuito,
                           ),
                         ),

@@ -21,8 +21,8 @@ const readOracle = async (ruteSQL) => {
         for (const row of rows) {
             const rowObject = {};
             for (let i = 0; i < metaData.length; i++) {
-                const name = metaData[i];
-                const value = row[i];
+                  const name = metaData[i];
+                  const value = row[i];
                 rowObject[name.toLowerCase()] = value;
             }
             resultArray.push(rowObject);

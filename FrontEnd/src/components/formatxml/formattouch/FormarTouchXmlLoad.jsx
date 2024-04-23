@@ -7,7 +7,7 @@ import { useData } from '../../../context';
 
 export const FormatTouchXmlLoad = ({ name, data }) => {
   const { curules } = useData();
-
+  
   async function CreateFile(name, data) {
     const tickerfeed = xmlbuilder.create('tickerfeed');
 
@@ -20,7 +20,7 @@ export const FormatTouchXmlLoad = ({ name, data }) => {
       }
       datosPorRegion[dato.provincia].push(dato);
     }
-
+  
     // Imprimir los datos por región
     const elementData = tickerfeed.ele('data');
     for (const region in datosPorRegion) {
@@ -34,7 +34,8 @@ export const FormatTouchXmlLoad = ({ name, data }) => {
             .replace(/[^\wÀ-ÿ]/g, '_'),
         );
         let lastCircuito;
-        tempData.splice(0, dataRegion.length).forEach((dataSelect) => {
+        
+        tempData.splice(0, dataRegion.length).forEach((dataSelect) => {          
           if (dataSelect.circuito !== lastCircuito) {
             const elementall = element.ele('element');
             elementall.ele('circuito', 'Circuito ' + dataSelect.circuito);
@@ -44,7 +45,7 @@ export const FormatTouchXmlLoad = ({ name, data }) => {
         });
       }
     }
-
+    
     const elementData2 = tickerfeed.ele('data2');
     for (const region in datosPorRegion) {
       const dataRegion = datosPorRegion[region];
@@ -77,7 +78,7 @@ export const FormatTouchXmlLoad = ({ name, data }) => {
         });
       }
     }
-
+    
     const elementData3 = tickerfeed.ele('data3');
     for (const region in datosPorRegion) {
       const dataRegion = datosPorRegion[region];
@@ -97,9 +98,8 @@ export const FormatTouchXmlLoad = ({ name, data }) => {
         });
       }
     }
-
+    //console.log(tickerfeed.end({ pretty: true }).toString())
     const xml = tickerfeed.end({ pretty: true }).toString();
-
     await sendInfoXml(name, xml);
   }
 
