@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { SetRegiones360 } from './SetRegiones360';
-import { useFunctions } from '../../../context';
+import { useFunctions, useData } from '../../../context';
 
 export const SetRegiones360Load = ({ ...props }) => {
   const nameGrafico = 'SETREGIONES';
@@ -9,12 +9,32 @@ export const SetRegiones360Load = ({ ...props }) => {
   const [selectOption, setSelectOption] = useState(0);
   const [dataGroupe, setDataGroupe] = useState([]);
   const { seleccionarYAgruparDatos } = useFunctions();
+  const { blockWallScreen, setBlockWallScreen } = useData();
 
-  const [activeData, setActiveData] = useState(true); //para pausar la data mientras la interaccion con la tableta
+  const [activeNavbar, setActiveNavbar] = useState(true); //para pausar la data mientras la interaccion con la tableta
+  
+  const [activeData, setActiveData] = useState(true);
+  
   const lastRegion = useRef(null);
+  console.log({activeData})
+  console.log({activeNavbar})
+console.log({blockWallScreen})
+  useEffect(()=>{
+    if (activeNavbar){
+      setBlockWallScreen({...blockWallScreen,['setRegiones']:false})
+    } else {
+     // setBlockWallScreen({...blockWallScreen,['wallTribunal']:true})
+     setBlockWallScreen({...blockWallScreen,['setRegiones']:true})
+      setActiveData(false)
+      console.log({blockWallScreen})
+     // setBlockWallScreen({...blockWallScreen,['setRegiones']:false})
+    }
+  },[activeNavbar])
+
 
   useEffect(() => {
     if (dataSelect[0]?.distrito !== lastRegion.current) {
+      
       setActiveData(true);
     }
     lastRegion.current = dataSelect[0]?.distrito;
@@ -34,7 +54,7 @@ export const SetRegiones360Load = ({ ...props }) => {
       selectOption={selectOption}
       setSelectOption={setSelectOption}
       dataGroupe={dataGroupe}
-      setActiveData={setActiveData}
+      setActiveNavbar={setActiveNavbar}
     />
   );
 };

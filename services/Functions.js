@@ -46,7 +46,7 @@ function ChangeFormat(data) {
         elemento?.nombre?.split(" ").pop().toUpperCase() || "",
       [`votos${indice}`]:
         elemento?.votos?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") || "", // elemento.votos ||
-      [`porcentaje${indice}`]: elemento.porcentaje.toFixed(2).toString() || "", //(Math.random() * 99.99).toFixed(2),
+      [`porcentaje${indice}`]: elemento.porcentaje.toString() || "", //(Math.random() * 99.99).toFixed(2),
       [`codigo_partido1_${indice}`]: elemento?.codigo_partido?.toString() || "",
       [`codigo_partido2_${indice}`]:
         elemento?.codigo_partido2?.toString() || "",
@@ -115,7 +115,7 @@ function ReadXml(rute) {
 
 //-------------------  ENVIAR DATOS A WALL Y RA A TRAVES DE SOCKETS -------------------
 function SendUDPMessages(msg, ip) {
-  console.log(msg);
+  //console.log(msg);
   client.send(msg, 7124, ip, function (error) {
     if (error) {
       console.log(error);

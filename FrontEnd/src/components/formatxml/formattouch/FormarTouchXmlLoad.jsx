@@ -72,8 +72,8 @@ export const FormatTouchXmlLoad = ({ name, data }) => {
           element3.ele('codigo_partido3', dataSelect.codigo_partido3 || '');
           element3.ele('codigo_partido4', dataSelect.codigo_partido4 || '');
           element3.ele('nombre_partido', dataSelect.nombre_partido || '');
-          element3.ele('participacion', (Math.random() * 99.99).toFixed(2) || '');
-          element3.ele('escrutado', (Math.random() * 99.99).toFixed(2) || '');
+          element3.ele('participacion', dataSelect.participacion?.toString() || '');
+          element3.ele('escrutado', dataSelect.escrutado?.toString() || '');
           lastCircuito = dataSelect.circuito;
         });
       }

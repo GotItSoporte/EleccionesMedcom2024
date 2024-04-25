@@ -11,7 +11,7 @@ export const SetRegiones360 = ({
   selectOption,
   setSelectOption,
   dataGroupe,
-  setActiveData,
+  setActiveNavbar,
   children,
 }) => {
   return (
@@ -49,7 +49,7 @@ export const SetRegiones360 = ({
           type={nameGrafico}
           data={dataGroupe}
           setMostrarNavbar={setMostrarNavbar}
-          setActiveData={setActiveData}
+          setActiveData={setActiveNavbar}
         />
       </div>
     </>
@@ -66,6 +66,6 @@ SetRegiones360.propTypes = {
   selectOption: PropTypes.number.isRequired,
   setSelectOption: PropTypes.func.isRequired,
   dataGroupe: PropTypes.array.isRequired,
-  setActiveData: PropTypes.func.isRequired,
+  setActiveNavbar: PropTypes.func.isRequired,
   children: PropTypes.node,
 };

@@ -167,10 +167,11 @@ export function DataProvider({ children }) {
   }, [checkPlurinominal]);
 
 
-
+// PARA PAUSAR LA DATA QUE ENTRA 
   const [blockWallScreen, setBlockWallScreen ] = useState({
     'wall':false,
     'wallTribunal':false,
+    'setRegiones':false,
   })
 
 
