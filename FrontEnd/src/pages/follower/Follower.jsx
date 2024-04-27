@@ -57,7 +57,6 @@ export const Follower = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado,
           </h1>
         </FollowerManual>
       </div>
-
     </>
   );
 };

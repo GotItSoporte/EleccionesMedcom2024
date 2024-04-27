@@ -12,10 +12,17 @@ export function useData() {
 export function DataProvider({ children }) {
   //------------------- GRAFICOS EXISTENTES -------------------
   const listaGraficos = {
-    Master: ['Voto_Arriba_Voto24', 'Voto_Abajo_Voto24', 'FullScreenPalacio', 'FullScreenTribunal','Editable', 'Plurinominal'],
+    Master: [
+      'Voto_Arriba_Voto24',
+      'Voto_Abajo_Voto24',
+      'FullScreenPalacio',
+      'FullScreenTribunal',
+      'Editable',
+      'Plurinominal',
+    ],
     Wall: ['WallPalacio', 'WallTribunal'],
-    Follower: ['FollowerResultados','FollowerReeleccion', 'FollowerManual'],
-    SetRegiones: ['SetRegiones360','SetRegionesPrevio']
+    Follower: ['FollowerResultados', 'FollowerReeleccion', 'FollowerManual'],
+    SetRegiones: ['SetRegiones360', 'SetRegionesPrevio'],
   };
 
   //------------------- GET DATA -------------------
@@ -33,68 +40,68 @@ export function DataProvider({ children }) {
 
   //------------------- LISTA PARTIDOS SECUNDARIOS-------------------
   const listPartido = {
-    "NO APLICA": {
+    'NO APLICA': {
       id: 0,
     },
     PRD: {
       id: 2,
-      nombre: "PARTIDO REVOLUCIONARIO DEMOCRÁTICO",
+      nombre: 'PARTIDO REVOLUCIONARIO DEMOCRÁTICO',
     },
     PP: {
       id: 3,
-      nombre: "PARTIDO POPULAR",
+      nombre: 'PARTIDO POPULAR',
     },
     MOL: {
       id: 4,
-      nombre: "MOLIRENA",
+      nombre: 'MOLIRENA',
     },
     PAN: {
       id: 8,
-      nombre: "PARTIDO PANAMEÑISTA",
+      nombre: 'PARTIDO PANAMEÑISTA',
     },
     CD: {
       id: 32,
-      nombre: "CAMBIO DEMOCRÁTICO",
+      nombre: 'CAMBIO DEMOCRÁTICO',
     },
     ALIANZA: {
       id: 51,
-      nombre: "PARTIDO ALIANZA",
+      nombre: 'PARTIDO ALIANZA',
     },
     RM: {
       id: 56,
-      nombre: "REALIZANDO METAS",
+      nombre: 'REALIZANDO METAS',
     },
     PAIS: {
       id: 52,
-      nombre: "PAÍS",
+      nombre: 'PAÍS',
     },
     MOCA: {
       id: 53,
-      nombre: "MOVIMIENTO OTRO CAMINO",
+      nombre: 'MOVIMIENTO OTRO CAMINO',
     },
-    "LIBRE POST.": {
+    'LIBRE POST.': {
       id: 57,
-      nombre: "LIBRE POSTULACIÓN",
+      nombre: 'LIBRE POSTULACIÓN',
     },
-    "LIBRE POST 2.": {
+    'LIBRE POST 2.': {
       id: 58,
-      nombre: "LIBRE POSTULACIÓN 2",
+      nombre: 'LIBRE POSTULACIÓN 2',
     },
-    "LIBRE POST 3.": {
+    'LIBRE POST 3.': {
       id: 59,
-      nombre: "LIBRE POSTULACIÓN 3",
+      nombre: 'LIBRE POSTULACIÓN 3',
     },
-    "PP ZULAY": {
+    'PP ZULAY': {
       id: 501,
-      nombre: "PARTIDO ZULAY",
+      nombre: 'PARTIDO ZULAY',
     },
-    "PP ARROCHA": {
+    'PP ARROCHA': {
       id: 503,
-      nombre: "PARTIDO ARROCHA",
+      nombre: 'PARTIDO ARROCHA',
     },
-    "PP GORDON": {
+    'PP GORDON': {
       id: 502,
-      nombre: "PARTIDO GORDON",
+      nombre: 'PARTIDO GORDON',
     },
   };
 
@@ -166,15 +173,13 @@ export function DataProvider({ children }) {
     getData(); // Iniciar la primera actualización
   }, [checkPlurinominal]);
 
-
-// PARA PAUSAR LA DATA QUE ENTRA 
-  const [blockWallScreen, setBlockWallScreen ] = useState({
-    'wall':false,
-    'wallTribunal':false,
-    'setRegiones':false,
-    'setRegionesPrevio':false,
-  })
-
+  // PARA PAUSAR LA DATA QUE ENTRA
+  const [blockWallScreen, setBlockWallScreen] = useState({
+    wall: false,
+    wallTribunal: false,
+    setRegiones: false,
+    setRegionesPrevio: false,
+  });
 
   //------------------- CONTEXTOS-------------------
   const value = {
@@ -188,9 +193,8 @@ export function DataProvider({ children }) {
     listPartido,
     curules,
 
-
-    blockWallScreen, 
-    setBlockWallScreen
+    blockWallScreen,
+    setBlockWallScreen,
   };
 
   return <ContextData.Provider value={value}>{children}</ContextData.Provider>;

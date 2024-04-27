@@ -17,13 +17,15 @@ export const PlurinominalLoad = ({ ...props }) => {
   const handleChange = () => {
     // Filtrar datos por nombre y circuito
     const corporacion = corporacionSelect?.toUpperCase();
-    const filteredData = data?.[corporacion]?.filter(item=>item.plurinominal ==='1')?.filter((item) => {
-      const isSameDato = datoSelect.trim() === '' || item.circuito === datoSelect;
-      const isSameNombre = searchTerm.trim() === '' || item.nombre.includes(searchTerm);
+    const filteredData = data?.[corporacion]
+      ?.filter((item) => item.plurinominal === '1')
+      ?.filter((item) => {
+        const isSameDato = datoSelect.trim() === '' || item.circuito === datoSelect;
+        const isSameNombre = searchTerm.trim() === '' || item.nombre.includes(searchTerm);
 
-      return isSameDato && isSameNombre;
-    });
-    setDataFilter(filteredData ? filteredData : []);    //?.filter(item=>item.Plurinominal==='0')
+        return isSameDato && isSameNombre;
+      });
+    setDataFilter(filteredData ? filteredData : []); //?.filter(item=>item.Plurinominal==='0')
   };
 
   useEffect(() => {

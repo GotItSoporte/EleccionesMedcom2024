@@ -33,8 +33,10 @@ export const SequenceButtonLoad = ({ type, data, setMostrarNavbar, setActiveData
     await sendInfoSocket(type, udpMessage);
     await delay(7000);
     setLoading(false);
-    setSequence(type === 'SETREGIONES' ? (data.length > 4 ? 2 : 1) : type ==='SETREGIONESPREVIO'? 0: data.length + 1);
-    type === 'SETREGIONESPREVIO' && sequence===0 && setActiveData(true);
+    setSequence(
+      type === 'SETREGIONES' ? (data.length > 4 ? 2 : 1) : type === 'SETREGIONESPREVIO' ? 0 : data.length + 1,
+    );
+    type === 'SETREGIONESPREVIO' && sequence === 0 && setActiveData(true);
     //type === 'SETREGIONES' ? (data.length > 4 ? null : setActiveData(true)) : null;
   }
 
@@ -50,8 +52,7 @@ export const SequenceButtonLoad = ({ type, data, setMostrarNavbar, setActiveData
     await delay(5000);
     setLoading(false);
     setSequence(sequence - 1);
-    type === 'SETREGIONES' && sequence===1 && setActiveData(true);
-    console.log({sequence})
+    type === 'SETREGIONES' && sequence === 1 && setActiveData(true);
   }
 
   async function postSalida(type) {

@@ -75,9 +75,16 @@ export const Table = ({ data, option }) => {
                     }   border-gray-700 hover:bg-gray-600 font-light md:font-normal  whitespace-nowrap hover:text-white `}
                   >
                     <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{value.nombre}</td>
-                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{value.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td>
+                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">
+                      {value.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                    </td>
                     <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{value.porcentaje}</td>
-                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{value.nombre_partido}{value.nombre_partido2!=='NO APLICA' && ' - '+value.nombre_partido2}{value.nombre_partido3!=='NO APLICA' && ' - '+value.nombre_partido3}{value.nombre_partido4!=='NO APLICA' && ' - '+value.nombre_partido4}</td>                   
+                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">
+                      {value.nombre_partido}
+                      {value.nombre_partido2 !== 'NO APLICA' && ' - ' + value.nombre_partido2}
+                      {value.nombre_partido3 !== 'NO APLICA' && ' - ' + value.nombre_partido3}
+                      {value.nombre_partido4 !== 'NO APLICA' && ' - ' + value.nombre_partido4}
+                    </td>
                     <td className="px-1 py-2 lg:px-6 lg:py-4 text-center border border-gray-500">{value.provincia}</td>
                     <td
                       className={`px-1 py-2 lg:px-6 lg:py-4 text-center ${

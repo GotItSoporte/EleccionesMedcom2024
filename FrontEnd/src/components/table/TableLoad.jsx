@@ -45,7 +45,13 @@ export const TableLoad = ({ type, data, option }) => {
   }
 
   // Para cambiarun dato unico
-  async function HandleDataSubmit(nameVariableSelected, variableSelected, identificationNumber,identificationPartido, corporacion) {
+  async function HandleDataSubmit(
+    nameVariableSelected,
+    variableSelected,
+    identificationNumber,
+    identificationPartido,
+    corporacion,
+  ) {
     setCheckPlurinominal(true);
 
     const editedData = {
@@ -53,7 +59,7 @@ export const TableLoad = ({ type, data, option }) => {
       nameVariableSelected: nameVariableSelected,
       variableSelected: variableSelected,
       cedula: identificationNumber,
-      partido: identificationPartido
+      partido: identificationPartido,
     };
 
     await editDataInTable(editedData, '');
@@ -62,7 +68,13 @@ export const TableLoad = ({ type, data, option }) => {
   }
 
   // para cambiar un dato de partidos
-  async function HandleDataPartidoSubmit(nameVariableSelected, variableSelected, identificationNumber,identificationPartido, corporacion) {
+  async function HandleDataPartidoSubmit(
+    nameVariableSelected,
+    variableSelected,
+    identificationNumber,
+    identificationPartido,
+    corporacion,
+  ) {
     setCheckPlurinominal(true);
 
     const editedData = {

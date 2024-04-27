@@ -11,7 +11,6 @@ export const NavbarHorizontal = ({
 
   blockWallScreen,
 }) => {
-
   return (
     <>
       <div className=" ">
@@ -24,7 +23,11 @@ export const NavbarHorizontal = ({
 
               <div
                 className={`flex justify-start  ${
-                  graficoSeleccionado === 'Editable' || graficoSeleccionado === 'Plurinominal' || graficoSeleccionado === 'FollowerManual' ? 'hidden' : ''
+                  graficoSeleccionado === 'Editable' ||
+                  graficoSeleccionado === 'Plurinominal' ||
+                  graficoSeleccionado === 'FollowerManual'
+                    ? 'hidden'
+                    : ''
                 } cursor-pointer `}
               >
                 {mostrarNavbar ? (
@@ -45,7 +48,7 @@ export const NavbarHorizontal = ({
                 ) : (
                   <svg
                     className={`h-12 w-12  ${
-                      Object.values(blockWallScreen).includes(true) ? 'cursor-not-allowed text-gray-600':'text-green'
+                      Object.values(blockWallScreen).includes(true) ? 'cursor-not-allowed text-gray-600' : 'text-green'
                     }`}
                     fill="none"
                     viewBox="0 0 24 24"
@@ -90,7 +93,7 @@ export const NavbarHorizontal = ({
                   );
                 })}
               </div>
-              <a href={Object.values(blockWallScreen).every((value) => value === false) ? "/":undefined}>
+              <a href={Object.values(blockWallScreen).every((value) => value === false) ? '/' : undefined}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

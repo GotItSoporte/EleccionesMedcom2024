@@ -48,13 +48,19 @@ export const Dropdown = ({
                   onClick={() => {
                     if (FuncionGanadorPlurinominalValor) {
                       console.log({ el });
-                      HandleDataSubmit(nameData, el, id,partido, corporacion);
-                      HandleDataSubmit('ganadorplurinominalvalor', el !== 'NO APLICA' ? '1' : '0', id,partido,corporacion);
+                      HandleDataSubmit(nameData, el, id, partido, corporacion);
+                      HandleDataSubmit(
+                        'ganadorplurinominalvalor',
+                        el !== 'NO APLICA' ? '1' : '0',
+                        id,
+                        partido,
+                        corporacion,
+                      );
                       if (el === 'NO APLICA') {
-                        HandleDataSubmit('ganadorplurinominal', '0', id,partido, corporacion);
+                        HandleDataSubmit('ganadorplurinominal', '0', id, partido, corporacion);
                       }
                     } else {
-                      HandleDataSubmit(nameData, el, id,partido, corporacion);
+                      HandleDataSubmit(nameData, el, id, partido, corporacion);
                     }
                     setOpen(!open);
                   }}

@@ -44,7 +44,7 @@ export const SetRegiones360 = ({
             ActiveTicker={false}
           />
         )}
-        <Table data={dataSelectReference} type="" option={selectOption} />
+        <Table data={dataGroupe} type="" option={selectOption} />
         <SequenceButton
           type={nameGrafico}
           data={dataGroupe}

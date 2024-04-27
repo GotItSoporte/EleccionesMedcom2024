@@ -275,7 +275,7 @@ export const NavbarMulti = ({ nameCorporacion, setDataSelect, mostrarNavbar, dat
                                                 }))
                                               }
                                             >
-                                              <span>CIRCUITO {el3.circuito}  </span>
+                                              <span>CIRCUITO {el3.circuito} </span>
                                               <span className="inline-block ml-auto">
                                                 <input
                                                   type="checkbox"

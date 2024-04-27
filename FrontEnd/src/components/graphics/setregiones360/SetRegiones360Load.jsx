@@ -12,27 +12,31 @@ export const SetRegiones360Load = ({ ...props }) => {
   const { blockWallScreen, setBlockWallScreen } = useData();
 
   const [activeNavbar, setActiveNavbar] = useState(true); //para pausar la data mientras la interaccion con la tableta
-  
-  const [activeData, setActiveData] = useState(true);
-  
-  const lastRegion = useRef(null);
-  
-  useEffect(()=>{
-    if (activeNavbar){
-      setBlockWallScreen({...blockWallScreen,['setRegiones']:false})
-    } else {
-     // setBlockWallScreen({...blockWallScreen,['wallTribunal']:true})
-     setBlockWallScreen({...blockWallScreen,['setRegiones']:true})
-      setActiveData(false)
-      console.log({blockWallScreen})
-     // setBlockWallScreen({...blockWallScreen,['setRegiones']:false})
-    }
-  },[activeNavbar])
 
+  const [activeData, setActiveData] = useState(true);
+
+  const lastRegion = useRef(null);
+
+  useEffect(() => {
+    if (activeNavbar && !activeData) {
+      setBlockWallScreen({ ...blockWallScreen, ['setRegiones']: false });
+    } else {
+      // setBlockWallScreen({...blockWallScreen,['wallTribunal']:true})
+      setBlockWallScreen({ ...blockWallScreen, ['setRegiones']: true });
+      setActiveData(false);
+      // setBlockWallScreen({...blockWallScreen,['setRegiones']:false})
+    }
+  }, [activeNavbar]);
+
+  useEffect(() => {
+    if (activeNavbar && !activeData) {
+      console.log('holaandres');
+      setDataGroupe(seleccionarYAgruparDatos(dataSelectReference, selectOption));
+    }
+  }, [selectOption, activeNavbar]);
 
   useEffect(() => {
     if (dataSelect[0]?.distrito !== lastRegion.current) {
-      
       setActiveData(true);
     }
     lastRegion.current = dataSelect[0]?.distrito;

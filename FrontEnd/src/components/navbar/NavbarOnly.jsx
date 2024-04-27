@@ -120,10 +120,9 @@ export const NavbarOnly = ({
                       </a>
                       {open[corporacion] &&
                         (corporacion === 'DIPUTADO'
-                          ? data[corporacion]
-                              ?.filter((item) =>
-                                graficoSeleccionado === 'FollowerReeleccion' ? item.reeleccion === '1' : item,
-                              )
+                          ? data[corporacion]?.filter((item) =>
+                              graficoSeleccionado === 'FollowerReeleccion' ? item.reeleccion === '1' : item,
+                            )
                           : corporacion === 'ALCALDE'
                             ? data[corporacion]?.filter((item) => item.activo === '1')
                             : data[corporacion]
@@ -247,7 +246,10 @@ export const NavbarOnly = ({
                                                   rol !== 'Master' && activePresentador && setMostrarNavbar(false);
                                               }}
                                             >
-                                              <span>CIRCUITO {el3.circuito} {el3?.plurinominal==='1' && <span className='text-green'>(P)</span>}</span>
+                                              <span>
+                                                CIRCUITO {el3.circuito}{' '}
+                                                {el3?.plurinominal === '1' && <span className="text-green">(P)</span>}
+                                              </span>
                                             </a>
                                           </div>
                                         );
