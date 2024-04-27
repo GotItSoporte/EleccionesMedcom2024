@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Navbar, SetRegiones360 } from '../../components';
+import { Navbar, SetRegiones360, SetRegionesPrevio } from '../../components';
 
 export const SetRegiones = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, setGraficoSeleccionado }) => {
   let rol = 'SetRegiones';
@@ -32,6 +32,18 @@ return (
           </span>
         </h1>
       </SetRegiones360>
+    </div>
+
+        {/*------------------- SETREGIONESPREVIO -------------------*/}
+        <div className={`${graficoSeleccionado === 'SetRegionesPrevio' ? 'block' : 'hidden'}`}>
+      <SetRegionesPrevio mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol={rol}>
+        <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
+          SetRegiones -
+          <span className="text-2xl md:text-5xl font-semibold md:font-extrabold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-gray-800 ml-2">
+            {graficoSeleccionado}
+          </span>
+        </h1>
+      </SetRegionesPrevio>
     </div>
   </>
 );

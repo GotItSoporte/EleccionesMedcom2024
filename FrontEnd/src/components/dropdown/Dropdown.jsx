@@ -8,6 +8,7 @@ export const Dropdown = ({
   corporacion,
   nameData,
   id,
+  partido,
   setList,
   loading,
   FuncionGanadorPlurinominalValor,
@@ -47,13 +48,13 @@ export const Dropdown = ({
                   onClick={() => {
                     if (FuncionGanadorPlurinominalValor) {
                       console.log({ el });
-                      HandleDataSubmit(nameData, el, id, corporacion);
-                      HandleDataSubmit('ganadorplurinominalvalor', el !== 'NO APLICA' ? '1' : '0', id, corporacion);
+                      HandleDataSubmit(nameData, el, id,partido, corporacion);
+                      HandleDataSubmit('ganadorplurinominalvalor', el !== 'NO APLICA' ? '1' : '0', id,partido,corporacion);
                       if (el === 'NO APLICA') {
-                        HandleDataSubmit('ganadorplurinominal', '0', id, corporacion);
+                        HandleDataSubmit('ganadorplurinominal', '0', id,partido, corporacion);
                       }
                     } else {
-                      HandleDataSubmit(nameData, el, id, corporacion);
+                      HandleDataSubmit(nameData, el, id,partido, corporacion);
                     }
                     setOpen(!open);
                   }}
@@ -81,5 +82,6 @@ Dropdown.propTypes = {
   corporacion: PropTypes.string.isRequired,
   nameData: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  partido: PropTypes.string.isRequired,
   FuncionGanadorPlurinominalValor: PropTypes.bool.isRequired,
 };

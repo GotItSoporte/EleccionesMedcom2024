@@ -130,7 +130,7 @@ export const Plurinominal = ({
                         </button>
                       </li>
 
-                      {Array.from(new Set(data.DIPUTADO?.map((item) => item.provincia))).map((provincia) => (
+                      {Array.from(new Set(data.DIPUTADO?.filter(item=>item.plurinominal ==='1')?.map((item) => item.provincia))).map((provincia) => (
                         <li
                           key={provincia}
                           className={`w-full flex items-center hover:bg-gray-600 hover:text-white ${

@@ -12,4 +12,5 @@ export { WallPalacio } from './wallpalacio';
 export { WallTribunal } from './walltribunal';
 export { TouchScreen } from './touchscreen';
 export { SetRegiones360 } from './setregiones360';
+export { SetRegionesPrevio } from './setregionesprevio';
 export { RaExteriorMapa } from './raexteriormapa';

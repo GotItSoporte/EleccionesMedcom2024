@@ -87,7 +87,7 @@ export const Editable = ({
             {openCorporacion && (
               <div className="z-30 fixed   divide-x divide-gray-600 rounded-lg shadow w-auto bg-gray-700 flex max-h-[20vh] ">
                 <ul className="md:py-2 text-sm text-gray-200 md:p-2" aria-labelledby="dropdown-button">
-                  <li
+                  {/*<li
                     className={`w-full flex  items-center hover:bg-gray-600 hover:text-white ${
                       corporacionSelect === 'Presidente' ? 'bg-gray-500' : ''
                     }`}
@@ -108,7 +108,7 @@ export const Editable = ({
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                     </svg>
-                  </li>
+                  </li>*/}
                   <li
                     className={`w-full  flex  items-center hover:bg-gray-600 hover:text-white ${
                       corporacionSelect === 'Alcalde' ? 'bg-gray-500' : ''

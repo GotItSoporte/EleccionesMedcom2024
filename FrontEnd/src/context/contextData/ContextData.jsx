@@ -15,7 +15,7 @@ export function DataProvider({ children }) {
     Master: ['Voto_Arriba_Voto24', 'Voto_Abajo_Voto24', 'FullScreenPalacio', 'FullScreenTribunal','Editable', 'Plurinominal'],
     Wall: ['WallPalacio', 'WallTribunal'],
     Follower: ['FollowerResultados','FollowerReeleccion', 'FollowerManual'],
-    SetRegiones: ['SetRegiones360'],
+    SetRegiones: ['SetRegiones360','SetRegionesPrevio']
   };
 
   //------------------- GET DATA -------------------
@@ -172,6 +172,7 @@ export function DataProvider({ children }) {
     'wall':false,
     'wallTribunal':false,
     'setRegiones':false,
+    'setRegionesPrevio':false,
   })
 
 

@@ -227,6 +227,7 @@ export const TableEdicion = ({
                         corporacion={data.corporacion}
                         nameData="partido2"
                         id={data.nombre}
+                        partido={data.nombre_partido}
                         HandleDataSubmit={HandleDataPartidoSubmit}
                         loading={checkPlurinominal}
                         FuncionGanadorPlurinominalValor={false}
@@ -239,6 +240,7 @@ export const TableEdicion = ({
                         corporacion={data.corporacion}
                         nameData="partido3"
                         id={data.nombre}
+                        partido={data.nombre_partido}
                         HandleDataSubmit={HandleDataPartidoSubmit}
                         loading={checkPlurinominal}
                         FuncionGanadorPlurinominalValor={false}
@@ -251,6 +253,7 @@ export const TableEdicion = ({
                         corporacion={data.corporacion}
                         nameData="partido4"
                         id={data.nombre}
+                        partido={data.nombre_partido}
                         HandleDataSubmit={HandleDataPartidoSubmit}
                         loading={checkPlurinominal}
                         FuncionGanadorPlurinominalValor={false}
@@ -268,6 +271,7 @@ export const TableEdicion = ({
                             corporacion={data.corporacion}
                             nameData="orden_clasificacion"
                             id={data.nombre}
+                            partido={data.nombre_partido}
                             HandleDataSubmit={HandleDataSubmit}
                             loading={checkPlurinominal}
                             FuncionGanadorPlurinominalValor={true}
@@ -300,6 +304,7 @@ export const TableEdicion = ({
                                   'ganadorplurinominal',
                                   data.ganadorplurinominal === '0' ? '1' : '0',
                                   data.nombre,
+                                  data.nombre_partido,
                                   data.corporacion,
                                 )
                               }
