@@ -30,7 +30,6 @@ export const SetRegiones360Load = ({ ...props }) => {
 
   useEffect(() => {
     if (activeNavbar && !activeData) {
-      console.log('holaandres');
       setDataGroupe(seleccionarYAgruparDatos(dataSelectReference, selectOption));
     }
   }, [selectOption, activeNavbar]);
