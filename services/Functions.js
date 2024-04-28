@@ -95,6 +95,7 @@ function ReadXml(rute) {
               nombre: element.nombre?.[0] || "",
               cedula: element.cedula?.[0] || "",
               votos: element.votos?.[0] || "",
+              porcentaje: element.porcentaje?.[0] || "",
               provincia: element.provincia?.[0] || "",
               distrito: element.distrito?.[0] || "",
               circuito: element.circuito?.[0] || "",
@@ -102,6 +103,9 @@ function ReadXml(rute) {
               participacion: element.participacion?.[0] || "",
               escrutado: element.escrutado?.[0] || "",
               nombre_partido: element.nombre_partido?.[0] || "",
+              nombre_partido2: element.nombre_partido2?.[0] || "",
+              nombre_partido3: element.nombre_partido3?.[0] || "",
+              nombre_partido4: element.nombre_partido4?.[0] || "",
               // ...agrega los demás campos aquí con asignaciones condicionales
             };
             return item;
