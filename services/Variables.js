@@ -26,7 +26,7 @@ const NAME_FILE_EXCEL_FOLLOWER = "Parlamentro_centroamericano";
 const NAME_FILE_EXCEL_FORMULA_FOLLOWER = "Formula_Presidencial";
 
 
-module.exports = {
+module.exports = { 
   RUTE_XML,
   RUTE_XMLTICKER,
   UDP_PORT,

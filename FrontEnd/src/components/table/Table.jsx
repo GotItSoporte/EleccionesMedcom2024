@@ -74,7 +74,7 @@ export const Table = ({ data, option }) => {
                       idx + 1 <= option ? 'bg-gray-800' : 'bg-gray-700'
                     }   border-gray-700 hover:bg-gray-600 font-light md:font-normal  whitespace-nowrap hover:text-white `}
                   >
-                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{value.nombre}</td>
+                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{value.nombre} {value?.reeleccion === '1' && <span className="text-green">(R)</span>} </td>
                     <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">
                       {value.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                     </td>
