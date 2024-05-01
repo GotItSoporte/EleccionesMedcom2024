@@ -208,7 +208,7 @@ export const Editable = ({
                         </button>
                       </li>
 
-                      {Array.from(new Set(data.ALCALDE?.map((item) => item.provincia))).map((provincia) => (
+                      {Array.from(new Set(data.ALCALDE?.filter((item)=>item.activo==='1')?.map((item) => item.provincia))).map((provincia) => (
                         <li
                           key={provincia}
                           className={`w-full flex items-center hover:bg-gray-600 hover:text-white ${
@@ -287,7 +287,7 @@ export const Editable = ({
                     <div className="md:grid md:grid-cols-3 mx-1 md:mx-2 w-24 md:w-64  overflow-y-auto h-full md:h-auto ">
                       {Array.from(
                         new Set(
-                          data.ALCALDE?.filter((item) => item.provincia === provinciaSelect).map(
+                          data.ALCALDE?.filter((item)=>item.activo==='1')?.filter((item) => item.provincia === provinciaSelect).map(
                             (item) => item.distrito,
                           ),
                         ),

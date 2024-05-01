@@ -59,6 +59,7 @@ export const FormatRaExteriorXmlLoad = ({ name, data }) => {
       );
       element1.ele('porcentaje', nombrePorRegion?.[nameSelect]?.nacional?.porcentaje?.toString() || '');
       element1.ele('escrutado', nombrePorRegion?.[nameSelect]?.nacional?.escrutado?.toString() || '');
+      element1.ele('participacion', nombrePorRegion?.[nameSelect]?.nacional?.participacion?.toString() || '');
     });
 
     const elementData2 = tickerfeed.ele('data2');
