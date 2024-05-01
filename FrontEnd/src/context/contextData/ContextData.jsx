@@ -17,6 +17,7 @@ export function DataProvider({ children }) {
       'Voto_Abajo_Voto24',
       'FullScreenPalacio',
       'FullScreenTribunal',
+      'ResultadosRaExterior',
       'Editable',
       'Plurinominal',
     ],

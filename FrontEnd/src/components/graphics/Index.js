@@ -2,6 +2,7 @@ export { Ticker } from './ticker';
 export { TickerAbajo } from './/tickerabajo';
 export { FullScreen } from './fullscreen';
 export { FullScreenTribunal } from './fullscreentribunal';
+export { ResultadosRaExterior } from './resultadosraexterior';
 export { FollowerResultados } from './followerresultados';
 export { FollowerCarrera } from './followercarrera';
 export { FollowerReeleccion } from './followerreeleccion';

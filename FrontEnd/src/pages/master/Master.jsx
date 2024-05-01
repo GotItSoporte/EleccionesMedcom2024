@@ -5,6 +5,7 @@ import {
   TickerAbajo,
   FullScreen,
   FullScreenTribunal,
+  ResultadosRaExterior,
   Editable,
   Plurinominal,
   TouchScreen,
@@ -79,6 +80,18 @@ export const Master = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, s
             </span>
           </h1>
         </FullScreenTribunal>
+      </div>
+
+      {/*------------------- RESULTADOS RAEXTERIOR -------------------*/}
+            <div className={`${graficoSeleccionado === 'ResultadosRaExterior' ? 'block' : 'hidden'}`}>
+        <ResultadosRaExterior mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol={rol}>
+          <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
+            Master -
+            <span className="text-2xl md:text-5xl font-semibold md:font-extrabold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-gray-800 ml-2">
+              {graficoSeleccionado}
+            </span>
+          </h1>
+        </ResultadosRaExterior>
       </div>
 
       {/*------------------- EDITABLE -------------------*/}

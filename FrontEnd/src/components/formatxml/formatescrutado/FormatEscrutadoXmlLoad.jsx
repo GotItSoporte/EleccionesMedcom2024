@@ -13,6 +13,8 @@ export const FormatEscrutadoXmlLoad = ({ name, data }) => {
     const data2 = tickerfeed.ele('data2');
     data?.forEach((dataSelect) => {
       const element2 = data2.ele('element2');
+      element2.ele('participacion', dataSelect.participacion?.toString() || '');
+      element2.ele('escrutado', dataSelect.escrutado?.toString() || ''); 
       element2.ele('nombre', dataSelect.nombre || '');
       element2.ele('cedula', dataSelect.cedula || '');
       element2.ele('votos', dataSelect.votos.toString() || '');
