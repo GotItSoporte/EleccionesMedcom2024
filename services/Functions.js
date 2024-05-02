@@ -153,7 +153,11 @@ function ChangeFormat(data) {
           ? "JOSÉ R."
           : elemento?.nombre?.split(" ")[0]?.toUpperCase() || "",
       [`apellido${indice}`]: 
-        elemento?.nombre?.split(" ")?.slice(1)?.join(" ")?.toUpperCase()  || "",  //elemento?.nombre?.split(" ").pop().toUpperCase() 
+          elemento.cedula === "8-766-2490"
+          ? elemento?.nombre?.split(" ").pop().toUpperCase() 
+          : elemento.cedula === "4-132-245"
+          ? elemento?.nombre?.split(" ").pop().toUpperCase() 
+          : elemento?.nombre?.split(" ")?.slice(1)?.join(" ")?.toUpperCase()  || "",  //elemento?.nombre?.split(" ").pop().toUpperCase() 
       [`votos${indice}`]:
         elemento?.votos?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") || "", // elemento.votos ||
       [`porcentaje${indice}`]: elemento.porcentaje?.toFixed(2)?.toString() || "", //(Math.random() * 99.99).toFixed(2), //elemento.porcentaje?.toFixed(2)?.toString()
