@@ -22,7 +22,7 @@ export const SequenceButtonLoad = ({ type, data, setMostrarNavbar, setActiveData
       )
       .join(';');
 
-    const message = `${formattedData};EntradaData${type}=1;READER_NUM_RECORDS=${data.length}`;
+    const message = `${formattedData};EntradaData${type==='SETREGIONESPREVIO'?'SETREGIONES':type}=1;READER_NUM_RECORDS=${data.length}`;
 
     const udpMessage = {
       data: message,

@@ -22,7 +22,7 @@ export function DataProvider({ children }) {
       'Plurinominal',
     ],
     Wall: ['WallPalacio', 'WallTribunal'],
-    Follower: ['FollowerResultados', 'FollowerReeleccion', 'FollowerManual'],
+    Follower: ['FollowerResultados', 'FollowerManual'],
     SetRegiones: ['SetRegiones360', 'SetRegionesPrevio'],
   };
 
