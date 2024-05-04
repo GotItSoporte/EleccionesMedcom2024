@@ -33,8 +33,8 @@ export const ResultadosRaExterior = ({
           setIsChecked={() => {}}
         />
       </div>
-     {children}  
-      
+      {children}
+
       <div className="w-auto px-2 overflow-x-auto">
         {lastFile && (
           <div className="fixed md:left-0 bg-gray-900 border-green border-2 rounded-sm w-[95%]  p-2   z-50 max-h-[50%] overflow-y-auto  md:w-auto mr-2 ">
@@ -59,7 +59,17 @@ export const ResultadosRaExterior = ({
             </div>
           </div>
         )}
-
+        
+        {dataGroupe.length > 0 && (
+          <div className="flex justify-end pt-1 pb-1 pl-1 border border-gray-400 w-auto  ">
+            <div className="md:flex md:space-x-2 mx-4 my-auto ">
+              <h1 className=" text-sm  font-semibold text-white ">
+                PARTICIPACIÓN: {dataSelect[0]?.participacion?.toFixed(2)?.toString()} %
+              </h1>
+              <h1 className="text-sm font-semibold text-white ">ESCRUTADO: {dataSelect[0]?.escrutado} %</h1>
+            </div>
+          </div>
+        )}
 
         <Table data={dataSelect} type="" option={selectOption} />
         {dataGroupe.length > 0 && (

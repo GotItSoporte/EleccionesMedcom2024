@@ -58,7 +58,7 @@ export const FormatTickerXmlLoad = ({ name, data }) => {
           if (name !== 'Voto_Abajo_Voto24') {
             element.ele('field', { name: `cedula${idx + 1}` }, dataSelect.cedula || '');
           }
-          element.ele('field', { name: `nombre${idx + 1}` }, dataSelect.nombre.split(' ').pop() || '');
+          element.ele('field', { name: `nombre${idx + 1}` }, dataSelect.nombre.trimEnd().split(' ').pop() || '');
           element.ele('field', { name: `porcentaje${idx + 1}` }, dataSelect.porcentaje?.toString() || ''); //dataSelect.porcentaje
           if (name !== 'Voto_Abajo_Voto24') {
             element.ele('field', { name: `votos${idx + 1}` }, dataSelect.votos?.toString() || '');

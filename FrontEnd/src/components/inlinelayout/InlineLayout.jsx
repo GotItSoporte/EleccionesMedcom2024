@@ -53,9 +53,9 @@ export const InlineLayout = ({ option, setOption, dataSelect, blockWallScreen })
         </div>
         <div className="md:flex md:space-x-2 mx-4 my-auto ">
           <h1 className=" text-sm  font-semibold text-white ">
-            PARTICIPACIÓN: {dataSelect[0]?.participacion?.toFixed(2)?.toString()}
+            PARTICIPACIÓN: {dataSelect[0]?.participacion?.toFixed(2)?.toString()} %
           </h1>
-          <h1 className="text-sm font-semibold text-white ">ESCRUTADO: {dataSelect[0]?.escrutado}</h1>
+          <h1 className="text-sm font-semibold text-white ">ESCRUTADO: {dataSelect[0]?.escrutado} %</h1>
         </div>
       </div>
     </div>

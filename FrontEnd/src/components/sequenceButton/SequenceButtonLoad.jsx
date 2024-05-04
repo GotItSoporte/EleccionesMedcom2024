@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { SequenceButton } from './SequenceButton';
 import { SequenceSetRegiones } from './SequenceSetRegiones';
 import sendInfoSocket from '../../apis/SendInfoSocket';
+import { useData } from '../../context';
 import PropTypes from 'prop-types';
 
 export const SequenceButtonLoad = ({ type, data, setMostrarNavbar, setActiveData }) => {
+  const { curules } = useData();
   const [sequence, setSequence] = useState(0);
   const [loading, setLoading] = useState(false);
 
@@ -22,7 +24,7 @@ export const SequenceButtonLoad = ({ type, data, setMostrarNavbar, setActiveData
       )
       .join(';');
 
-    const message = `${formattedData};EntradaData${type==='SETREGIONESPREVIO'?'SETREGIONES':type}=1;READER_NUM_RECORDS=${data.length}`;
+    const message = `${formattedData};EntradaData${type==='SETREGIONESPREVIO'?'SETREGIONES':type}=1;READER_NUM_RECORDS=${data.length};curules_totales=${curules[data[0]?.circuito]};`;
 
     const udpMessage = {
       data: message,

@@ -4,7 +4,18 @@ import sendInfoFollower from '../../../apis/SendInfoFollower';
 
 export const FollowerManualLoad = ({ ...props }) => {
   const [componentes, setComponentes] = useState([
-    { id: 0, corporacion: '', region: '', participacion: '', escrutado: '', nombre: '', votos: 0, porcentaje: '' },
+    {
+      id: 0,
+      corporacion: 'PRESIDENTE',
+      provincia: '',
+      participacion: '',
+      escrutado: '',
+      nombre: '',
+      votos: 0,
+      porcentaje: '',
+      codigo_partido: 0,
+      codigo_partido2: 0,
+    },
   ]);
 
   const duplicarComponente = () => {
@@ -23,17 +34,18 @@ export const FollowerManualLoad = ({ ...props }) => {
     newComponentes[index].corporacion = event.target.value.toUpperCase();
     setComponentes(newComponentes);
   };
+  
   const handleRegionChange = (event) => {
     const newComponentes = [...componentes];
     const index = newComponentes.findIndex((componente) => componente);
-    newComponentes[index].region = event.target.value.toUpperCase();
+    newComponentes[index].provincia = event.target.value.toUpperCase();
     setComponentes(newComponentes);
   };
 
   const handleParticipacionChange = (event) => {
     const newComponentes = [...componentes];
     const index = newComponentes.findIndex((componente) => componente);
-    newComponentes[index].participacion = event.target.value;
+    newComponentes[index].participacion = parseFloat(event.target.value);
     setComponentes(newComponentes);
   };
 
@@ -65,10 +77,25 @@ export const FollowerManualLoad = ({ ...props }) => {
     setComponentes(newComponentes);
   };
 
+  const handlePartido1Change = (id, event) => {
+    const newComponentes = [...componentes];
+    const index = newComponentes.findIndex((componente) => componente.id === id);
+    newComponentes[index].codigo_partido = event.target.value;
+    setComponentes(newComponentes);
+  };
+
+  const handlePartido2Change = (id, event) => {
+    const newComponentes = [...componentes];
+    const index = newComponentes.findIndex((componente) => componente.id === id);
+    newComponentes[index].codigo_partido2 = event.target.value;
+    setComponentes(newComponentes);
+  };
+  
+
   const handlePorcentajeChange = (id, event) => {
     const newComponentes = [...componentes];
     const index = newComponentes.findIndex((componente) => componente.id === id);
-    newComponentes[index].porcentaje = event.target.value;
+    newComponentes[index].porcentaje = parseFloat(event.target.value);
     setComponentes(newComponentes);
   };
 
@@ -92,6 +119,8 @@ export const FollowerManualLoad = ({ ...props }) => {
       handleCedulaChange={handleCedulaChange}
       handleNombreChange={handleNombreChange}
       handleVotosChange={handleVotosChange}
+      handlePartido1Change={handlePartido1Change}
+      handlePartido2Change={handlePartido2Change}
       handlePorcentajeChange={handlePorcentajeChange}
       handleSubmit={handleSubmit}
     />

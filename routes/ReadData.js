@@ -32,7 +32,7 @@ router.get("/ALCALDE", async function (req, res) {
 router.get("/DIPUTADO", async function (req, res) {
   try {
     const result = await readOracle(
-      "SELECT * FROM VOTO2024.DIPUTADO_GOTIT ORDER BY provincia_id asc,circuito_id asc ,orden_clasificacion asc, votos desc,nombre"
+      "SELECT * FROM VOTO2024.DIPUTADO_GOTIT ORDER BY provincia_id asc,circuito_id asc ,orden_clasificacion asc, votos desc,nombre asc"
     );
     res.json(result);
   } catch (error) {

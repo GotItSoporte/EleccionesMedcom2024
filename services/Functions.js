@@ -151,13 +151,13 @@ function ChangeFormat(data) {
           ? "JOSÉ G."
           : elemento.cedula === "4-132-245"
           ? "JOSÉ R."
-          : elemento?.nombre?.split(" ")[0]?.toUpperCase() || "",
+          : elemento?.nombre?.trimEnd()?.split(" ")[0]?.toUpperCase() || "",
       [`apellido${indice}`]: 
           elemento.cedula === "8-766-2490"
-          ? elemento?.nombre?.split(" ").pop().toUpperCase() 
+          ? elemento?.nombre?.trimEnd()?.split(" ").pop().toUpperCase() 
           : elemento.cedula === "4-132-245"
-          ? elemento?.nombre?.split(" ").pop().toUpperCase() 
-          : elemento?.nombre?.split(" ")?.slice(1)?.join(" ")?.toUpperCase()  || "",  //elemento?.nombre?.split(" ").pop().toUpperCase() 
+          ? elemento?.nombre?.trimEnd()?.split(" ").pop().toUpperCase() 
+          : elemento?.nombre?.trimEnd()?.split(" ")?.slice(1)?.join(" ")?.toUpperCase()  || "",  //elemento?.nombre?.split(" ").pop().toUpperCase() 
       [`votos${indice}`]:
         elemento?.votos?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") || "", // elemento.votos ||
       [`porcentaje${indice}`]: elemento.porcentaje?.toFixed(2)?.toString() || "", //(Math.random() * 99.99).toFixed(2), //elemento.porcentaje?.toFixed(2)?.toString()
@@ -235,7 +235,7 @@ function ReadXml(rute) {
 
 //-------------------  ENVIAR DATOS A WALL Y RA A TRAVES DE SOCKETS -------------------
 function SendUDPMessages(msg, ip) {
-  //console.log(msg);
+  console.log(msg);
   client.send(msg, 7124, ip, function (error) {
     if (error) {
       console.log(error);
