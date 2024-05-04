@@ -10,7 +10,7 @@ async function sendInfoFollower(selectGraph, postData) {
       body: JSON.stringify(postData),
     });
     const data = await response.json();
-    console.log('Respuesta del servidor:', data.message);
+    //console.log('Respuesta del servidor:', data.message);
     return data;
   } catch (error) {
     console.error('Error fetching API data:', error, selectGraph);

@@ -15,6 +15,8 @@ export const FollowerManual = ({
   handleCedulaChange,
   handleNombreChange,
   handleVotosChange,
+  handlePartido1Change,
+  handlePartido2Change,
   handlePorcentajeChange,
   handleSubmit,
 }) => {
@@ -35,6 +37,7 @@ export const FollowerManual = ({
               />
             </div>
             <div className="grid grid-cols-6 gap-4 mb-2">
+              {/*
               <div className="col-span-3 md:col-start-2 md:col-span-2">
                 <label className="text-sm text-gray-400">Corporación</label>
                 <div className="w-full inline-flex border">
@@ -57,12 +60,15 @@ export const FollowerManual = ({
                   <input
                     type="text"
                     className="w-11/12 focus:outline-none text-black p-2 uppercase text-sm lg:text-base "
-                    placeholder="Presidente"
+                    placeholder="Presidente"                  
                     onChange={(event) => handleCorporacionChange(event)}
                   />
                 </div>
               </div>
-              <div className="col-span-3 md:col-start-4 md:col-span-2">
+                */}
+              <div className="col-span-6 md:col-start-3 md:col-span-2">
+                {' '}
+                {/*col-span-3 md:col-start-4 md:col-span-2*/}
                 <label className="text-sm text-gray-400">Region</label>
                 <div className="w-full inline-flex border">
                   <div className="w-8 lg:w-10 pt-2 bg-gray-300">
@@ -162,6 +168,8 @@ export const FollowerManual = ({
                     OnChangeCedula={(event) => handleCedulaChange(componente.id, event)}
                     OnChangeNombre={(event) => handleNombreChange(componente.id, event)}
                     OnChangeVotos={(event) => handleVotosChange(componente.id, event)}
+                    OnChangePartido1={(event) => handlePartido1Change(componente.id, event)}
+                    OnChangePartido2={(event) => handlePartido2Change(componente.id, event)}
                     OnChangePorcentaje={(event) => handlePorcentajeChange(componente.id, event)}
                     DeleteCandidato={() => componente.id !== 0 && eliminarComponente(componente.id)}
                   />
@@ -192,6 +200,8 @@ FollowerManual.propTypes = {
   handleCedulaChange: PropTypes.func.isRequired,
   handleNombreChange: PropTypes.func.isRequired,
   handleVotosChange: PropTypes.func.isRequired,
+  handlePartido1Change: PropTypes.func.isRequired,
+  handlePartido2Change: PropTypes.func.isRequired,
   handlePorcentajeChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
 };

@@ -146,8 +146,8 @@ export const TableEdicion = ({
                     }  font-light md:font-normal  whitespace-nowrap  overflow-y-auto`}
                   >
                     <td className="px-1 py-2 lg:px-3  border border-gray-500  ">
-                      <p className="invisible h-0 ml-14 ">{data.nombre}</p>
-                      <div className="w-full inline-flex border ">
+                      <p className="">{data.nombre} {data?.reeleccion === '1' && <span className="text-green">(R)</span>}</p> {/*invisible h-0 ml-14 */}
+                      {/*<div className="w-full inline-flex border ">
                         <input
                           style={{ background: 'none' }}
                           type="text"
@@ -198,7 +198,7 @@ export const TableEdicion = ({
                             />
                           </svg>
                         )}
-                      </div>
+                      </div> */}
                     </td>
 
                     <td className="px-1 py-2 lg:px-3  border border-gray-500">{data.votos}</td>
@@ -227,6 +227,7 @@ export const TableEdicion = ({
                         corporacion={data.corporacion}
                         nameData="partido2"
                         id={data.nombre}
+                        partido={data.nombre_partido}
                         HandleDataSubmit={HandleDataPartidoSubmit}
                         loading={checkPlurinominal}
                         FuncionGanadorPlurinominalValor={false}
@@ -239,6 +240,7 @@ export const TableEdicion = ({
                         corporacion={data.corporacion}
                         nameData="partido3"
                         id={data.nombre}
+                        partido={data.nombre_partido}
                         HandleDataSubmit={HandleDataPartidoSubmit}
                         loading={checkPlurinominal}
                         FuncionGanadorPlurinominalValor={false}
@@ -251,6 +253,7 @@ export const TableEdicion = ({
                         corporacion={data.corporacion}
                         nameData="partido4"
                         id={data.nombre}
+                        partido={data.nombre_partido}
                         HandleDataSubmit={HandleDataPartidoSubmit}
                         loading={checkPlurinominal}
                         FuncionGanadorPlurinominalValor={false}
@@ -268,6 +271,7 @@ export const TableEdicion = ({
                             corporacion={data.corporacion}
                             nameData="orden_clasificacion"
                             id={data.nombre}
+                            partido={data.nombre_partido}
                             HandleDataSubmit={HandleDataSubmit}
                             loading={checkPlurinominal}
                             FuncionGanadorPlurinominalValor={true}
@@ -300,6 +304,7 @@ export const TableEdicion = ({
                                   'ganadorplurinominal',
                                   data.ganadorplurinominal === '0' ? '1' : '0',
                                   data.nombre,
+                                  data.nombre_partido,
                                   data.corporacion,
                                 )
                               }

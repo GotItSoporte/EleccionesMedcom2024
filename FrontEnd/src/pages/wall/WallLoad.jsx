@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { EstudioWall } from './EstudioWall';
+import { Wall } from './Wall';
 
-export const EstudioWallLoad = () => {
+export const WallLoad = () => {
   const [mostrarNavbar, setMostrarNavbar] = useState(true);
   const [graficoSeleccionado, setGraficoSeleccionado] = useState('WallPalacio');
 
   return (
-    <EstudioWall
+    <Wall
       mostrarNavbar={mostrarNavbar}
       setMostrarNavbar={setMostrarNavbar}
       graficoSeleccionado={graficoSeleccionado}

@@ -8,6 +8,8 @@ export const NavbarHorizontal = ({
   graficoSeleccionado,
   setGraficoSeleccionado,
   listaGraficos,
+
+  blockWallScreen,
 }) => {
   return (
     <>
@@ -21,7 +23,11 @@ export const NavbarHorizontal = ({
 
               <div
                 className={`flex justify-start  ${
-                  graficoSeleccionado === 'Plurinominal' || graficoSeleccionado === 'FollowerManual' ? 'hidden' : ''
+                  graficoSeleccionado === 'Editable' ||
+                  graficoSeleccionado === 'Plurinominal' ||
+                  graficoSeleccionado === 'FollowerManual'
+                    ? 'hidden'
+                    : ''
                 } cursor-pointer `}
               >
                 {mostrarNavbar ? (
@@ -41,11 +47,15 @@ export const NavbarHorizontal = ({
                   </svg>
                 ) : (
                   <svg
-                    className={`h-12 w-12 text-green `}
+                    className={`h-12 w-12  ${
+                      Object.values(blockWallScreen).includes(true) ? 'cursor-not-allowed text-gray-600' : 'text-green'
+                    }`}
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    onClick={() => setMostrarNavbar(true)}
+                    onClick={() =>
+                      Object.values(blockWallScreen).every((value) => value === false) && setMostrarNavbar(true)
+                    }
                   >
                     <path
                       strokeLinecap="round"
@@ -63,24 +73,38 @@ export const NavbarHorizontal = ({
                   return (
                     <a
                       key={index}
-                      className={` max-w-auto p-1  h-fit  text-center cursor-pointer hover:text-red text-white border-2 ${
-                        graficoSeleccionado === listado ? 'border-red-500' : ''
-                      } rounded-md`}
-                      onClick={() => setGraficoSeleccionado(listado)}
+                      className={` max-w-auto p-1  h-fit  text-center  text-white border-2 rounded-md 
+                      ${
+                        graficoSeleccionado === listado
+                          ? 'border-red-500 text-white '
+                          : `${
+                              Object.values(blockWallScreen).includes(true)
+                                ? 'cursor-not-allowed  border-gray-600 text-gray-600'
+                                : 'cursor-pointer  hover:text-red'
+                            }`
+                      } `}
+                      onClick={() =>
+                        Object.values(blockWallScreen).every((value) => value === false) &&
+                        setGraficoSeleccionado(listado)
+                      }
                     >
                       {listado}
                     </a>
                   );
                 })}
               </div>
-              <a href="/">
+              <a href={Object.values(blockWallScreen).every((value) => value === false) ? '/' : undefined}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-12 h-12 ml-1 md:ml-5  invert cursor-pointer"
+                  className={`w-12 h-12 ml-1 md:ml-5  invert  ${
+                    Object.values(blockWallScreen).includes(true)
+                      ? 'cursor-not-allowed text-gray-600'
+                      : 'cursor-pointer'
+                  }`}
                 >
                   <path
                     strokeLinecap="round"
@@ -104,4 +128,5 @@ NavbarHorizontal.propTypes = {
   setGraficoSeleccionado: PropTypes.func.isRequired,
   rol: PropTypes.string.isRequired,
   listaGraficos: PropTypes.object.isRequired,
+  blockWallScreen: PropTypes.object.isRequired,
 };

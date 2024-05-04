@@ -3,7 +3,6 @@ import { FollowerCarrera } from './FollowerCarrera';
 import sendInfoFollower from '../../../apis/SendInfoFollower';
 import { useData } from '../../../context';
 
-
 export const FollowerCarreraLoad = () => {
   const { data } = useData();
 
@@ -11,13 +10,10 @@ export const FollowerCarreraLoad = () => {
     await sendInfoFollower('CARRERA', filteredData);
   }
 
-  useEffect (()=>{
-    const filteredData = data?.PRESIDENTE?.filter(item=>item.provincia==='NACIONAL')?.slice(0, 4) || [];
-    postDataFollower(filteredData)
-  },[data])
+  useEffect(() => {
+    const filteredData = data?.PRESIDENTE?.filter((item) => item.provincia === 'NACIONAL')?.slice(0, 4) || [];
+    postDataFollower(filteredData);
+  }, [data]);
 
-  return (
-    <FollowerCarrera
-    />
-  );
+  return <FollowerCarrera />;
 };

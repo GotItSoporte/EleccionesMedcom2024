@@ -12,9 +12,18 @@ export function useData() {
 export function DataProvider({ children }) {
   //------------------- GRAFICOS EXISTENTES -------------------
   const listaGraficos = {
-    Master: ['Voto_Arriba_Voto24', 'Voto_Abajo_Voto24', 'FullScreenPalacio', 'FullScreenTribunal', 'Plurinominal'],
-    EstudioWall: ['WallPalacio', 'WallTribunal', 'RA'],
-    EstudioVirtual: ['Follower','FollowerReeleccion', 'FollowerManual', 'SetRegiones'],
+    Master: [
+      'Voto_Arriba_Voto24',
+      'Voto_Abajo_Voto24',
+      'FullScreenPalacio',
+      'FullScreenTribunal',
+      'ResultadosRaExterior',
+      'Editable',
+      'Plurinominal',
+    ],
+    Wall: ['WallPalacio', 'WallTribunal'],
+    Follower: ['FollowerResultados', 'FollowerManual'],
+    SetRegiones: ['SetRegiones360', 'SetRegionesPrevio'],
   };
 
   //------------------- GET DATA -------------------
@@ -36,64 +45,64 @@ export function DataProvider({ children }) {
       id: 0,
     },
     PRD: {
-      id: 9,
+      id: 2,
       nombre: 'PARTIDO REVOLUCIONARIO DEMOCRÁTICO',
     },
     PP: {
-      id: 8,
+      id: 3,
       nombre: 'PARTIDO POPULAR',
     },
     MOL: {
-      id: 3,
+      id: 4,
       nombre: 'MOLIRENA',
     },
     PAN: {
-      id: 7,
+      id: 8,
       nombre: 'PARTIDO PANAMEÑISTA',
     },
     CD: {
-      id: 1,
+      id: 32,
       nombre: 'CAMBIO DEMOCRÁTICO',
     },
     ALIANZA: {
-      id: 5,
+      id: 51,
       nombre: 'PARTIDO ALIANZA',
     },
     RM: {
-      id: 10,
+      id: 56,
       nombre: 'REALIZANDO METAS',
     },
     PAIS: {
-      id: 6,
+      id: 52,
       nombre: 'PAÍS',
     },
     MOCA: {
-      id: 4,
+      id: 53,
       nombre: 'MOVIMIENTO OTRO CAMINO',
     },
     'LIBRE POST.': {
-      id: 2,
+      id: 57,
       nombre: 'LIBRE POSTULACIÓN',
     },
     'LIBRE POST 2.': {
-      id: 2,
+      id: 58,
       nombre: 'LIBRE POSTULACIÓN 2',
     },
     'LIBRE POST 3.': {
-      id: 2,
+      id: 59,
       nombre: 'LIBRE POSTULACIÓN 3',
     },
-    "PP ZULAY": {
-      id: 11,
-      nombre: "PARTIDO ZULAY",
+    'PP ZULAY': {
+      id: 501,
+      nombre: 'PARTIDO ZULAY',
     },
-    "PP ARROCHA": {
-      id: 12,
-      nombre: "PARTIDO ARROCHA",
+    'PP ARROCHA': {
+      id: 503,
+      nombre: 'PARTIDO ARROCHA',
     },
-    "PP GORDON": {
-      id: 13,
-      nombre: "PARTIDO GORDON",
+    'PP GORDON': {
+      id: 502,
+      nombre: 'PARTIDO GORDON',
     },
   };
 
@@ -165,6 +174,14 @@ export function DataProvider({ children }) {
     getData(); // Iniciar la primera actualización
   }, [checkPlurinominal]);
 
+  // PARA PAUSAR LA DATA QUE ENTRA
+  const [blockWallScreen, setBlockWallScreen] = useState({
+    wall: false,
+    wallTribunal: false,
+    setRegiones: false,
+    setRegionesPrevio: false,
+  });
+
   //------------------- CONTEXTOS-------------------
   const value = {
     listaGraficos,
@@ -176,6 +193,9 @@ export function DataProvider({ children }) {
     setDelayCheckPlurinominal,
     listPartido,
     curules,
+
+    blockWallScreen,
+    setBlockWallScreen,
   };
 
   return <ContextData.Provider value={value}>{children}</ContextData.Provider>;

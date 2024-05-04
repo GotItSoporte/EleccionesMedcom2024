@@ -29,7 +29,7 @@ export const Ticker = ({
           activePresentador={false}
           setLastFile={() => {}}
           setMostrarNavbar={() => {}}
-          nameCorporacion={['PRESIDENTE', 'ALCALDE']}
+          nameCorporacion={['PRESIDENTE']}
         />
       </div>
       {children}

@@ -5,10 +5,12 @@ import {
   TickerAbajo,
   FullScreen,
   FullScreenTribunal,
+  ResultadosRaExterior,
+  Editable,
   Plurinominal,
   TouchScreen,
   RaExteriorMapa,
-  FollowerCarrera
+  FollowerCarrera,
 } from '../../components';
 
 export const Master = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, setGraficoSeleccionado }) => {
@@ -80,6 +82,30 @@ export const Master = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, s
         </FullScreenTribunal>
       </div>
 
+      {/*------------------- RESULTADOS RAEXTERIOR -------------------*/}
+            <div className={`${graficoSeleccionado === 'ResultadosRaExterior' ? 'block' : 'hidden'}`}>
+        <ResultadosRaExterior mostrarNavbar={mostrarNavbar} setMostrarNavbar={setMostrarNavbar} rol={rol}>
+          <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
+            Master -
+            <span className="text-2xl md:text-5xl font-semibold md:font-extrabold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-gray-800 ml-2">
+              {graficoSeleccionado}
+            </span>
+          </h1>
+        </ResultadosRaExterior>
+      </div>
+
+      {/*------------------- EDITABLE -------------------*/}
+      <div className={`${graficoSeleccionado === 'Editable' ? 'block' : 'hidden'}`}>
+        <Editable>
+          <h1 className="text-2xl md:text-5xl font-extrabold  tracking-tight  text-center  text-white py-5">
+            Master -
+            <span className="text-2xl md:text-5xl font-semibold md:font-extrabold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-gray-800 ml-2">
+              {graficoSeleccionado}
+            </span>
+          </h1>
+        </Editable>
+      </div>
+
       {/*------------------- PLURINOMINAL -------------------*/}
       <div className={`${graficoSeleccionado === 'Plurinominal' ? 'block' : 'hidden'}`}>
         <Plurinominal>
@@ -91,6 +117,7 @@ export const Master = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, s
           </h1>
         </Plurinominal>
       </div>
+
       {/*------------------- TOUCHSCREEN -------------------*/}
       <div className="">
         <TouchScreen />
@@ -98,12 +125,12 @@ export const Master = ({ mostrarNavbar, setMostrarNavbar, graficoSeleccionado, s
 
       {/*------------------- RA EXTERIOR MAPA -------------------*/}
       <div className="">
-        <RaExteriorMapa />  
+        <RaExteriorMapa />
       </div>
 
-            {/*------------------- RA EXTERIOR MAPA -------------------*/}
+      {/*------------------- RA EXTERIOR MAPA -------------------*/}
       <div className="">
-        <FollowerCarrera />  
+        <FollowerCarrera />
       </div>
     </>
   );

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 export const Table = ({ data, option }) => {
   return (
     <>
-      <div className="relative overflow-x-auto     max-h-[70vh] overflow-y-auto      ">
+      <div className="relative overflow-x-auto     max-h-[55vh] overflow-y-auto      ">
         <table className="  text-xs lg:text-sm text-center  text-gray-300 ">
           <thead className="text-xs  uppercase  bg-blue-500 text-white sticky top-0  ">
             {data.length > 0 ? (
@@ -24,7 +24,7 @@ export const Table = ({ data, option }) => {
                   scope="col"
                   className=" px-1 py-2 lg:px-6 lg:py-3 text-center w-screen font-normal md:font-semibold lg:font-bold border border-gray-400"
                 >
-                  Porcentaje
+                  Porc.
                 </th>
                 <th
                   scope="col"
@@ -51,12 +51,12 @@ export const Table = ({ data, option }) => {
                   Circuito
                 </th>
 
-                <th
+                {/*<th
                   scope="col"
                   className=" px-1 py-2 lg:px-6 lg:py-3 text-center w-screen font-normal md:font-semibold lg:font-bold border border-gray-400"
                 >
                   Corporación
-                </th>
+            </th>*/}
               </tr>
             ) : (
               <tr>
@@ -74,10 +74,17 @@ export const Table = ({ data, option }) => {
                       idx + 1 <= option ? 'bg-gray-800' : 'bg-gray-700'
                     }   border-gray-700 hover:bg-gray-600 font-light md:font-normal  whitespace-nowrap hover:text-white `}
                   >
-                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{value.nombre}</td>
-                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{value.votos}</td>
-                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{value.porcentaje.toFixed(2)}</td>
-                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{value.nombre_partido}</td>
+                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{value.nombre} {value?.reeleccion === '1' && <span className="text-green">(R)</span>} </td>
+                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">
+                      {value.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                    </td>
+                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">{value.porcentaje}</td>
+                    <td className="px-1 py-2 lg:px-6 lg:py-4 border border-gray-500">
+                      {value.nombre_partido}
+                      {value.nombre_partido2 !== 'NO APLICA' && ' - ' + value.nombre_partido2}
+                      {value.nombre_partido3 !== 'NO APLICA' && ' - ' + value.nombre_partido3}
+                      {value.nombre_partido4 !== 'NO APLICA' && ' - ' + value.nombre_partido4}
+                    </td>
                     <td className="px-1 py-2 lg:px-6 lg:py-4 text-center border border-gray-500">{value.provincia}</td>
                     <td
                       className={`px-1 py-2 lg:px-6 lg:py-4 text-center ${
@@ -93,9 +100,9 @@ export const Table = ({ data, option }) => {
                     >
                       {value.circuito || 'NO APLICA'}
                     </td>
-                    <td className="px-1 py-2 lg:px-6 lg:py-4 text-center border border-gray-500">
+                    {/*<td className="px-1 py-2 lg:px-6 lg:py-4 text-center border border-gray-500">
                       {value.corporacion}
-                    </td>
+                    </td>*/}
                   </tr>
                 );
               })

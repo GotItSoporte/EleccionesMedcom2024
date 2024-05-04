@@ -77,7 +77,7 @@ export const NavbarOnly = ({
     <>
       <div className={`block navbar-menu relative  ${mostrarNavbar ? 'z-50' : ''}  `}>
         <nav
-          className={` lg:static h-[calc(100vh-8.4vh)] top-0 left-0 bottom-0 flex flex-col w-72 lg:w-80 sm:max-w-xs  pb-8 pt-5    ${
+          className={` lg:static h-[calc(100vh-11.5vh)] top-0 left-0 bottom-0 flex flex-col w-72 lg:w-80 sm:max-w-xs  pb-8 pt-5    ${
             mostrarNavbar ? 'overflow-y-auto bg-gray-900 ' : '  overflow-hidden invisible '
           }`}
         >
@@ -120,13 +120,9 @@ export const NavbarOnly = ({
                       </a>
                       {open[corporacion] &&
                         (corporacion === 'DIPUTADO'
-                          ? data[corporacion]
-                              ?.filter((item) =>
-                                graficoSeleccionado === 'Follower' ? item.plurinominal === '1' : item,
-                              )
-                              ?.filter((item) =>
-                                graficoSeleccionado === 'FollowerReeleccion' ? item.reeleccion === '1' : item,
-                              )
+                          ? data[corporacion]?.filter((item) =>
+                              graficoSeleccionado === 'FollowerReeleccion' ? item.reeleccion === '1' : item,
+                            )
                           : corporacion === 'ALCALDE'
                             ? data[corporacion]?.filter((item) => item.activo === '1')
                             : data[corporacion]
@@ -223,9 +219,6 @@ export const NavbarOnly = ({
                                   corporacion === 'DIPUTADO' &&
                                   data[corporacion]
                                     ?.filter((item) =>
-                                      graficoSeleccionado === 'Follower' ? item.plurinominal === '1' : item,
-                                    )
-                                    ?.filter((item) =>
                                       graficoSeleccionado === 'FollowerReeleccion' ? item.reeleccion === '1' : item,
                                     )
                                     ?.filter((item) => item.provincia === el.provincia)
@@ -253,7 +246,10 @@ export const NavbarOnly = ({
                                                   rol !== 'Master' && activePresentador && setMostrarNavbar(false);
                                               }}
                                             >
-                                              <span>CIRCUITO {el3.circuito}</span>
+                                              <span>
+                                                CIRCUITO {el3.circuito}{' '}
+                                                {el3?.plurinominal === '1' && <span className="text-green">(P)</span>}
+                                              </span>
                                             </a>
                                           </div>
                                         );

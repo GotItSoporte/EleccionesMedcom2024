@@ -26,4 +26,17 @@ router.post("/SETREGIONES", async function (req, res) {
   }
 });
 
+router.post("/SETREGIONESPREVIO", async function (req, res) {
+  try {
+    await Functions.SendUDPMessages(
+      req.body.data,
+      variables.IP_ENGINE_SETREGIONES
+    );
+    res.json({ message: "SetRegionesPrevio: datos cargados correctamente" });
+    console.log(`SetRegionesPrevio:Datos cargados correctamente.`);
+  } catch (err) {
+    console.error("Error en la data enviada de SetRegiones ", err.message);
+  }
+});
+
 module.exports = router;

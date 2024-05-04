@@ -5,13 +5,22 @@ const port = 5000;
 
 app.use(cors());
 
+/*
 app.use(express.json());
 
 app.use(
   express.urlencoded({
     extended: true,
   })
-);
+);*/
+
+
+app.use(express.json({ limit: '2mb' }));
+// Configurar el middleware para analizar cuerpos de solicitud codificados en URL
+app.use(express.urlencoded({ limit: '2mb', extended: true }));
+
+
+
 
 app.get("/", (req, res) => {
   res.send("Hello or  World!");

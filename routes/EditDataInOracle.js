@@ -4,15 +4,16 @@ const { editOracle } = require("../config/config");
 
 router.put("/", async function (req, res) {
   try {
-    const corporacion = req.body.corporacion;
+    const corporacion = req.body.corporacion;  //VOTO2024.DIPUTADO_REF_GOTIT 
     const nameVariableSelected = req.body.nameVariableSelected;
     const variableSelected =
       req.body.variableSelected === "NO APLICA"
         ? null
         : req.body.variableSelected;
     const cedula = req.body.cedula;
-    const updateQuery = `UPDATE VOTO2024.${corporacion}_GOTIT SET ${nameVariableSelected} = :variableSelected WHERE nombre = :cedula`;
-    await editOracle(updateQuery, { variableSelected, cedula });
+    const partido = req.body.partido;
+    const updateQuery = `UPDATE VOTO2024.${corporacion}_REF_GOTIT SET ${nameVariableSelected} = :variableSelected WHERE nombre = :cedula and nombre_partido = :partido`;
+    await editOracle(updateQuery, { variableSelected, cedula,partido  });
     res.json({
       success: true,
       message: "Oracle: datos Editados correctamente",
@@ -31,8 +32,8 @@ router.put("/Partido", async function (req, res) {
     const nameVariableSelected = req.body.nameVariableSelected;
     const variableSelected = req.body.variableSelected;
     const cedula = req.body.cedula;
-    const updateQuery = `UPDATE VOTO2024.${corporacion}_GOTIT SET ${nameCodigoSelected} = :codigoSelected, ${nameVariableSelected} = :variableSelected WHERE nombre = :cedula`;
-    await editOracle(updateQuery, { codigoSelected, variableSelected, cedula });
+    const updateQuery = `UPDATE VOTO2024.${corporacion}_REF_GOTIT SET ${nameCodigoSelected} = :codigoSelected, ${nameVariableSelected} = :variableSelected WHERE nombre = :cedula `;
+    await editOracle(updateQuery, { codigoSelected, variableSelected, cedula});
     res.json({
       success: true,
       message: "Oracle: datos Editados correctamente",

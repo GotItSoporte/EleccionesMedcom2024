@@ -93,6 +93,24 @@ router.post("/FULLSCREENTRIBUNAL", async function (req, res) {
   }
 });
 
+router.post("/RESULTADOSRAEXTERIOR", async function (req, res) {
+  try {
+    await Functions.CreateXml(
+      variables.RUTE_XML,
+      req.body.postData,
+      variables.NAME_FILE_RESULTADOSRAEXTERIOR
+    );
+    res.json({
+      success: true,
+      message: "ResultadosRaExterior: datos XML cargados correctamente",
+    });
+    console.log(`ResultadosRaExterior: datos XML cargados correctamente`);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error en la data enviada de fullscreen " });
+  }
+});
+
 router.post("/TOUCHSCREEN", async function (req, res) {
   try {
     await Functions.CreateXml(

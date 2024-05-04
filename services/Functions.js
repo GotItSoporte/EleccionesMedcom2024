@@ -6,6 +6,116 @@ const client = udp.createSocket("udp4");
 const Variables = require("./Variables");
 const xlsx = require("xlsx");
 
+const listPartido = {
+  "NO APLICA": {
+    id: 0,
+  },
+  PRD: {
+    id: 2,
+    nombre: "PARTIDO REVOLUCIONARIO DEMOCRÁTICO",
+  },
+  PP: {
+    id: 3,
+    nombre: "PARTIDO POPULAR",
+  },
+  MOL: {
+    id: 4,
+    nombre: "MOLIRENA",
+  },
+  PAN: {
+    id: 8,
+    nombre: "PARTIDO PANAMEÑISTA",
+  },
+  CD: {
+    id: 32,
+    nombre: "CAMBIO DEMOCRÁTICO",
+  },
+  ALIANZA: {
+    id: 51,
+    nombre: "PARTIDO ALIANZA",
+  },
+  RM: {
+    id: 56,
+    nombre: "REALIZANDO METAS",
+  },
+  PAIS: {
+    id: 52,
+    nombre: "PAÍS",
+  },
+  MOCA: {
+    id: 53,
+    nombre: "MOVIMIENTO OTRO CAMINO",
+  },
+  "LIBRE POST.": {
+    id: 57,
+    nombre: "LIBRE POSTULACIÓN",
+  },
+  "LIBRE POST 2.": {
+    id: 58,
+    nombre: "LIBRE POSTULACIÓN 2",
+  },
+  "LIBRE POST 3.": {
+    id: 59,
+    nombre: "LIBRE POSTULACIÓN 3",
+  },
+  "PP ZULAY": {
+    id: 501,
+    nombre: "PARTIDO ZULAY",
+  },
+  "PP ARROCHA": {
+    id: 503,
+    nombre: "PARTIDO ARROCHA",
+  },
+  "PP GORDON": {
+    id: 502,
+    nombre: "PARTIDO GORDON",
+  },
+};
+
+const curules = {
+  '1-1': 2,
+  '2-1': 2,
+  '2-2': 1,
+  '2-3': 1,
+  '2-4': 1,
+  '3-1': 4,
+  '3-2': 1,
+  '4-1': 3,
+  '4-2': 1,
+  '4-3': 2,
+  '4-4': 1,
+  '4-5': 1,
+  '4-6': 1,
+  '5-1': 1,
+  '5-2': 1,
+  '6-1': 1,
+  '6-2': 1,
+  '6-3': 1,
+  '7-1': 1,
+  '7-2': 1,
+  '8-1': 1,
+  '8-2': 7,
+  '8-3': 5,
+  '8-4': 5,
+  '8-5': 3,
+  '8-6': 4,
+  '9-1': 2,
+  '9-2': 1,
+  '9-3': 1,
+  '9-4': 1,
+  '10-1': 1,
+  '10-2': 1,
+  '12-1': 1,
+  '12-2': 1,
+  '12-3': 1,
+  '13-1': 3,
+  '13-2': 1,
+  '13-3': 1,
+  '13-4': 3,
+};
+
+
+
 //------------------- FORMATEAR DATA PARA UNREAL ENGINE -------------------
 function ChangeFormat(data) {
   return data
@@ -21,7 +131,7 @@ function ChangeFormat(data) {
             : "UNINOMINAL"
           : "UNINOMINAL",
       [`participacion`]: data[0]?.participacion?.toFixed(2)?.toString() || "", // (Math.random() * 99.99).toFixed(2)
-      [`escrutado`]: data[0]?.escrutado?.toFixed(2)?.toString() || "",
+      [`escrutado`]: parseFloat(data[0]?.escrutado)?.toFixed(2)?.toString() || "",
       [`provincia`]: data[0]?.provincia || "",
       [`region`]:
         data[0]?.corporacion === "PRESIDENTE"
@@ -41,12 +151,16 @@ function ChangeFormat(data) {
           ? "JOSÉ G."
           : elemento.cedula === "4-132-245"
           ? "JOSÉ R."
-          : elemento?.nombre?.split(" ")[0].toUpperCase() || "",
-      [`apellido${indice}`]:
-        elemento?.nombre?.split(" ").pop().toUpperCase() || "",
+          : elemento?.nombre?.trimEnd()?.split(" ")[0]?.toUpperCase() || "",
+      [`apellido${indice}`]: 
+          elemento.cedula === "8-766-2490"
+          ? elemento?.nombre?.trimEnd()?.split(" ").pop().toUpperCase() 
+          : elemento.cedula === "4-132-245"
+          ? elemento?.nombre?.trimEnd()?.split(" ").pop().toUpperCase() 
+          : elemento?.nombre?.trimEnd()?.split(" ")?.slice(1)?.join(" ")?.toUpperCase()  || "",  //elemento?.nombre?.split(" ").pop().toUpperCase() 
       [`votos${indice}`]:
         elemento?.votos?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") || "", // elemento.votos ||
-      [`porcentaje${indice}`]: elemento.porcentaje.toFixed(2).toString() || "", //(Math.random() * 99.99).toFixed(2),
+      [`porcentaje${indice}`]: elemento.porcentaje?.toFixed(2)?.toString() || "", //(Math.random() * 99.99).toFixed(2), //elemento.porcentaje?.toFixed(2)?.toString()
       [`codigo_partido1_${indice}`]: elemento?.codigo_partido?.toString() || "",
       [`codigo_partido2_${indice}`]:
         elemento?.codigo_partido2?.toString() || "",
@@ -56,6 +170,8 @@ function ChangeFormat(data) {
         elemento?.codigo_partido4?.toString() || "",
       [`ganadorplurinominal${indice}`]:
         elemento.ganadorplurinominal?.toString() || "0",
+        [`curules`]:
+        curules[elemento?.circuito]?.toString() || "",
     }))
     .reduce((resultado, elemento) => ({ ...resultado, ...elemento }), {});
 }
@@ -95,6 +211,7 @@ function ReadXml(rute) {
               nombre: element.nombre?.[0] || "",
               cedula: element.cedula?.[0] || "",
               votos: element.votos?.[0] || "",
+              porcentaje: element.porcentaje?.[0] || "",
               provincia: element.provincia?.[0] || "",
               distrito: element.distrito?.[0] || "",
               circuito: element.circuito?.[0] || "",
@@ -102,6 +219,9 @@ function ReadXml(rute) {
               participacion: element.participacion?.[0] || "",
               escrutado: element.escrutado?.[0] || "",
               nombre_partido: element.nombre_partido?.[0] || "",
+              nombre_partido2: element.nombre_partido2?.[0] || "",
+              nombre_partido3: element.nombre_partido3?.[0] || "",
+              nombre_partido4: element.nombre_partido4?.[0] || "",
               // ...agrega los demás campos aquí con asignaciones condicionales
             };
             return item;
@@ -155,71 +275,7 @@ function ReadExcelFollower(ruteFile, rute) {
     .reduce((resultado, elemento) => ({ ...resultado, ...elemento }), {});
 }
 
-const listPartido = {
-  "NO APLICA": {
-    id: 0,
-  },
-  PRD: {
-    id: 9,
-    nombre: "PARTIDO REVOLUCIONARIO DEMOCRÁTICO",
-  },
-  PP: {
-    id: 8,
-    nombre: "PARTIDO POPULAR",
-  },
-  MOL: {
-    id: 3,
-    nombre: "MOLIRENA",
-  },
-  PAN: {
-    id: 7,
-    nombre: "PARTIDO PANAMEÑISTA",
-  },
-  CD: {
-    id: 1,
-    nombre: "CAMBIO DEMOCRÁTICO",
-  },
-  ALIANZA: {
-    id: 5,
-    nombre: "PARTIDO ALIANZA",
-  },
-  RM: {
-    id: 10,
-    nombre: "REALIZANDO METAS",
-  },
-  PAIS: {
-    id: 6,
-    nombre: "PAÍS",
-  },
-  MOCA: {
-    id: 4,
-    nombre: "MOVIMIENTO OTRO CAMINO",
-  },
-  "LIBRE POST.": {
-    id: 2,
-    nombre: "LIBRE POSTULACIÓN",
-  },
-  "LIBRE POST 2.": {
-    id: 2,
-    nombre: "LIBRE POSTULACIÓN 2",
-  },
-  "LIBRE POST 3.": {
-    id: 2,
-    nombre: "LIBRE POSTULACIÓN 3",
-  },
-  "PP ZULAY": {
-    id: 11,
-    nombre: "PARTIDO ZULAY",
-  },
-  "PP ARROCHA": {
-    id: 12,
-    nombre: "PARTIDO ARROCHA",
-  },
-  "PP GORDON": {
-    id: 13,
-    nombre: "PARTIDO GORDON",
-  },
-};
+
 
 //-------------------  LECTURA DE EXCEL FORMULA-------------------
 function ReadExcelFormulaFollower(ruteFile, rute) {

@@ -34,6 +34,7 @@ export const FormatTouchXmlLoad = ({ name, data }) => {
             .replace(/[^\wÀ-ÿ]/g, '_'),
         );
         let lastCircuito;
+
         tempData.splice(0, dataRegion.length).forEach((dataSelect) => {
           if (dataSelect.circuito !== lastCircuito) {
             const elementall = element.ele('element');
@@ -60,8 +61,8 @@ export const FormatTouchXmlLoad = ({ name, data }) => {
 
           element3.ele('cedula', dataSelect.cedula || '');
           element3.ele('nombre', dataSelect.nombre || '');
-          element3.ele('porcentaje', dataSelect.porcentaje.toString() || '');
-          element3.ele('votos', dataSelect.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') || '');
+          element3.ele('porcentaje', dataSelect.porcentaje?.toString() || '');
+          element3.ele('votos', dataSelect.votos?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') || '');
           element3.ele('circuito', dataSelect.circuito || '');
           element3.ele('curules', curules[dataSelect.circuito] || '');
           element3.ele('plurinominal', dataSelect.plurinominal || '');
@@ -71,8 +72,8 @@ export const FormatTouchXmlLoad = ({ name, data }) => {
           element3.ele('codigo_partido3', dataSelect.codigo_partido3 || '');
           element3.ele('codigo_partido4', dataSelect.codigo_partido4 || '');
           element3.ele('nombre_partido', dataSelect.nombre_partido || '');
-          element3.ele('participacion', (Math.random() * 99.99).toFixed(2) || '');
-          element3.ele('escrutado', (Math.random() * 99.99).toFixed(2) || '');
+          element3.ele('participacion', dataSelect.participacion?.toString() || '');
+          element3.ele('escrutado', dataSelect.escrutado?.toString() || '');
           lastCircuito = dataSelect.circuito;
         });
       }
@@ -97,9 +98,8 @@ export const FormatTouchXmlLoad = ({ name, data }) => {
         });
       }
     }
-
+    //console.log(tickerfeed.end({ pretty: true }).toString())
     const xml = tickerfeed.end({ pretty: true }).toString();
-
     await sendInfoXml(name, xml);
   }
 

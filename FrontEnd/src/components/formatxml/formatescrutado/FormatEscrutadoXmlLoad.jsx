@@ -8,15 +8,17 @@ export const FormatEscrutadoXmlLoad = ({ name, data }) => {
   async function CreateFile(name, data) {
     const tickerfeed = xmlbuilder.create('data');
     const element = tickerfeed.ele('element');
-    element.ele('escrutado', data[0]?.escrutado?.toFixed().toString() || ''); //data[0]?.escrutado?.toFixed().toString() 
+    element.ele('escrutado', data[0]?.escrutado?.toString() || ''); //data[0]?.escrutado?.toFixed().toString()
 
     const data2 = tickerfeed.ele('data2');
     data?.forEach((dataSelect) => {
       const element2 = data2.ele('element2');
+      element2.ele('participacion', dataSelect.participacion?.toString() || '');
+      element2.ele('escrutado', dataSelect.escrutado?.toString() || ''); 
       element2.ele('nombre', dataSelect.nombre || '');
       element2.ele('cedula', dataSelect.cedula || '');
-      element2.ele('votos', dataSelect.votos.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') || '');
-      element2.ele('porcentaje', dataSelect.porcentaje.toString() || ''); // dataSelect.porcentaje
+      element2.ele('votos', dataSelect.votos.toString() || '');
+      element2.ele('porcentaje', dataSelect.porcentaje?.toString() || ''); // dataSelect.porcentaje
       element2.ele('corporacion', dataSelect.corporacion || '');
       element2.ele('codigo_partido', dataSelect.codigo_partido || '');
       element2.ele('nombre_partido', dataSelect.nombre_partido || '');

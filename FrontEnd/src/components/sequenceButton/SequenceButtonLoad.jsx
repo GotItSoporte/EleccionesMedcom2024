@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { SequenceButton } from './SequenceButton';
 import { SequenceSetRegiones } from './SequenceSetRegiones';
 import sendInfoSocket from '../../apis/SendInfoSocket';
+import { useData } from '../../context';
 import PropTypes from 'prop-types';
 
 export const SequenceButtonLoad = ({ type, data, setMostrarNavbar, setActiveData }) => {
+  const { curules } = useData();
   const [sequence, setSequence] = useState(0);
   const [loading, setLoading] = useState(false);
 
@@ -22,7 +24,7 @@ export const SequenceButtonLoad = ({ type, data, setMostrarNavbar, setActiveData
       )
       .join(';');
 
-    const message = `${formattedData};EntradaData${type}=1;READER_NUM_RECORDS=${data.length}`;
+    const message = `${formattedData};EntradaData${type==='SETREGIONESPREVIO'?'SETREGIONES':type}=1;READER_NUM_RECORDS=${data.length};curules_totales=${curules[data[0]?.circuito]};`;
 
     const udpMessage = {
       data: message,
@@ -33,8 +35,11 @@ export const SequenceButtonLoad = ({ type, data, setMostrarNavbar, setActiveData
     await sendInfoSocket(type, udpMessage);
     await delay(7000);
     setLoading(false);
-    setSequence(type === 'SETREGIONES' ? (data.length > 4 ? 1 : 0) : data.length + 1);
-    type === 'SETREGIONES' ? (data.length > 4 ? null : setActiveData(true)) : null;
+    setSequence(
+      type === 'SETREGIONES' ? (data.length > 4 ? 2 : 1) : type === 'SETREGIONESPREVIO' ? 0 : data.length + 1,
+    );
+    type === 'SETREGIONESPREVIO' && sequence === 0 && setActiveData(true);
+    //type === 'SETREGIONES' ? (data.length > 4 ? null : setActiveData(true)) : null;
   }
 
   async function postContinue(type) {
@@ -49,7 +54,7 @@ export const SequenceButtonLoad = ({ type, data, setMostrarNavbar, setActiveData
     await delay(5000);
     setLoading(false);
     setSequence(sequence - 1);
-    type === 'SETREGIONES' && setActiveData(true);
+    type === 'SETREGIONES' && sequence === 1 && setActiveData(true);
   }
 
   async function postSalida(type) {
@@ -84,7 +89,7 @@ export const SequenceButtonLoad = ({ type, data, setMostrarNavbar, setActiveData
     setActiveData(true);
   }
 
-  if (type === 'SETREGIONES')
+  if (type === 'SETREGIONES' || type === 'SETREGIONESPREVIO')
     return (
       <SequenceSetRegiones
         type={type}

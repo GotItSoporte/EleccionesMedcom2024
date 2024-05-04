@@ -18,7 +18,7 @@ export const NavbarLoad = ({
   isChecked,
   setIsChecked,
 }) => {
-  const { data, listaGraficos } = useData();
+  const { data, listaGraficos, blockWallScreen } = useData();
 
   if (type === 'navbarHorizontal')
     return (
@@ -30,6 +30,7 @@ export const NavbarLoad = ({
         graficoSeleccionado={graficoSeleccionado}
         setGraficoSeleccionado={setGraficoSeleccionado}
         listaGraficos={listaGraficos}
+        blockWallScreen={blockWallScreen}
       />
     );
   if (type === 'navbarOnly')

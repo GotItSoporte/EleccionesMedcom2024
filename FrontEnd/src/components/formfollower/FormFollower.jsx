@@ -5,6 +5,8 @@ export const FormFollower = ({
   OnChangeCedula,
   OnChangeNombre,
   OnChangeVotos,
+  OnChangePartido1,
+  OnChangePartido2,
   OnChangePorcentaje,
   DeleteCandidato,
 }) => {
@@ -13,8 +15,11 @@ export const FormFollower = ({
       <div className="shadow-md border border-gray-700 rounded-md ">
         <div className="lg:inline-flex space-y-2 md:space-y-0 w-full p-4 text-white items-center">
           <h2 className="  mx-auto text-xl text-center lg:ml-1">
-            Información Electoral <br></br>
+            Información Electoral <br></br> 
             <span className="text-green">Candidato #{index + 1}</span>
+            <br></br>
+            <span className="text-sm text-gray-500 mt-10">PRD(2) - PP(3) - MOL(4) <br></br>PAN(8) - CD(32) - ALIANZA(51) <br></br>RM(56) - PAIS(52) - MOCA(53) <br></br>LP(501) - LP2(502) - LP3:503 <br></br>NO APLICA:0</span>
+
           </h2>
 
           <div className=" max-w-sm mx-auto">
@@ -115,6 +120,65 @@ export const FormFollower = ({
                 />
               </div>
             </div>
+
+            <div>
+              <label className="text-sm text-gray-400">Codigo Partido 1 </label>
+              <div className="w-full inline-flex border">
+                <div className="w-8 lg:w-10 pt-2 bg-gray-300">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="w-6  mx-auto"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0 1 20.25 6v12A2.25 2.25 0 0 1 18 20.25H6A2.25 2.25 0 0 1 3.75 18V6A2.25 2.25 0 0 1 6 3.75h1.5m9 0h-9"
+                    />
+                  </svg>
+                </div>
+                <input
+                  type="number"
+                  className="w-11/12 focus:outline-none text-black p-2 text-sm lg:text-base"
+                  placeholder="1"
+                  onChange={OnChangePartido1}
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="text-sm text-gray-400">Codigo Partido 2</label>
+              <div className="w-full inline-flex border">
+                <div className="w-8 lg:w-10 pt-2 bg-gray-300">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="w-6  mx-auto"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M16.5 3.75V16.5L12 14.25 7.5 16.5V3.75m9 0H18A2.25 2.25 0 0 1 20.25 6v12A2.25 2.25 0 0 1 18 20.25H6A2.25 2.25 0 0 1 3.75 18V6A2.25 2.25 0 0 1 6 3.75h1.5m9 0h-9"
+                    />
+                  </svg>
+                </div>
+                <input
+                  type="number"
+                  className="w-11/12 focus:outline-none text-black p-2 text-sm lg:text-base"
+                  placeholder="1"
+                  onChange={OnChangePartido2}
+                />
+              </div>
+            </div>
+
+
+            
           </div>
         </div>
         {/*<hr />*/}
@@ -142,6 +206,8 @@ FormFollower.propTypes = {
   OnChangeCedula: PropTypes.func.isRequired,
   OnChangeNombre: PropTypes.func.isRequired,
   OnChangeVotos: PropTypes.func.isRequired,
+  OnChangePartido1: PropTypes.func.isRequired,
+  OnChangePartido2: PropTypes.func.isRequired,
   OnChangePorcentaje: PropTypes.func.isRequired,
   DeleteCandidato: PropTypes.func.isRequired,
 };

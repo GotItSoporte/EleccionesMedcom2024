@@ -2,7 +2,7 @@ import { Navbar, Table, Button, InlineLayout } from '../../../components';
 import iconSend from '../../../assets/icons/send.svg';
 import PropTypes from 'prop-types';
 
-export const Follower = ({
+export const FollowerResultados = ({
   mostrarNavbar,
   rol,
   setMostrarNavbar,
@@ -24,8 +24,8 @@ export const Follower = ({
           setDataSelect={setDataSelect}
           rol={rol}
           activePresentador={true}
-          nameCorporacion={['PRESIDENTE', 'ALCALDE', 'DIPUTADO']}
-          graficoSeleccionado="Follower"
+          nameCorporacion={['PRESIDENTE', 'DIPUTADO']}
+          graficoSeleccionado="FollowerResultados"
           //NO APLICA
           setGraficoSeleccionado={() => {}}
           setLastFile={() => {}}
@@ -55,7 +55,7 @@ export const Follower = ({
   );
 };
 
-Follower.propTypes = {
+FollowerResultados.propTypes = {
   rol: PropTypes.string.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,
   setMostrarNavbar: PropTypes.func.isRequired,

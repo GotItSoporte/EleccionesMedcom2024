@@ -1,9 +1,9 @@
 const oracledb = require("oracledb");
 
 const dbConfig = {
-  user: "INFORMACIONPREELECTORAL",
-  password: "@44K7UzZr#1I",
-  connectString: "10.26.27.21:1521/medc.medcomsubnet.medcomvcn.oraclevcn.com",
+  user: "INFORMACIONPREELECTORAL", //SPAGOMEZ    //INFORMACIONPREELECTORAL
+  password: "@44K7UzZ#1|", //7$1c0tdOxvFlev#       //@44K7UzZ#1|
+  connectString: "10.26.27.94:1521/medc.medcomsubnet.medcomvcn.oraclevcn.com", //10.26.27.94:1521
 };
 
 const readOracle = async (ruteSQL) => {
@@ -21,8 +21,8 @@ const readOracle = async (ruteSQL) => {
         for (const row of rows) {
             const rowObject = {};
             for (let i = 0; i < metaData.length; i++) {
-                const name = metaData[i];
-                const value = row[i];
+                  const name = metaData[i];
+                  const value = row[i];
                 rowObject[name.toLowerCase()] = value;
             }
             resultArray.push(rowObject);

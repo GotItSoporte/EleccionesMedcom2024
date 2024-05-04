@@ -1,7 +1,7 @@
 import { Navbar, Table, InlineLayout, SequenceButton } from '../../../components';
 import PropTypes from 'prop-types';
 
-export const Wall = ({
+export const WallPalacio = ({
   nameGrafico,
   mostrarNavbar,
   rol,
@@ -56,7 +56,7 @@ export const Wall = ({
   );
 };
 
-Wall.propTypes = {
+WallPalacio.propTypes = {
   nameGrafico: PropTypes.string.isRequired,
   rol: PropTypes.string.isRequired,
   mostrarNavbar: PropTypes.bool.isRequired,
