@@ -59,7 +59,11 @@ function mostrarInformacion(distritosTrue, datos, Reeleccion = false) {
 
     if (a.provincia === 'PANAMÁ') {
       if (b.provincia === 'PANAMÁ') {
-        return b.votos - a.votos;
+        if (a.plurinominal === '1' && b.plurinominal === '1') {
+          return a.orden_clasificacion - b.orden_clasificacion;
+        } else {
+          return b.votos - a.votos;
+        }
       } else {
         return -1;
       }
@@ -70,11 +74,16 @@ function mostrarInformacion(distritosTrue, datos, Reeleccion = false) {
 
     if (a.provincia === b.provincia) {
       // Comparar distritos para ALCALDE o circuitos para DIPUTADO
-      return (a.distrito || a.circuito || a.provincia).localeCompare(b.distrito || b.circuito || b.provincia);
+      if (a.plurinominal === '1' && b.plurinominal === '1') {
+        return a.orden_clasificacion - b.orden_clasificacion;
+      } else {
+        return (a.distrito || a.circuito || a.provincia).localeCompare(b.distrito || b.circuito || b.provincia);
+      }
     }
 
     return a.provincia.localeCompare(b.provincia);
   });
+
   return datosOrdenados;
 }
 

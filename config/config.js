@@ -1,10 +1,18 @@
 const oracledb = require("oracledb");
 
 const dbConfig = {
-  user: "INFORMACIONPREELECTORAL", //SPAGOMEZ    //INFORMACIONPREELECTORAL
-  password: "@44K7UzZ#1|", //7$1c0tdOxvFlev#       //@44K7UzZ#1|
-  connectString: "10.26.27.94:1521/medc.medcomsubnet.medcomvcn.oraclevcn.com", //10.26.27.94:1521
+  user: "INFORMACIONPREELECTORAL",
+  password: "@44K7UzZ#1|", 
+  connectString: "10.26.27.94:1521/medc.medcomsubnet.medcomvcn.oraclevcn.com", 
 };
+
+/*
+const dbConfig = {
+  user: "SPJGARCIA", 
+  password: "@4pA0whWtD!j438%", 
+  connectString: "192.168.21.230:1521/XEPDB1",
+};*/
+
 
 const readOracle = async (ruteSQL) => {
   try {
